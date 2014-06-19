@@ -1,0 +1,12 @@
+/* == Stop Editing Here! == */
+/* Anything beneath the above line will be deleted if you publish CSS under Appearance / Custom CSS. If you want to manually insert additional CSS, place it further up. */
+
+#main {
+	font-family: "Merriweather", Serif;
+	font-size: 14pt;
+}
+
+#main h1 {
+	font-family: "Roboto", sans-serif;
+	font-size: 18pt;
+}
