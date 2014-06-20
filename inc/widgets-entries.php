@@ -79,14 +79,12 @@ class entry_header extends WP_Widget {
 
 			if ( $title ) {
 				echo '<div class="entry_header">' . "\n"
-					. '<div class="entry_header_top"><div class="hidden"></div></div>' . "\n"
 					. '<div class="pad">' . "\n"
 					. '<h1 class="entry-title">'
 					. $title
 					. '</h1>' . "\n"
                     . $byline . "\n"
                     . '</div>' . "\n"
-					. '<div class="entry_header_bottom"><div class="hidden"></div></div>' . "\n"
 					. '</div>' . "\n";
 			}
 		}

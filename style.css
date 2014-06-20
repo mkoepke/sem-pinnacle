@@ -1518,13 +1518,6 @@ p.newsletter_fields {
 	border-radius: 0 !important;
 }
 
-.ad_unit .header_widget_top,
-.ad_unit .header_widget_bottom,
-.ad_unit .footer_widget_top,
-.ad_unit .footer_widget_bottom {
-	background: none !important;
-	height: 0 !important;
-}
 
 .ad_unit .header_widget_bg .pad,
 .ad_unit .footer_widget_bg .pad {

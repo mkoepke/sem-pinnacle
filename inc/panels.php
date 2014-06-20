@@ -57,12 +57,10 @@ class sem_panels {
 		
 		global $sem_options;
 		$before_widget = '<div class="widget %1$s %2$s">' . "\n"
-						. '<div class="widget_top"><div class="hidden"></div></div>' . "\n"
 						. '<div class="widget_bg">' . "\n"
 						. '<div class="pad">';
 		$after_widget = '</div>' . "\n"
 						. '</div>' . "\n"
-						. '<div class="widget_bottom"><div class="hidden"></div></div>' . "\n"
 						. '</div>' . "\n";
 		
 		$before_title = '<div class="widget_title"><h2>';
@@ -166,7 +164,6 @@ class sem_panels {
 			case 'the_header':
 				$before_widget = "\n\t"
 					. '<div class="%1$s %2$s header_widget wrapper">' . "\n\t"
-					. '<div class="header_widget_top"><div class="hidden"></div></div>' . "\n\t"
 					. '<div class="header_widget_bg">' . "\n\t"
 					. '<div class="wrapper_item">' . "\n\t"
 					. '<div class="pad">' . "\n";
@@ -174,14 +171,12 @@ class sem_panels {
 					. '</div>' . "\n\t"
 					. '</div>' . "\n\t"
 					. '</div>' . "\n\t"
-					. '<div class="header_widget_bottom"><div class="hidden"></div></div>' . "\n\t"
 					. '</div><!-- header_widget -->' . "\n\n";
 				break;
 			
 			case 'the_footer':
 				$before_widget = "\n\t"
 					. '<div class="%1$s %2$s footer_widget wrapper">' . "\n\t"
-					. '<div class="footer_widget_top"><div class="hidden"></div></div>' . "\n\t"
 					. '<div class="footer_widget_bg">' . "\n\t"
 					. '<div class="wrapper_item">' . "\n\t"
 					. '<div class="pad">' . "\n";
@@ -189,7 +184,6 @@ class sem_panels {
 					. '</div>' . "\n\t"
 					. '</div>' . "\n\t"
 					. '</div>' . "\n\t"
-					. '<div class="footer_widget_bottom"><div class="hidden"></div></div>' . "\n\t"
 					. '</div><!-- footer_widget -->' . "\n\n";
 				break;
 			
@@ -205,12 +199,10 @@ class sem_panels {
 			case 'after_the_entries':
 			case 'the_404':
 				$before_widget = '<div class="%1$s %2$s main_widget">' . "\n"
-					. '<div class="main_widget_top"><div class="hidden"></div></div>' . "\n"
 					. '<div class="main_widget_bg">' . "\n"
 					. '<div class="pad">' . "\n";
 				$after_widget = '</div>' . "\n"
 					. '</div>' . "\n"
-					. '<div class="main_widget_bottom"><div class="hidden"></div></div>' . "\n"
 					. '</div><!-- main_widget -->' . "\n";
 				break;
 			
@@ -329,7 +321,6 @@ class sem_panels {
 
 			echo '<div class="spacer"></div>' . "\n"
 				. '<div id="' . $id . '" class="wrapper inline_boxes ' . $class . '">' . "\n"
-				. '<div id="' . $id . '_top" class="inline_boxes_top ' . $class . '_top"><div class="hidden"></div></div>' . "\n"
 				. '<div id="' . $id . '_bg" class="inline_boxes_bg ' . $class . '_bg">' . "\n"
 				. '<div class="wrapper_item">' . "\n";
 			
@@ -338,7 +329,6 @@ class sem_panels {
 			echo '<div class="spacer"></div>' . "\n"
 				. '</div>' . "\n"
 				. '</div>' . "\n"
-				. '<div id="' . $id . '_bottom" class="inline_boxes_bottom ' . $class . '_bottom"><div class="hidden"></div></div>' . "\n"
 				. '</div><!-- ' . $id . ' -->' . "\n";
 			
 			break;

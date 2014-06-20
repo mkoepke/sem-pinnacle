@@ -29,14 +29,12 @@ include sem_path . '/header.php';
 					
 					echo '<article>'
 					    . '<div class="entry' . ( $class ? ( ' ' . implode(' ', $class) ) : '' ) . '">' . "\n"
-						. '<div class="entry_top"><div class="hidden"></div></div>' . "\n"
 						. '<div class="entry_bg">' . "\n";
 					
 					sem_panels::display('the_entry');
 					
 					echo '<div class="spacer"></div>' . "\n"
 						. '</div>' . "\n"
-						. '<div class="entry_bottom"><div class="hidden"></div></div>' . "\n"
 						. '</div>' . '<!-- entry -->' . "\n"
                         . '</article>'  . "\n";
 

@@ -58,8 +58,6 @@ class footer extends sem_nav_menu {
 
 		echo '<div id="footer" class="wrapper' . $footer_class . '" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">' . "\n";
 
-		echo '<div id="footer_top"><div class="hidden"></div></div>' . "\n";
-
 		echo '<div id="footer_bg">' . "\n"
 			. '<div class="wrapper_item">' . "\n"
 			. '<div class="pad">' . "\n";
@@ -85,8 +83,6 @@ class footer extends sem_nav_menu {
 			. '</div>' . "\n"
 			. '</div>' . "\n"
 			. '</div>' . "\n";
-
-		echo '<div id="footer_bottom"><div class="hidden"></div></div>' . "\n";
 
 		echo '</div><!-- footer -->' . "\n";
 

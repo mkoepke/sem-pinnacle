@@ -64,8 +64,6 @@ class header extends WP_Widget {
 
 		echo "\n";
 
-		echo '<div id="header_top"><div class="hidden"></div></div>' . "\n";
-
 		echo '<div id="header_bg">' . "\n";
 
 		echo '<div class="wrapper_item">' . "\n";
@@ -100,8 +98,6 @@ class header extends WP_Widget {
 		echo '</div>' . "\n";
 
 		echo '</div>' . "\n";
-
-		echo '<div id="header_bottom"><div class="hidden"></div></div>' . "\n";
 
 		echo '</div><!-- header -->' . "\n";
 
@@ -500,8 +496,6 @@ class navbar extends sem_nav_menu {
 
 		echo '<div id="navbar" class="wrapper navbar' . $navbar_class . '">' . "\n";
 
-		echo '<div id="navbar_top"><div class="hidden"></div></div>' . "\n";
-
 		echo '<div id="navbar_bg">' . "\n";
 
 		echo '<div class="wrapper_item">' . "\n";
@@ -556,8 +550,6 @@ class navbar extends sem_nav_menu {
 			. '</div>' . "\n"
 			. '</div>' . "\n"
 			. '</div>' . "\n";
-
-		echo '<div id="navbar_bottom"><div class="hidden"></div></div>' . "\n";
 
 		echo '</div><!-- navbar -->' . "\n";
 

@@ -420,7 +420,6 @@ class sem_template {
 		global $sem_options;
 		
 		echo '<div id="credits">' . "\n"
-			. '<div id="credits_top"><div class="hidden"></div></div>' . "\n"
 			. '<div id="credits_bg">' . "\n";
 		
 		if ( $sem_options['credits'] ) {
@@ -442,7 +441,6 @@ class sem_template {
 		}
 		
 		echo '</div>' . "\n"
-			. '<div id="credits_bottom"><div class="hidden"></div></div>' . "\n"
 			. '</div><!-- credits -->' . "\n";
 	} # display_credits()
 	
