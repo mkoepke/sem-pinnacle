@@ -64,9 +64,7 @@ class header extends WP_Widget {
 
 		echo "\n";
 
-		echo '<div id="header_bg">' . "\n";
-
-		echo '<div class="wrapper_item">' . "\n";
+		echo '<div id="header_bg" class="wrapper_item">' . "\n";
 
 		if ( !$header ) {
 			echo '<div id="header_img" class="pad">' . "\n";
@@ -94,8 +92,6 @@ class header extends WP_Widget {
 		} else {
 			echo header::display($header);
 		}
-
-		echo '</div>' . "\n";
 
 		echo '</div>' . "\n";
 
@@ -496,9 +492,7 @@ class navbar extends sem_nav_menu {
 
 		echo '<div id="navbar" class="wrapper navbar' . $navbar_class . '">' . "\n";
 
-		echo '<div id="navbar_bg">' . "\n";
-
-		echo '<div class="wrapper_item">' . "\n";
+		echo '<div id="navbar_bg" class="wrapper_item">' . "\n";
 
 		echo '<div class="pad">' . "\n";
 
@@ -547,7 +541,6 @@ class navbar extends sem_nav_menu {
 		}
 
 		echo '<div class="spacer"></div>' . "\n"
-			. '</div>' . "\n"
 			. '</div>' . "\n"
 			. '</div>' . "\n";
 

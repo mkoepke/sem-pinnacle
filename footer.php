@@ -218,8 +218,6 @@
 	
 	echo '</div>' . "\n";
 	
-	echo '</div>' . "\n";
-	
 	echo '<div id="body_bottom"><div class="hidden"></div></div>' . "\n";
 
 	echo '</div><!-- body -->' . "\n";

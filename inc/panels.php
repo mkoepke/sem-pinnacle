@@ -164,11 +164,9 @@ class sem_panels {
 			case 'the_header':
 				$before_widget = "\n\t"
 					. '<div class="%1$s %2$s header_widget wrapper">' . "\n\t"
-					. '<div class="header_widget_bg">' . "\n\t"
-					. '<div class="wrapper_item">' . "\n\t"
+					. '<div class="header_widget_bg wrapper_item">' . "\n\t"
 					. '<div class="pad">' . "\n";
 				$after_widget = "\n\t"
-					. '</div>' . "\n\t"
 					. '</div>' . "\n\t"
 					. '</div>' . "\n\t"
 					. '</div><!-- header_widget -->' . "\n\n";
@@ -177,11 +175,9 @@ class sem_panels {
 			case 'the_footer':
 				$before_widget = "\n\t"
 					. '<div class="%1$s %2$s footer_widget wrapper">' . "\n\t"
-					. '<div class="footer_widget_bg">' . "\n\t"
-					. '<div class="wrapper_item">' . "\n\t"
+					. '<div class="footer_widget_bg wrapper_item">' . "\n\t"
 					. '<div class="pad">' . "\n";
 				$after_widget = "\n\t"
-					. '</div>' . "\n\t"
 					. '</div>' . "\n\t"
 					. '</div>' . "\n\t"
 					. '</div><!-- footer_widget -->' . "\n\n";
@@ -321,13 +317,11 @@ class sem_panels {
 
 			echo '<div class="spacer"></div>' . "\n"
 				. '<div id="' . $id . '" class="wrapper inline_boxes ' . $class . '">' . "\n"
-				. '<div id="' . $id . '_bg" class="inline_boxes_bg ' . $class . '_bg">' . "\n"
-				. '<div class="wrapper_item">' . "\n";
+				. '<div id="' . $id . '_bg" class="inline_boxes_bg ' . $class . '_bg wrapper_item">' . "\n";
 			
 			dynamic_sidebar($panel_id);
 			
 			echo '<div class="spacer"></div>' . "\n"
-				. '</div>' . "\n"
 				. '</div>' . "\n"
 				. '</div><!-- ' . $id . ' -->' . "\n";
 			

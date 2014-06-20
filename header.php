@@ -22,15 +22,16 @@ if ( $title = trim(wp_title('&#8211;', false)) ) {
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 <!--[if lt IE 9]>
-	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 <?php
     if ( is_singular() && get_option( 'thread_comments' ) )
-   		wp_enqueue_script( 'comment-reply' );
+  		wp_enqueue_script( 'comment-reply' );
 
     do_action('wp_head');
 ?>
 </head>
+
 <body class="<?php echo implode(' ', get_body_class(array('skin', 'custom'))); ?>" itemscope itemtype="http://schema.org/WebPage">
 <?php
 do_action('body_open');
@@ -63,10 +64,7 @@ echo '<div id="wrapper_bg">' . "\n";
 	
 	echo '<div id="body_top"><div class="hidden"></div></div>' . "\n";
 	
-	echo '<div id="body_bg">' . "\n";
-	
-	echo '<div class="wrapper_item">' . "\n";
-	
+	echo '<div id="body_bg" class="wrapper_item">' . "\n";
 		
 		switch ( $active_layout) :
 		
