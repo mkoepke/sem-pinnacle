@@ -61,9 +61,9 @@ echo '<div id="wrapper_bg">' . "\n";
 	# body
 	
 	echo '<div id="body" class="wrapper">' . "\n";
-	
+
 	echo '<div id="body_top"><div class="hidden"></div></div>' . "\n";
-	
+
 	echo '<div id="body_bg" class="wrapper_item">' . "\n";
 		
 		switch ( $active_layout) :
@@ -83,11 +83,7 @@ echo '<div id="wrapper_bg">' . "\n";
 		
 		echo '<div id="main" class="main" role="main" itemprop="mainContentOfPage">' . "\n";
 
-		echo '<div id="main_top"><div class="hidden"></div></div>' . "\n";
-		
-		echo '<div id="main_bg">' . "\n";
-		
-		echo '<div class="pad">' . "\n";
+		echo '<div id="main_bg" class="pad">' . "\n";
 
 		echo '<div class="main_content' . ( is_archive() || is_404() || is_search() ? ' entry' : '' )  . '">' . "\n";
 ?>

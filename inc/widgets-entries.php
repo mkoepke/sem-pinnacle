@@ -69,22 +69,18 @@ class entry_header extends WP_Widget {
 		if ( $date || $title ) {
 			if ( $date ) {
 				echo '<div class="entry_date">' . "\n"
-					. '<div class="pad">' . "\n"
                     . '<time class="updated" datetime="' . esc_attr( get_the_date( 'c' ) ) . '">'
 					. $date
                     . '</time>'
-					. '</div>' . "\n"
 					. '</div>' . "\n";
 			}
 
 			if ( $title ) {
 				echo '<div class="entry_header">' . "\n"
-					. '<div class="pad">' . "\n"
 					. '<h1 class="entry-title">'
 					. $title
 					. '</h1>' . "\n"
                     . $byline . "\n"
-                    . '</div>' . "\n"
 					. '</div>' . "\n";
 			}
 		}
@@ -330,7 +326,6 @@ class entry_content extends WP_Widget {
 
 		if ( $actions || $content ) {
 			echo '<div class="entry_content ' . $content_class . '">' . "\n"
-				. '<div class="pad">' . "\n"
 				. $actions
 				. $thumbnail
 				. $content
@@ -1079,7 +1074,6 @@ class entry_navigation extends WP_Widget {
 			return;
 		?>
 		<div class="entry_navigation" role="navigation">
-			<div class="pad">
 			<div class="nav-links">
 
 				<div class="nav-prev">
@@ -1090,7 +1084,6 @@ class entry_navigation extends WP_Widget {
 				</div>
 
 			</div><!-- .nav-links -->
-			</div><!-- .pad -->
 		</div><!-- .navigation -->
 		<?php
 

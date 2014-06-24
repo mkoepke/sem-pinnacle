@@ -435,9 +435,7 @@ class sem_template {
 					. '</a>';
 			}
 			
-			echo '<div class="pad">'
-				. $credits
-				. '</div>' . "\n";
+			echo $credits . "\n";
 		}
 		
 		echo '</div>' . "\n"

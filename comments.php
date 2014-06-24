@@ -48,20 +48,16 @@ if ( $pings ) {
 				echo '</ul>' . "\n";
 				
 				echo '</div>' . "\n"
-					. '<div class="pings_list_bottom"><div class="hidden"></div></div>' . "\n"
 					. '</div> <!-- pings_list -->' . "\n";
 			}
 			
-			echo '<div class="pings_date">' . "\n"
-				. '<div class="pad">' . "\n"
+			echo '<div class="pings_date pad">' . "\n"
 				. '<span>'
 				. $cur_date
 				. '</span>'
-				. '</div>' . "\n"
 				. '</div>' . "\n";
 			
-			echo '<div class="pings_list">' . "\n"
-				. '<div class="pad">' . "\n";
+			echo '<div class="pings_list pad">' . "\n";
 
 			echo '<ul>' . "\n";
 			
@@ -75,8 +71,7 @@ if ( $pings ) {
 	
 	echo '</ul>' . "\n";
 	
-	echo '</div>' . "\n"
-		. '</div> <!-- pings_list -->' . "\n";
+	echo '</div> <!-- pings_list -->' . "\n";
 	
 	unset($prev_date);
 } # if ( $pings )

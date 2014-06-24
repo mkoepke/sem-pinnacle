@@ -29,7 +29,7 @@ include sem_path . '/header.php';
 					
 					echo '<article>'
 					    . '<div class="entry' . ( $class ? ( ' ' . implode(' ', $class) ) : '' ) . '">' . "\n"
-						. '<div class="entry_bg">' . "\n";
+						. '<div class="entry_bg pad">' . "\n";
 					
 					sem_panels::display('the_entry');
 					

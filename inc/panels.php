@@ -57,10 +57,8 @@ class sem_panels {
 		
 		global $sem_options;
 		$before_widget = '<div class="widget %1$s %2$s">' . "\n"
-						. '<div class="widget_bg">' . "\n"
-						. '<div class="pad">';
+						. '<div class="widget_bg pad">' . "\n";
 		$after_widget = '</div>' . "\n"
-						. '</div>' . "\n"
 						. '</div>' . "\n";
 		
 		$before_title = '<div class="widget_title"><h2>';
@@ -164,10 +162,8 @@ class sem_panels {
 			case 'the_header':
 				$before_widget = "\n\t"
 					. '<div class="%1$s %2$s header_widget wrapper">' . "\n\t"
-					. '<div class="header_widget_bg wrapper_item">' . "\n\t"
-					. '<div class="pad">' . "\n";
+					. '<div class="header_widget_bg wrapper_item pad">' . "\n\t";
 				$after_widget = "\n\t"
-					. '</div>' . "\n\t"
 					. '</div>' . "\n\t"
 					. '</div><!-- header_widget -->' . "\n\n";
 				break;
@@ -175,10 +171,8 @@ class sem_panels {
 			case 'the_footer':
 				$before_widget = "\n\t"
 					. '<div class="%1$s %2$s footer_widget wrapper">' . "\n\t"
-					. '<div class="footer_widget_bg wrapper_item">' . "\n\t"
-					. '<div class="pad">' . "\n";
+					. '<div class="footer_widget_bg wrapper_item pad">' . "\n\t";
 				$after_widget = "\n\t"
-					. '</div>' . "\n\t"
 					. '</div>' . "\n\t"
 					. '</div><!-- footer_widget -->' . "\n\n";
 				break;
@@ -186,7 +180,7 @@ class sem_panels {
 			case 'the_header_boxes':
 			case 'the_footer_boxes':
 				$before_widget = '<div class="inline_box %1$s %2$s">' . "\n"
-					. '<div class="pad">' . "\n";
+					. '<div class="inline_box_bg pad">' . "\n";
 				$after_widget = '</div>' . "\n"
 					. '</div><!-- inline_box -->' . "\n";
 				break;
@@ -195,19 +189,15 @@ class sem_panels {
 			case 'after_the_entries':
 			case 'the_404':
 				$before_widget = '<div class="%1$s %2$s main_widget">' . "\n"
-					. '<div class="main_widget_bg">' . "\n"
-					. '<div class="pad">' . "\n";
+					. '<div class="main_widget_bg pad">' . "\n";
 				$after_widget = '</div>' . "\n"
-					. '</div>' . "\n"
 					. '</div><!-- main_widget -->' . "\n";
 				break;
 			
 			default:
 				$before_widget = '<div class="spacer"></div>' . "\n"
-					. '<div class="%1$s %2$s">' . "\n"
-					. '<div class="pad">' . "\n";
-				$after_widget = '</div>' . "\n"
-					. '</div>' . "\n";
+					. '<div class="%1$s %2$s pad">' . "\n";
+				$after_widget = '</div>' . "\n";
 				break;
 			}
 			

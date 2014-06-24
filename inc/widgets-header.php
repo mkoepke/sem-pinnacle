@@ -494,8 +494,6 @@ class navbar extends sem_nav_menu {
 
 		echo '<div id="navbar_bg" class="wrapper_item">' . "\n";
 
-		echo '<div class="pad">' . "\n";
-
 		echo '<div id="header_nav" class="header_nav inline_menu menu" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">';
 
 		parent::widget($args, $instance);
@@ -541,7 +539,6 @@ class navbar extends sem_nav_menu {
 		}
 
 		echo '<div class="spacer"></div>' . "\n"
-			. '</div>' . "\n"
 			. '</div>' . "\n";
 
 		echo '</div><!-- navbar -->' . "\n";
