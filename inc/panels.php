@@ -241,7 +241,7 @@ class sem_panels {
 			global $did_middle_widgets;
 			global $did_bottom_widgets;
 			
-			echo '<div id="header_wrapper">' . "\n";
+			echo '<div id="header_wrapper" class="wrapper">' . "\n";
 			
 			$did_header = false;
 			$did_navbar = false;
@@ -270,7 +270,7 @@ class sem_panels {
 			global $did_top_widgets;
 			global $did_bottom_widgets;
 			
-			echo '<div id="footer_wrapper">' . "\n";
+			echo '<div id="footer_wrapper" class="wrapper">' . "\n";
 			
 			$did_top_widgets = false;
 			$did_footer = false;

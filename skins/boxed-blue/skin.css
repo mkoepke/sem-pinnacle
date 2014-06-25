@@ -489,6 +489,7 @@ html {
 
 #footer a {
 	color: #000;
+	border-color: #000;
 }
 
 #footer a:hover {

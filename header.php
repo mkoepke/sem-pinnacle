@@ -46,7 +46,7 @@ echo '<div id="wrapper" class="hfeed">' . "\n";
 
 echo '<div id="wrapper_top"><div class="hidden"></div></div>' . "\n";
 
-echo '<div id="wrapper_bg">' . "\n";
+echo '<div id="wrapper_inner">' . "\n";
 
 	
 	# header
@@ -64,7 +64,7 @@ echo '<div id="wrapper_bg">' . "\n";
 
 	echo '<div id="body_top"><div class="hidden"></div></div>' . "\n";
 
-	echo '<div id="body_bg" class="wrapper_item">' . "\n";
+	echo '<div id="body_inner" class="wrapper_item">' . "\n";
 		
 		switch ( $active_layout) :
 		

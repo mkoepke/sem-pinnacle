@@ -29,7 +29,7 @@ html {
 	height: 25px;
 }
 
-#wrapper_bg {
+#wrapper_inner {
 	background: url(images/letter_bg.jpg?ver=0.9) top center no-repeat;
 }
 

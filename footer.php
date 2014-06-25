@@ -189,7 +189,7 @@
 	
 	# end body
 	
-	echo '</div><!-- body_bg -->' . "\n";
+	echo '</div><!-- body_inner -->' . "\n";
 	
 	echo '<div id="body_bottom"><div class="hidden"></div></div>' . "\n";
 
@@ -203,15 +203,16 @@
 		
 	endif;
 
+
+do_action('wp_footer');
+
 # end wrapper
 
-echo '</div><!-- wrapper_bg -->' . "\n";
+echo '</div><!-- wrapper_inner -->' . "\n";
 
 echo '<div id="wrapper_bottom"><div class="hidden"></div></div>' . "\n";
 
 echo '</div><!-- wrapper -->' . "\n";
-
-do_action('wp_footer');
 
 echo '</div><!-- site_container -->' . "\n";
 

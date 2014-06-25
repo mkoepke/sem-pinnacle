@@ -656,7 +656,7 @@ EOS;
 		
 		echo <<<EOS
 <pre>
-- body, #wrapper, #wrapper_bg
+- body, #wrapper, #wrapper_inner
 
   - #header_wrapper
 
@@ -699,7 +699,7 @@ EOS;
 
         - .header_widget h2
 
-  - #body, #body_bg
+  - #body, #body_inner
 
     - #main
       - .main_content
