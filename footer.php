@@ -23,8 +23,7 @@
 		
 			echo '<div id="sidebars">' . "\n";
 
-			echo '<div id="sidebars_bg">' . "\n"
-				. '<div class="sidebars_content">' . "\n";
+			echo '<div class="sidebars_content">' . "\n";
 
 
 			# top sidebar
@@ -80,8 +79,7 @@
 			
 			# end sidebars wrapper
 
-			echo '</div>' . "\n"
-				. '</div>' . "\n";
+			echo '</div>' . "\n";
 
 			echo '</div><!-- sidebars -->' . "\n";
 
@@ -100,13 +98,11 @@
 			
 			echo '<div id="sidebar" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
 
-			echo '<div class="sidebar_bg">' . "\n"
-				. '<div class="sidebar_content">' . "\n";
+			echo '<div class="sidebar_content">' . "\n";
 
 			sem_panels::display('left_sidebar');
 
-			echo '</div>' . "\n"
-				. '</div>' . "\n";
+			echo '</div>' . "\n";
 
 			echo '</div><!-- left sidebar -->' . "\n";
 
@@ -125,13 +121,11 @@
 			
 			echo '<div id="sidebar2" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
 
-			echo '<div class="sidebar_bg">' . "\n"
-				. '<div class="sidebar_content">' . "\n";
+			echo '<div class="sidebar_content">' . "\n";
 
 			sem_panels::display('right_sidebar');
 
-			echo '</div>' . "\n"
-				. '</div>' . "\n";
+			echo '</div>' . "\n";
 
 			echo '</div><!-- right sidebar -->' . "\n";
 
@@ -151,13 +145,11 @@
 			
 			echo '<div id="sidebar" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
 
-			echo '<div class="sidebar_bg">' . "\n"
-				. '<div class="sidebar_content">' . "\n";
+			echo '<div class="sidebar_content">' . "\n";
 
 			sem_panels::display('left_sidebar');
 
-			echo '</div>' . "\n"
-				. '</div>' . "\n";
+			echo '</div>' . "\n";
 
 			echo '</div><!-- left sidebar -->' . "\n";
 			
@@ -177,13 +169,11 @@
 			
 			echo '<div id="sidebar" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
 
-			echo '<div class="sidebar_bg">' . "\n"
-				. '<div class="sidebar_content">' . "\n";
+			echo '<div class="sidebar_content">' . "\n";
 
 			sem_panels::display('left_sidebar');
 
-			echo '</div>' . "\n"
-				. '</div>' . "\n";
+			echo '</div>' . "\n";
 
 			echo '</div><!-- left sidebar -->' . "\n";
 			
