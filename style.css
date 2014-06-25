@@ -502,11 +502,11 @@ Structure and Layout
 
 /* mmm layouts */
 
-.mmm #wrapper {
+.mmm #wrapper,
+.mmm #credits {
 	max-width: 960px;
 }
 
-.mmm #credits,
 .mmm .wrapper,
 .mmm .wrapper_item {
 	width: 98.958333333333%;    /* 950px;  */
@@ -1512,8 +1512,8 @@ p.newsletter_fields {
 }
 
 .ad_unit,
-.ad_unit .header_widget_bg,
-.ad_unit .footer_widget_bg {
+.ad_unit .header_widget,
+.ad_unit .footer_widget {
 	background: none !important;
 	border: none !important;
 	-moz-border-radius: 0 !important;
@@ -1523,7 +1523,7 @@ p.newsletter_fields {
 }
 
 
-.ad_unit .header_widget_bg .pad,
-.ad_unit .footer_widget_bg .pad {
+.ad_unit .header_widget .pad,
+.ad_unit .footer_widget .pad {
 	padding: 0;
 }

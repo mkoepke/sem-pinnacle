@@ -81,9 +81,7 @@ echo '<div id="wrapper_bg">' . "\n";
 			
 		# content
 		
-		echo '<div id="main" class="main" role="main" itemprop="mainContentOfPage">' . "\n";
-
-		echo '<div id="main_bg" class="pad">' . "\n";
+		echo '<div id="main" class="main pad" role="main" itemprop="mainContentOfPage">' . "\n";
 
 		echo '<div class="main_content' . ( is_archive() || is_404() || is_search() ? ' entry' : '' )  . '">' . "\n";
 ?>

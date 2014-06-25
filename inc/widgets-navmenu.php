@@ -135,7 +135,6 @@ class sem_nav_menu extends WP_Widget {
 
 		ob_start();
 
-		echo '<div>' . "\n";
 		echo '<ul class="' . implode(' ', $classes) . '">' . "\n";
 
 		$did_first = false;
@@ -164,8 +163,6 @@ class sem_nav_menu extends WP_Widget {
 		}
 
 		echo '</ul>' . "\n";
-
-		echo '</div>' . "\n";
 
 		$o = ob_get_clean();
 

@@ -26,15 +26,14 @@ include sem_path . '/header.php';
 					the_post();
 					
 					$class = get_post_class();
+					$class[] = ' pad';
 					
 					echo '<article>'
-					    . '<div class="entry' . ( $class ? ( ' ' . implode(' ', $class) ) : '' ) . '">' . "\n"
-						. '<div class="entry_bg pad">' . "\n";
+					    . '<div class="entry' . ( $class ? ( ' ' . implode(' ', $class) ) : '' ) . '">' . "\n";
 					
 					sem_panels::display('the_entry');
 					
 					echo '<div class="spacer"></div>' . "\n"
-						. '</div>' . "\n"
 						. '</div>' . '<!-- entry -->' . "\n"
                         . '</article>'  . "\n";
 

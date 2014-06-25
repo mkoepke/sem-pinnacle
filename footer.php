@@ -9,8 +9,6 @@
 		# end content
 		echo '</div><!-- main_content -->' . "\n";
 
-		echo '</div><!-- main_bg -->' . "\n";
-
 		echo '</div><!-- main -->' . "\n";
 
 		# sidebars
@@ -201,7 +199,7 @@
 	
 	# end body
 	
-	echo '</div>' . "\n";
+	echo '</div><!-- body_bg -->' . "\n";
 	
 	echo '<div id="body_bottom"><div class="hidden"></div></div>' . "\n";
 
@@ -217,20 +215,19 @@
 
 # end wrapper
 
-echo '</div>' . "\n";
+echo '</div><!-- wrapper_bg -->' . "\n";
 
 echo '<div id="wrapper_bottom"><div class="hidden"></div></div>' . "\n";
 
 echo '</div><!-- wrapper -->' . "\n";
 
+do_action('wp_footer');
+
 echo '</div><!-- site_container -->' . "\n";
 
 do_action('after_the_canvas');
 
-do_action('wp_footer');
-
 do_action('body_close');
-
 ?>
 </body>
 </html>

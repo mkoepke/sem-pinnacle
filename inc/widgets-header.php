@@ -48,7 +48,7 @@ class header extends WP_Widget {
 
 		$header = header::get();
 
-		echo '<div id="header" class="wrapper'
+		echo '<div id="header" class="wrapper wrapper_item'
 				. ( $invert_header
 					? ' invert_header'
 					: ''
@@ -63,8 +63,6 @@ class header extends WP_Widget {
 				. ' itemscope="itemscope" itemtype="http://schema.org/WPHeader">';
 
 		echo "\n";
-
-		echo '<div id="header_bg" class="wrapper_item">' . "\n";
 
 		if ( !$header ) {
 			echo '<div id="header_img" class="pad">' . "\n";
@@ -92,8 +90,6 @@ class header extends WP_Widget {
 		} else {
 			echo header::display($header);
 		}
-
-		echo '</div>' . "\n";
 
 		echo '</div><!-- header -->' . "\n";
 
@@ -490,9 +486,7 @@ class navbar extends sem_nav_menu {
 		if ( $sep )
 			$navbar_class .= ' sep_nav';
 
-		echo '<div id="navbar" class="wrapper navbar' . $navbar_class . '">' . "\n";
-
-		echo '<div id="navbar_bg" class="wrapper_item">' . "\n";
+		echo '<div id="navbar" class="wrapper navbar' . $navbar_class . ' wrapper_item">' . "\n";
 
 		echo '<div id="header_nav" class="header_nav inline_menu menu" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">';
 
@@ -538,8 +532,7 @@ class navbar extends sem_nav_menu {
 			echo '</div><!-- search_form -->';
 		}
 
-		echo '<div class="spacer"></div>' . "\n"
-			. '</div>' . "\n";
+		echo '<div class="spacer"></div>' . "\n";
 
 		echo '</div><!-- navbar -->' . "\n";
 

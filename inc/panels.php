@@ -56,10 +56,8 @@ class sem_panels {
 		sem_panels::switch_themes();
 		
 		global $sem_options;
-		$before_widget = '<div class="widget %1$s %2$s">' . "\n"
-						. '<div class="widget_bg pad">' . "\n";
-		$after_widget = '</div>' . "\n"
-						. '</div>' . "\n";
+		$before_widget = '<div class="widget %1$s %2$s pad">' . "\n";
+		$after_widget = '</div>' . "\n";
 		
 		$before_title = '<div class="widget_title"><h2>';
 		$after_title = '</h2></div>' . "\n";
@@ -161,37 +159,29 @@ class sem_panels {
 			switch ( $panel_id ) {
 			case 'the_header':
 				$before_widget = "\n\t"
-					. '<div class="%1$s %2$s header_widget wrapper">' . "\n\t"
-					. '<div class="header_widget_bg wrapper_item pad">' . "\n\t";
+					. '<div class="%1$s %2$s header_widget wrapper wrapper_item pad">' . "\n\t";
 				$after_widget = "\n\t"
-					. '</div>' . "\n\t"
 					. '</div><!-- header_widget -->' . "\n\n";
 				break;
 			
 			case 'the_footer':
 				$before_widget = "\n\t"
-					. '<div class="%1$s %2$s footer_widget wrapper">' . "\n\t"
-					. '<div class="footer_widget_bg wrapper_item pad">' . "\n\t";
+					. '<div class="%1$s %2$s footer_widget wrapper wrapper_item pad">' . "\n\t";
 				$after_widget = "\n\t"
-					. '</div>' . "\n\t"
 					. '</div><!-- footer_widget -->' . "\n\n";
 				break;
 			
 			case 'the_header_boxes':
 			case 'the_footer_boxes':
-				$before_widget = '<div class="inline_box %1$s %2$s">' . "\n"
-					. '<div class="inline_box_bg pad">' . "\n";
-				$after_widget = '</div>' . "\n"
-					. '</div><!-- inline_box -->' . "\n";
+				$before_widget = '<div class="inline_box %1$s %2$s pad">' . "\n";
+				$after_widget = '</div><!-- inline_box -->' . "\n";
 				break;
 			
 			case 'before_the_entries':
 			case 'after_the_entries':
 			case 'the_404':
-				$before_widget = '<div class="%1$s %2$s main_widget">' . "\n"
-					. '<div class="main_widget_bg pad">' . "\n";
-				$after_widget = '</div>' . "\n"
-					. '</div><!-- main_widget -->' . "\n";
+				$before_widget = '<div class="%1$s %2$s main_widget pad">' . "\n";
+				$after_widget = '</div><!-- main_widget -->' . "\n";
 				break;
 			
 			default:
@@ -262,11 +252,11 @@ class sem_panels {
 			dynamic_sidebar($panel_id);
 			
 			if ( !$did_header && !$did_navbar && $did_top_widgets ) {
-				echo '</div></div>' . "\n";
+				echo '</div>' . "\n";
 			} elseif ( $did_header && $did_navbar && $did_bottom_widgets ) {
-				echo '</div></div>' . "\n";
+				echo '</div>' . "\n";
 			} elseif ( !( $did_header && $did_navbar ) && $did_middle_widgets ) {
-				echo '</div></div>' . "\n";
+				echo '</div>' . "\n";
 			}
 			
 			echo '</div>' . "\n";
@@ -289,12 +279,12 @@ class sem_panels {
 			dynamic_sidebar($panel_id);
 			
 			if ( !$did_footer && $did_top_widgets ) {
-				echo '</div></div>' . "\n";
+				echo '</div>' . "\n";
 			} elseif ( $did_bottom_widgets ) {
-				echo '</div></div>' . "\n";
+				echo '</div>' . "\n";
 			}
 			
-			echo '</div>' . "\n";
+			echo '</div><!-- footer_wrapper -->' . "\n";
 			
 			break;
 		case 'the_header_boxes':
@@ -306,13 +296,11 @@ class sem_panels {
 			$class = ( $panel_id == 'the_header_boxes' ) ? 'header_widget' : 'footer_widget';
 
 			echo '<div class="spacer"></div>' . "\n"
-				. '<div id="' . $id . '" class="wrapper inline_boxes ' . $class . '">' . "\n"
-				. '<div id="' . $id . '_bg" class="inline_boxes_bg ' . $class . '_bg wrapper_item">' . "\n";
+				. '<div id="' . $id . '" class="wrapper inline_boxes ' . $class . ' wrapper_item">' . "\n";
 			
 			dynamic_sidebar($panel_id);
 			
 			echo '<div class="spacer"></div>' . "\n"
-				. '</div>' . "\n"
 				. '</div><!-- ' . $id . ' -->' . "\n";
 			
 			break;

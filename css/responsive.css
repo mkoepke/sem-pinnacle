@@ -188,7 +188,7 @@ Media Queries
 	}
 
 	/* remove skin menu colors for now */
-	#navbar_bg,
+	#navbar,
 	#navbar a,
 	#navbar a:hover {
 		background-image: none;

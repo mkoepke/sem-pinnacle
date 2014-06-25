@@ -419,8 +419,7 @@ class sem_template {
 	static function display_credits() {
 		global $sem_options;
 		
-		echo '<div id="credits">' . "\n"
-			. '<div id="credits_bg">' . "\n";
+		echo '<div id="credits">' . "\n";
 		
 		if ( $sem_options['credits'] ) {
 			$theme_credits = sem_template::get_theme_credits();
@@ -438,8 +437,7 @@ class sem_template {
 			echo $credits . "\n";
 		}
 		
-		echo '</div>' . "\n"
-			. '</div><!-- credits -->' . "\n";
+		echo '</div><!-- credits -->' . "\n";
 	} # display_credits()
 	
 	
@@ -669,37 +667,37 @@ class sem_template {
 		case 'header':
 			if ( $did_navbar ) {
 				if ( $did_middle_widgets )
-					echo '</div></div>' . "\n";
+					echo '</div>' . "\n";
 			} else {
 				if ( $did_top_widgets )
-					echo '</div></div>' . "\n";
+					echo '</div>' . "\n";
 			}
 			break;
 		
 		case 'navbar':
 			if ( $did_header ) {
 				if ( $did_middle_widgets )
-					echo '</div></div>' . "\n";
+					echo '</div>' . "\n";
 			} else {
 				if ( $did_top_widgets )
-					echo '</div></div>' . "\n";
+					echo '</div>' . "\n";
 			}
 			break;
 		
 		default:
 			if ( !$did_header && !$did_navbar ) {
 				if ( !$did_top_widgets ) {
-					echo '<div id="header_top_wrapper"><div id="header_top_wrapper_bg">' . "\n";
+					echo '<div id="header_top_wrapper">' . "\n";
 					$did_top_widgets = true;
 				}
 			} elseif ( $did_header && $did_navbar ) {
 				if ( !$did_bottom_widgets ) {
-					echo '<div id="header_bottom_wrapper"><div id="header_bottom_wrapper_bg">' . "\n";
+					echo '<div id="header_bottom_wrapper">' . "\n";
 					$did_bottom_widgets = true;
 				}
 			} else {
 				if ( !$did_middle_widgets ) {
-					echo '<div id="header_middle_wrapper"><div id="header_middle_wrapper_bg">' . "\n";
+					echo '<div id="header_middle_wrapper">' . "\n";
 					$did_middle_widgets = true;
 				}
 			}
@@ -748,19 +746,19 @@ class sem_template {
 		switch ( $type ) {
 		case 'footer':
 			if ( $did_top_widgets ) {
-				echo '</div></div>' . "\n";
+				echo '</div>' . "\n";
 			}
 			break;
 		
 		default:
 			if ( !$did_footer ) {
 				if ( !$did_top_widgets ) {
-					echo '<div id="footer_top_wrapper"><div id="footer_top_wrapper_bg">' . "\n";
+					echo '<div id="footer_top_wrapper">' . "\n";
 					$did_top_widgets = true;
 				}
 			} else {
 				if ( !$did_bottom_widgets ) {
-					echo '<div id="footer_bottom_wrapper"><div id="footer_bottom_wrapper_bg">' . "\n";
+					echo '<div id="footer_bottom_wrapper">' . "\n";
 					$did_bottom_widgets = true;
 				}
 			}

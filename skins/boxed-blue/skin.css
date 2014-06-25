@@ -23,10 +23,10 @@ Author uri: http://www.mesoconcepts.com
 	margin-top: 2.0rem;
 }
 
-.skin .wrapper_item {
+/*.skin .wrapper_item {
 	width: auto;
 }
-
+*/
 .m2s #main {
 	width: 56.631578947368%;    /* 538px / 950 px */
 }
@@ -62,19 +62,20 @@ Author uri: http://www.mesoconcepts.com
 }
 
 
-.main .pad {
+.main.pad {
 	padding: 0;
 }
 
 .pad,
 .pad .pad,
-.post_list {
+.post_list,
+.archive .entry .entry {
 	padding: 0 15px;
 	padding: 0 1.5rem;
 }
 
-.ad_unit .main_widget_bg .pad,
-.ad_unit .widget_bg .pad {
+.ad_unit .main_widget .pad,
+.ad_unit .widget .pad {
 	padding: 0;
 }
 
@@ -86,6 +87,8 @@ Author uri: http://www.mesoconcepts.com
 #search_form {
 	padding-left: 15px;
 	padding-left: 1.5rem;
+	padding-right: 10px;
+	padding-right: 1.0rem;
 }
 
 #navbar a {
@@ -116,7 +119,7 @@ Author uri: http://www.mesoconcepts.com
 	background: none;
 }
 
-#navbar_bg {
+#navbar {
 	border: solid 1px;
 }
 
@@ -130,24 +133,24 @@ Author uri: http://www.mesoconcepts.com
 	border-top: solid 1px;
 }
 
-.entry_bg,
+.entry,
 .post_list,
-.main_widget_bg,
-.widget_bg,
-.header_widget_bg,
-.footer_widget_bg {
+.main_widget,
+.widget,
+.header_widget,
+.footer_widget {
 	padding-top: 5px;
 	padding-top: 0.5rem;
 	padding-bottom: 5px;
 	padding-bottom: 0.5rem;
 }
 
-.entry_bg,
+.entry,
 .post_list,
-.main_widget_bg,
-.widget_bg,
-.header_widget_bg,
-.footer_widget_bg {
+.main_widget,
+.widget,
+.header_widget,
+.footer_widget {
 	border: solid 1px;
 }
 
@@ -190,22 +193,16 @@ Author uri: http://www.mesoconcepts.com
 }
 
 #header,
-#header_bg,
 #header_img,
 #header_img img,
 #navbar,
-#navbar_bg,
 .entry,
-.entry_bg,
 .post_list,
 .main_widget,
-.main_widget_bg,
+.main_widget,
 .widget,
-.widget_bg,
 .header_widget,
-.header_widget_bg,
-.footer_widget,
-.footer_widget_bg {
+.footer_widget {
 	-moz-border-radius: 7px;
 	-khtml-border-radius: 7px;
 	-webkit-border-radius: 7px;
@@ -287,12 +284,16 @@ Author uri: http://www.mesoconcepts.com
 }
 
 .main .ad_unit,
-.ad_unit .main_widget_bg,
-.ad_unit .widget_bg,
+.ad_unit .main_widget,
+.ad_unit .widget,
 .main .blog_header,
 .main .blog_footer,
-.blog_header .main_widget_bg,
-.blog_footer .main_widget_bg {
+.blog_header .main_widget,
+.blog_footer .main_widget,
+.error404 .main_widget,
+.archive .main_widget,
+.search .main_widget,
+.archive .entry .entry {
 	border: none;
 	background: none;
 	padding-top: 0;
@@ -303,6 +304,11 @@ Author uri: http://www.mesoconcepts.com
 	box-shadow: none;
 }
 
+.error404 .entry,
+.search .entry,
+.archive .entry {
+	background-image: none;
+}
 
 .widget_title h2 {
 	margin: -6px -16px 0;
@@ -341,7 +347,7 @@ html {
 	background-repeat: repeat;
 }
 
-#navbar_bg {
+#navbar {
 	background-image: url(images/navbar.jpg);
 	background-position: top center;
 	background-repeat: repeat;
@@ -367,12 +373,6 @@ html {
 	background-repeat: repeat-x;
 }
 
-.error404 .entry,
-.search .entry,
-.archive .entry {
-	background-image: none;
-}
-
 .header_widget {
 	background-image: url(images/header_widget.jpg);
 	background-position: top center;
@@ -385,13 +385,13 @@ html {
 	background-repeat: repeat-x;
 }
 
-.inline_boxes_bg {
+.inline_boxes {
 	background-image: url(images/inline_boxes.gif);
 	background-position: center;
 	background-repeat: no-repeat;
 }
 
-.mmm .inline_boxes_bg {
+.mmm .inline_boxes {
 	background-image: url(images/mmm-inline_boxes.gif);
 }
 
@@ -422,12 +422,12 @@ html {
 	color: inherit;
 }
 
-.entry_bg,
+.entry,
 .post_list,
-.main_widget_bg,
-.widget_bg,
-.header_widget_bg,
-.footer_widget_bg,
+.main_widget,
+.widget,
+.header_widget,
+.footer_widget,
 .widget_calendar table,
 .widget_calendar tfoot,
 #credits {
@@ -495,7 +495,7 @@ html {
 	color: #09325c; /* L90* */
 }
 
-#navbar_bg,
+#navbar,
 #go {
 	border-color: #0d3054; /* B/2 */
 }

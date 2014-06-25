@@ -660,52 +660,52 @@ EOS;
 
   - #header_wrapper
 
-    - #header_top_wrapper, #header_top_wrapper_bg
+    - #header_top_wrapper
 
-      - #header_boxes, #header_boxes_bg
+      - #header_boxes
 
         - #header_boxes h2
 
-      - .header_widget, .header_widget_bg
+      - .header_widget
 
         - .header_widget h2
 
-    - #header, #header_bg
+    - #header
 
       - #sitename, #tagline
 
-    - #header_middle_wrapper, #header_middle_wrapper_bg
+    - #header_middle_wrapper
 
-      - #header_boxes, #header_boxes_bg
+      - #header_boxes
 
         - #header_boxes h2
 
-      - .header_widget, .header_widget_bg
+      - .header_widget
 
         - .header_widget h2
 
-    - #navbar, #navbar_bg
+    - #navbar
 
-      - #navbar span
       - #navbar a
-      - #navbar a:hover, #navbar span.nav_active
+      - #navbar a:hover, #navbar .nav_active
 
-    - #header_bottom_wrapper, #header_bottom_wrapper_bg
+    - #header_bottom_wrapper
 
-      - #header_boxes, #header_boxes_bg
+      - #header_boxes
 
         - #header_boxes h2
 
-      - .header_widget, .header_widget_bg
+      - .header_widget
 
         - .header_widget h2
 
   - #body, #body_bg
 
-    - #main, #main_bg
+    - #main
       - .main_content
 
-      - .entry, .entry_bg
+	  - article
+      - .entry
 
         - .entry_date
         - .entry_header, .entry_header h1
@@ -714,41 +714,41 @@ EOS;
         - .entry_tags
         - .entry_comments
 
-      - .main_widget, .main_widget_bg
+      - .main_widget
 
         - .main_widget h2
 
-    - #sidebar, #sidebar2, .sidebar_bg
+    - #sidebar, #sidebar2
       - .sidebar_content
 
-      - .widget, .widget_bg, .mm1s .widget, .mm1s .widget_bg
+      - .widget, .mm1s .widget
 
-    - #sidebars, #sidebars_bg
+    - #sidebars
      - .sidebar_content
 
-      - .wide_sidebar .widget, .wide_sidebar .widget_bg
+      - .wide_sidebar .widget
 
   - #footer_wrapper
 
-    - #footer_top_wrapper, #footer_top_wrapper_bg
+    - #footer_top_wrapper
 
-      - #footer_boxes, #footer_boxes_bg
+      - #footer_boxes
 
-      - .footer_widget, .footer_widget_bg
+      - .footer_widget
 
-    - #footer, #footer_bg
+    - #footer
 
       - #footer span
       - #footer a
-      - #footer a:hover, #footer span.nav_active
+      - #footer a:hover, #footer .nav_active
 
-    - #footer_bottom_wrapper, #footer_bottom_wrapper_bg
+    - #footer_bottom_wrapper
 
-      - #footer_boxes, #footer_boxes_bg
+      - #footer_boxes, #footer
 
-      - .footer_widget, .footer_widget_bg
+      - .footer_widget
 
-- html, #credits, #credits_bg
+- html, #credits
 </pre>
 EOS;
 		
