@@ -97,7 +97,7 @@ class sem_custom {
 	z-index: 1;
 	bottom: -1px;
 	list-style: none;
-	margin-bottom: 20px;
+	margin-bottom: 1.25em;
 }
 
 #custom-tabs-nav li {
@@ -111,12 +111,12 @@ class sem_custom {
 	font-weight: normal;
 	text-decoration: none;
 	padding: .5em 1.9em;
-	margin: 0px;
+	margin: 0;
 }
 
 #custom-tabs-nav input {
-	margin-top: 0px;
-	margin-bottom: 0px;
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 #custom-tabs-nav li.ui-tabs-selected a, #custom-tabs-nav li.ui-tabs-selected a:hover {
@@ -124,7 +124,7 @@ class sem_custom {
 }
 
 td.color_picker {
-	width: 300px;
+	width: 18.75em;
 	vertical-align: top;
 	text-align: center;
 }

@@ -63,92 +63,92 @@ class sem_font {
 .antica,
 .bookman {
 	font-family: Palatino, "Book Antica", "Palatino Linotype", "URW Palladio L", Palladio, Georgia, "DejaVu Serif", Serif;
-	font-size: 14px;
+	font-size: 1.0em;
 }
 
 .arial {
 	font-family: Arial, "Liberation Sans", "Nimbus Sans L", "DejaVu Sans", Sans-Serif;
-	font-size: 14px;
+	font-size: 1.0em;
 }
 
 .courier {
 	font-family: "Courier New", "Liberation Mono", "Nimbus Mono L", Monospace;
-	font-size: 14px;
+	font-size: 1.0em;
 }
 
 .georgia {
 	font-family: Georgia, "New Century Schoolbook", "Century Schoolbook L", "DejaVu Serif", Serif;
-	font-size: 14px;
+	font-size: 1.0em;
 }
 
 .helvetica {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
+    font-size: 1.0em;
 }
 
 .lucida {
     font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
-    font-size: 14px;
+    font-size: 1.0em;
 }
 
 .tahoma {
 	font-family: Tahoma, "Nimbus Sans L", "DejaVu Sans", Sans-Serif;
-	font-size: 14px;
+	font-size: 1.0em;
 }
 
 .times {
 	font-family: "Times New Roman", Times, "Liberation Serif", "DejaVu Serif Condensed", Serif;
-	font-size: 14px;
+	font-size: 1.0em;
 }
 
 .trebuchet {
 	font-family: "Trebuchet MS", "Nimbus Sans L", "DejaVu Sans", Sans-Serif;
-	font-size: 14px;
+	font-size: 1.0em;
 }
 
 .verdana {
 	font-family: Verdana, "Nimbus Sans L", "DejaVu Sans", Sans-Serif;
-	font-size: 14px;
+	font-size: 1.0em;
 }
 
 .lato {
 	font-family: 'Lato', sans-serif;
-	font-size: 14px;
+	font-size: 1.0em;
 }
 
 .lora {
 	font-family: 'Lora', serif;
-	font-size: 14px;
+	font-size: 1.0em;
 }
 
 .merriweather {
 	font-family: 'Merriweather', serif;
-	font-size: 14px;
+	font-size: 1.0em;
 }
 
 .open_sans {
 	font-family: 'Open Sans', sans-serif;
-	font-size: 14px;
+	font-size: 1.0em;
 }
 
 .pt_sans {
 	font-family: 'PT Sans', sans-serif;
-	font-size: 14px;
+	font-size: 1.0em;
 }
 
 .roboto {
 	font-family: 'Roboto', sans-serif;
-	font-size: 14px;
+	font-size: 1.0em;
 }
 
 .source_sans_pro {
 	font-family: 'Source Sans Pro', sans-serif;
-	font-size: 14px;
+	font-size: 1.0em;
 }
 
 .ubuntu {
 	font-family: 'Ubuntu', sans-serif;
-	font-size: 14px;
+	font-size: 1.0em;
 }
 
 </style>

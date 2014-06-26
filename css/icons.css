@@ -12,8 +12,7 @@ you customize the theme's CSS without losing your changes when you upgrade.
 #credits a.external_icon {
 	background: url(../icons/world_go.gif) center right no-repeat;
 	padding-left: 0;
-	padding-right: 14px;
-	padding-right: 1.4rem;
+	padding-right: 0.875em;
 }
 
 ul {
@@ -27,15 +26,13 @@ ul {
 
 .edit_entry a {
 	background: url(../icons/page_white_edit.gif) center left no-repeat;
-	padding-left: 18px;
-	padding-left: 1.8rem;
+	padding-left: 1.125em;
 	padding-right: 0;
 }
 
 .reply_comment a {
 	background: url(../icons/comment_add.gif) center left no-repeat;
-	padding-left: 18px;
-	padding-left: 1.8rem;
+	padding-left: 1.125em;
 	padding-right: 0;
 }
 
@@ -46,16 +43,14 @@ ul {
 
 .edit_comment a {
 	background: url(../icons/comment_edit.gif) center left no-repeat;
-	padding-left: 18px;
-	padding-left: 1.8rem;
+	padding-left: 1.125em;
 	padding-right: 0;
 }
 
 .entry_tags a,
 .entry_categories a {
 	background: url(../icons/folder.gif) center left no-repeat;
-	padding-left: 18px;
-	padding-left: 1.8rem;
+	padding-left: 1.125em;
 	padding-right: 0;
 }
 
@@ -64,8 +59,7 @@ ul {
 .signed_in_author a,
 .loginout a {
 	background: url(../icons/user.gif) center left no-repeat;
-	padding-left: 18px;
-	padding-left: 1.8rem;
+	padding-left: 1.125em;
 	padding-right: 0;
 }
 
@@ -75,43 +69,37 @@ ul {
 .pings_date span,
 h3.post_list_date {
 	background: url(../icons/calendar.gif) center left no-repeat;
-	padding-left: 18px;
-	padding-left: 1.8rem;
+	padding-left: 1.125em;
 	padding-right: 0;
 }
 
 .entry_replies a {
 	background: url(../icons/comment.gif) center left no-repeat;
-	padding-left: 18px;
-	padding-left: 1.8rem;
+	padding-left: 1.125em;
 	padding-right: 0;
 }
 
 .leave_reply a {
 	background: url(../icons/comment_add.gif) center left no-repeat;
-	padding-left: 18px;
-	padding-left: 1.8rem;
+	padding-left: 1.125em;
 	padding-right: 0;
 }
 
 .name_label label {
 	background: url(../icons/user.gif) center left no-repeat;
-	padding-left: 18px;
-	padding-left: 1.8rem;
+	padding-left: 1.125em;
 	padding-right: 0;
 }
 
 .email_label label {
 	background: url(../icons/email.gif) center left no-repeat;
-	padding-left: 18px;
-	padding-left: 1.8rem;
+	padding-left: 1.125em;
 	padding-right: 0;
 }
 
 .url_label label {
 	background: url(../icons/world_link.gif) center left no-repeat;
-	padding-left: 18px;
-	padding-left: 1.8rem;
+	padding-left: 1.125em;
 	padding-right: 0;
 }
 
@@ -128,8 +116,6 @@ h3.post_list_date {
 
 .s {
 	background: url(../icons/magnifier.gif) bottom left no-repeat #fff;
-	padding-left: 19px;
-	padding-left: 1.9rem;
-	padding-right: 3px;
-	padding-right: 0.3rem;
+	padding-left: 1.1875em;
+	padding-right: 0.1875em;
 }

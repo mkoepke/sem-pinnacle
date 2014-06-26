@@ -55,17 +55,17 @@ class sem_skin {
 	border: solid 1px #999;
 	float: left;
 	clear: right;
-	margin-right: 10px;
+	margin-right: 0.625em;
 }
 
 .current_option_details th {
 	text-align: left;
-	padding-right: 5px;
+	padding-right: 0.3125em;
 }
 
 .available_option {
 	text-align: center;
-	width: 275px;
+	width: 17.1875em;
 }
 
 .available_option img {
@@ -81,7 +81,7 @@ class sem_skin {
 }
 
 #available_options td {
-	padding: 10px;
+	padding: 0.625em;
 	border: solid 1px #ccc;
 }
 

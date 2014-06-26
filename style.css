@@ -107,18 +107,23 @@ Semiologic Defaults
 -------------------
 */
 
-html {
-	font-size: 62.5%; /* 10px browser default */
-}
 
+html, body {
+	height: 100%;
+	min-height: 100%;
+	font-size: 100%;
+}
 
 body {
 	color:#000;
 	background:#fff;
-	font-family:"Trebuchet MS", "Nimbus Sans L", "DejaVu Sans", Sans-Serif;
-	font-size: 14px;
-	font-size: 1.4rem;
 	line-height: 1.432;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-weight: normal;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	text-rendering: optimizeLegibility;
 }
 
 a,
@@ -136,26 +141,22 @@ pre a:hover {
 }
 
 a img {
-	margin-bottom: -4px;
-	margin-bottom: -0.4rem;
+	margin-bottom: -0.250em;
 }
 
 h1, h2, h3, h4, h5, h6, p, ul, ol, dl {
-	margin: 10px 0;
-	margin: 1.0rem 0;
+	margin: 0.625em 0;
 	padding: 0;
 }
 
 blockquote, q, ul, ol, dl {
-	margin-left: 20px;
-	margin-left: 2.0rem;
+	margin-left: 1.250em;
 }
 
 ul ul,
 ol ol,
 dl dl {
-	margin: 4px 4px 0 8px;
-	margin: 0.4rem 0.4rem 0 0.8rem;
+	margin: 0.250em 0.250em 0 0.500em;
 }
 
 q:before,
@@ -198,13 +199,11 @@ input, button, textarea {
 }
 
 pre, blockquote, li, dt, dd {
-	margin: 3px 0;
-	margin: 0.3rem 0;
+	margin: 0.1875em 0;
 }
 
 pre {
-	padding: 15px;
-	padding: 1.5rem;
+	padding: 0.938em;
 	background: #f8f8ff;
 	color: #000;
 	border: dotted 1px #bbb;
@@ -212,11 +211,9 @@ pre {
 
 .main blockquote {
 	background: url(icons/blockquote.gif) top left no-repeat;
-	padding: 1px 10px 1px 50px;
-	padding: 0.1rem 1.0rem 0.1rem 5.0rem;
+	padding: 1px 0.625em 1px 3.125em;
 	margin: 0;
-	min-height: 50px;
-	min-height: 5.0rem;
+	min-height: 3.125em;
 }
 
 table {
@@ -226,8 +223,7 @@ table {
 
 pre, code, kbd, samp, tt {
 	font-family: Consolas, Menlo, Monaco, "Lucida Console", "DejaVu Sans Mono", Monospace;
-	font-size: 13px;
-	font-size: 1.3rem;
+	font-size: 0.813em;
 	line-height: 1.231;
 }
 
@@ -331,16 +327,14 @@ Theme Fonts
 --------------------------------------------- */
 
 h1 {
-	font-size: 24px;
-	font-size: 2.4rem;
+	font-size: 1.50em;
 	letter-spacing: -1px;
 	line-height: 123.1%;
     font-family: inherit;
 }
 
 h2 {
-	font-size: 19px;
-	font-size: 1.9rem;
+	font-size: 1.188em;
 	line-height: 123.1%;
     font-family: inherit;
 }
@@ -362,17 +356,13 @@ th {
 	background-color: #dfdfdf;
 	border: solid 1px #808080;
 	color: #111;
-	padding: 1px 7px;
-	padding: 0.1rem 0.7rem;
-	margin-left: 2px;
-	margin-left: 0.2rem;
-	margin-right: 2px;
-	margin-right: 0.2rem;
-	-moz-border-radius: 9px;
-	-khtml-border-radius: 9px;
-	-webkit-border-radius: 9px;
-	border-radius: 9px;
-	border-radius: 0.9rem;
+	padding: 1px 0.4375em;
+	margin-left: 0.125em;
+	margin-right: 0.125em;
+	-moz-border-radius: 0.5625em;
+	-khtml-border-radius: 0.5625em;
+	-webkit-border-radius: 0.5625em;
+	border-radius: 0.5625em;
 	cursor: pointer;
 }
 
@@ -444,7 +434,12 @@ Structure and Layout
 
 #site_container {
 	width: 100%;
+	height: 100%;
 	margin: 0 auto;
+}
+
+#wrapper {
+	height: 100%;
 }
 
 /* canvas margins */
@@ -613,6 +608,11 @@ Inline Boxes
 	width: 33.3%;
 }
 
+.mmm .inline_box h2 {
+	margin: 0.5em 0;
+	line-height: 1;
+}
+
 /*
 Page Elements
 --------------------------------------------------------- */
@@ -637,27 +637,22 @@ li.search_result {
 }
 
 #navbar {
-	line-height: 32px;
-	line-height: 3.2rem;
+	line-height: 2.0;
 }
 
 .s {
 	padding-top: 1px;
-	padding-top: 0.1rem;
 	padding-bottom: 0;
 	width: 84%;
 }
 
 .go {
 	margin-left: 2px;
-	margin-left: 0.2rem;
 	margin-right: 2px;
-	margin-right: 0.2rem;
 }
 
 #s {
-	width: 120px;
-	width: 12.0rem;
+	width: 7.5em;
 }
 
 #go {
@@ -665,26 +660,26 @@ li.search_result {
 }
 
 * html #s {
-	margin-top: 3px;
-	margin-top: 0.3rem;
-	margin-bottom: 3px;
-	margin-bottom: 0.3rem;
+	margin-top: 0.1875em;
+	margin-bottom: 0.1875em;
 	vertical-align: middle;
 }
 
 * html #go {
-	margin-top: 3px;
-	margin-top: 0.3rem;
+	margin-top: 0.1875em;
 	margin-bottom: 1px;
-	margin-bottom: 0.1rem;
 	vertical-align: middle;
 }
 
 /* non-floating nav */
 
-#footer_nav,
+#footer_nav {
+	text-align: center;
+}
+
 #copyright_notice {
 	text-align: center;
+	font-size: 0.875em;
 }
 
 /* credits */
@@ -722,16 +717,14 @@ img.align_center {
 
 .float_left {
 	float: left;
-	margin-right: 5px;
-	margin-bottom: 3px;
+	margin-right: 0.3125em;
+	margin-bottom: 0.1875em;
 }
 
 .float_right {
 	float: right;
-	margin-left: 5px;
-	margin-left: 0.5rem;
-	margin-bottom: 3px;
-	margin-bottom: 0.3rem;
+	margin-left: 0.3125em;
+	margin-bottom: 0.1875em;
 }
 
 /* WP Image Aligns */
@@ -747,14 +740,12 @@ img.align_center {
 
 .skin .alignleft {
 	float: left;
-	margin-right: 5px;
-	margin-right: 0.5rem;
+	margin-right: 0.3125em;
 }
 
 .skin .alignright {
 	float: right;
-	margin-left: 5px;
-	margin-left: 0.5rem;
+	margin-left: 0.3125em;
 }
 
 /* Misc WP Required Classes */
@@ -769,8 +760,7 @@ img.align_center {
 
 img.avatar {
 	float: left;
-	margin: 0 10px 3px 0;
-	margin: 0 1.0rem 0.3rem 0;
+	margin: 0 0.625em 0.1875em 0;
 }
 
 /* wp gallery and thumbnails */
@@ -819,36 +809,29 @@ p.attachment {
 	display: block;
 	float: left;
 	border: outset 1px;
-	margin: 4px 10px 0 4px;
-	margin: 0.4rem 1.0rem 0 0.4rem;
+	margin: 0.25em 0.625em 0 0.25em;
 }
 
 /* WP Image Captions */
 
 .wp-caption {
-    -moz-border-radius-bottomleft: 3px;
-    -moz-border-radius-bottomright: 3px;
-    -moz-border-radius-topleft: 3px;
-    -moz-border-radius-topright: 3px;
-	border-radius: 3px;
-	border-radius: 0.3rem;
+    -moz-border-radius-bottomleft: 0.1875em;
+    -moz-border-radius-bottomright: 0.1875em;
+    -moz-border-radius-topleft: 0.1875em;
+    -moz-border-radius-topright: 0.1875em;
+	border-radius: 0.1875em;
     background-color: #f3f3f3;
 	color: #111;
     border: 1px solid #ddd;
-    margin: 5px;
-	margin: 0.5rem;
-    padding-top: 4px;
-	padding-top: 0.4rem;
-    padding-bottom: 4px;
-	padding-bottom: 0.4rem;
+	margin: 0.3125em;
+	padding-top: 0.25em;
+	padding-bottom: 0.25em;
     text-align: center;
 }
 
 p.wp-caption-text {
-	margin-top: 3px;
-	margin-top: 0.3rem;
-	margin-bottom: 3px;
-	margin-bottom: 0.3rem;
+	margin-top: 0.1875em;
+	margin-bottom: 0.1875em;
 }
 
 /*
@@ -861,41 +844,31 @@ Site Header
     font-family: inherit;
 	font-weight: normal;
 	text-align: center;
-	padding-top: 5px;
-	padding-top: 0.5rem;
-	padding-bottom: 8px;
-	padding-bottom: 0.8rem;
-	font-size: 40px;
-	font-size: 4.0rem;
-	line-height: 52px;
-	line-height: 5.2rem;
+	padding-top: 0.3125em;
+	padding-bottom: 0.5em;
+	font-size: 2.5em;
+	line-height: 3.25;
 }
 
 #tagline {
 	margin: 0;
 	font-weight: bold;
-	padding-top: 15px;
-	padding-top: 1.5rem;
-	padding-bottom: 5px;
-	padding-bottom: 0.5rem;
+	padding-top: 0.9375em;
+	padding-bottom: 0.3125em;
 	text-align: right;
-	font-size: 15px;
-	font-size: 1.5rem;
-	line-height: 15px;
-	line-height: 1.5rem;
+	font-size: 0.9375em;
+	line-height: 1;
 }
 
 .invert_header #sitename {
-	padding-top: 23px;
-	padding-top: 2.3rem;
+	padding-top: 1.4375em;
 	padding-bottom: 0;
 	text-align: center;
 }
 
 .invert_header #tagline {
 	padding-top: 0;
-	padding-bottom: 10px;
-	padding-bottom: 1.0rem;
+	padding-bottom: 0.625em;
 	text-align: center;
 }
 
@@ -1048,13 +1021,11 @@ h2 a {
 .comment,
 .widget {
 	margin-top: 0;
-	margin-bottom: 20px;
-	margin-bottom: 2.0rem;
+	margin-bottom: 1.25em;
 }
 
 .pad {
-	padding: 0 20px;
-	padding: 0 2.0rem;
+	padding: 0 1.25em;
 	margin: 0 auto;
 }
 
@@ -1063,24 +1034,20 @@ h2 a {
 }
 
 .post_list h3 {
-	margin-top: 15px;
-	margin-top: 1.5rem;
+	margin-top: 0.9375em;
 }
 
 .entry h2 {
-	margin-top: 15px;
-	margin-top: 1.5rem;
+	margin-top: 0.9375em;
 }
 
 .entry_header {
-	margin-top: 10px;
-	margin-top: 1.0rem;
+	margin-top: 0.625em;
 }
 
 .entry_date + .entry_header,
 .entry_date + .entry_header h1 {
-	margin-top: 2px;
-	margin-top: 0.2rem;
+	margin-top: 0.125em;
 	padding: 0;
     margin-bottom: 0;
 }
@@ -1090,39 +1057,33 @@ h3.post_list_date,
 .comment_date,
 .pings_date {
 	font-weight: bold;
-	margin: 10px 0 5px;
-	margin: 1.0rem 0 0.5rem;
+	margin: 0.625em 0 0.3125em;
 }
 
 div.entry_date {
-	margin-bottom: 2px;
-	margin-bottom: 0.2rem;
+	margin-bottom: 0.125em;
 }
 
 .entry_header,
 .pings_header,
 .comments_header {
-	margin-bottom: 10px;
-	margin-bottom: 1.0rem;
+	margin-bottom: 0.625em;
 }
 
 .entry_content h3 {
-	font-size: 15px;
-	font-size: 1.5rem;
+	font-size: 0.9375em;
 }
 
 .entry_categories p,
 .entry_tags p {
-	margin: 3px 0;
-	margin: 0.3rem 0;
+	margin: 0.1875em 0;
 }
 
 /* Comments
 --------------------------------------------- */
 
 .comment_header h3 {
-	margin-top: 5px;
-	margin-top: 0.5rem;
+	margin-top: 0.3125em;
 }
 
 .comment_header em {
@@ -1135,8 +1096,7 @@ div.entry_date {
 
 .entry_content,
 .comment_content {
-	margin-bottom: 10px;
-	margin-bottom: 1.0rem;
+	margin-bottom: 0.625em;
 }
 
 .entry_navigation {
@@ -1146,16 +1106,16 @@ div.entry_date {
 }
 
 .entry_navigation a {
-	padding: 10px 0;
+	padding: 0.625em 0;
 	text-decoration: none;
-	font-size: 18px;
+	font-size: 1.125em;
 	line-height: 123.1%;
 	font-family: inherit;
 	font-style: italic;
 }
 
 .entry_navigation .nav-links {
-	padding: 15px 0;
+	padding: 0.9375em 0;
 }
 
 .entry_navigation .nav-prev {
@@ -1171,32 +1131,24 @@ div.entry_date {
 .entry_actions a,
 .comment_actions a {
 	float: right;
-	margin-left: 5px;
-	margin-left: 0.5rem;
-	margin-bottom: 3px;
-	margin-bottom: 0.3rem;
+	margin-left: 0.3125em;
+	margin-bottom: 0.1875em;
 }
 
 .comment_box a {
 	display: block !important;
 	text-align: center !important;
-	height: 34px !important;
-	height: 3.4rem !important;
-	width: 40px !important;
-	width: 4.0rem !important;
+	height: 2.125em !important;
+	width: 2.5em !important;
 	overflow: hidden !important;
 	background: url(icons/comment_box.gif) top center no-repeat !important;
 	color: #222 !important;
 	text-decoration: none !important;
 	font-weight: bold !important;
-	font-size: 18px !important;
-	font-size: 1.8rem !important;
-	line-height: 24px !important;
-	line-height: 2.4rem !important;
-	padding-top: 3px !important;
-	padding-top: 0.3rem !important;
+	font-size: 1.125em !important;
+	line-height: 1.5 !important;
+	padding-top: 1px !important;
 	padding-bottom: 1px !important;
-	padding-bottom: 0.1rem !important;
 }
 
 .comment_box a:hover {
@@ -1204,26 +1156,21 @@ div.entry_date {
 }
 
 .comment_content {
-	margin-left: 70px;
-	margin-left: 7.0rem;
+	margin-left: 4.375em;
 }
 
 .comment_label {
-	width: 120px;
-	width: 12.0rem;
+	width: 7.5em;
 	float: left;
 }
 
 p.comment_label {
-	margin-top: 3px;
-	margin-top: 0.3rem;
-	margin-bottom: 3px;
-	margin-bottom: 0.3rem;
+	margin-top: 0.1875em;
+	margin-bottom: 0.1875em;
 }
 
 .comment_field {
-	margin-left: 130px;
-	margin-left: 13.0rem;
+	margin-left: 8.125em;
 }
 
 .comment_field input,
@@ -1236,8 +1183,7 @@ p.comment_label {
  */
 
 #commentform div {
-	margin: 5px 0;
-	margin: 0.5rem 0;
+	margin: 0.3125em 0;
 }
 
 /*
@@ -1245,8 +1191,7 @@ Site Footer
 ---------------------------------------------------------------------------------------------------- */
 
 #credits {
-	font-size: 11px;
-	font-size: 1.1rem;
+	font-size: 0.6875em;
 }
 
 /*
@@ -1262,8 +1207,7 @@ Sidebars
 
 .sidebar select {
 	width: 99%;
-	margin: 10px 0 5px;
-	margin: 1.0rem 0 0.5rem;
+	margin: 0.625em 0 0.3125em;
 }
 
 
@@ -1279,10 +1223,8 @@ Widgets
 
 .widget_search .s {
 	padding-top: 1px;
-	padding-top: 0.1rem;
 	padding-bottom: 0;
-	margin: 10px 0;
-	margin: 1.0rem 0;
+	margin: 0.625em 0;
 }
 
 
@@ -1293,8 +1235,7 @@ Widgets
 }
 
 .widget_calendar caption {
-	font-size: 17px;
-	font-size: 1.7rem;
+	font-size: 1.0625em;
 	line-height: 123.1%;
     font-family: inherit;
 }
@@ -1305,34 +1246,34 @@ Widgets
 
 .widget_calendar table {
 	border-collapse: collapse;
-	margin: 0 auto 5px;
-	margin: 0 auto 0.5rem;
-	width: 153px;
-	width: 15.3rem;
+	margin: 0 auto 0.3125em;
+	width: 66.6667%;
+	font-size: 0.875em;
+}
+
+#sidebar .widget_calendar table,
+#sidebar2 .widget_calendar table {
+	width: 100%;
 }
 
 .widget_calendar caption {
-	margin: 0 auto 3px;
-	margin: 0 auto 0.3rem;
+	margin: 0 auto 0.1875em;
 	text-align: center;
 }
 
 .widget_calendar th,
 .widget_calendar td {
 	padding: 1px;
-	padding: 0.1rem;
 	text-align: center;
 }
 
 .widget_calendar #prev {
-	padding-left: 4px;
-	padding-left: 0.4rem;
+	padding-left: 0.250em;
 	text-align: left;
 }
 
 .widget_calendar #next {
-	padding-right: 4px;
-	padding-right: 0.4rem;
+	padding-right: 0.250em;
 	text-align: right;
 }
 
@@ -1351,6 +1292,14 @@ Widgets
 Semiologic Plugins
 ---------------------------------------------------------------------------------------------------- */
 
+body.sem_admin_menu {
+	padding-top: 1em;
+}
+
+body.sem_admin_menu #site_container {
+	margin-top: -1em;
+}
+
 .sem_subscribe_me ul,
 .now-reading ul,
 .widget_democracy ul {
@@ -1361,8 +1310,7 @@ Semiologic Plugins
 
 div.media,
 div.enclosures {
-	margin: 5px 0;
-	margin: 0.5rem 0;
+	margin: 0.3125em 0;
 }
 
 div.media {
@@ -1380,14 +1328,12 @@ div.media {
 .entry .entry_author_image {
 	float: left;
 	border: outset 1px;
-	margin: 4px 10px 0 4px;
-	margin: 0.4rem 1.0rem 0 0.4rem;
+	margin: 0.250em 0.625em 0 0.250em;
 }
 
 .archives_header .entry_author_image {
     float: left;
-    margin: 0 10px 0 0;
-	margin: 0 1.0rem 0 0;
+	margin: 0 0.625em 0 0;
 }
 
 .archives_header .entry_author_image img {
@@ -1401,8 +1347,7 @@ div.media {
 }
 
 .main h3.search_title {
-	font-size: 18px;
-	font-size: 1.8rem;
+	font-size: 1.125em;
 	font-weight: normal;
 }
 
@@ -1411,19 +1356,16 @@ div.media {
 }
 
 li.search_result {
-	margin-left: -22px;
-	margin-left: -2.2rem;
+	margin-left: -1.375em;
 	list-style: none;
 }
 
 li.search_result ul {
-	margin-left: 22px;
-	margin-left: 2.2rem;
+	margin-left: 1.375em;
 }
 
 li.search_result ul ul {
-	margin-left: 8px;
-	margin-left: 0.8rem;
+	margin-left: 0.5em;
 }
 
 /* footer scripts */
@@ -1438,17 +1380,13 @@ div.scripts {
 
 .entry .bookmark_me,
 .entry .subscribe_me {
-	margin-top: 5px;
-	margin-top: 0.5rem;
-	margin-bottom: 5px;
-	margin-bottom: 0.5rem;
+	margin-top: 0.3125em;
+	margin-bottom: 0.3125em;
 }
 
 .center_feed_button {
-	margin-top: 10px;
-	margin-top: 1.0rem;
-	margin-bottom: 10px;
-	margin-bottom: 1.0rem;
+	margin-top: 0.625em;
+	margin-bottom: 0.625em;
 }
 
 .bookmark_me_ruler,
@@ -1458,8 +1396,7 @@ div.scripts {
 }
 
 .inline_boxes .bookmark_me_narrow {
-	margin: 10px 0;
-	margin: 1.0rem 0;
+	margin: 0.625em 0;
 }
 
 .inline_boxes .bookmark_me_narrow a {
@@ -1467,8 +1404,7 @@ div.scripts {
 	height: auto !important;
 	line-height: 1em !important;
 	margin: 0;
-	padding-right: 5px;
-	padding-right: 0.5rem;
+	padding-right: 0.3125em;
 	float: none;
 	display: inline;
 }
@@ -1476,22 +1412,18 @@ div.scripts {
 /* newsletter manager */
 
 .inline_boxes .newsletter_inline input.from {
-	width: 180px;
-	width: 18.0rem;
+	width: 11.25em;
 }
 
 p.newsletter_fields {
-	margin: 9px 0;
-	margin: 0.9rem 0;
+	margin: 0.5625em 0;
 }
 
 /* banner ad widgets */
 
 .ad_unit {
-	margin-top: 10px;
-	margin-top: 1.0rem;
-	margin-bottom: 10px;
-	margin-bottom: 1.0rem;
+	margin-top: 0.625em;
+	margin-bottom: 0.625em;
 }
 
 .ad_unit,

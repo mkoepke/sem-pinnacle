@@ -214,6 +214,7 @@ echo '<div id="wrapper_bottom"><div class="hidden"></div></div>' . "\n";
 
 echo '</div><!-- wrapper -->' . "\n";
 
+
 echo '</div><!-- site_container -->' . "\n";
 
 do_action('after_the_canvas');

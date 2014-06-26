@@ -130,7 +130,7 @@ class header extends WP_Widget {
 		list($width, $height) = $header_size;
 
 		$html = '<img src="' . sem_url . '/icons/pixel.gif"'
-			. ' height="' . intval($height) . '"'
+			. ' height="100%"'
 			. ' alt="'
 				. esc_attr(get_option('blogname'))
 				. ' &bull; '
@@ -361,17 +361,19 @@ class header extends WP_Widget {
 
 		$header = esc_url(content_url() . $header);
 
+		$height = $height / 16;
+
 		echo <<<EOS
 
 <style type="text/css">
 .skin #header_img {
 	background: url(${header}) no-repeat top center;
-	height: ${height}px;
+	height: ${height}em;
 	width: 100%;
-	border: 0px;
+	border: 0;
 	position: relative;
-	padding: 0px;
-	margin: 0px auto;
+	padding: 0;
+	margin: 0 auto;
 }
 .skin #header_img img {
     width: 100%;

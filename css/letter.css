@@ -14,19 +14,19 @@ html {
 #wrapper {
 	background: url(images/letter.jpg?ver=0.9) center repeat-y #fff;
 	color: #000;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	width: 750px;
+	margin-top: 0.625em;
+	margin-bottom: 0.625em;
+	max-width: 750px;
 }
 
 #wrapper_top {
 	background: url(images/letter_top.jpg?ver=0.9) top center no-repeat;
-	height: 15px;
+	height: 0.9375em;
 }
 
 #wrapper_bottom {
 	background: url(images/letter_bottom.jpg?ver=0.9) top center no-repeat;
-	height: 25px;
+	height: 1.5625em;
 }
 
 #wrapper_inner {
@@ -35,13 +35,13 @@ html {
 
 .pad,
 .pad .pad {
-	padding: 0px 30px 0px;
+	padding: 0 1.875em 0;
 }
 
 #header_img {
-	width: 720px;
-	margin: 0px auto;
-	padding: 0px;
+	width: 96%;         /* 720 / 750 */
+	margin: 0 auto;
+	padding: 0;
 }
 
 h1, h2, h3 {
@@ -49,10 +49,10 @@ h1, h2, h3 {
 }
 
 .entry {
-	padding-top: 15px;
-	padding-bottom: 10px;
-	margin-top: 0px;
-	margin-bottom: 0px;
+	padding-top: 0.9375em;
+	padding-bottom: 0.625em;
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 .widget_calendar table {

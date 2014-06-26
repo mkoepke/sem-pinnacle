@@ -199,7 +199,7 @@ class sem_template {
 			wp_enqueue_script('jquery');
 		}
 
-//		wp_enqueue_script( 'doubletaptogo', sem_url . '/js/doubletaptogo.js', array('jquery'), '1.0.0', false );
+		wp_enqueue_script( 'doubletaptogo', sem_url . '/js/doubletaptogo.js', array('jquery'), '1.0.0', false );
 		wp_enqueue_script( 'resp-menu', sem_url . '/js/resp-menu.js', array('jquery', 'doubletaptogo'), '1.0.0', false );
 
 	} # scripts()
