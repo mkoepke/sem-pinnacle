@@ -120,11 +120,13 @@ $sem_options = get_option('sem6_options');
 */
 
 // clone the sem_reloaded options to the sem_pinnacle options on first time use
-//if ( get_option('theme_mods_sem-pinnacle') === FALSE ) {
-//	$o = get_option('theme_mods_sem-reloaded');
-//	if ( $o != FALSE )
-//		update_option( 'theme_mods_sem-pinnacle', $o );
-//}
+if ( get_option('theme_mods_sem-pinnacle') === FALSE ) {
+	$o = get_option('theme_mods_sem-reloaded');
+	if ( $o !== FALSE ) {
+		update_option( 'theme_mods_sem-pinnacle', $o );
+		update_option( 'sidebars_widgets', $o['sidebars_widgets'] );
+	}
+}
 
 # autoinstall test
 #$sem_options = false;

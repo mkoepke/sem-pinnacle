@@ -42,11 +42,11 @@ do_action('before_the_canvas');
 echo '<div id="site_container">' . "\n";
 
 # wrapper
-echo '<div id="wrapper" class="hfeed">' . "\n";
+echo '<div id="wrapper" class="wrapper hfeed">' . "\n";
 
-echo '<div id="wrapper_top"><div class="hidden"></div></div>' . "\n";
+echo '<div id="wrapper_top" class="wrapper_section"><div class="hidden"></div></div>' . "\n";
 
-echo '<div id="wrapper_inner">' . "\n";
+echo '<div id="wrapper_inner" class="wrapper_section">' . "\n";
 
 	
 	# header
@@ -62,9 +62,9 @@ echo '<div id="wrapper_inner">' . "\n";
 	
 	echo '<div id="body" class="wrapper">' . "\n";
 
-	echo '<div id="body_top"><div class="hidden"></div></div>' . "\n";
+	echo '<div id="body_top" class="body_section"><div class="hidden"></div></div>' . "\n";
 
-	echo '<div id="body_inner" class="wrapper_item">' . "\n";
+	echo '<div id="body_inner" class="body_section">' . "\n";
 		
 		switch ( $active_layout) :
 		

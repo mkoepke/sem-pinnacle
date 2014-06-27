@@ -40,8 +40,8 @@ if ( $title = trim(wp_title('&#8211;', false)) ) {
 <body class="<?php echo implode(' ', get_body_class(array('skin', 'custom'))); ?>">
 
 <div id="wrapper">
-<div id="wrapper_top"><div class="hidden"></div></div>
-<div id="wrapper_inner">
+<div id="wrapper_top" class="wrapper_section"><div class="hidden"></div></div>
+<div id="wrapper_inner" class="wrapper_section">
 <?php
 # show header
 header::letter();
@@ -74,7 +74,7 @@ sem_panels::display('after_the_entries');
 ?>
 </div>
 </div>
-<div id="wrapper_bottom"><div class="hidden"></div></div>
+<div id="wrapper_bottom" class="wrapper_section"><div class="hidden"></div></div>
 </div><!-- wrapper -->
 <?php
 

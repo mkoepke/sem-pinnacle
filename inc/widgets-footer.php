@@ -56,7 +56,7 @@ class footer extends sem_nav_menu {
 				$footer_class .= ' float_sep_nav';
 		}
 
-		echo '<div id="footer" class="wrapper' . $footer_class . ' wrapper_item pad" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">' . "\n";
+		echo '<div id="footer" class="footer_section ' . $footer_class . '" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">' . "\n";
 
 		echo '<div id="footer_nav" class="footer_nav inline_menu menu" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">';
 

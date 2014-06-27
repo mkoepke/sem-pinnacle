@@ -48,7 +48,7 @@ class header extends WP_Widget {
 
 		$header = header::get();
 
-		echo '<div id="header" class="wrapper wrapper_item'
+		echo '<div id="header" class="header_section'
 				. ( $invert_header
 					? ' invert_header'
 					: ''
@@ -488,7 +488,7 @@ class navbar extends sem_nav_menu {
 		if ( $sep )
 			$navbar_class .= ' sep_nav';
 
-		echo '<div id="navbar" class="wrapper navbar' . $navbar_class . ' wrapper_item">' . "\n";
+		echo '<div id="navbar" class="header_section navbar' . $navbar_class . '">' . "\n";
 
 		echo '<div id="header_nav" class="header_nav inline_menu menu" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">';
 

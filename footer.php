@@ -191,7 +191,7 @@
 	
 	echo '</div><!-- body_inner -->' . "\n";
 	
-	echo '<div id="body_bottom"><div class="hidden"></div></div>' . "\n";
+	echo '<div id="body_bottom" class="body_section"><div class="hidden"></div></div>' . "\n";
 
 	echo '</div><!-- body -->' . "\n";
 	
@@ -210,7 +210,7 @@ do_action('wp_footer');
 
 echo '</div><!-- wrapper_inner -->' . "\n";
 
-echo '<div id="wrapper_bottom"><div class="hidden"></div></div>' . "\n";
+echo '<div id="wrapper_bottom" class="wrapper_section"><div class="hidden"></div></div>' . "\n";
 
 echo '</div><!-- wrapper -->' . "\n";
 

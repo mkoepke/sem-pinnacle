@@ -102,10 +102,8 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 }
 
 
-/*
-Semiologic Defaults
--------------------
-*/
+/* Semiologic Defaults
+--------------------------------------------- */
 
 
 html, body {
@@ -120,7 +118,6 @@ body {
 	line-height: 1.432;
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-weight: normal;
-	-webkit-font-smoothing: antialiased;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
 	text-rendering: optimizeLegibility;
@@ -447,7 +444,9 @@ Structure and Layout
 #wrapper,
 #credits,
 .wrapper,
-.wrapper_item,
+.header_section,
+.body_section,
+.footer_section,
 .pad,
 .post_list {
 	margin: 0 auto;
@@ -502,7 +501,6 @@ Structure and Layout
 }
 
 .mmm .wrapper,
-.mmm .wrapper_item,
 .mmm #credits {
 	width: 98.958333333333%;    /* 950px;  */
 }
@@ -552,8 +550,7 @@ Structure and Layout
 }
 
 .mm #credits,
-.mm .wrapper,
-.mm .wrapper_item {
+.mm .wrapper {
 	width: 98.684210526316%     /* 750px; */
 }
 
@@ -572,9 +569,8 @@ Structure and Layout
 	max-width: 630px;
 }
 
-.m #credits,
 .m .wrapper,
-.m .wrapper_item {
+.m #credits {
 	width: 98.412698412698%    /* 620px; */
 }
 
@@ -1293,11 +1289,7 @@ Semiologic Plugins
 ---------------------------------------------------------------------------------------------------- */
 
 body.sem_admin_menu {
-	padding-top: 1em;
-}
-
-body.sem_admin_menu #site_container {
-	margin-top: -1em;
+	padding-top: 0.9375em;
 }
 
 .sem_subscribe_me ul,
