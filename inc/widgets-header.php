@@ -646,8 +646,8 @@ class navbar extends sem_nav_menu {
 				continue;
 			if ( (int) get_post_meta($root_id, '_menu_exclude', true) )
 				continue;
-			if ( !wp_cache_get($root_id, 'page_children') ) # only sections
-				continue;
+//			if ( !wp_cache_get($root_id, 'page_children') ) # only sections
+//				continue;
 
 			$items[] = array(
 				'type' => 'page',

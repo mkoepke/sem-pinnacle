@@ -379,23 +379,13 @@ th {
  *
  * Fluid images for posts, comments, and widgets
  */
-.entry_content img,
-.entry_summary img,
-.comment_content img,
-.widget img,
-.header_widget img,
-.footer_widget img,
+img,
 .wp-caption {
 	max-width: 100%;
 }
 
 /* Make sure images with WordPress-added height and width attributes are scaled correctly. */
-.entry_content img,
-.entry_summary img,
-.comment_content img[height],
-.widget img,
-.header_widget img,
-.footer_widget img,
+img,
 img[class*="align"],
 img[class*="wp-image-"],
 img[class*="attachment-"] {
@@ -415,6 +405,7 @@ object,
 video {
 	max-width: 100%;
 }
+
 
 p > embed,
 p > iframe,
@@ -500,7 +491,6 @@ Structure and Layout
 	max-width: 960px;
 }
 
-.mmm .wrapper,
 .mmm #credits {
 	width: 98.958333333333%;    /* 950px;  */
 }
@@ -549,7 +539,6 @@ Structure and Layout
 	max-width: 760px;
 }
 
-.mm #credits,
 .mm .wrapper {
 	width: 98.684210526316%     /* 750px; */
 }
@@ -569,8 +558,7 @@ Structure and Layout
 	max-width: 630px;
 }
 
-.m .wrapper,
-.m #credits {
+.m .wrapper {
 	width: 98.412698412698%    /* 620px; */
 }
 
@@ -915,6 +903,7 @@ Site Navigation
 	left:-9999px;
 	z-index: 150;
 	width: auto;
+	min-width: 100%;
 }
 
 #header_nav .sub-menu li {

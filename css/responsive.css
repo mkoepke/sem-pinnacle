@@ -71,17 +71,17 @@ Media Queries
 	#navbar #searchform {
 		display: none;
 	}
-
+/*
 	#header_boxes,
 	#footer_boxes {
 		display: none;
-/*		width: 100%;
-*/	}
+		width: 100%;
+	}
 
 	#footer_nav {
 		display: none;
 	}
-
+*/
     #sitename {
 	    font-size: 1.875em;
 	    line-height: 2.25;
@@ -184,17 +184,6 @@ Media Queries
 
 	#header_nav .sub-menu .sub-menu a {
 		text-indent: 2em;
-	}
-
-	/* remove skin menu colors for now */
-	#navbar,
-	#navbar a,
-	#navbar a:hover {
-		background-image: none;
-	}
-
-	#navbar .pad {
-		padding: 0;
 	}
 }
 

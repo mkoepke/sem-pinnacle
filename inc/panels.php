@@ -56,7 +56,7 @@ class sem_panels {
 		sem_panels::switch_themes();
 		
 		global $sem_options;
-		$before_widget = '<div class="widget %1$s %2$s pad">' . "\n";
+		$before_widget = '<div class="widget %1$s %2$s">' . "\n";
 		$after_widget = '</div>' . "\n";
 		
 		$before_title = '<div class="widget_title"><h2>';

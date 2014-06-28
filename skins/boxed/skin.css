@@ -478,3 +478,11 @@ html {
 	border-color: #545454; /* B/2 S0 */
 }
 
+@media (max-width: 40.5625em) {     /* 649px */
+	/* remove skin menu colors for now */
+	#navbar,
+	#navbar a,
+	#navbar a:hover {
+		background-image: none;
+	}
+}
