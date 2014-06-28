@@ -76,7 +76,7 @@ class sem_panels {
 			register_sidebar(
 				array(
 					'id' => 'sidebar-1',
-					'name' => __('Left Sidebar', 'sem-reloaded'),
+					'name' => __('Sidebar 1/Leftmost', 'sem-reloaded'),
 					'before_widget' => $before_widget,
 					'after_widget' => $after_widget,
 					'before_title' => $before_title,
@@ -86,7 +86,7 @@ class sem_panels {
 			register_sidebar(
 				array(
 					'id' => 'sidebar-2',
-					'name' => __('Right Sidebar', 'sem-reloaded'),
+					'name' => __('Sidebar 2/Rightmost', 'sem-reloaded'),
 					'before_widget' => $before_widget,
 					'after_widget' => $after_widget,
 					'before_title' => $before_title,
@@ -109,7 +109,7 @@ class sem_panels {
 				register_sidebar(
 					array(
 						'id' => 'sidebar-1',
-						'name' => __('Left Sidebar', 'sem-reloaded'),
+						'name' => __('Sidebar 1/Leftmost', 'sem-reloaded'),
 						'before_widget' => $before_widget,
 						'after_widget' => $after_widget,
 						'before_title' => $before_title,
@@ -119,7 +119,7 @@ class sem_panels {
 				register_sidebar(
 					array(
 						'id' => 'sidebar-2',
-						'name' => __('Right Sidebar', 'sem-reloaded'),
+						'name' => __('Sidebar 2/Rightmost', 'sem-reloaded'),
 						'before_widget' => $before_widget,
 						'after_widget' => $after_widget,
 						'before_title' => $before_title,

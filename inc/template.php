@@ -648,6 +648,12 @@ class sem_template {
 		if ( is_array($wp_registered_widgets[$widget_id]['callback']) ) {
 			$type = get_class($wp_registered_widgets[$widget_id]['callback'][0]);
 			if ( is_a($wp_registered_widgets[$widget_id]['callback'][0], 'WP_Widget') ) {
+				if ( !$did_header && !$did_navbar ) {
+					if ( !$did_top_widgets ) {
+						echo '<div id="header_top_wrapper" class="header_section">' . "\n";
+						$did_top_widgets = true;
+					}
+				}
 				$instance = $wp_registered_widgets[$widget_id]['callback'][0]->get_settings();
 				$instance = isset($instance[$wp_registered_widgets[$widget_id]['callback'][0]->number]) ?
                     $instance[$wp_registered_widgets[$widget_id]['callback'][0]->number] : $instance;
@@ -728,6 +734,12 @@ class sem_template {
 		if ( is_array($wp_registered_widgets[$widget_id]['callback']) ) {
 			$type = get_class($wp_registered_widgets[$widget_id]['callback'][0]);
 			if ( is_a($wp_registered_widgets[$widget_id]['callback'][0], 'WP_Widget') ) {
+				if ( !$did_footer ) {
+					if ( !$did_top_widgets ) {
+						echo '<div id="footer_top_wrapper" class="footer_section">' . "\n";
+						$did_top_widgets = true;
+					}
+				}
 				$instance = $wp_registered_widgets[$widget_id]['callback'][0]->get_settings();
 				$instance = isset($instance[$wp_registered_widgets[$widget_id]['callback'][0]->number]) ?
                     $instance[$wp_registered_widgets[$widget_id]['callback'][0]->number] : $instance;
