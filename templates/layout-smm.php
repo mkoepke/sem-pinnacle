@@ -11,4 +11,4 @@ $sem_theme_options['active_layout'] = 'smm';
 
 
 include sem_path . '/index.php';
-?>
+
