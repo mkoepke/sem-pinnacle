@@ -136,10 +136,10 @@ EOS;
 		
 		check_admin_referer('sem_layout');
 		
-		global $sem_options;
-		$sem_options['active_layout'] = preg_replace("/[^mst]/", "", $_POST['layout']);
+		global $sem_theme_options;
+		$sem_theme_options['active_layout'] = preg_replace("/[^mst]/", "", $_POST['layout']);
 		
-		update_option('sem6_options', $sem_options);
+		write_sem_options( $sem_theme_options);
 		
 		echo '<div class="updated fade">'
 			. '<p><strong>'
@@ -161,15 +161,15 @@ EOS;
 		
 		wp_nonce_field('sem_layout');
 		
-		global $sem_options;
+		global $sem_theme_options;
 		$layouts = sem_layout::get_layouts();
 		
 		echo '<h2>' . __('Manage Layout', 'sem-reloaded') . '</h2>' . "\n";
 		
 		echo '<h3>' . __('Current Layout', 'sem-reloaded') . '</h3>' . "\n";
 		
-		$details = $layouts[$sem_options['active_layout']];
-		$screenshot = sem_url . '/inc/img/' . $sem_options['active_layout'] . '.png';
+		$details = $layouts[$sem_theme_options['active_layout']];
+		$screenshot = sem_url . '/inc/img/' . $sem_theme_options['active_layout'] . '.png';
 		
 		echo '<div id="current_option">' . "\n";
 		
@@ -248,7 +248,7 @@ EOS;
 				. '<label for="layout-' . $layout . '">'
 				. '<span class="hide-if-js">'
 				. '<input type="radio" name="layout" value="' . $layout . '" id="layout-' . $layout . '"'
-					. checked($sem_options['active_layout'], $layout, false)
+					. checked($sem_theme_options['active_layout'], $layout, false)
 					. ' />' . '&nbsp;' . "\n"
 				. '</span>'
 				. $details['name']

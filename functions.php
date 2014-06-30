@@ -11,10 +11,11 @@
 
 include dirname(__FILE__) . '/inc/init.php';
 
-global $sem_options;
+global $sem6_options;
+global $sem_theme_options;
 
 # set content width
-switch ( $sem_options['active_layout'] ) {
+switch ( $sem_theme_options['active_layout'] ) {
 case 'm':
 	$content_width = 550;
 	break;
@@ -74,7 +75,11 @@ if ( is_admin() ) {
 }
 
 
-
+/**
+* semreloaded_postsetup()
+*
+* @return void
+**/
 function semreloaded_postsetup() {
 	# load textdomain
 	load_theme_textdomain('sem-reloaded', sem_path . '/lang');
@@ -101,6 +106,26 @@ function semreloaded_postsetup() {
 
 	add_theme_support( 'custom-background', array ('wp-head-callback' => array('sem_template', 'custom_background_cb')) );
 
+}
+
+/**
+* read_sem_options()
+*
+* @return mixed
+**/
+
+function read_sem_options() {
+	return get_option( 'sem_pinnacle_options' );
+}
+
+/**
+* write_sem_options()
+*
+* @param mixed
+* @return void
+**/
+function write_sem_options( $options ) {
+	update_option( 'sem_pinnacle_options', $options );
 }
 
 add_action( 'after_setup_theme', 'semreloaded_postsetup' );

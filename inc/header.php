@@ -55,9 +55,9 @@ class sem_header {
 		
 		#dump($_POST, $_FILES);
 		
-		global $sem_options;
+		global $sem_theme_options;
 		$header = header::get();
-		$active_skin = $sem_options['active_skin'];
+		$active_skin = $sem_theme_options['active_skin'];
 		
 		if ( !empty($_FILES['header_file']['name']) ) {
 			if ( $header && strpos($header, "/skins/$active_skin/") === false ) {
@@ -152,10 +152,10 @@ class sem_header {
 		
 		wp_nonce_field('sem_header');
 		
-		global $sem_options;
+		global $sem_theme_options;
 		
 		$header = header::get();
-		$active_skin = $sem_options['active_skin'];
+		$active_skin = $sem_theme_options['active_skin'];
 		
 		echo '<h2>' . __('Manage Header', 'sem-reloaded') . '</h2>' . "\n";
 		

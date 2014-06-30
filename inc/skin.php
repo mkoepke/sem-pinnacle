@@ -138,14 +138,14 @@ EOS;
 		
 		check_admin_referer('sem_skin');
 		
-		global $sem_options;
+		global $sem_theme_options;
 		
-		$sem_options['active_skin'] = preg_replace("/[^a-z0-9_-]/i", "", $_POST['skin']);
-		$sem_options['skin_data'] = sem_template::get_skin_data($sem_options['active_skin']);
+		$sem_theme_options['active_skin'] = preg_replace("/[^a-z0-9_-]/i", "", $_POST['skin']);
+		$sem_theme_options['skin_data'] = sem_template::get_skin_data($sem_theme_options['active_skin']);
 		if ( current_user_can('unfiltered_html') )
-			$sem_options['credits'] = stripslashes($_POST['credits']);
+			$sem_theme_options['credits'] = stripslashes($_POST['credits']);
 		
-		update_option('sem6_options', $sem_options);
+		write_sem_options( $sem_theme_options);
 		delete_transient('sem_header');
 		
 		echo '<div class="updated fade">'
@@ -168,7 +168,7 @@ EOS;
 		
 		wp_nonce_field('sem_skin');
 		
-		global $sem_options;
+		global $sem_theme_options;
 		$skins = sem_skin::get_skins();
 		$fonts = sem_font::get_fonts();
 		
@@ -176,8 +176,8 @@ EOS;
 		
 		echo '<h3>' . __('Current Skin &amp; Font', 'sem-reloaded') . '</h3>' . "\n";
 		
-		$details = $skins[$sem_options['active_skin']];
-		$screenshot = sem_url . '/skins/' . $sem_options['active_skin'] . '/screenshot.png';
+		$details = $skins[$sem_theme_options['active_skin']];
+		$screenshot = sem_url . '/skins/' . $sem_theme_options['active_skin'] . '/screenshot.png';
 		$title = __('%1$s v.%2$s by %3$s', 'sem-reloaded');
 		$name = $details['uri']
 			? ( '<a href="' . esc_url($details['uri']) . '"'
@@ -210,7 +210,7 @@ EOS;
 
 		$theme_credits = sem_template::get_theme_credits();
 		$skin_credits = sem_template::get_skin_credits();
-		$credits = sprintf($sem_options['credits'], $theme_credits, $skin_credits['skin_name'], $skin_credits['skin_author']);
+		$credits = sprintf($sem_theme_options['credits'], $theme_credits, $skin_credits['skin_name'], $skin_credits['skin_author']);
 		
 		if ( empty($credits) ) {
 			$credits = "Left blank";
@@ -222,8 +222,8 @@ EOS;
 				. '</p>' . "\n";
 		}
 
-		$font = '<span class="' . esc_attr($sem_options['active_font']) . '">'
-			. $fonts[$sem_options['active_font']]
+		$font = '<span class="' . esc_attr($sem_theme_options['active_font']) . '">'
+			. $fonts[$sem_theme_options['active_font']]
 			. '</span>';
 
 		echo '<p>'
@@ -293,7 +293,7 @@ EOS;
 				. '<h4>'
 				. '<span class="hide-if-js">'
 				. '<input type="radio" name="skin" value="' . $skin . '" id="skin-' . $skin . '"'
-					. checked($sem_options['active_skin'], $skin, false)
+					. checked($sem_theme_options['active_skin'], $skin, false)
 					. ' />' . '&nbsp;' . "\n"
 				. '</span>'
 				. sprintf($title, $name, $details['version']) . '<br />'
@@ -340,7 +340,7 @@ EOS;
 			. '</label>'
 			. '<br />' . "\n"
 			. '<textarea id="sem_credits" name="credits" class="widefat" cols="50" rows="3">'
-			. htmlspecialchars($sem_options['credits'], ENT_COMPAT, get_option('blog_charset'))
+			. htmlspecialchars($sem_theme_options['credits'], ENT_COMPAT, get_option('blog_charset'))
 			. '</textarea>'
 			. '</p>' . "\n";
 		

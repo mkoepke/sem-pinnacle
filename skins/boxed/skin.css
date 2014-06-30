@@ -67,6 +67,10 @@ Colors: Blue
 	padding: 0 0.9375em;
 }
 
+.entry.pad{
+	padding-bottom: 0.5em;
+}
+
 .ad_unit .main_widget .pad,
 .ad_unit .widget .pad {
 	padding: 0;

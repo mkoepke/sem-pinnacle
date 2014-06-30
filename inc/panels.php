@@ -55,14 +55,14 @@ class sem_panels {
 		# autofix panels
 		sem_panels::switch_themes();
 		
-		global $sem_options;
-		$before_widget = '<div class="widget %1$s %2$s">' . "\n";
+		global $sem_theme_options;
+		$before_widget = '<div class="widget %1$s %2$s pad">' . "\n";
 		$after_widget = '</div>' . "\n";
 		
 		$before_title = '<div class="widget_title"><h2>';
 		$after_title = '</h2></div>' . "\n";
 		
-		if ( strpos($sem_options['active_layout'], 't') !== false ) {
+		if ( strpos($sem_theme_options['active_layout'], 't') !== false ) {
 			register_sidebar(
 				array(
 					'id' => 'top_sidebar',
@@ -76,7 +76,7 @@ class sem_panels {
 			register_sidebar(
 				array(
 					'id' => 'sidebar-1',
-					'name' => __('Left Sidebar', 'sem-reloaded'),
+					'name' => __('Sidebar 1/Leftmost', 'sem-reloaded'),
 					'before_widget' => $before_widget,
 					'after_widget' => $after_widget,
 					'before_title' => $before_title,
@@ -86,7 +86,7 @@ class sem_panels {
 			register_sidebar(
 				array(
 					'id' => 'sidebar-2',
-					'name' => __('Right Sidebar', 'sem-reloaded'),
+					'name' => __('Sidebar 2/Rightmost', 'sem-reloaded'),
 					'before_widget' => $before_widget,
 					'after_widget' => $after_widget,
 					'before_title' => $before_title,
@@ -104,12 +104,12 @@ class sem_panels {
 					)
 				);
 		} else {
-			switch ( substr_count($sem_options['active_layout'], 's') ) {
+			switch ( substr_count($sem_theme_options['active_layout'], 's') ) {
 			case 2:
 				register_sidebar(
 					array(
 						'id' => 'sidebar-1',
-						'name' => __('Left Sidebar', 'sem-reloaded'),
+						'name' => __('Sidebar 1/Leftmost', 'sem-reloaded'),
 						'before_widget' => $before_widget,
 						'after_widget' => $after_widget,
 						'before_title' => $before_title,
@@ -119,7 +119,7 @@ class sem_panels {
 				register_sidebar(
 					array(
 						'id' => 'sidebar-2',
-						'name' => __('Right Sidebar', 'sem-reloaded'),
+						'name' => __('Sidebar 2/Rightmost', 'sem-reloaded'),
 						'before_widget' => $before_widget,
 						'after_widget' => $after_widget,
 						'before_title' => $before_title,

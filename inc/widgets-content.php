@@ -311,7 +311,7 @@ class blog_footer extends WP_Widget {
 	 * @return string $nav
 	 **/
 
-	function date_nav() {
+	static function date_nav() {
 		if ( !is_date() )
 			return false;
 

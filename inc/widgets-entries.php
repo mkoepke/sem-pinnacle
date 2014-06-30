@@ -594,16 +594,16 @@ class entry_categories extends WP_Widget {
 			? apply_filters('widget_title', $title)
 			: false;
 
-		echo $before_widget
+		echo '<div class="entry_categories">'
 			. ( $title
-				? $before_title . $title . $after_title
+				? '<h2>' . $title . '</h2>'
 				: ''
 				)
 			. '<p>'
 			. str_replace('. .', '.', sprintf($filed_under_by, $categories, $author, $date, $comments))
 			. $link
 			. '</p>' . "\n"
-			. $after_widget;
+			. '</div>';
 	} # widget()
 
 
@@ -791,15 +791,15 @@ class entry_tags extends WP_Widget {
 		if ( $_tags ) {
 			$title = apply_filters('widget_title', $title);
 
-			echo $before_widget
+			echo '<div class="spacer"></div><div class="entry_tags">'
 				. ( $args['id'] != 'the_entry' && $title
-					? $before_title . $title . $after_title
+					? '<h2>' . $title . '</h2>'
 					: ''
 					)
 				. '<p>'
 				. sprintf($tags, $_tags)
 				. '</p>' . "\n"
-				. $after_widget;
+				. '</div>';
 		}
 	} # widget()
 

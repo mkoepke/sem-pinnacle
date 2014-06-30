@@ -5,9 +5,9 @@
 # You would lose your changes when you upgrade your site. Use php widgets instead.
 #
 
-global $sem_options;
+global $sem_theme_options;
 
-$active_layout = apply_filters('active_layout', $sem_options['active_layout']);
+$active_layout = apply_filters('active_layout', $sem_theme_options['active_layout']);
 
 # show header
 include sem_path . '/header.php';

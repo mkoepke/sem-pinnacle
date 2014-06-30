@@ -278,7 +278,7 @@ EOS;
 		
 		check_admin_referer('sem_custom');
 		
-		global $sem_options;
+		global $sem_theme_options;
 		$saved = false;
 		$restored = false;
 		$publish = !empty($_REQUEST['publish']);
@@ -358,8 +358,8 @@ EOS;
 		
 		if ( !empty($_POST['restore']) ) {
 			$published_css = get_option('sem_custom_published');
-			$restore_css = $published_css[$sem_options['active_skin']]
-				? is_array($published_css[$sem_options['active_skin']])
+			$restore_css = $published_css[$sem_theme_options['active_skin']]
+				? is_array($published_css[$sem_theme_options['active_skin']])
 				: array();
 			update_option('sem_custom', $restore_css);
 			$restored = true;
@@ -379,19 +379,19 @@ EOS;
 					$fs_error = false;
 					switch ( true ) {
 					default:
-						if ( !$wp_filesystem->find_folder(sem_path . '/skins/' . $sem_options['active_skin']) ) {
-							$fs_error = sprintf(__('Publish Failed: Could not locate your active skin\'s folder (<code>%s</code>).', 'sem-reloaded'), 'wp-content/themes/sem-reloaded/skins/' . $sem_options['active_skin']);
+						if ( !$wp_filesystem->find_folder(sem_path . '/skins/' . $sem_theme_options['active_skin']) ) {
+							$fs_error = sprintf(__('Publish Failed: Could not locate your active skin\'s folder (<code>%s</code>).', 'sem-reloaded'), 'wp-content/themes/sem-reloaded/skins/' . $sem_theme_options['active_skin']);
 							break;
 						}
 						
-						$file = sem_path . '/skins/' . $sem_options['active_skin'] . '/custom.css';
+						$file = sem_path . '/skins/' . $sem_theme_options['active_skin'] . '/custom.css';
 						
 						if ( $wp_filesystem->exists($file) ) {
 							if ( !$wp_filesystem->is_file($file) ) {
-								$fs_error = sprintf(__('Publish Failed: A custom.css <strong>folder<strong> is located in your skin\'s folder (<code>%s</code>). Please delete it and try again.', 'sem-reloaded'), 'wp-content/themes/sem-reloaded/skins/' . $sem_options['active_skin']);
+								$fs_error = sprintf(__('Publish Failed: A custom.css <strong>folder<strong> is located in your skin\'s folder (<code>%s</code>). Please delete it and try again.', 'sem-reloaded'), 'wp-content/themes/sem-reloaded/skins/' . $sem_theme_options['active_skin']);
 								break;
 							} elseif ( !$wp_filesystem->is_writable($file) ) {
-								$fs_error = sprintf(__('Publish Failed: Cannot overwrite your skin\'s custom.css file (<code>%s</code>). Please check its permissions and try again.', 'sem-reloaded'), 'wp-content/themes/sem-reloaded/skins/' . $sem_options['active_skin'] . '/custom.css');
+								$fs_error = sprintf(__('Publish Failed: Cannot overwrite your skin\'s custom.css file (<code>%s</code>). Please check its permissions and try again.', 'sem-reloaded'), 'wp-content/themes/sem-reloaded/skins/' . $sem_theme_options['active_skin'] . '/custom.css');
 								break;
 							}
 							
@@ -399,7 +399,7 @@ EOS;
 							$new_css = explode('/* == Stop Editing Here! == */', $new_css);
 							$new_css = array_shift($new_css);
 						} elseif ( !$wp_filesystem->is_writable(dirname($file)) ) {
-							$fs_error = sprintf(__('Publish Failed: Cannot write to your skin folder (<code>%s</code>). Please check its permissions and try again.', 'sem-reloaded'), 'wp-content/themes/sem-reloaded/skins/' . $sem_options['active_skin']);
+							$fs_error = sprintf(__('Publish Failed: Cannot write to your skin folder (<code>%s</code>). Please check its permissions and try again.', 'sem-reloaded'), 'wp-content/themes/sem-reloaded/skins/' . $sem_theme_options['active_skin']);
 							break;
 						} else {
 							$new_css = '';
@@ -432,16 +432,16 @@ EOS;
 						if ( $published ) {
 							# store latest revision
 							$published_css = get_option('sem_custom_published');
-							$published_css[$sem_options['active_skin']] = get_option('sem_custom');
+							$published_css[$sem_theme_options['active_skin']] = get_option('sem_custom');
 							update_option('sem_custom_published', $published_css);
 
 							// update additional external fonts we need ot load
-							$sem_options['addl_fonts'] = $this->addl_fonts;
-							update_option('sem6_options', $sem_options);
+							$sem_theme_options['addl_fonts'] = $this->addl_fonts;
+							write_sem_options( $sem_theme_options );
 
 							do_action('flush_cache');
 						} else {
-							$fs_error = sprintf(__('Publish Failed: A WP filesystem error occurred (probably related to <a href="%1$s">this WP bug</a>) occurred. Paste the following code in %2$s:<pre>%3$s</pre>', 'sem-reloaded'), 'http://core.trac.wordpress.org/ticket/10889', 'wp-content/themes/sem-reloaded/skins/' . $sem_options['active_skin'] . '/custom.css',  $new_css);
+							$fs_error = sprintf(__('Publish Failed: A WP filesystem error occurred (probably related to <a href="%1$s">this WP bug</a>) occurred. Paste the following code in %2$s:<pre>%3$s</pre>', 'sem-reloaded'), 'http://core.trac.wordpress.org/ticket/10889', 'wp-content/themes/sem-reloaded/skins/' . $sem_theme_options['active_skin'] . '/custom.css',  $new_css);
 							break;
 						}
 					}
@@ -502,7 +502,7 @@ EOS;
 			return;
 		
 		global $wp_filesystem;
-		global $sem_options;
+		global $sem_theme_options;
 		
 		if ( !empty($_REQUEST['publish']) && !is_object($wp_filesystem)
 			|| is_object($wp_filesystem) && $wp_filesystem->errors->get_error_code() )
@@ -510,9 +510,9 @@ EOS;
 		
 		$custom = get_option('sem_custom');
 		$published_css = get_option('sem_custom_published');
-		$restore_css = isset($published_css[$sem_options['active_skin']]) &&
-			is_array($published_css[$sem_options['active_skin']])
-			? $published_css[$sem_options['active_skin']]
+		$restore_css = isset($published_css[$sem_theme_options['active_skin']]) &&
+			is_array($published_css[$sem_theme_options['active_skin']])
+			? $published_css[$sem_theme_options['active_skin']]
 			: array();
 		
 		echo '<div class="wrap">' . "\n"

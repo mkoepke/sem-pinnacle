@@ -142,9 +142,9 @@ class sem_template {
 	 **/
 
 	function body_class($classes) {
-		global $sem_options;
+		global $sem_theme_options;
 		
-		$active_layout = apply_filters('active_layout', $sem_options['active_layout']);
+		$active_layout = apply_filters('active_layout', $sem_theme_options['active_layout']);
 		
 		$classes[] = $active_layout;
 		
@@ -158,10 +158,10 @@ class sem_template {
 			}
 		}
 		
-		$classes[] = preg_replace("/[^a-z]+/", '_', $sem_options['active_skin']);
+		$classes[] = preg_replace("/[^a-z]+/", '_', $sem_theme_options['active_skin']);
 		
-		if ( $sem_options['active_font'] )
-			$classes[] = preg_replace("/[^a-z]+/", '_', $sem_options['active_font']);
+		if ( $sem_theme_options['active_font'] )
+			$classes[] = preg_replace("/[^a-z]+/", '_', $sem_theme_options['active_font']);
 		
 		if ( is_page() ) {
 			global $wp_the_query;
@@ -212,9 +212,9 @@ class sem_template {
 	 **/
 
 	function styles() {
-		global $sem_options;
-		$skin_path = sem_path . '/skins/' . $sem_options['active_skin'];
-		$skin_url = sem_url . '/skins/' . $sem_options['active_skin'];
+		global $sem_theme_options;
+		$skin_path = sem_path . '/skins/' . $sem_theme_options['active_skin'];
+		$skin_url = sem_url . '/skins/' . $sem_theme_options['active_skin'];
 
 		wp_enqueue_style('style', sem_url . '/style.css', null, sem_last_mod);
 		
@@ -223,11 +223,7 @@ class sem_template {
 		else
 			wp_enqueue_style('icons', sem_url . '/css/icons.css', null, sem_last_mod);
 		
-		if ( isset($_GET['action']) && $_GET['action'] == 'print' ) {
-			wp_enqueue_style('print', sem_url . '/css/print.css', null, sem_last_mod);
-			if ( file_exists($skin_path . '/print.css') )
-				wp_enqueue_style('custom-print', $skin_url . '/print.css', null, filemtime($skin_path . '/print.css'));
-		} elseif ( apply_filters('active_layout', $sem_options['active_layout']) == 'letter' ) {
+		if ( apply_filters('active_layout', $sem_theme_options['active_layout']) == 'letter' ) {
 			wp_enqueue_style('letter', sem_url . '/css/letter.css', null, sem_last_mod);
 			if ( file_exists($skin_path . '/letter.css') )
 				wp_enqueue_style('custom-letter', $skin_url . '/letter.css', null, filemtime($skin_path . '/letter.css'));
@@ -239,6 +235,12 @@ class sem_template {
 			if ( file_exists($skin_path . '/custom.css') )
 				wp_enqueue_style('custom-skin', $skin_url . '/custom.css', null, filemtime($skin_path . '/custom.css'));
 		}
+
+		if ( ( isset($_GET['action']) && $_GET['action'] == 'print' ) || is_singular() ) {
+			wp_enqueue_style('print', sem_url . '/css/print.css', null, sem_last_mod, 'print');
+			if ( file_exists($skin_path . '/print.css') )
+				wp_enqueue_style('custom-print', $skin_url . '/print.css', null, filemtime($skin_path . '/print.css', 'print'));
+		}
 	} # styles()
 	
 
@@ -248,13 +250,13 @@ class sem_template {
 	 * @return void
 	 **/
 	function fonts() {
-		global $sem_options;
+		global $sem_theme_options;
 
-		sem_template::load_font( $sem_options['active_font']);
+		sem_template::load_font( $sem_theme_options['active_font']);
 
-		if ( isset($sem_options['addl_fonts']))
-			foreach( $sem_options['addl_fonts'] as $font)
-				if ( $sem_options['active_font'] != $font )
+		if ( isset($sem_theme_options['addl_fonts']))
+			foreach( $sem_theme_options['addl_fonts'] as $font)
+				if ( $sem_theme_options['active_font'] != $font )
 					sem_template::load_font( $font );
 	}
 
@@ -417,15 +419,15 @@ class sem_template {
 	 **/
 
 	static function display_credits() {
-		global $sem_options;
+		global $sem_theme_options;
 		
 		echo '<div id="credits" class="wrapper">' . "\n";
 		
-		if ( $sem_options['credits'] ) {
+		if ( $sem_theme_options['credits'] ) {
 			$theme_credits = sem_template::get_theme_credits();
 			$skin_credits = sem_template::get_skin_credits();
 			
-			$credits = sprintf($sem_options['credits'], $theme_credits, $skin_credits['skin_name'], $skin_credits['skin_author']);
+			$credits = sprintf($sem_theme_options['credits'], $theme_credits, $skin_credits['skin_name'], $skin_credits['skin_author']);
 			
 			if ( current_user_can('manage_options') ) {
 				$credits .= ' - '
@@ -473,15 +475,15 @@ class sem_template {
 	 **/
 
 	static function get_skin_credits() {
-		global $sem_options;
+		global $sem_theme_options;
 		
-		if ( is_admin() || !isset($sem_options['skin_data']) || !is_array($sem_options['skin_data']) ) {
-			$details = sem_template::get_skin_data($sem_options['active_skin']);
-			$sem_options['skin_data'] = $details;
+		if ( is_admin() || !isset($sem_theme_options['skin_data']) || !is_array($sem_theme_options['skin_data']) ) {
+			$details = sem_template::get_skin_data($sem_theme_options['active_skin']);
+			$sem_theme_options['skin_data'] = $details;
 			if ( !defined('sem_install_test') )
-				update_option('sem6_options', $sem_options);
+				update_option('sem6_options', $sem_theme_options);
 		} else {
-			$details = $sem_options['skin_data'];
+			$details = $sem_theme_options['skin_data'];
 		}
 		
 		$name = $details['uri']
@@ -648,6 +650,12 @@ class sem_template {
 		if ( is_array($wp_registered_widgets[$widget_id]['callback']) ) {
 			$type = get_class($wp_registered_widgets[$widget_id]['callback'][0]);
 			if ( is_a($wp_registered_widgets[$widget_id]['callback'][0], 'WP_Widget') ) {
+				if ( !$did_header && !$did_navbar ) {
+					if ( !$did_top_widgets ) {
+						echo '<div id="header_top_wrapper" class="header_section">' . "\n";
+						$did_top_widgets = true;
+					}
+				}
 				$instance = $wp_registered_widgets[$widget_id]['callback'][0]->get_settings();
 				$instance = isset($instance[$wp_registered_widgets[$widget_id]['callback'][0]->number]) ?
                     $instance[$wp_registered_widgets[$widget_id]['callback'][0]->number] : $instance;
@@ -728,6 +736,12 @@ class sem_template {
 		if ( is_array($wp_registered_widgets[$widget_id]['callback']) ) {
 			$type = get_class($wp_registered_widgets[$widget_id]['callback'][0]);
 			if ( is_a($wp_registered_widgets[$widget_id]['callback'][0], 'WP_Widget') ) {
+				if ( !$did_footer ) {
+					if ( !$did_top_widgets ) {
+						echo '<div id="footer_top_wrapper" class="footer_section">' . "\n";
+						$did_top_widgets = true;
+					}
+				}
 				$instance = $wp_registered_widgets[$widget_id]['callback'][0]->get_settings();
 				$instance = isset($instance[$wp_registered_widgets[$widget_id]['callback'][0]->number]) ?
                     $instance[$wp_registered_widgets[$widget_id]['callback'][0]->number] : $instance;
@@ -795,9 +809,9 @@ class sem_template {
 		if ( ! is_admin() )
 			return;
 
-		global $sem_options;
-		$skin_path = sem_path . '/skins/' . $sem_options['active_skin'];
-		$skin_url = sem_url . '/skins/' . $sem_options['active_skin'];
+		global $sem_theme_options;
+		$skin_path = sem_path . '/skins/' . $sem_theme_options['active_skin'];
+		$skin_url = sem_url . '/skins/' . $sem_theme_options['active_skin'];
 
 		// call WP function to add the theme's style.css.  Make theme check happy
 		add_editor_style( sem_url . '/style.css' );
@@ -812,7 +826,7 @@ class sem_template {
 		else
 			$stylesheets[] = sem_url . '/css/icons.css';
 
-		if ( apply_filters('active_layout', $sem_options['active_layout']) == 'letter' ) {
+		if ( apply_filters('active_layout', $sem_theme_options['active_layout']) == 'letter' ) {
 			$stylesheets[] =  sem_url . '/css/letter.css';
 			if ( file_exists($skin_path . '/letter.css') )
 				$stylesheets[] =  $skin_url . '/letter.css';
@@ -838,11 +852,11 @@ class sem_template {
 	 */
 
 	function add_editor_body_class($mceInit) {
-		global $sem_options;
+		global $sem_theme_options;
 
 		$classes = array();
 
-		$active_layout = apply_filters('active_layout', $sem_options['active_layout']);
+		$active_layout = apply_filters('active_layout', $sem_theme_options['active_layout']);
 
 		$classes[] = $active_layout;
 
@@ -856,10 +870,10 @@ class sem_template {
 			}
 		}
 
-		$classes[] = preg_replace("/[^a-z]+/", '_', $sem_options['active_skin']);
+		$classes[] = preg_replace("/[^a-z]+/", '_', $sem_theme_options['active_skin']);
 
-		if ( $sem_options['active_font'] )
-			$classes[] = preg_replace("/[^a-z]+/", '_', $sem_options['active_font']);
+		if ( $sem_theme_options['active_font'] )
+			$classes[] = preg_replace("/[^a-z]+/", '_', $sem_theme_options['active_font']);
 
 		$mceInit['body_class'] .= ' '  . implode( ' ', $classes);
 

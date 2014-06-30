@@ -230,7 +230,7 @@ class header extends WP_Widget {
 		if ( !is_admin() && isset($header) )
 			return $header;
 
-		global $sem_options;
+		global $sem_theme_options;
 
 		# try post specific header
 		if ( is_singular() ) {
@@ -302,7 +302,7 @@ class header extends WP_Widget {
 				break;
 
 			# skin-specific header
-			$active_skin = $sem_options['active_skin'];
+			$active_skin = $sem_theme_options['active_skin'];
 			$header = glob(sem_path . "/skins/$active_skin/$skin_scan", $scan_type);
 			if ( $header )
 				break;

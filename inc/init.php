@@ -3,9 +3,6 @@
 # Initialize
 #
 
-if ( !defined('sem_version') )
-	define('sem_version', '6.4-dev');
-
 if ( !defined('sem_theme') )
 	define('sem_theme', 'sem-pinnacle');
 
@@ -112,41 +109,47 @@ if ( sem_debug )
 # Initialize options
 #
 
-$sem_options = get_option('sem6_options');
-
-/*if ( get_option('sempro_options') === FALSE ) {
-	update_option( 'sempro_options', $sem_options );
-}
-*/
-
-// clone the sem_reloaded options to the sem_pinnacle options on first time use
-if ( get_option('theme_mods_sem-pinnacle') === FALSE ) {
-	$o = get_option('theme_mods_sem-reloaded');
-	if ( $o !== FALSE ) {
-		update_option( 'theme_mods_sem-pinnacle', $o );
-		update_option( 'sidebars_widgets', $o['sidebars_widgets'] );
-	}
-}
+$sem_theme_options = read_sem_options();
 
 # autoinstall test
-#$sem_options = false;
+#$sem_theme_options = false;
 
 
 #
 # install / upgrade
 #
-if ( !isset($sem_options['version']) ) {
-	# try sem5_options
-	$sem_options = get_option('sem5_options');
-	
-	if ( isset($sem_options['version']) ) {
+if ( !isset($sem_theme_options['version']) ) {
+	$sem6_options = get_option('sem6_options');
+	$sem5_options = get_option('sem5_options');
+
+	if ( isset( $sem6_options['version'] ) || isset( $sem5_options['version'] ) ) {
+		// try convert the semiologic and sem-reloaded themes
+		$sem_options = isset( $sem6_options['version'] ) ? $sem6_options : $sem5_options;
+		if ( !defined('DOING_CRON') )
+			include sem_path . '/inc/upgrade-legacy.php';
+
+		$sem6_options = get_option('sem6_options');
+
+		$sem_theme_options = $sem6_options;
+		$sem_theme_options['version'] = 0;
+
 		if ( !defined('DOING_CRON') )
 			include sem_path . '/inc/upgrade.php';
-	} else {
+
+		// clone the sem_reloaded options to the sem_pinnacle options on first time use
+		if ( get_option('theme_mods_sem-pinnacle') === FALSE ) {
+			$o = get_option('theme_mods_sem-reloaded');
+			if ( $o !== FALSE ) {
+				update_option( 'theme_mods_sem-pinnacle', $o );
+				update_option( 'sidebars_widgets', $o['sidebars_widgets'] );
+			}
+		}
+	}
+	else {
 		include sem_path . '/inc/install.php';
 	}
-} elseif ( $sem_options['version'] != sem_version ) {
+} elseif ( $sem_theme_options['version'] != sem_theme_version ) {
 	if ( !defined('DOING_CRON') )
 		include sem_path . '/inc/upgrade.php';
 }
-?>
+

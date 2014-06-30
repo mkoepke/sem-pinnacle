@@ -167,11 +167,11 @@ EOS;
 		
 		check_admin_referer('sem_font');
 		
-		global $sem_options;
+		global $sem_theme_options;
 
-		$sem_options['active_font'] = preg_replace("/[^a-z0-9_-]/i", "", $_POST['font']);
+		$sem_theme_options['active_font'] = preg_replace("/[^a-z0-9_-]/i", "", $_POST['font']);
 		
-		update_option('sem6_options', $sem_options);
+		write_sem_options( $sem_theme_options);
 		delete_transient('sem_header');
 		
 		echo '<div class="updated fade">'
@@ -194,7 +194,7 @@ EOS;
 		
 		wp_nonce_field('sem_font');
 		
-		global $sem_options;
+		global $sem_theme_options;
 		$standard_fonts = sem_font::get_fonts('standard');
 		$google_fonts = sem_font::get_fonts('google');
 		$fonts = sem_font::get_fonts();
@@ -203,8 +203,8 @@ EOS;
 		
 		echo '<h3>' . __('Current Font', 'sem-reloaded') . '</h3>' . "\n";
 
-		$font = '<span class="' . esc_attr($sem_options['active_font']) . '">'
-			. $fonts[$sem_options['active_font']]
+		$font = '<span class="' . esc_attr($sem_theme_options['active_font']) . '">'
+			. $fonts[$sem_theme_options['active_font']]
 			. '</span>';
 
 		echo '<p>'
@@ -222,7 +222,7 @@ EOS;
 			echo '<li class="' . esc_attr($k) . '">'
 				. '<label>'
 				. '<input type="radio" name="font" value="' . $k . '"'
-					. checked($sem_options['active_font'], $k, false)
+					. checked($sem_theme_options['active_font'], $k, false)
 					. '/>'
 				. '&nbsp;'
 				. $v
@@ -240,7 +240,7 @@ EOS;
 			echo '<li class="' . esc_attr($k) . '">'
 				. '<label>'
 				. '<input type="radio" name="font" value="' . $k . '"'
-					. checked($sem_options['active_font'], $k, false)
+					. checked($sem_theme_options['active_font'], $k, false)
 					. '/>'
 				. '&nbsp;'
 				. $v

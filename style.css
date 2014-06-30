@@ -807,7 +807,6 @@ p.attachment {
     background-color: #f3f3f3;
 	color: #111;
     border: 1px solid #ddd;
-	margin: 0.3125em;
 	padding-top: 0.25em;
 	padding-bottom: 0.25em;
     text-align: center;
@@ -831,7 +830,7 @@ Site Header
 	padding-top: 0.3125em;
 	padding-bottom: 0.5em;
 	font-size: 2.5em;
-	line-height: 3.25;
+	line-height: 1.25;
 }
 
 #tagline {
@@ -887,7 +886,7 @@ Site Navigation
 	position: relative;
 	float: left;
 	padding: 0;
-	margin: 0;
+	margin: 0 0.4em;
 }
 
 #header_nav a {
@@ -942,7 +941,7 @@ Site Navigation
 	position: relative;
 	float: left;
 	padding: 0;
-	margin: 0 0.6em;
+	margin: 0 0.4em;
 }
 
 #header_nav li.nav_sep a,
