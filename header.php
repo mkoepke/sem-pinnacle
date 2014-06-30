@@ -9,7 +9,7 @@
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width" />
 <title><?php
 if ( $title = trim(wp_title('&#8211;', false)) ) {
 	if ( strpos($title, '&#8211;') === 0 )
@@ -81,7 +81,7 @@ echo '<div id="wrapper_inner" class="wrapper_section">' . "\n";
 			
 		# content
 		
-		echo '<div id="main" class="main pad" role="main" itemprop="mainContentOfPage">' . "\n";
+		echo '<div id="main" class="main" role="main" itemprop="mainContentOfPage">' . "\n";
 
 		echo '<div class="main_content' . ( is_archive() || is_404() || is_search() ? ' entry' : '' )  . '">' . "\n";
 ?>
