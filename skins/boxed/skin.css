@@ -55,29 +55,13 @@ Colors: Blue
 	width: 67.157894736842%;    /* 638px / 950 px */
 }
 
-
-.main.pad {
-	padding: 0;
-}
-
-.pad,
-.pad .pad,
-.post_list,
-.archive .entry .entry {
+.post_list {
 	padding: 0 0.9375em;
 }
 
-.entry.pad{
-	padding-bottom: 0.5em;
-}
-
-.ad_unit .main_widget .pad,
-.ad_unit .widget .pad {
-	padding: 0;
-}
-
-#navbar .pad {
-	padding: 0 0.9375em 0 0;
+.header_widget p,
+.footer_widget p {
+	padding: 0 0.9375em;
 }
 
 #search_form {
@@ -122,10 +106,13 @@ Colors: Blue
 .post_list,
 .main_widget,
 .widget,
-.header_widget,
-.footer_widget {
-	padding-top: 0.3125em;
-	padding-bottom: 0.3125em;
+.inline_box {
+	padding: 0.3125em 0.9375em 0.3125em;
+}
+
+.archives_header.main_widget,
+.archive .entry .entry {
+	padding: 0;
 }
 
 .entry,
@@ -152,9 +139,10 @@ Colors: Blue
 
 #header,
 #navbar {
-	margin-top: 0.375em;
-	margin-bottom: 0.375em;
+	margin-top: 0.75em;
+	margin-bottom: 0.75em;
 }
+
 .header_widget,
 #header_top_wrapper,
 #header_middle_wrapper,

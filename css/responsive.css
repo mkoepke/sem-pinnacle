@@ -90,27 +90,16 @@ Media Queries
       /* Primary Navigation Menu Icon properties */
 
 	#header-menu-icon {
-/*		border-bottom: 1px solid #ddd;
-		border-top: 1px solid #ddd;
-*/		cursor: pointer;
+		cursor: pointer;
 		display: block;
 		padding: 1.5em 1.5em;
 		text-align: center;
 	}
 
-	#header-menu-icon::before {
-		content: 'MENU \2630';
-		font-weight: bold;
-		letter-spacing: 1px;
-	}
-
 	#header-menu-icon:hover::before {
-		content: 'MENU \2637';
+		opacity: 0.7;
 	}
 
-	#header-menu-icon:active::before {
-		content: 'MENU \2637';
-	}
 
 	/* Hide Header Navigation Menu until it's toggled via script */
 

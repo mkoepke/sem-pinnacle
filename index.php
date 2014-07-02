@@ -26,7 +26,6 @@ include sem_path . '/header.php';
 					the_post();
 					
 					$class = get_post_class();
-					$class[] = ' pad';
 					
 					echo '<article>'
 					    . '<div class="entry' . ( $class ? ( ' ' . implode(' ', $class) ) : '' ) . '">' . "\n";

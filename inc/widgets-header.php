@@ -65,7 +65,7 @@ class header extends WP_Widget {
 		echo "\n";
 
 		if ( !$header ) {
-			echo '<div id="header_img" class="pad">' . "\n";
+			echo '<div id="header_img">' . "\n";
 
 			$tagline = '<div id="tagline" class="tagline">'
 				. get_option('blogdescription')
@@ -113,7 +113,7 @@ class header extends WP_Widget {
 		if ( !$header )
 			return;
 
-		echo '<div id="header_img" class="pad">' . header::display_header_image($header);
+		echo '<div id="header_img">' . header::display_header_image($header);
 
 		echo '</div>' . "\n";
 	} # display()
@@ -130,7 +130,6 @@ class header extends WP_Widget {
 		list($width, $height) = $header_size;
 
 		$html = '<img src="' . sem_url . '/icons/pixel.gif"'
-			. ' height="100%"'
 			. ' alt="'
 				. esc_attr(get_option('blogname'))
 				. ' &bull; '
@@ -368,7 +367,7 @@ class header extends WP_Widget {
 <style type="text/css">
 .skin #header_img {
 	background: url(${header}) no-repeat top center;
-	height: ${height}em;
+	background-size: 100%;
 	width: 100%;
 	border: 0;
 	position: relative;
@@ -376,7 +375,9 @@ class header extends WP_Widget {
 	margin: 0 auto;
 }
 .skin #header_img img {
+	display: block;
     width: 100%;
+    height: ${height}em;
 }
 </style>
 

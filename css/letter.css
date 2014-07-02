@@ -31,10 +31,6 @@ html {
 
 #wrapper_inner {
 	background: url(images/letter_bg.jpg?ver=0.9) top center no-repeat;
-}
-
-.pad,
-.pad .pad {
 	padding: 0 1.875em 0;
 }
 

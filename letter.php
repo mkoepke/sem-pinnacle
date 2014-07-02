@@ -46,7 +46,6 @@ if ( $title = trim(wp_title('&#8211;', false)) ) {
 # show header
 header::letter();
 ?>
-<div class="pad">
 <?php
 sem_panels::display('before_the_entries');
 
@@ -55,15 +54,18 @@ if ( have_posts() ) :
 	while ( have_posts() ) :
 		the_post();
 
-?>
-<article>
-<div class="entry" id="entry-<?php the_ID(); ?>">
-<?php
-		sem_panels::display('the_entry');
-?>
-</div>
-</article>
-<?php
+	$class = get_post_class();
+
+	echo '<article>'
+	    . '<div class="entry' . ( $class ? ( ' ' . implode(' ', $class) ) : '' ) . '">' . "\n";
+
+			sem_panels::display('the_entry');
+
+	echo '<div class="spacer"></div>' . "\n"
+		. '</div>' . '<!-- entry -->' . "\n"
+	                   . '</article>'  . "\n";
+
+
 	endwhile;
 # or fallback
 elseif ( is_404() ) :
@@ -72,7 +74,6 @@ endif;
 
 sem_panels::display('after_the_entries');
 ?>
-</div>
 </div>
 <div id="wrapper_bottom" class="wrapper_section"><div class="hidden"></div></div>
 </div><!-- wrapper -->

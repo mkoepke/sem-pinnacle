@@ -1079,7 +1079,7 @@ EOS;
 		return array(
 			'sep' => false,
 			'items' => array(),
-			'menu_depth' => 0,
+			'menu_depth' => 1,
 			);
 	} # defaults()
 

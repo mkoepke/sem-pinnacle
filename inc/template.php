@@ -241,6 +241,8 @@ class sem_template {
 			if ( file_exists($skin_path . '/print.css') )
 				wp_enqueue_style('custom-print', $skin_url . '/print.css', null, filemtime($skin_path . '/print.css', 'print'));
 		}
+
+
 	} # styles()
 	
 
@@ -251,6 +253,8 @@ class sem_template {
 	 **/
 	function fonts() {
 		global $sem_theme_options;
+
+		echo '<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">';
 
 		sem_template::load_font( $sem_theme_options['active_font']);
 

@@ -35,9 +35,7 @@ if ( $pings ) {
 	$caption = sprintf($caption, $title);
 	
 	echo '<div class="pings_header">' . "\n"
-		. '<div class="pad">' . "\n"
 		. '<h2>' . $caption . '</h2>' . "\n"
-		. '</div>' . "\n"
 		. '</div>' . "\n";
 	
 	foreach ( $pings as $comment ) {
@@ -51,13 +49,13 @@ if ( $pings ) {
 					. '</div> <!-- pings_list -->' . "\n";
 			}
 			
-			echo '<div class="pings_date pad">' . "\n"
+			echo '<div class="pings_date">' . "\n"
 				. '<span>'
 				. $cur_date
 				. '</span>'
 				. '</div>' . "\n";
 			
-			echo '<div class="pings_list pad">' . "\n";
+			echo '<div class="pings_list">' . "\n";
 
 			echo '<ul>' . "\n";
 			
@@ -99,9 +97,7 @@ if ( $comments ) {
 	}
 	
 	echo '<div class="comments_header">' . "\n"
-		. '<div class="pad">' . "\n"
 		. '<h2>' . $caption . $comment_form_link . '</h2>' . "\n"
-		. '</div>' . "\n"
 		. '</div>' . "\n";
 	
 	foreach ( (array) $comments as $comment ) {
@@ -109,11 +105,9 @@ if ( $comments ) {
 		
 		if ( !isset($prev_date) || $cur_date != $prev_date ) {
 			echo '<div class="comment_date">' . "\n"
-				. '<div class="pad">' . "\n"
 				. '<span>'
 				. $cur_date
 				. '</span>'
-				. '</div>' . "\n"
 				. '</div>' . "\n";
 			
 			$prev_date = $cur_date;
@@ -131,8 +125,7 @@ if ( $comments ) {
 				. '">' . "\n"
 			. '<div class="comment_pad">' . "\n";
 
-		echo '<div class="comment_header">' . "\n"
-			. '<div class="pad">' . "\n";
+		echo '<div class="comment_header">' . "\n";
 		
 		if ( !( isset($_GET['action']) && $_GET['action'] == 'print' ) ) {
 			echo '<div class="comment_actions">' . "\n";
@@ -181,12 +174,9 @@ if ( $comments ) {
 			. '</span>' . "\n"
 			. '</h3>' . "\n";
 
-		echo '</div>' . "\n"
-			. '</div>' . "\n";
+		echo '</div>' . "\n";
 
-
-		echo '<div class="comment_content">' . "\n"
-			. '<div class="pad">' . "\n";
+		echo '<div class="comment_content">' . "\n";
 		
 		echo apply_filters('comment_text', get_comment_text());
 		
@@ -196,9 +186,7 @@ if ( $comments ) {
 				. '</p>' . "\n";
 		}
 		
-		echo '</div>' . "\n"
-			. '</div>' . "\n";
-
+		echo '</div>' . "\n";
 
 		echo '<div class="spacer"></div>' . "\n";
 
@@ -223,7 +211,6 @@ if ( comments_open() && !( isset($_GET['action']) && $_GET['action'] == 'print' 
 	echo '<div id="respond">' . "\n";
 	
 	echo '<div class="comments_header">' . "\n"
-		. '<div class="pad">' . "\n"
 		. '<h2>' . $comments_captions['leave_comment'] . '</h2>' . "\n";
 	
 	echo '<p class="cancel_comment_reply">'
@@ -232,8 +219,7 @@ if ( comments_open() && !( isset($_GET['action']) && $_GET['action'] == 'print' 
 		. '</a>'
 		. '</p>' . "\n";
 	
-	echo '</div>' . "\n"
-		. '</div>' . "\n";
+	echo '</div>' . "\n";
 
 	if ( get_option('comment_registration') && !$user_ID ) {
 		$login_url = '<span class="login">'
@@ -243,17 +229,14 @@ if ( comments_open() && !( isset($_GET['action']) && $_GET['action'] == 'print' 
 			. '</span>';
 			
 		echo '<div class="comments_login">' . "\n"
-			. '<div class="pad">' . "\n"
 			. '<p>'
 			. sprintf($comments_captions['login_required'], $login_url)
 			. '</p>' . "\n"
-			. '</div>' . "\n"
 			. '</div>' . "\n";
 	} else {
 		echo '<form method="post" id="commentform"'
 			. ' action="' . trailingslashit(site_url()) . 'wp-comments-post.php"'
-			. '>' . "\n"
-			. '<div class="pad">' . "\n";
+			. '>' . "\n";
 		
 		if ( $comments_captions['policy'] )
 			echo apply_filters('widget_text', wpautop($comments_captions['policy']));
@@ -355,8 +338,7 @@ if ( comments_open() && !( isset($_GET['action']) && $_GET['action'] == 'print' 
 		
 		do_action('comment_form', $post->ID);
 		
-		echo '</div>' . "\n"
-			. '</form>' . "\n";
+		echo '</form>' . "\n";
 
 		if ( function_exists('show_manual_subscription_form') ) {
 			show_manual_subscription_form();

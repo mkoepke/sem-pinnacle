@@ -56,7 +56,7 @@ class sem_panels {
 		sem_panels::switch_themes();
 		
 		global $sem_theme_options;
-		$before_widget = '<div class="widget %1$s %2$s pad">' . "\n";
+		$before_widget = '<div class="widget %1$s %2$s">' . "\n";
 		$after_widget = '</div>' . "\n";
 		
 		$before_title = '<div class="widget_title"><h2>';
@@ -159,34 +159,34 @@ class sem_panels {
 			switch ( $panel_id ) {
 			case 'the_header':
 				$before_widget = "\n\t"
-					. '<div class="%1$s %2$s header_widget pad">' . "\n\t";
+					. '<div class="%1$s %2$s header_widget">' . "\n\t";
 				$after_widget = "\n\t"
 					. '</div><!-- header_widget -->' . "\n\n";
 				break;
 			
 			case 'the_footer':
 				$before_widget = "\n\t"
-					. '<div class="%1$s %2$s footer_widget pad">' . "\n\t";
+					. '<div class="%1$s %2$s footer_widget">' . "\n\t";
 				$after_widget = "\n\t"
 					. '</div><!-- footer_widget -->' . "\n\n";
 				break;
 			
 			case 'the_header_boxes':
 			case 'the_footer_boxes':
-				$before_widget = '<div class="inline_box %1$s %2$s pad">' . "\n";
+				$before_widget = '<div class="inline_box %1$s %2$s">' . "\n";
 				$after_widget = '</div><!-- inline_box -->' . "\n";
 				break;
 			
 			case 'before_the_entries':
 			case 'after_the_entries':
 			case 'the_404':
-				$before_widget = '<div class="%1$s %2$s main_widget pad">' . "\n";
+				$before_widget = '<div class="%1$s %2$s main_widget">' . "\n";
 				$after_widget = '</div><!-- main_widget -->' . "\n";
 				break;
 			
 			default:
 				$before_widget = '<div class="spacer"></div>' . "\n"
-					. '<div class="%1$s %2$s pad">' . "\n";
+					. '<div class="%1$s %2$s">' . "\n";
 				$after_widget = '</div>' . "\n";
 				break;
 			}

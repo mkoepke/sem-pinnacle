@@ -12,26 +12,26 @@ jQuery(document).ready(function($) {
     });
 
 
-		  $("#header_nav").before('<div id="header-menu-icon"></div>');
-			$("#header-menu-icon").click(function() {
-				$("#header_nav").slideToggle();
-			});
-			$(window).resize(function(){
-				if(window.innerWidth > 649) {
-					$("#header_nav").removeAttr("style");
-				}
-			});
+	$("#header_nav").before('<div id="header-menu-icon" class="fa fa-bars"></div>');
+	$("#header-menu-icon").click(function() {
+		$("#header_nav").slideToggle();
+	});
+	$(window).resize(function(){
+		if(window.innerWidth > 649) {
+			$("#header_nav").removeAttr("style");
+		}
+	});
 
-		/*	$( function()
-			{
-				$( '#header_nav li:has(ul)' ).doubleTapToGo();
-			});
-		*/
-			$("#header_nav li.nav_branch > a").click(function(e) {
-				e.preventDefault();
-				var $this = $(this);
-				$this.toggleClass('open').next('ul').toggleClass('open');
-			});
+	/*	$( function()
+	{
+		$( '#header_nav li:has(ul)' ).doubleTapToGo();
+	});
+	*/
+	$("#header_nav li.nav_branch > a").click(function(e) {
+		e.preventDefault();
+		var $this = $(this);
+		$this.toggleClass('open').next('ul').toggleClass('open');
+	});
 });
 
 
