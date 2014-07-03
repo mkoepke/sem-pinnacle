@@ -715,8 +715,8 @@ EOS;
 	  - article
       - .entry
 
-        - .entry_date
         - .entry_header, .entry_header h1
+        - .entry_date  .byline_author
         - .entry_content
         - .entry_categories
         - .entry_tags

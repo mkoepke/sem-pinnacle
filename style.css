@@ -365,19 +365,22 @@ Theme Fonts
 --------------------------------------------- */
 
 h1 {
-	font-size: 1.50em;
+	font-size: 1.750em;
 	letter-spacing: -1px;
-	line-height: 123.1%;
+	line-height: 1.2;
     font-family: inherit;
 }
 
 h2 {
-	font-size: 1.188em;
-	line-height: 123.1%;
+	font-size: 1.3125em;
+	line-height: 1.2;
     font-family: inherit;
 }
 
-h3,
+h3 {
+	font-size: 1.125em;
+}
+
 th {
 	font-weight: bold;
 }
@@ -1066,22 +1069,18 @@ h2 a {
 	margin-top: 0.9375em;
 }
 
-.entry h2 {
-	margin-top: 0.9375em;
-}
-
 .entry_header {
 	margin-top: 0.625em;
+	padding: 0;
+	margin-bottom: 0;
 }
 
-.entry_date + .entry_header,
-.entry_date + .entry_header h1 {
-	margin-top: 0.125em;
+.entry_header h1 {
+	margin-top: 0;
 	padding: 0;
     margin-bottom: 0;
 }
 
-div.entry_date,
 h3.post_list_date,
 .comment_date,
 .pings_date {
@@ -1089,18 +1088,13 @@ h3.post_list_date,
 	margin: 0.625em 0 0.3125em;
 }
 
-div.entry_date {
-	margin-bottom: 0.125em;
-}
-
-.entry_header,
-.pings_header,
-.comments_header {
+.entry_meta {
 	margin-bottom: 0.625em;
 }
 
-.entry_content h3 {
-	font-size: 0.9375em;
+.pings_header,
+.comments_header {
+	margin-bottom: 0.625em;
 }
 
 .entry_categories p,

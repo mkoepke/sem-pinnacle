@@ -58,32 +58,35 @@ class entry_header extends WP_Widget {
             $author = get_the_author();
             $author_url = get_author_posts_url( get_the_author_meta( 'ID' ) );
 
-          $byline = '<span class="byline_author vcard">'
-              . $author_byline . ' '
-              . '<a class="url fn" href="' . esc_url($author_url) . '" rel="author">'
-              . $author
-              . '</a>'
-        	  . '</span>' . "\n";
+            $byline = '<span class="byline_author vcard">'
+				. $author_byline . ' '
+				. '<a class="url fn" href="' . esc_url($author_url) . '" rel="author">'
+				. $author
+				. '</a>'
+				. '</span>' . "\n";
         }
 
-		if ( $date || $title ) {
-			if ( $date ) {
-				echo '<div class="entry_date">' . "\n"
-                    . '<time class="updated" datetime="' . esc_attr( get_the_date( 'c' ) ) . '">'
-					. $date
-                    . '</time>'
-					. '</div>' . "\n";
-			}
-
-			if ( $title ) {
-				echo '<div class="entry_header">' . "\n"
-					. '<h1 class="entry-title">'
-					. $title
-					. '</h1>' . "\n"
-                    . $byline . "\n"
-					. '</div>' . "\n";
-			}
+		$entry_date = '';
+		if ( $date ) {
+			$entry_date = '<time class="entry_date updated" datetime="' . esc_attr( get_the_date( 'c' ) ) . '">'
+				. '<span>'
+				. $date
+				. '</span>'
+		        . '</time>';
 		}
+
+		if ( $title ) {
+			echo '<div class="entry_header">' . "\n"
+				. '<h1 class="entry-title">'
+				. $title
+				. '</h1>' . "\n"
+				. '</div>' . "\n";
+		}
+
+		echo '<div class="entry_meta">' . "\n"
+			. $entry_date . ' ' . $byline . "\n"
+			. '</div>' . "\n";
+
 	} # widget()
 
 	/**
@@ -142,7 +145,7 @@ class entry_header extends WP_Widget {
 
  		echo '<p>'
  			. '<label>'
- 			. '<code>' . __('By', 'sem-reloaded') . '</code>'
+ 			. '<code>' . __('by', 'sem-reloaded') . '</code>'
  			. '<br />' . "\n"
  			. '<input type="text" class="widefat"'
  			. ' name="' . $this->get_field_name('author_byline') . '"'
@@ -163,7 +166,7 @@ class entry_header extends WP_Widget {
 		return array(
 			'show_post_date' => true,
             'show_author_byline' => false,
-            'author_byline' => __('By', 'sem-reloaded'),
+            'author_byline' => __('by', 'sem-reloaded'),
 			);
 	} # defaults()
 } # entry_header
