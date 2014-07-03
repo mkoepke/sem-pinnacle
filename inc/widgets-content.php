@@ -11,10 +11,10 @@ class blog_header extends WP_Widget {
 	 *
 	 */
 	public function __construct() {
-		$widget_name = __('Blog: Header', 'sem-reloaded');
+		$widget_name = __('Blog: Header', 'sem-pinnacle');
 		$widget_ops = array(
 			'classname' => 'blog_header archives_header',
-			'description' => __('The title and description that appear on category, tag, search, 404 and date archive pages. Must be placed before each entry.', 'sem-reloaded'),
+			'description' => __('The title and description that appear on category, tag, search, 404 and date archive pages. Must be placed before each entry.', 'sem-pinnacle'),
 			);
 		$control_ops = array(
 			'width' => 330,
@@ -54,11 +54,11 @@ class blog_header extends WP_Widget {
 			$desc = trim(tag_description());
 		} elseif ( is_date() ) {
 			if ( is_year() )
-				$date = date_i18n(__('Y', 'sem-reloaded'), strtotime(get_query_var('year') . '-01-01 GMT'), true);
+				$date = date_i18n(__('Y', 'sem-pinnacle'), strtotime(get_query_var('year') . '-01-01 GMT'), true);
 			elseif ( is_month() )
 				$date = single_month_title(' ', false);
 			else
-				$date = date_i18n(__('M jS, Y', 'sem-reloaded'), strtotime(get_query_var('year') . '-' . zeroise(get_query_var('monthnum'), 2) . '-' . zeroise(get_query_var('day'), 2) . ' GMT'), true);
+				$date = date_i18n(__('M jS, Y', 'sem-pinnacle'), strtotime(get_query_var('year') . '-' . zeroise(get_query_var('monthnum'), 2) . '-' . zeroise(get_query_var('day'), 2) . ' GMT'), true);
 
 			echo sprintf(trim($archives_title), $date);
 			$desc = '<div class="posts_nav">'
@@ -137,7 +137,7 @@ class blog_header extends WP_Widget {
 		$instance = wp_parse_args($instance, $defaults);
 		extract($instance, EXTR_SKIP);
 
-		echo '<h3>' . __('Captions', 'sem-reloaded') . '</h3>' . "\n";
+		echo '<h3>' . __('Captions', 'sem-pinnacle') . '</h3>' . "\n";
 
 		foreach ( $defaults as $field => $default ) {
 			switch ( $field ) {
@@ -179,10 +179,10 @@ class blog_header extends WP_Widget {
 
 	function defaults() {
 		return array(
-			'title_404' => __('404: Not Found', 'sem-reloaded'),
-			'desc_404' => __('The page you\'ve requested was not found.', 'sem-reloaded'),
-			'archives_title' => __('%s Archives', 'sem-reloaded'),
-			'search_title' => __('Search: %s', 'sem-reloaded'),
+			'title_404' => __('404: Not Found', 'sem-pinnacle'),
+			'desc_404' => __('The page you\'ve requested was not found.', 'sem-pinnacle'),
+			'archives_title' => __('%s Archives', 'sem-pinnacle'),
+			'search_title' => __('Search: %s', 'sem-pinnacle'),
 			);
 	} # defaults()
 } # blog_header
@@ -200,10 +200,10 @@ class blog_footer extends WP_Widget {
 	 *
 	 */
 	public function __construct() {
-		$widget_name = __('Blog: Footer', 'sem-reloaded');
+		$widget_name = __('Blog: Footer', 'sem-pinnacle');
 		$widget_ops = array(
 			'classname' => 'blog_footer next_prev_posts',
-			'description' => __('The next/previous blog posts links. Must be placed after each entry.', 'sem-reloaded'),
+			'description' => __('The next/previous blog posts links. Must be placed after each entry.', 'sem-pinnacle'),
 			);
 		$control_ops = array(
 			'width' => 330,
@@ -355,22 +355,22 @@ class blog_footer extends WP_Widget {
 
 			if ( $d ) {
 				$dates[] = '<a href="' . get_day_link(gmdate('Y', $date), gmdate('m', $date), gmdate('d', $date)) . '">'
-					. '&laquo; ' . date_i18n(__('M jS, Y', 'sem-reloaded'), $date, true)
+					. '&laquo; ' . date_i18n(__('M jS, Y', 'sem-pinnacle'), $date, true)
 					. '</a>';
 			} elseif ( $m ) {
 				$dates[] = '<a href="' . get_month_link(gmdate('Y', $date), gmdate('m', $date)) . '">'
-					. '&laquo; ' . date_i18n(__('M, Y', 'sem-reloaded'), $date, true)
+					. '&laquo; ' . date_i18n(__('M, Y', 'sem-pinnacle'), $date, true)
 					. '</a>';
 			} else {
 				$dates[] = '<a href="' . get_year_link(gmdate('Y', $date)) . '">'
-					. '&laquo; ' . date_i18n(__('Y', 'sem-reloaded'), $date, true)
+					. '&laquo; ' . date_i18n(__('Y', 'sem-pinnacle'), $date, true)
 					. '</a>';
 			}
 		}
 
 		if ( $d ) {
 			$dates[] = '<a href="' . get_month_link($y, $m) . '">'
-				. date_i18n(__('M, Y', 'sem-reloaded'), strtotime("$y-$m-$d GMT"), true)
+				. date_i18n(__('M, Y', 'sem-pinnacle'), strtotime("$y-$m-$d GMT"), true)
 				. '</a>';
 		}
 
@@ -403,15 +403,15 @@ class blog_footer extends WP_Widget {
 
 			if ( $d ) {
 				$dates[] = '<a href="' . get_day_link(gmdate('Y', $date), gmdate('m', $date), gmdate('d', $date)) . '">'
-					. date_i18n(__('M jS, Y', 'sem-reloaded'), $date, true) . ' &raquo;'
+					. date_i18n(__('M jS, Y', 'sem-pinnacle'), $date, true) . ' &raquo;'
 					. '</a>';
 			} elseif ( $m ) {
 				$dates[] = '<a href="' . get_month_link(gmdate('Y', $date), gmdate('m', $date)) . '">'
-					. date_i18n(__('M, Y', 'sem-reloaded'), $date, true) . ' &raquo;'
+					. date_i18n(__('M, Y', 'sem-pinnacle'), $date, true) . ' &raquo;'
 					. '</a>';
 			} else {
 				$dates[] = '<a href="' . get_year_link(gmdate('Y', $date)) . '">'
-					. date_i18n(__('Y', 'sem-reloaded'), $date, true) . ' &raquo;'
+					. date_i18n(__('Y', 'sem-pinnacle'), $date, true) . ' &raquo;'
 					. '</a>';
 			}
 		}
@@ -450,7 +450,7 @@ class blog_footer extends WP_Widget {
 		$instance = wp_parse_args($instance, $defaults);
 		extract($instance, EXTR_SKIP);
 
-		echo '<h3>' . __('Captions', 'sem-reloaded') . '</h3>' . "\n";
+		echo '<h3>' . __('Captions', 'sem-pinnacle') . '</h3>' . "\n";
 
 		foreach ( $defaults as $field => $default ) {
 			echo '<p>'
@@ -475,8 +475,8 @@ class blog_footer extends WP_Widget {
 
 	function defaults() {
 		return array(
-			'next' => __('Next', 'sem-reloaded'),
-			'previous' => __('Previous', 'sem-reloaded'),
+			'next' => __('Next', 'sem-pinnacle'),
+			'previous' => __('Previous', 'sem-pinnacle'),
 			);
 	} # defaults()
 } # blog_footer
@@ -494,10 +494,10 @@ class sem_breadcrumbs extends WP_Widget {
 	 *
 	 */
 	public function __construct() {
-		$widget_name = __('Breadcrumb Navigation', 'sem-reloaded');
+		$widget_name = __('Breadcrumb Navigation', 'sem-pinnacle');
 		$widget_ops = array(
 			'classname' => 'sem_breadcrumbs',
-			'description' => __('Breadcrumb Navigation. Must be placed before each entry.', 'sem-reloaded'),
+			'description' => __('Breadcrumb Navigation. Must be placed before each entry.', 'sem-pinnacle'),
 			);
 		$control_ops = array(
 			'width' => 330,
@@ -649,7 +649,7 @@ class sem_breadcrumbs extends WP_Widget {
 				if ( get_query_var('paged') ) {
 					if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() )
 						$o .= ' (';
-					$o .= __('Page') . ' ' . get_query_var('paged');
+					$o .= __('Page', 'sem-pinnacle') . ' ' . get_query_var('paged');
 					if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() )
 						$o .= ')';
 				}
@@ -687,7 +687,7 @@ class sem_breadcrumbs extends WP_Widget {
 		$instance = wp_parse_args($instance, $this->defaults());
 		extract($instance, EXTR_SKIP);
 
-		echo '<h3>' . __('Config', 'sem-reloaded') . '</h3>' . "\n";
+		echo '<h3>' . __('Config', 'sem-pinnacle') . '</h3>' . "\n";
 
 		echo '<p>'
 			. '<label>'
@@ -696,7 +696,7 @@ class sem_breadcrumbs extends WP_Widget {
 			. checked($show_on_home, true, false)
 			. ' />'
 			. '&nbsp;'
-			. __('Display breadcrumb navigation on the home/front page.', 'sem-reloaded')
+			. __('Display breadcrumb navigation on the home/front page.', 'sem-pinnacle')
 			. '</label>'
 			. '</p>' . "\n";
 
@@ -707,13 +707,13 @@ class sem_breadcrumbs extends WP_Widget {
 			. checked($show_current, true, false)
 			. ' />'
 			. '&nbsp;'
-			. __('Show current post/page title in breadcrumbs.', 'sem-reloaded')
+			. __('Show current post/page title in breadcrumbs.', 'sem-pinnacle')
 			. '</label>'
 			. '</p>' . "\n";
 
 		echo '<p>'
 			. '<label>'
-			. __('Delimiter to use between levels:', 'sem-reloaded') . '&nbsp;'
+			. __('Delimiter to use between levels:', 'sem-pinnacle') . '&nbsp;'
 			. '<select name="' . $this->get_field_name('delimiter') . '">' . "\n"
 			. '<option value="0"'
 				. selected($delimiter, 0, false)
@@ -728,11 +728,11 @@ class sem_breadcrumbs extends WP_Widget {
 			. '</label>'
 			. '</p>' . "\n";
 
-      	echo '<h3>' . __('Captions', 'sem-reloaded') . '</h3>' . "\n";
+      	echo '<h3>' . __('Captions', 'sem-pinnacle') . '</h3>' . "\n";
 
 		echo '<p>'
 			. '<label>'
-			. '<code>' . __('Text for \'Home\' link', 'sem-reloaded') . '</code>'
+			. '<code>' . __('Text for \'Home\' link', 'sem-pinnacle') . '</code>'
 			. '<br />' . "\n"
 			. '<input type="text" class="widefat"'
 			. ' name="' . $this->get_field_name('home_name') . '"'
@@ -753,7 +753,7 @@ class sem_breadcrumbs extends WP_Widget {
 		return array(
 			'show_on_home' => false, // 1 - show breadcrumbs on the homepage, 0 - don't show
 			'delimiter' => 0, // delimiter between crumbs
-			'home_name' => __('Home', 'sem-reloaded'), // text for the 'Home' link
+			'home_name' => __('Home', 'sem-pinnacle'), // text for the 'Home' link
 			'show_current' => true, // 1 - show current post/page title in breadcrumbs, 0 - don't show
 			);
 	} # defaults()

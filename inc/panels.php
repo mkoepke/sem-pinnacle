@@ -66,7 +66,7 @@ class sem_panels {
 			register_sidebar(
 				array(
 					'id' => 'top_sidebar',
-					'name' => __('Top Wide Sidebar', 'sem-reloaded'),
+					'name' => __('Top Wide Sidebar', 'sem-pinnacle'),
 					'before_widget' => $before_widget,
 					'after_widget' => $after_widget,
 					'before_title' => $before_title,
@@ -76,7 +76,7 @@ class sem_panels {
 			register_sidebar(
 				array(
 					'id' => 'sidebar-1',
-					'name' => __('Sidebar 1/Leftmost', 'sem-reloaded'),
+					'name' => __('Sidebar 1/Leftmost', 'sem-pinnacle'),
 					'before_widget' => $before_widget,
 					'after_widget' => $after_widget,
 					'before_title' => $before_title,
@@ -86,7 +86,7 @@ class sem_panels {
 			register_sidebar(
 				array(
 					'id' => 'sidebar-2',
-					'name' => __('Sidebar 2/Rightmost', 'sem-reloaded'),
+					'name' => __('Sidebar 2/Rightmost', 'sem-pinnacle'),
 					'before_widget' => $before_widget,
 					'after_widget' => $after_widget,
 					'before_title' => $before_title,
@@ -96,7 +96,7 @@ class sem_panels {
 			register_sidebar(
 				array(
 					'id' => 'bottom_sidebar',
-					'name' => __('Bottom Wide Sidebar', 'sem-reloaded'),
+					'name' => __('Bottom Wide Sidebar', 'sem-pinnacle'),
 					'before_widget' => $before_widget,
 					'after_widget' => $after_widget,
 					'before_title' => $before_title,
@@ -109,7 +109,7 @@ class sem_panels {
 				register_sidebar(
 					array(
 						'id' => 'sidebar-1',
-						'name' => __('Sidebar 1/Leftmost', 'sem-reloaded'),
+						'name' => __('Sidebar 1/Leftmost', 'sem-pinnacle'),
 						'before_widget' => $before_widget,
 						'after_widget' => $after_widget,
 						'before_title' => $before_title,
@@ -119,7 +119,7 @@ class sem_panels {
 				register_sidebar(
 					array(
 						'id' => 'sidebar-2',
-						'name' => __('Sidebar 2/Rightmost', 'sem-reloaded'),
+						'name' => __('Sidebar 2/Rightmost', 'sem-pinnacle'),
 						'before_widget' => $before_widget,
 						'after_widget' => $after_widget,
 						'before_title' => $before_title,
@@ -132,7 +132,7 @@ class sem_panels {
 				register_sidebar(
 					array(
 						'id' => 'sidebar-1',
-						'name' => __('Sidebar', 'sem-reloaded'),
+						'name' => __('Sidebar', 'sem-pinnacle'),
 						'before_widget' => $before_widget,
 						'after_widget' => $after_widget,
 						'before_title' => $before_title,
@@ -144,14 +144,14 @@ class sem_panels {
 		}
 
 		foreach ( array(
-			'the_header' => __('Header Area', 'sem-reloaded'),
-			'the_header_boxes' => __('Header Boxes Bar', 'sem-reloaded'),
-			'before_the_entries' => __('Before the Entries', 'sem-reloaded'),
-			'the_entry' => __('Each Entry', 'sem-reloaded'),
-			'after_the_entries' => __('After the Entries', 'sem-reloaded'),
-			'the_footer_boxes' => __('Footer Boxes Bar', 'sem-reloaded'),
-			'the_footer' => __('Footer Area', 'sem-reloaded'),
-			'the_404' => __('Not Found Error (404)', 'sem-reloaded'),
+			'the_header' => __('Header Area', 'sem-pinnacle'),
+			'the_header_boxes' => __('Header Boxes Bar', 'sem-pinnacle'),
+			'before_the_entries' => __('Before the Entries', 'sem-pinnacle'),
+			'the_entry' => __('Each Entry', 'sem-pinnacle'),
+			'after_the_entries' => __('After the Entries', 'sem-pinnacle'),
+			'the_footer_boxes' => __('Footer Boxes Bar', 'sem-pinnacle'),
+			'the_footer' => __('Footer Area', 'sem-pinnacle'),
+			'the_404' => __('Not Found Error (404)', 'sem-pinnacle'),
 		) as $panel_id => $panel_label ) {
 			$before_title = '<h2>';
 			$after_title = '</h2>' . "\n";

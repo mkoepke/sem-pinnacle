@@ -156,7 +156,7 @@ EOS;
 		
 		echo '<div class="updated fade">'
 			. '<p><strong>'
-			. __('Settings saved.', 'sem-reloaded')
+			. __('Settings saved.', 'sem-pinnacle')
 			. '</strong></p>'
 			. '</div>' . "\n";
 	} # save_options()
@@ -178,23 +178,23 @@ EOS;
 		$skins = sem_skin::get_skins();
 		$fonts = sem_font::get_fonts();
 		
-		echo '<h2>' . __('Manage Skin', 'sem-reloaded') . '</h2>' . "\n";
+		echo '<h2>' . __('Manage Skin', 'sem-pinnacle') . '</h2>' . "\n";
 		
-		echo '<h3>' . __('Current Skin &amp; Font', 'sem-reloaded') . '</h3>' . "\n";
+		echo '<h3>' . __('Current Skin &amp; Font', 'sem-pinnacle') . '</h3>' . "\n";
 		
 		$details = $skins[$sem_theme_options['active_skin']];
 		$custom_skin = ( isset( $details['type'] )) && in_array( $details['type'], array('custom', 'Custom'));
 		$screenshot = ($custom_skin ? sem_content_url : sem_url) . '/skins/' . $sem_theme_options['active_skin'] . '/screenshot.png';
-		$title = __('%1$s v.%2$s by %3$s', 'sem-reloaded');
+		$title = __('%1$s v.%2$s by %3$s', 'sem-pinnacle');
 		$name = $details['uri']
 			? ( '<a href="' . esc_url($details['uri']) . '"'
-				. ' title="' . esc_attr(__('Visit the skin\' page', 'sem-reloaded')) . '">'
+				. ' title="' . esc_attr(__('Visit the skin\' page', 'sem-pinnacle')) . '">'
 				. $details['name']
 				. '</a>' )
 			: $details['name'];
 		$author = $details['author_uri']
 			? ( '<a href="' . esc_url($details['author_uri']) . '"'
-				. ' title="' . esc_attr(__('Visit the skin authors\' site', 'sem-reloaded')) . '">'
+				. ' title="' . esc_attr(__('Visit the skin authors\' site', 'sem-pinnacle')) . '">'
 				. $details['author_name']
 				. '</a>' )
 			: $details['author_name'];
@@ -211,7 +211,7 @@ EOS;
 		
 		if ( $details['tags'] ) {
 			echo '<p>'
-				. sprintf(__('Tags: %s', 'sem-reloaded'), implode(',', $details['tags']))
+				. sprintf(__('Tags: %s', 'sem-pinnacle'), implode(',', $details['tags']))
 				. '</p>' . "\n";
 		}
 
@@ -225,7 +225,7 @@ EOS;
 
 		if ($credits) {
 			echo '<p>'
-				. sprintf(__('Credits: %s', 'sem-reloaded'), $credits)
+				. sprintf(__('Credits: %s', 'sem-pinnacle'), $credits)
 				. '</p>' . "\n";
 		}
 
@@ -234,19 +234,19 @@ EOS;
 			. '</span>';
 
 		echo '<p>'
-			. sprintf(__('Font Family: %s.', 'sem-reloaded'), $font)
+			. sprintf(__('Font Family: %s.', 'sem-pinnacle'), $font)
 			. '&nbsp;&nbsp;'
-			.  __( 'To select a new font, visit the Semiologic <a href="admin.php?page=font">font</a> page.', 'sem-reloaded')
+			.  __( 'To select a new font, visit the Semiologic <a href="admin.php?page=font">font</a> page.', 'sem-pinnacle')
 			. '</p>' . "\n";
 
 		echo '<div style="clear: both;"></div>' . "\n";
 		
 		echo '</div>' . "\n";
 		
-		echo '<h3>' . __('Available Skins', 'sem-reloaded') . '</h3>' . "\n";
+		echo '<h3>' . __('Available Skins', 'sem-pinnacle') . '</h3>' . "\n";
 		
 		echo '<p class="hide-if-no-js">'
-			. __('Click on a skin below to activate it immediately.', 'sem-reloaded')
+			. __('Click on a skin below to activate it immediately.', 'sem-pinnacle')
 			. '</p>' . "\n";
 		
 		echo '<table id="available_options" cellspacing="0" cellpadding="0">' . "\n";
@@ -279,16 +279,16 @@ EOS;
 
 			$custom_skin = ( isset( $details['type'] )) && in_array( $details['type'], array('custom', 'Custom'));
 			$screenshot = ($custom_skin ? sem_content_url : sem_url) . '/skins/' . $skin . '/screenshot.png';
-			$title = __('%1$s v.%2$s', 'sem-reloaded');
+			$title = __('%1$s v.%2$s', 'sem-pinnacle');
 			$name = $details['uri']
 				? ( '<a href="' . esc_url($details['uri']) . '"'
-					. ' title="' . esc_attr(__('Visit the skin\'s page', 'sem-reloaded')) . '">'
+					. ' title="' . esc_attr(__('Visit the skin\'s page', 'sem-pinnacle')) . '">'
 					. $details['name']
 					. '</a>' )
 				: $details['name'];
 			$author = $details['author_uri']
 				? ( '<a href="' . esc_url($details['author_uri']) . '"'
-					. ' title="' . esc_attr(__('Visit the skin author\'s site', 'sem-reloaded')) . '">'
+					. ' title="' . esc_attr(__('Visit the skin author\'s site', 'sem-pinnacle')) . '">'
 					. $details['author_name']
 					. '</a>' )
 				: $details['author_name'];
@@ -305,7 +305,7 @@ EOS;
 					. ' />' . '&nbsp;' . "\n"
 				. '</span>'
 				. sprintf($title, $name, $details['version']) . '<br />'
-				. sprintf(__('By %s', 'sem-reloaded'), $author)
+				. sprintf(__('By %s', 'sem-pinnacle'), $author)
 				. '</h4>' . "\n";
 			
 			echo '</td>' . "\n";
@@ -333,18 +333,18 @@ EOS;
 		echo '</table>' . "\n";
 		
 		echo '<p class="submit hide-if-js">'
-			. '<input type="submit" value="' . esc_attr(__('Save Changes', 'sem-reloaded')) . '" />'
+			. '<input type="submit" value="' . esc_attr(__('Save Changes', 'sem-pinnacle')) . '" />'
 			. '</p>' . "\n";
 
-		echo '<h3>' . __('Designer Credits', 'sem-reloaded') . '</h3>' . "\n";
+		echo '<h3>' . __('Designer Credits', 'sem-pinnacle') . '</h3>' . "\n";
 		
 		echo '<p>'
 			. '<label for="sem_credits">'
 			. '<code>'
-			. htmlspecialchars(__('Made with %1$s &bull; %2$s skin by %3$s', 'sem-reloaded'), ENT_COMPAT, get_option('blog_charset'))
+			. htmlspecialchars(__('Made with %1$s &bull; %2$s skin by %3$s', 'sem-pinnacle'), ENT_COMPAT, get_option('blog_charset'))
 			. '</code>'
             . '<br />' . "\n"
-            . '<code>' . __('%1$s - Theme Name, %2$s - Skin Name, %3$s - Skin Author', 'sem-reloaded') . '</code>'
+            . '<code>' . __('%1$s - Theme Name, %2$s - Skin Name, %3$s - Skin Author', 'sem-pinnacle') . '</code>'
 			. '</label>'
 			. '<br />' . "\n"
 			. '<textarea id="sem_credits" name="credits" class="widefat" cols="50" rows="3">'
@@ -353,7 +353,7 @@ EOS;
 			. '</p>' . "\n";
 		
 		echo '<div class="submit">'
-			. '<input type="submit" value="' . esc_attr(__('Save Changes', 'sem-reloaded')) . '" />'
+			. '<input type="submit" value="' . esc_attr(__('Save Changes', 'sem-pinnacle')) . '" />'
 			. '</div>' . "\n";
 		
 		echo '</form>' . "\n";

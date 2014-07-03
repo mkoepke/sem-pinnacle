@@ -1,6 +1,6 @@
 <?php
-__('Semiologic, Reloaded', 'sem-reloaded');
-__('The Semiologic theme, reloaded.', 'sem-reloaded');
-__('Sales Letter', 'sem-reloaded');
-__('Mono Column', 'sem-reloaded');
-__('Special Page', 'sem-reloaded');
+__('Semiologic, Reloaded', 'sem-pinnacle');
+__('The Semiologic theme, reloaded.', 'sem-pinnacle');
+__('Sales Letter', 'sem-pinnacle');
+__('Mono Column', 'sem-pinnacle');
+__('Special Page', 'sem-pinnacle');

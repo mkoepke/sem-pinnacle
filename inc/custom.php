@@ -388,7 +388,7 @@ EOS;
 						$skin_path = $custom_skin ?  sem_content_path . '/skins/' . $sem_theme_options['active_skin']  : sem_path . '/skins/' . $sem_theme_options['active_skin'];
 
 						if ( !$wp_filesystem->find_folder( $skin_path ) ) {
-							$fs_error = sprintf(__('Publish Failed: Could not locate your active skin\'s folder (<code>%s</code>).', 'sem-reloaded'), 'wp-content/themes/sem-reloaded/skins/' . $sem_theme_options['active_skin']);
+							$fs_error = sprintf(__('Publish Failed: Could not locate your active skin\'s folder (<code>%s</code>).', 'sem-pinnacle'), 'wp-content/themes/sem-reloaded/skins/' . $sem_theme_options['active_skin']);
 							break;
 						}
 						
@@ -396,10 +396,10 @@ EOS;
 						
 						if ( $wp_filesystem->exists($file) ) {
 							if ( !$wp_filesystem->is_file($file) ) {
-								$fs_error = sprintf(__('Publish Failed: A custom.css <strong>folder<strong> is located in your skin\'s folder (<code>%s</code>). Please delete it and try again.', 'sem-reloaded'), 'wp-content/themes/sem-reloaded/skins/' . $sem_theme_options['active_skin']);
+								$fs_error = sprintf(__('Publish Failed: A custom.css <strong>folder<strong> is located in your skin\'s folder (<code>%s</code>). Please delete it and try again.', 'sem-pinnacle'), 'wp-content/themes/sem-reloaded/skins/' . $sem_theme_options['active_skin']);
 								break;
 							} elseif ( !$wp_filesystem->is_writable($file) ) {
-								$fs_error = sprintf(__('Publish Failed: Cannot overwrite your skin\'s custom.css file (<code>%s</code>). Please check its permissions and try again.', 'sem-reloaded'), 'wp-content/themes/sem-reloaded/skins/' . $sem_theme_options['active_skin'] . '/custom.css');
+								$fs_error = sprintf(__('Publish Failed: Cannot overwrite your skin\'s custom.css file (<code>%s</code>). Please check its permissions and try again.', 'sem-pinnacle'), 'wp-content/themes/sem-reloaded/skins/' . $sem_theme_options['active_skin'] . '/custom.css');
 								break;
 							}
 							
@@ -407,7 +407,7 @@ EOS;
 							$new_css = explode('/* == Stop Editing Here! == */', $new_css);
 							$new_css = array_shift($new_css);
 						} elseif ( !$wp_filesystem->is_writable(dirname($file)) ) {
-							$fs_error = sprintf(__('Publish Failed: Cannot write to your skin folder (<code>%s</code>). Please check its permissions and try again.', 'sem-reloaded'), 'wp-content/themes/sem-reloaded/skins/' . $sem_theme_options['active_skin']);
+							$fs_error = sprintf(__('Publish Failed: Cannot write to your skin folder (<code>%s</code>). Please check its permissions and try again.', 'sem-pinnacle'), 'wp-content/themes/sem-reloaded/skins/' . $sem_theme_options['active_skin']);
 							break;
 						} else {
 							$new_css = '';
@@ -449,7 +449,7 @@ EOS;
 
 							do_action('flush_cache');
 						} else {
-							$fs_error = sprintf(__('Publish Failed: A WP filesystem error occurred (probably related to <a href="%1$s">this WP bug</a>) occurred. Paste the following code in %2$s:<pre>%3$s</pre>', 'sem-reloaded'), 'http://core.trac.wordpress.org/ticket/10889', 'wp-content/themes/sem-reloaded/skins/' . $sem_theme_options['active_skin'] . '/custom.css',  $new_css);
+							$fs_error = sprintf(__('Publish Failed: A WP filesystem error occurred (probably related to <a href="%1$s">this WP bug</a>) occurred. Paste the following code in %2$s:<pre>%3$s</pre>', 'sem-pinnacle'), 'http://core.trac.wordpress.org/ticket/10889', 'wp-content/themes/sem-reloaded/skins/' . $sem_theme_options['active_skin'] . '/custom.css',  $new_css);
 							break;
 						}
 					}
@@ -460,20 +460,20 @@ EOS;
 		if ( $restored ) {
 			echo '<div class="updated fade">'
 				. '<p>'
-				. __('Settings Restored.', 'sem-reloaded')
+				. __('Settings Restored.', 'sem-pinnacle')
 				. '</p>'
 				. '</div>';
 		} elseif ( !$publish ) {
 			echo '<div class="updated fade">'
 				. '<p>'
-				. sprintf(__('Settings Saved. <a href="%s">Preview Changes</a>.', 'sem-reloaded'), user_trailingslashit(home_url()) . '?preview=custom-css')
+				. sprintf(__('Settings Saved. <a href="%s">Preview Changes</a>.', 'sem-pinnacle'), user_trailingslashit(home_url()) . '?preview=custom-css')
 				. '</p>'
 				. '</div>';
 		} elseif ( $fs_error ) {
 			if ( $saved ) {
 				echo '<div class="updated fade">'
 					. '<p>'
-					. __('Settings Saved.', 'sem-reloaded')
+					. __('Settings Saved.', 'sem-pinnacle')
 					. '</p>'
 					. '</div>';
 			}
@@ -486,13 +486,13 @@ EOS;
 		} elseif ( $published ) {
 			echo '<div class="updated fade">'
 				. '<p>'
-				. sprintf(__('Settings Saved and Published. <a href="%s">View Changes</a>.', 'sem-reloaded'), user_trailingslashit(home_url()))
+				. sprintf(__('Settings Saved and Published. <a href="%s">View Changes</a>.', 'sem-pinnacle'), user_trailingslashit(home_url()))
 				. '</p>'
 				. '</div>';
 		} elseif ( $saved ) {
 			echo '<div class="updated fade">'
 				. '<p>'
-				. __('Settings Saved.', 'sem-reloaded')
+				. __('Settings Saved.', 'sem-pinnacle')
 				. '</p>'
 				. '</div>';
 		}
@@ -527,40 +527,40 @@ EOS;
 			. '<form method="POST" action="admin.php?page=custom">' . "\n";
 		
 		echo '<h2>'
-			. __('Manage Custom CSS', 'sem-reloaded')
+			. __('Manage Custom CSS', 'sem-pinnacle')
 			. '</h2>' . "\n";
 		
 		wp_nonce_field('sem_custom');
 		
 		echo '<p>'
-			. sprintf(__('This screen allows to customize your skin. Up to a certain point, anyway: backgrounds and borders are not supported because the latter are managed using images<span style="hide-if-no-js"> (for <a href="#" onclick="%s">good reasons</a>)</span>. To customize the rest, select an area below, and customize it to your liking.', 'sem-reloaded'), "jQuery('#good_reasons').fadeIn('slow'); return false;")
+			. sprintf(__('This screen allows to customize your skin. Up to a certain point, anyway: backgrounds and borders are not supported because the latter are managed using images<span style="hide-if-no-js"> (for <a href="#" onclick="%s">good reasons</a>)</span>. To customize the rest, select an area below, and customize it to your liking.', 'sem-pinnacle'), "jQuery('#good_reasons').fadeIn('slow'); return false;")
 			. '</p>' . "\n";
 		
 		echo '<p>'
-			. sprintf(__('Your changes will not appear on your site until you publish them. You can <a href="%s">preview your changes</a> if you save without publishing.', 'sem-reloaded'), user_trailingslashit(home_url()) . '?preview=custom-css')
+			. sprintf(__('Your changes will not appear on your site until you publish them. You can <a href="%s">preview your changes</a> if you save without publishing.', 'sem-pinnacle'), user_trailingslashit(home_url()) . '?preview=custom-css')
 			. '</p>' . "\n";
 		
 		echo '<div id="good_reasons" style="display: none;">';
 		
 		echo '<p>'
-			. sprintf(__('The Semiologic Theme\'s canvas and its key cosmetic elements are image-driven. End-users wanted rounded corners and sexy gradients. They got it. But the only means to do so while ensuring IE compatibility is through the use of background images. The recommended method to change your site\'s background colors, and general look and feel, would be to change your skin &#8212; there are <a href="%s">plentiful choices</a>, and more to come.', 'sem-reloaded'), 'http://skins.semiologic.com')
+			. sprintf(__('The Semiologic Theme\'s canvas and its key cosmetic elements are image-driven. End-users wanted rounded corners and sexy gradients. They got it. But the only means to do so while ensuring IE compatibility is through the use of background images. The recommended method to change your site\'s background colors, and general look and feel, would be to change your skin &#8212; there are <a href="%s">plentiful choices</a>, and more to come.', 'sem-pinnacle'), 'http://skins.semiologic.com')
 			. '</p>' . "\n";
 		
 		echo '<p>'
-			. __('At least for now, adding an interface to manage background images is not an option. We know users are craving for it. But coming up with an interface to create the needed images that fit all of the layout options and potential look and feels, using php and javascript, is much about impossible. If someone ever writes a free equivalent of photoshop in javascript, we\'ll definitely give it a go. In the meanwhile, we\'ll stick to the manual approach.', 'sem-reloaded')
+			. __('At least for now, adding an interface to manage background images is not an option. We know users are craving for it. But coming up with an interface to create the needed images that fit all of the layout options and potential look and feels, using php and javascript, is much about impossible. If someone ever writes a free equivalent of photoshop in javascript, we\'ll definitely give it a go. In the meanwhile, we\'ll stick to the manual approach.', 'sem-pinnacle')
 			. '</p>' . "\n";
 		
 		echo '<p>'
-			. __('That being said, it definitely <em>is</em> possible to customize the images. Here\'s how:', 'sem-reloaded')
+			. __('That being said, it definitely <em>is</em> possible to customize the images. Here\'s how:', 'sem-pinnacle')
 			. '</p>' . "\n";
 		
 		echo '<ol>'
-			. '<li>' . __('Please keep in mind, at all times, that you\'re doing this on your own, and that you should expect no support when trying to change these images. As much as we\'re documenting this, we\'re making the assumption that, if you try it, you\'re familiar with Photoshop masks, layer effects, etc.', 'sem-reloaded') . '</li>' . "\n"
-			. '<li>' . __('Grab the assets of your favorite skin on <a href="http://skins.semiologic.com">skins.semiologic.com</a>.', 'sem-reloaded') . '</li>' . "\n"
-			. '<li>' . __('Create a copy of (or rename) your favorite skin, in <code>wp-content/themes/sem-reloaded/skins</code>. This will allow you to edit it as much as you want without needing to worry about losing your changes during upgrades.', 'sem-reloaded') . '</li>' . "\n"
-			. '<li>' . __('Edit the images in Photoshop. Save for the web. (The psd files are pre-sliced for your convenience.) ', 'sem-reloaded') . '</li>' . "\n"
-			. '<li>' . __('Upload the resulting images into your new skin\'s images folder.', 'sem-reloaded') . '</li>' . "\n"
-			. '<li>' . __('We\'re dead serious about the fact that you\'re on your own if you try the above. If you do not understand it all, please stick to the existing skins; or prepare yourself to spend long hours learning Photoshop. We can also put you in touch with a <a href="http://www.semiologic.com/services/">virtual assistant</a>.', 'sem-reloaded')
+			. '<li>' . __('Please keep in mind, at all times, that you\'re doing this on your own, and that you should expect no support when trying to change these images. As much as we\'re documenting this, we\'re making the assumption that, if you try it, you\'re familiar with Photoshop masks, layer effects, etc.', 'sem-pinnacle') . '</li>' . "\n"
+			. '<li>' . __('Grab the assets of your favorite skin on <a href="http://skins.semiologic.com">skins.semiologic.com</a>.', 'sem-pinnacle') . '</li>' . "\n"
+			. '<li>' . __('Create a copy of (or rename) your favorite skin, in <code>wp-content/themes/sem-reloaded/skins</code>. This will allow you to edit it as much as you want without needing to worry about losing your changes during upgrades.', 'sem-pinnacle') . '</li>' . "\n"
+			. '<li>' . __('Edit the images in Photoshop. Save for the web. (The psd files are pre-sliced for your convenience.) ', 'sem-pinnacle') . '</li>' . "\n"
+			. '<li>' . __('Upload the resulting images into your new skin\'s images folder.', 'sem-pinnacle') . '</li>' . "\n"
+			. '<li>' . __('We\'re dead serious about the fact that you\'re on your own if you try the above. If you do not understand it all, please stick to the existing skins; or prepare yourself to spend long hours learning Photoshop. We can also put you in touch with a <a href="http://www.semiologic.com/services/">virtual assistant</a>.', 'sem-pinnacle')
 			. '</ul>' . "\n";
 		
 		echo '</div>' . "\n";
@@ -569,42 +569,42 @@ EOS;
 		
 		echo '<ul id="custom-tabs-nav">' . "\n"
 			. '<li class="button hide-if-no-js"><a href="#custom-tabs-main">'
-				. __('Content', 'sem-reloaded')
+				. __('Content', 'sem-pinnacle')
 				. '</a></li>'
 			. '<li class="button hide-if-no-js"><a href="#custom-tabs-sidebar">'
-				. __('Sidebars', 'sem-reloaded')
+				. __('Sidebars', 'sem-pinnacle')
 				. '</a></li>'
 			. '<li class="button hide-if-no-js"><a href="#custom-tabs-header">'
-				. __('Header', 'sem-reloaded')
+				. __('Header', 'sem-pinnacle')
 				. '</a></li>'
 			. '<li class="button hide-if-no-js"><a href="#custom-tabs-footer">'
-				. __('Footer', 'sem-reloaded')
+				. __('Footer', 'sem-pinnacle')
 				. '</a></li>'
 			. '<li class="button hide-if-no-js"><a href="#custom-tabs-extra">'
-				. __('Extra', 'sem-reloaded')
+				. __('Extra', 'sem-pinnacle')
 				. '</a></li>';
 		
 		if ( $restore_css && $custom != $restore_css ) {
 			echo '<li class="submit">'
-				. '<input type="submit" name="restore" onclick="return confirm(\'' . esc_js(__('You are about to delete all changes you\'ve done since the last time you\'ve published. Please confirm to continue.', 'sem-reloaded')) . '\');" value="' . esc_attr(__('Restore', 'sem-reloaded')) . '" />'
+				. '<input type="submit" name="restore" onclick="return confirm(\'' . esc_js(__('You are about to delete all changes you\'ve done since the last time you\'ve published. Please confirm to continue.', 'sem-pinnacle')) . '\');" value="' . esc_attr(__('Restore', 'sem-pinnacle')) . '" />'
 			. '</li>';
 		} else {
 			echo '<li class="submit">'
-				. '<input type="submit" name="reset" onclick="return confirm(\'' . esc_js(__('You are about to reset all of your custom.css declarations without publishing. Please confirm to continue.', 'sem-reloaded')) . '\');" value="' . esc_attr(__('Reset', 'sem-reloaded')) . '" />'
+				. '<input type="submit" name="reset" onclick="return confirm(\'' . esc_js(__('You are about to reset all of your custom.css declarations without publishing. Please confirm to continue.', 'sem-pinnacle')) . '\');" value="' . esc_attr(__('Reset', 'sem-pinnacle')) . '" />'
 			. '</li>';
 		}
 		
 		echo '<li class="submit">'
-				. '<input type="submit" value="' . esc_attr(__('Save Changes', 'sem-reloaded')) . '" />'
+				. '<input type="submit" value="' . esc_attr(__('Save Changes', 'sem-pinnacle')) . '" />'
 			. '</li>'
 			. '<li class="submit">'
-				. '<input type="submit" name="publish" value="' . esc_attr(__('Publish', 'sem-reloaded')) . '" />'
+				. '<input type="submit" name="publish" value="' . esc_attr(__('Publish', 'sem-pinnacle')) . '" />'
 			. '</li>'
 			. '</ul>' . "\n";
 		
 		echo '<div id="custom-tabs-main" class="clear">';
 		
-		echo '<h3>' . __('Content Area', 'sem-reloaded') . '</h3>';
+		echo '<h3>' . __('Content Area', 'sem-pinnacle') . '</h3>';
 		
 		sem_custom::edit_area('content');
 		
@@ -613,7 +613,7 @@ EOS;
 		
 		echo '<div id="custom-tabs-sidebar" class="clear">';
 		
-		echo '<h3>' . __('Sidebar Areas', 'sem-reloaded') . '</h3>';
+		echo '<h3>' . __('Sidebar Areas', 'sem-pinnacle') . '</h3>';
 		
 		sem_custom::edit_area('sidebars');
 		
@@ -622,7 +622,7 @@ EOS;
 		
 		echo '<div id="custom-tabs-header" class="clear">';
 		
-		echo '<h3>' . __('Header Area', 'sem-reloaded') . '</h3>';
+		echo '<h3>' . __('Header Area', 'sem-pinnacle') . '</h3>';
 		
 		sem_custom::edit_area('header');
 		
@@ -631,7 +631,7 @@ EOS;
 		
 		echo '<div id="custom-tabs-footer" class="clear">';
 		
-		echo '<h3>' . __('Footer Area', 'sem-reloaded') . '</h3>';
+		echo '<h3>' . __('Footer Area', 'sem-pinnacle') . '</h3>';
 		
 		sem_custom::edit_area('footer');
 		
@@ -640,10 +640,10 @@ EOS;
 		
 		echo '<div id="custom-tabs-extra" class="clear">';
 		
-		echo '<h3>' . __('Extra CSS', 'sem-reloaded') . '</h3>';
+		echo '<h3>' . __('Extra CSS', 'sem-pinnacle') . '</h3>';
 		
 		echo '<p>'
-			. __('Anything you want... You\'ll find a CSS cheat sheet below.', 'sem-reloaded')
+			. __('Anything you want... You\'ll find a CSS cheat sheet below.', 'sem-pinnacle')
 			. '</p>' . "\n";
 		
 		echo '<textarea name="custom[extra]" class="widefat code" rows="24">'
@@ -651,15 +651,15 @@ EOS;
 			. '</textarea>' . "\n";
 		
 		echo '<p class="submit">'
-			. '<input type="submit" value="' . esc_attr(__('Save Changes', 'sem-reloaded')) . '" />'
+			. '<input type="submit" value="' . esc_attr(__('Save Changes', 'sem-pinnacle')) . '" />'
 			. '</p>' . "\n";
 		
 		echo '<h3>'
-			. __('Theme ID/Classes Cheat Sheet', 'sem-reloaded')
+			. __('Theme ID/Classes Cheat Sheet', 'sem-pinnacle')
 			. '</h3>' . "\n";
 		
 		echo '<p>'
-			. __('The more commonly used CSS selectors in the Semiologic theme are indicated below, grouped by area. For more examples, please check the CSS code of the built-in skins.', 'sem-reloaded')
+			. __('The more commonly used CSS selectors in the Semiologic theme are indicated below, grouped by area. For more examples, please check the CSS code of the built-in skins.', 'sem-pinnacle')
 			. '</p>' . "\n";
 		
 		echo <<<EOS
@@ -761,21 +761,21 @@ EOS;
 EOS;
 		
 		echo '<h3>'
-			. __('CSS Cheat Sheet', 'sem-reloaded')
+			. __('CSS Cheat Sheet', 'sem-pinnacle')
 			. '</h3>' . "\n";
 		
 		echo '<p>'
-			. __('Many users have some basic understanding of Stylesheets, but have no idea of what a <strong>Cascading</strong> Stylesheet might be. So here goes...', 'sem-reloaded')
+			. __('Many users have some basic understanding of Stylesheets, but have no idea of what a <strong>Cascading</strong> Stylesheet might be. So here goes...', 'sem-pinnacle')
 			. '</p>' . "\n";
 		
 		echo '<p>'
-			. __('There are three basic types of selectors:', 'sem-reloaded')
+			. __('There are three basic types of selectors:', 'sem-pinnacle')
 			. '</p>' . "\n";
 		
 		foreach ( array(
-			'p' => __('Affects all <p> tags, no matter where.', 'sem-reloaded'),
-			'.widget' => __('Affects anything in an area with the "widget" class, i.e. <div class="widget">. "Stronger" than the previous if declared after.', 'sem-reloaded'),
-			'#body' => __('Affects everything in the area with the "body" ID, i.e. <div id="body">. "Stronger" than the above two if declared after.', 'sem-reloaded'),
+			'p' => __('Affects all <p> tags, no matter where.', 'sem-pinnacle'),
+			'.widget' => __('Affects anything in an area with the "widget" class, i.e. <div class="widget">. "Stronger" than the previous if declared after.', 'sem-pinnacle'),
+			'#body' => __('Affects everything in the area with the "body" ID, i.e. <div id="body">. "Stronger" than the above two if declared after.', 'sem-pinnacle'),
 			)
 			as $selector => $description ) {
 			$description = str_replace(array("\r\n", "\n", "\r"), "\n   * ", wordwrap(esc_attr($description), 80));
@@ -792,12 +792,12 @@ EOS;
 		}
 		
 		echo '<p>'
-			. __('They can be combined and cascaded:', 'sem-reloaded')
+			. __('They can be combined and cascaded:', 'sem-pinnacle')
 			. '</p>' . "\n";
 		
 		foreach ( array(
-			'div.entry_date' => __('Affects <h2> tagsclass="widget_title"> tags, i.e. sidebar widget titles. "Stronger" than the previous three (it\'s "more precise").', 'sem-reloaded'),
-			'div#sitename' => __('Affects <div id="sitename">, i.e. the site\'s name. "Stronger" than the previous (it\'s "more precise"), but generally useless since IDs are unique.', 'sem-reloaded'),
+			'div.entry_date' => __('Affects <h2> tagsclass="widget_title"> tags, i.e. sidebar widget titles. "Stronger" than the previous three (it\'s "more precise").', 'sem-pinnacle'),
+			'div#sitename' => __('Affects <div id="sitename">, i.e. the site\'s name. "Stronger" than the previous (it\'s "more precise"), but generally useless since IDs are unique.', 'sem-pinnacle'),
 			'.mm1s .widget' => __('Affects anything within an area with the "widget" class, itself within an area with the "mm1s" class, i.e. widgets when using a "Wide Content, Sidebar" layouts. "Stronger" than all of the above.'),
 			'#top_sidebar .widget' => __('Affects anything within an area with the "widget" class, itself within an area with the "top_sidebar" ID, i.e. widgets in the top sidebar when using a "Content, Wide Sidebar" layout. "Stronger" than the previous if declared after.'),
 			'.widget_title h2' => __('Affects <h2> tags within an area with the "widget_title" class, i.e. <h2> tags in sidebar widgets. "Stronger" than the previous if declared after.'),
@@ -817,15 +817,15 @@ EOS;
 		}
 		
 		echo '<p>'
-			. sprintf(__('There are, of course, many more <a href="%s">CSS selectors</a>, but they\'re not universally supported...', 'sem-reloaded'), 'http://kimblim.dk/css-tests/selectors/')
+			. sprintf(__('There are, of course, many more <a href="%s">CSS selectors</a>, but they\'re not universally supported...', 'sem-pinnacle'), 'http://kimblim.dk/css-tests/selectors/')
 			. '</p>' . "\n";
 		
 		echo '<p>'
-			. __('The gist, here, is to remember that the C in CSS stands for cascading and that CSS is applied on a &quot;last strongest declaration gets used&quot; basis (i.e. mind the order). `foo`, `.foo`, and `#foo` are interchangeable in CSS-compliant browsers; `foo.bar` is stronger than `foo`, and `foo bar` is even stronger. In other words, to affect a particular area, use `.foo` or `#foo`; to affect `bar` within a particular area, use `.foo bar` or `#foo bar`.', 'sem-reloaded')
+			. __('The gist, here, is to remember that the C in CSS stands for cascading and that CSS is applied on a &quot;last strongest declaration gets used&quot; basis (i.e. mind the order). `foo`, `.foo`, and `#foo` are interchangeable in CSS-compliant browsers; `foo.bar` is stronger than `foo`, and `foo bar` is even stronger. In other words, to affect a particular area, use `.foo` or `#foo`; to affect `bar` within a particular area, use `.foo bar` or `#foo bar`.', 'sem-pinnacle')
 			. '</p>' . "\n";
 		
 		echo '<p>'
-			. __('In some rare cases, you may also need a knock-out declaration that overrides everything regardless of the order it\'s declared in. This is where the `!important` keyword, placed immediately before the semi-colon, comes in:', 'sem-reloaded')
+			. __('In some rare cases, you may also need a knock-out declaration that overrides everything regardless of the order it\'s declared in. This is where the `!important` keyword, placed immediately before the semi-colon, comes in:', 'sem-pinnacle')
 			. '</p>' . "\n";
 		
 		echo <<<EOS
@@ -837,7 +837,7 @@ p {
 EOS;
 		
 		echo '<p>'
-			. __('The latter declaration overrides absolutely everything.', 'sem-reloaded')
+			. __('The latter declaration overrides absolutely everything.', 'sem-pinnacle')
 			. '</p>' . "\n";
 		
 		echo '</div>' . "\n";
@@ -860,47 +860,47 @@ EOS;
 		$areas = array();
 		
 		$areas['content'] =  array(
-			'#main' => __('Entries', 'sem-reloaded'),
-			'#main h1' => __('Entry Titles', 'sem-reloaded'),
-			'#main h2, #main .widget_calendar caption' => __('Entry Subtitles', 'sem-reloaded'),
-			'#main .entry_date' => __('Entry Dates', 'sem-reloaded'),
-			'#main .entry_categories' => __('Entry Categories', 'sem-reloaded'),
-			'#main .entry_tags' => __('Entry Tags', 'sem-reloaded'),
-			'#main .comment_date' => __('Comment Dates', 'sem-reloaded'),
-			'#main .comment_header' => __('Comment Header', 'sem-reloaded'),
-			'#main .comment_content' => __('Comment Content', 'sem-reloaded'),
+			'#main' => __('Entries', 'sem-pinnacle'),
+			'#main h1' => __('Entry Titles', 'sem-pinnacle'),
+			'#main h2, #main .widget_calendar caption' => __('Entry Subtitles', 'sem-pinnacle'),
+			'#main .entry_date' => __('Entry Dates', 'sem-pinnacle'),
+			'#main .entry_categories' => __('Entry Categories', 'sem-pinnacle'),
+			'#main .entry_tags' => __('Entry Tags', 'sem-pinnacle'),
+			'#main .comment_date' => __('Comment Dates', 'sem-pinnacle'),
+			'#main .comment_header' => __('Comment Header', 'sem-pinnacle'),
+			'#main .comment_content' => __('Comment Content', 'sem-pinnacle'),
 			);
 		
 		$areas['sidebars'] = array(
-			'.sidebar' => __('Sidebar Widgets', 'sem-reloaded'),
-			'.sidebar h2, .sidebar .widget_calendar caption' => __('Sidebar Widget Titles', 'sem-reloaded'),
-			'.sidebar h3' => __('Sidebar Widget Subtitles', 'sem-reloaded'),
-			'.sidebar .wp-calendar' => __('Sidebar Calendar', 'sem-reloaded'),
-			'.sidebar .wp-calendar thead' => __('Sidebar Calendar Header', 'sem-reloaded'),
-			'.sidebar .wp-calendar tfoot' => __('Sidebar Calendar Footer', 'sem-reloaded'),
+			'.sidebar' => __('Sidebar Widgets', 'sem-pinnacle'),
+			'.sidebar h2, .sidebar .widget_calendar caption' => __('Sidebar Widget Titles', 'sem-pinnacle'),
+			'.sidebar h3' => __('Sidebar Widget Subtitles', 'sem-pinnacle'),
+			'.sidebar .wp-calendar' => __('Sidebar Calendar', 'sem-pinnacle'),
+			'.sidebar .wp-calendar thead' => __('Sidebar Calendar Header', 'sem-pinnacle'),
+			'.sidebar .wp-calendar tfoot' => __('Sidebar Calendar Footer', 'sem-pinnacle'),
 			);
 		
 		$areas['header'] = array(
-			'#sitename' => __('Site Name', 'sem-reloaded'),
-			'#tagline' => __('Tagline', 'sem-reloaded'),
-			'#navbar' => __('Navigation Menu', 'sem-reloaded'),
-			'.header_widget' => __('Header Widgets', 'sem-reloaded'),
-			'.header_widget h2, .header_widget .widget_calendar caption' => __('Header Widget Titles', 'sem-reloaded'),
-			'.header_widget h3' => __('Header Widget Subtitles', 'sem-reloaded'),
-			'#header_boxes' => __('Header Bar Widgets', 'sem-reloaded'),
-			'#header_boxes h2, #header_boxes .widget_calendar caption' => __('Header Bar Widget Titles', 'sem-reloaded'),
-			'#header_boxes h3' => __('Header Bar Widget Subtitles', 'sem-reloaded'),
+			'#sitename' => __('Site Name', 'sem-pinnacle'),
+			'#tagline' => __('Tagline', 'sem-pinnacle'),
+			'#navbar' => __('Navigation Menu', 'sem-pinnacle'),
+			'.header_widget' => __('Header Widgets', 'sem-pinnacle'),
+			'.header_widget h2, .header_widget .widget_calendar caption' => __('Header Widget Titles', 'sem-pinnacle'),
+			'.header_widget h3' => __('Header Widget Subtitles', 'sem-pinnacle'),
+			'#header_boxes' => __('Header Bar Widgets', 'sem-pinnacle'),
+			'#header_boxes h2, #header_boxes .widget_calendar caption' => __('Header Bar Widget Titles', 'sem-pinnacle'),
+			'#header_boxes h3' => __('Header Bar Widget Subtitles', 'sem-pinnacle'),
 			);
 		
 		$areas['footer'] = array(
-			'#footer' => __('Footer Nav Menu &amp; Copyright Notice', 'sem-reloaded'),
-			'#credits, .footer_scripts' => __('Credits &amp; Footer Scripts', 'sem-reloaded'),
-			'.footer_widget' => __('Footer Widgets', 'sem-reloaded'),
-			'.footer_widget h2, .footer_widget .widget_calendar caption' => __('Footer Widget Titles', 'sem-reloaded'),
-			'.footer_widget h3' => __('Footer Widget Subtitles', 'sem-reloaded'),
-			'#footer_boxes' => __('Footer Bar Widgets', 'sem-reloaded'),
-			'#footer_boxes h2, #footer_boxes .widget_calendar caption' => __('Footer Bar Widget Titles', 'sem-reloaded'),
-			'#footer_boxes h3' => __('Footer Bar Widget Subtitles', 'sem-reloaded'),
+			'#footer' => __('Footer Nav Menu &amp; Copyright Notice', 'sem-pinnacle'),
+			'#credits, .footer_scripts' => __('Credits &amp; Footer Scripts', 'sem-pinnacle'),
+			'.footer_widget' => __('Footer Widgets', 'sem-pinnacle'),
+			'.footer_widget h2, .footer_widget .widget_calendar caption' => __('Footer Widget Titles', 'sem-pinnacle'),
+			'.footer_widget h3' => __('Footer Widget Subtitles', 'sem-pinnacle'),
+			'#footer_boxes' => __('Footer Bar Widgets', 'sem-pinnacle'),
+			'#footer_boxes h2, #footer_boxes .widget_calendar caption' => __('Footer Bar Widget Titles', 'sem-pinnacle'),
+			'#footer_boxes h3' => __('Footer Bar Widget Subtitles', 'sem-pinnacle'),
 			);
 		
 		if ( $area ) {
@@ -930,7 +930,7 @@ EOS;
 			
 			echo '<tr>' . "\n"
 				. '<th scope="row">' . "\n"
-				. __('Font', 'sem-reloaded')
+				. __('Font', 'sem-pinnacle')
 				. '</th>' . "\n"
 				. '<td>' . "\n";
 			
@@ -969,7 +969,7 @@ EOS;
 			for ( $i = 6; $i <= 24; $i++ )
 				echo '<option value="' . $i . '"'
 					. selected($i, $font_size, false)
-					. '>' . sprintf(__('%dpx', 'sem-reloaded'), $i) . '</option>' . "\n";
+					. '>' . sprintf(__('%dpx', 'sem-pinnacle'), $i) . '</option>' . "\n";
 			
 			echo '</select>' . "\n";
 			
@@ -986,7 +986,7 @@ EOS;
 			
 			echo '<tr>' . "\n"
 				. '<th scope="row">' . "\n"
-				. __('Font Style', 'sem-reloaded')
+				. __('Font Style', 'sem-pinnacle')
 				. '</th>' . "\n"
 				. '<td>' . "\n";
 			
@@ -1024,7 +1024,7 @@ EOS;
 			
 			echo '<tr>' . "\n"
 				. '<th scope="row">' . "\n"
-				. __('Links', 'sem-reloaded')
+				. __('Links', 'sem-pinnacle')
 				. '</th>' . "\n"
 				. '<td>' . "\n";
 			
@@ -1063,7 +1063,7 @@ EOS;
 			
 			echo '<tr>' . "\n"
 				. '<th scope="row">' . "\n"
-				. __('Hovered Links', 'sem-reloaded')
+				. __('Hovered Links', 'sem-pinnacle')
 				. '</th>' . "\n"
 				. '<td>' . "\n";
 			
@@ -1104,7 +1104,7 @@ EOS;
 				. '<td colspan="2">';
 			
 			echo '<p class="submit">'
-				. '<input type="submit" value="' . esc_attr(__('Save Changes', 'sem-reloaded')) . '" />'
+				. '<input type="submit" value="' . esc_attr(__('Save Changes', 'sem-pinnacle')) . '" />'
 				. '</p>' . "\n";
 			
 			echo '</td>'
@@ -1123,25 +1123,25 @@ EOS;
 
 	static function get_fonts() {
 		return array(
-			'' =>  __('- Default Font Family -', 'sem-reloaded'),
-			'antica' => __('Antica stack / Serif', 'sem-reloaded'),
-			'arial' => __('Arial stack / Sans-Serif', 'sem-reloaded'),
-			'courier' => __('Courier stack / Monospace', 'sem-reloaded'),
-			'georgia' => __('Georgia stack / Serif', 'sem-reloaded'),
-			'helvetica' => __('Helvetica stack/, Sans-Serif', 'sem-reloaded'),
-			'lucida' => __('Lucida stack / Sans-Serif', 'sem-reloaded'),
-			'tahoma' => __('Tahoma stack / Sans-Serif', 'sem-reloaded'),
-			'times' => __('Times stack / Serif', 'sem-reloaded'),
-			'trebuchet' => __('Trebuchet stack / Sans-Serif', 'sem-reloaded'),
-			'verdana' => __('Verdana stack / Sans-Serif', 'sem-reloaded'),
-			'lato' => __('Lato (Google Fonts) stack / San-Serif', 'sem-reloaded'),
-			'lora' => __('Lora (Google Fonts) stack / Serif', 'sem-reloaded'),
-			'merriweather' => __('Merriweather (Google Fonts) stack / Serif', 'sem-reloaded'),
-			'open_sans' => __('Open Sans (Google Fonts) stack / San-Serif', 'sem-reloaded'),
-			'pt_sans' => __('PT Sans (Google Fonts) stack / San-Serif', 'sem-reloaded'),
-			'roboto' => __('Roboto (Google Fonts) stack / San-Serif', 'sem-reloaded'),
-			'source_sans_pro' => __('Source Sans Pro (Google Fonts) stack / San-Serif', 'sem-reloaded'),
-			'ubuntu' => __('Ubuntu (Google Fonts) stack / San-Serif', 'sem-reloaded'),
+			'' =>  __('- Default Font Family -', 'sem-pinnacle'),
+			'antica' => __('Antica stack / Serif', 'sem-pinnacle'),
+			'arial' => __('Arial stack / Sans-Serif', 'sem-pinnacle'),
+			'courier' => __('Courier stack / Monospace', 'sem-pinnacle'),
+			'georgia' => __('Georgia stack / Serif', 'sem-pinnacle'),
+			'helvetica' => __('Helvetica stack/, Sans-Serif', 'sem-pinnacle'),
+			'lucida' => __('Lucida stack / Sans-Serif', 'sem-pinnacle'),
+			'tahoma' => __('Tahoma stack / Sans-Serif', 'sem-pinnacle'),
+			'times' => __('Times stack / Serif', 'sem-pinnacle'),
+			'trebuchet' => __('Trebuchet stack / Sans-Serif', 'sem-pinnacle'),
+			'verdana' => __('Verdana stack / Sans-Serif', 'sem-pinnacle'),
+			'lato' => __('Lato (Google Fonts) stack / San-Serif', 'sem-pinnacle'),
+			'lora' => __('Lora (Google Fonts) stack / Serif', 'sem-pinnacle'),
+			'merriweather' => __('Merriweather (Google Fonts) stack / Serif', 'sem-pinnacle'),
+			'open_sans' => __('Open Sans (Google Fonts) stack / San-Serif', 'sem-pinnacle'),
+			'pt_sans' => __('PT Sans (Google Fonts) stack / San-Serif', 'sem-pinnacle'),
+			'roboto' => __('Roboto (Google Fonts) stack / San-Serif', 'sem-pinnacle'),
+			'source_sans_pro' => __('Source Sans Pro (Google Fonts) stack / San-Serif', 'sem-pinnacle'),
+			'ubuntu' => __('Ubuntu (Google Fonts) stack / San-Serif', 'sem-pinnacle'),
 		);
 	} # get_fonts()
 	
@@ -1154,10 +1154,10 @@ EOS;
 
 	static function get_font_weights() {
 		return array(
-			'' => __('- Default -', 'sem-reloaded'),
-			'bold' => __('Bold', 'sem-reloaded'),
-			'normal' => __('Normal', 'sem-reloaded'),
-			'light' => __('Light', 'sem-reloaded'),
+			'' => __('- Default -', 'sem-pinnacle'),
+			'bold' => __('Bold', 'sem-pinnacle'),
+			'normal' => __('Normal', 'sem-pinnacle'),
+			'light' => __('Light', 'sem-pinnacle'),
 			);
 	} # get_font_weights()
 	
@@ -1170,9 +1170,9 @@ EOS;
 
 	static function get_font_styles() {
 		return array(
-			'' => __('- Default -', 'sem-reloaded'),
-			'italic' => __('Italic', 'sem-reloaded'),
-			'normal' => __('Normal', 'sem-reloaded'),
+			'' => __('- Default -', 'sem-pinnacle'),
+			'italic' => __('Italic', 'sem-pinnacle'),
+			'normal' => __('Normal', 'sem-pinnacle'),
 			);
 	} # get_font_styles()
 	
@@ -1185,9 +1185,9 @@ EOS;
 
 	static function get_font_decorations() {
 		return array(
-			'' => __('- Default -', 'sem-reloaded'),
-			'none' => __('None', 'sem-reloaded'),
-			'underline' => __('Underline', 'sem-reloaded'),
+			'' => __('- Default -', 'sem-pinnacle'),
+			'none' => __('None', 'sem-pinnacle'),
+			'underline' => __('Underline', 'sem-pinnacle'),
 			);
 	} # get_font_decorations()
 	

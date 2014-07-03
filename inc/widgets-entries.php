@@ -11,10 +11,10 @@ class entry_header extends WP_Widget {
 	 *
 	 */
 	public function __construct() {
-		$widget_name = __('Entry: Header', 'sem-reloaded');
+		$widget_name = __('Entry: Header', 'sem-pinnacle');
 		$widget_ops = array(
 			'classname' => 'entry_header',
-			'description' => __('The entry\'s title and date. Must be placed in the loop (each entry).', 'sem-reloaded'),
+			'description' => __('The entry\'s title and date. Must be placed in the loop (each entry).', 'sem-pinnacle'),
 			);
 		$control_ops = array(
 			'width' => 330,
@@ -117,7 +117,7 @@ class entry_header extends WP_Widget {
 		$instance = wp_parse_args($instance, entry_header::defaults());
 		extract($instance, EXTR_SKIP);
 
-		echo '<h3>' . __('Config', 'sem-reloaded') . '</h3>' . "\n";
+		echo '<h3>' . __('Config', 'sem-pinnacle') . '</h3>' . "\n";
 
 		echo '<p>'
 			. '<label>'
@@ -126,7 +126,7 @@ class entry_header extends WP_Widget {
 			. checked($show_post_date, true, false)
 			. ' />'
 			. '&nbsp;'
-			. __('Show post dates.', 'sem-reloaded')
+			. __('Show post dates.', 'sem-pinnacle')
 			. '</label>'
 			. '</p>' . "\n";
 
@@ -137,15 +137,15 @@ class entry_header extends WP_Widget {
      			. checked($show_author_byline, true, false)
      			. ' />'
      			. '&nbsp;'
-     			. __('Show author byline.', 'sem-reloaded')
+     			. __('Show author byline.', 'sem-pinnacle')
      			. '</label>'
      			. '</p>' . "\n";
 
-        echo '<h3>' . __('Captions', 'sem-reloaded') . '</h3>' . "\n";
+        echo '<h3>' . __('Captions', 'sem-pinnacle') . '</h3>' . "\n";
 
  		echo '<p>'
  			. '<label>'
- 			. '<code>' . __('by', 'sem-reloaded') . '</code>'
+ 			. '<code>' . __('by', 'sem-pinnacle') . '</code>'
  			. '<br />' . "\n"
  			. '<input type="text" class="widefat"'
  			. ' name="' . $this->get_field_name('author_byline') . '"'
@@ -166,7 +166,7 @@ class entry_header extends WP_Widget {
 		return array(
 			'show_post_date' => true,
             'show_author_byline' => false,
-            'author_byline' => __('by', 'sem-reloaded'),
+            'author_byline' => __('by', 'sem-pinnacle'),
 			);
 	} # defaults()
 } # entry_header
@@ -184,10 +184,10 @@ class entry_content extends WP_Widget {
 	 *
 	 */
 	public function __construct() {
-		$widget_name = __('Entry: Content', 'sem-reloaded');
+		$widget_name = __('Entry: Content', 'sem-pinnacle');
 		$widget_ops = array(
 			'classname' => 'entry_content',
-			'description' => __('The entry\'s content. Must be placed in the loop (each entry).', 'sem-reloaded'),
+			'description' => __('The entry\'s content. Must be placed in the loop (each entry).', 'sem-pinnacle'),
 			);
 		$control_ops = array(
 			'width' => 330,
@@ -284,8 +284,8 @@ class entry_content extends WP_Widget {
 			if ( $edit_link ) {
 				$edit_link = '<a class="post-edit-link"'
 					. ' href="' . esc_url($edit_link) . '"'
-					. ' title="' . esc_attr(__('Edit', 'sem-reloaded')) . '">'
-					. __('Edit', 'sem-reloaded')
+					. ' title="' . esc_attr(__('Edit', 'sem-pinnacle')) . '">'
+					. __('Edit', 'sem-pinnacle')
 					. '</a>';
 				$edit_link = apply_filters('edit_post_link', $edit_link, $post->ID);
 
@@ -407,7 +407,7 @@ class entry_content extends WP_Widget {
 		$instance = wp_parse_args($instance, entry_content::defaults());
 		extract($instance, EXTR_SKIP);
 
-		echo '<h3>' . __('Config', 'sem-reloaded') . '</h3>' . "\n";
+		echo '<h3>' . __('Config', 'sem-pinnacle') . '</h3>' . "\n";
 
 		echo '<p>'
 			. '<label>'
@@ -416,7 +416,7 @@ class entry_content extends WP_Widget {
 			. checked($show_comment_box, true, false)
 			. ' />'
 			. '&nbsp;'
-			. __('Display the box with the number of comments.', 'sem-reloaded')
+			. __('Display the box with the number of comments.', 'sem-pinnacle')
 			. '</label>'
 			. '</p>' . "\n";
 
@@ -427,7 +427,7 @@ class entry_content extends WP_Widget {
 			. checked($show_excerpts, true, false)
 			. ' />'
 			. '&nbsp;'
-			. __('Use the post\'s excerpt on blog and archive pages.', 'sem-reloaded')
+			. __('Use the post\'s excerpt on blog and archive pages.', 'sem-pinnacle')
 			. '</label>'
 			. '</p>' . "\n";
 
@@ -438,15 +438,15 @@ class entry_content extends WP_Widget {
             . checked($show_thumbnail, true, false)
             . ' />'
             . '&nbsp;'
-            . __('Show the featured image, if set, for the post.', 'sem-reloaded')
+            . __('Show the featured image, if set, for the post.', 'sem-pinnacle')
             . '</label>'
             . '</p>' . "\n";
 
-      	echo '<h3>' . __('Captions', 'sem-reloaded') . '</h3>' . "\n";
+      	echo '<h3>' . __('Captions', 'sem-pinnacle') . '</h3>' . "\n";
 
 		echo '<p>'
 			. '<label>'
-			. '<code>' . __('Read more on %s...', 'sem-reloaded') . '</code>'
+			. '<code>' . __('Read more on %s...', 'sem-pinnacle') . '</code>'
 			. '<br />' . "\n"
 			. '<input type="text" class="widefat"'
 			. ' name="' . $this->get_field_name('more_link') . '"'
@@ -457,7 +457,7 @@ class entry_content extends WP_Widget {
 
 		echo '<p>'
 			. '<label>'
-			. '<code>' . __('Pages:', 'sem-reloaded') . '</code>'
+			. '<code>' . __('Pages:', 'sem-pinnacle') . '</code>'
 			. '<br />' . "\n"
 			. '<input type="text" class="widefat"'
 			. ' name="' . $this->get_field_name('paginate') . '"'
@@ -478,8 +478,8 @@ class entry_content extends WP_Widget {
 		return array(
 			'show_comment_box' => true,
 			'show_excerpts' => false,
-			'more_link' => __('Read more on %s...', 'sem-reloaded'),
-			'paginate' => __('Pages:', 'sem-reloaded'),
+			'more_link' => __('Read more on %s...', 'sem-pinnacle'),
+			'paginate' => __('Pages:', 'sem-pinnacle'),
             'show_thumbnail' => true,
 			);
 	} # defaults()
@@ -498,10 +498,10 @@ class entry_categories extends WP_Widget {
 	 *
 	 */
 	public function __construct() {
-		$widget_name = __('Entry: Categories', 'sem-reloaded');
+		$widget_name = __('Entry: Categories', 'sem-pinnacle');
 		$widget_ops = array(
 			'classname' => 'entry_categories',
-			'description' => __('The entry\'s categories. Will only display on individual posts if placed outside of the loop (each entry).', 'sem-reloaded'),
+			'description' => __('The entry\'s categories. Will only display on individual posts if placed outside of the loop (each entry).', 'sem-pinnacle'),
 			);
 		$control_ops = array(
 			'width' => 330,
@@ -549,7 +549,7 @@ class entry_categories extends WP_Widget {
             . '</a>'
             . '</span>';
 
-		$date = apply_filters('the_time', get_the_time(__('M jS, Y', 'sem-reloaded')), __('M jS, Y', 'sem-reloaded'));
+		$date = apply_filters('the_time', get_the_time(__('M jS, Y', 'sem-pinnacle')), __('M jS, Y', 'sem-pinnacle'));
 
 		if ( !is_day() )
 			$date = '<a href="' . esc_url(get_month_link(get_the_time('Y'), get_the_time('m'))) . '">' . $date . '</a>';
@@ -637,11 +637,11 @@ class entry_categories extends WP_Widget {
 		$instance = wp_parse_args($instance, entry_categories::defaults());
 		extract($instance, EXTR_SKIP);
 
-		echo '<h3>' . __('Captions', 'sem-reloaded') . '</h3>' . "\n";
+		echo '<h3>' . __('Captions', 'sem-pinnacle') . '</h3>' . "\n";
 
 		echo '<p>'
 			. '<label>'
-			. __('Title:', 'sem-reloaded')
+			. __('Title:', 'sem-pinnacle')
 			. '<br />' . "\n"
 			. '<input type="text" class="widefat"'
 				. ' id="' . $this->get_field_id('title') . '"'
@@ -652,14 +652,14 @@ class entry_categories extends WP_Widget {
 			. '</p>' . "\n";
 
 		echo '<p>'
-			. __('This widget\'s title is displayed only when this widget is placed out of the loop (each entry).', 'sem-reloaded')
+			. __('This widget\'s title is displayed only when this widget is placed out of the loop (each entry).', 'sem-pinnacle')
 			. '</p>' . "\n";
 
 		echo '<p>'
 			. '<label>'
-			. '<code>' . __('Filed under %1$s by %2$s on %3$s. %4$s.', 'sem-reloaded') . '</code>'
+			. '<code>' . __('Filed under %1$s by %2$s on %3$s. %4$s.', 'sem-pinnacle') . '</code>'
 			. '<br />' . "\n"
-            . '<code>' . __('%1$s - categories, %2$s - $author, %3$s - $date, %4$s - $comments', 'sem-reloaded') . '</code>'
+            . '<code>' . __('%1$s - categories, %2$s - $author, %3$s - $date, %4$s - $comments', 'sem-pinnacle') . '</code>'
          	. '<br />' . "\n"
 			. '<input type="text" class="widefat"'
             . ' name="' . $this->get_field_name('filed_under_by') . '"'
@@ -670,7 +670,7 @@ class entry_categories extends WP_Widget {
 
 		echo '<p>'
 			. '<label>'
-			. '<code>' . __('1 Comment', 'sem-reloaded') . '</code>'
+			. '<code>' . __('1 Comment', 'sem-pinnacle') . '</code>'
 			. '<br />' . "\n"
 			. '<input type="text" class="widefat"'
 			. ' name="' . $this->get_field_name('one_comment') . '"'
@@ -681,7 +681,7 @@ class entry_categories extends WP_Widget {
 
 		echo '<p>'
 			. '<label>'
-			. '<code>' . __('%d Comments', 'sem-reloaded') . '</code>'
+			. '<code>' . __('%d Comments', 'sem-pinnacle') . '</code>'
 			. '<br />' . "\n"
 			. '<input type="text" class="widefat"'
 			. ' name="' . $this->get_field_name('n_comments') . '"'
@@ -692,7 +692,7 @@ class entry_categories extends WP_Widget {
 
 		echo '<p>'
 			. '<label>'
-			. '<code>' . __('Comment', 'sem-reloaded') . '</code>'
+			. '<code>' . __('Comment', 'sem-pinnacle') . '</code>'
 			. '<br />' . "\n"
 			. '<input type="text" class="widefat"'
 			. ' name="' . $this->get_field_name('add_comment') . '"'
@@ -711,11 +711,11 @@ class entry_categories extends WP_Widget {
 
 	function defaults() {
 		return array(
-			'title' => __('Categories', 'sem-reloaded'),
-			'filed_under_by' => __('Filed under %1$s by %2$s on %3$s. %4$s.', 'sem-reloaded'),
-			'one_comment' => __('1 Comment', 'sem-reloaded'),
-			'n_comments' => __('%d Comments', 'sem-reloaded'),
-			'add_comment' => __('Comment', 'sem-reloaded'),
+			'title' => __('Categories', 'sem-pinnacle'),
+			'filed_under_by' => __('Filed under %1$s by %2$s on %3$s. %4$s.', 'sem-pinnacle'),
+			'one_comment' => __('1 Comment', 'sem-pinnacle'),
+			'n_comments' => __('%d Comments', 'sem-pinnacle'),
+			'add_comment' => __('Comment', 'sem-pinnacle'),
 			);
 	} # defaults()
 } # entry_categories
@@ -733,10 +733,10 @@ class entry_tags extends WP_Widget {
 	 *
 	 */
 	public function __construct() {
-		$widget_name = __('Entry: Tags', 'sem-reloaded');
+		$widget_name = __('Entry: Tags', 'sem-pinnacle');
 		$widget_ops = array(
 			'classname' => 'entry_tags',
-			'description' => __('The entry\'s tags. Will only display on individual entries if placed outside of the loop (each entry).', 'sem-reloaded'),
+			'description' => __('The entry\'s tags. Will only display on individual entries if placed outside of the loop (each entry).', 'sem-pinnacle'),
 			);
 		$control_ops = array(
 			'width' => 330,
@@ -834,11 +834,11 @@ class entry_tags extends WP_Widget {
 		$instance = wp_parse_args($instance, entry_tags::defaults());
 		extract($instance, EXTR_SKIP);
 
-		echo '<h3>' . __('Captions', 'sem-reloaded') . '</h3>' . "\n";
+		echo '<h3>' . __('Captions', 'sem-pinnacle') . '</h3>' . "\n";
 
 		echo '<p>'
 			. '<label>'
-			. __('Title:', 'sem-reloaded')
+			. __('Title:', 'sem-pinnacle')
 			. '<br />' . "\n"
 			. '<input type="text" class="widefat"'
 				. ' id="' . $this->get_field_id('title') . '"'
@@ -849,12 +849,12 @@ class entry_tags extends WP_Widget {
 			. '</p>' . "\n";
 
 		echo '<p>'
-			. __('This widget\'s title is displayed only when this widget is placed out of the loop (each entry).', 'sem-reloaded')
+			. __('This widget\'s title is displayed only when this widget is placed out of the loop (each entry).', 'sem-pinnacle')
 			. '</p>' . "\n";
 
 		echo '<p>'
 			. '<label>'
-			. '<code>' . __('Tags: %s.', 'sem-reloaded') . '</code>'
+			. '<code>' . __('Tags: %s.', 'sem-pinnacle') . '</code>'
 			. '<br />' . "\n"
 			. '<input type="text" class="widefat"'
 				. ' name="' . $this->get_field_name('tags') . '"'
@@ -873,8 +873,8 @@ class entry_tags extends WP_Widget {
 
 	function defaults() {
 		return array(
-			'title' => __('Tags', 'sem-reloaded'),
-			'tags' => __('Tags: %s.', 'sem-reloaded'),
+			'title' => __('Tags', 'sem-pinnacle'),
+			'tags' => __('Tags: %s.', 'sem-pinnacle'),
 			);
 	} # defaults()
 } # entry_tags
@@ -892,10 +892,10 @@ class entry_comments extends WP_Widget {
 	 *
 	 */
 	public function __construct() {
-		$widget_name = __('Entry: Comments', 'sem-reloaded');
+		$widget_name = __('Entry: Comments', 'sem-pinnacle');
 		$widget_ops = array(
 			'classname' => 'entry_comments',
-			'description' => __('The entry\'s comments. Must be placed in the loop (each entry).', 'sem-reloaded'),
+			'description' => __('The entry\'s comments. Must be placed in the loop (each entry).', 'sem-pinnacle'),
 			);
 		$control_ops = array(
 			'width' => 330,
@@ -971,14 +971,14 @@ class entry_comments extends WP_Widget {
 		$instance = wp_parse_args($instance, $defaults);
 		extract($instance, EXTR_SKIP);
 
-		echo '<h3>' . __('Captions', 'sem-reloaded') . '</h3>' . "\n";
+		echo '<h3>' . __('Captions', 'sem-pinnacle') . '</h3>' . "\n";
 
 		foreach ( $defaults as $field => $default ) {
 			switch ( $field ) {
 			case 'policy':
 				echo '<p>'
 					. '<label>'
-					. __('Comment Policy', 'sem-reloaded')
+					. __('Comment Policy', 'sem-pinnacle')
 					. '<br />' . "\n"
 					. '<textarea class="widefat" rows="4"'
 						. ' name="' . $this->get_field_name($field) . '"'
@@ -1014,18 +1014,18 @@ class entry_comments extends WP_Widget {
 
 	function defaults() {
 		return array(
-			'pings_on' => __('Pings on %s', 'sem-reloaded'),
-			'comments_on' => __('Comments on %s', 'sem-reloaded'),
-			'leave_comment' => __('Leave a Comment', 'sem-reloaded'),
-			'reply_link' => __('Reply', 'sem-reloaded'),
+			'pings_on' => __('Pings on %s', 'sem-pinnacle'),
+			'comments_on' => __('Comments on %s', 'sem-pinnacle'),
+			'leave_comment' => __('Leave a Comment', 'sem-pinnacle'),
+			'reply_link' => __('Reply', 'sem-pinnacle'),
 			'policy' => '',
-			'login_required' => __('You must be logged in to post a comment. %s.', 'sem-reloaded'),
-			'logged_in_as' => __('You are logged in as %1$s. %2$s.', 'sem-reloaded'),
-			'name_field' => __('Name:', 'sem-reloaded'),
-			'email_field' => __('Email:', 'sem-reloaded'),
-			'url_field' => __('Website:', 'sem-reloaded'),
-			'required_fields' => __('Fields marked by an asterisk (*) are required.', 'sem-reloaded'),
-			'submit_field' => __('Submit Comment', 'sem-reloaded'),
+			'login_required' => __('You must be logged in to post a comment. %s.', 'sem-pinnacle'),
+			'logged_in_as' => __('You are logged in as %1$s. %2$s.', 'sem-pinnacle'),
+			'name_field' => __('Name:', 'sem-pinnacle'),
+			'email_field' => __('Email:', 'sem-pinnacle'),
+			'url_field' => __('Website:', 'sem-pinnacle'),
+			'required_fields' => __('Fields marked by an asterisk (*) are required.', 'sem-pinnacle'),
+			'submit_field' => __('Submit Comment', 'sem-pinnacle'),
 			);
 	} # defaults()
 } # entry_comments
@@ -1042,10 +1042,10 @@ class entry_navigation extends WP_Widget {
 	 *
 	 */
 	public function __construct() {
-		$widget_name = __('Entry: Post Navigation', 'sem-reloaded');
+		$widget_name = __('Entry: Post Navigation', 'sem-pinnacle');
 		$widget_ops = array(
 			'classname' => 'entry_navigation',
-			'description' => __('The next/previous blog post/page links. Must be placed in the loop (each entry).', 'sem-reloaded'),
+			'description' => __('The next/previous blog post/page links. Must be placed in the loop (each entry).', 'sem-pinnacle'),
 			);
 		$control_ops = array(
 			'width' => 330,
@@ -1080,10 +1080,10 @@ class entry_navigation extends WP_Widget {
 			<div class="nav-links">
 
 				<div class="nav-prev">
-				<?php previous_post_link( '%link', _x( '<span class="meta-nav">&laquo;</span> %title', 'Previous post link', 'sem-reloaded' ) ); ?>
+				<?php previous_post_link( '%link', _x( '<span class="meta-nav">&laquo;</span> %title', 'Previous post link', 'sem-pinnacle' ) ); ?>
 				</div>
 				<div class="nav-next">
-				<?php next_post_link( '%link', _x( '%title <span class="meta-nav">&raquo;</span>', 'Next post link', 'sem-reloaded' ) ); ?>
+				<?php next_post_link( '%link', _x( '%title <span class="meta-nav">&raquo;</span>', 'Next post link', 'sem-pinnacle' ) ); ?>
 				</div>
 
 			</div><!-- .nav-links -->

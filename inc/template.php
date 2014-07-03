@@ -66,8 +66,8 @@ class sem_template {
 	function admin_menu() {
 
 		$sem_menu = add_menu_page(
-			__('Semiologic', 'sem-reloaded'),
-			__('Semiologic', 'sem-reloaded'),
+			__('Semiologic', 'sem-pinnacle'),
+			__('Semiologic', 'sem-pinnacle'),
 			'edit_theme_options',
 			'sem_menu',
 			'',
@@ -77,32 +77,32 @@ class sem_template {
 
 		add_submenu_page(
 			'sem_menu',
-			__('Manage Header', 'sem-reloaded'),
-			__('Header', 'sem-reloaded'),
+			__('Manage Header', 'sem-pinnacle'),
+			__('Header', 'sem-pinnacle'),
 			'edit_theme_options',
 			'sem_menu',
 			array('sem_header', 'edit_options')
 			);
 		add_submenu_page(
 			'sem_menu',
-			__('Manage Layout', 'sem-reloaded'),
-			__('Layout', 'sem-reloaded'),
+			__('Manage Layout', 'sem-pinnacle'),
+			__('Layout', 'sem-pinnacle'),
 			'edit_theme_options',
 			'layout',
 			array('sem_layout', 'edit_options')
 			);
 		add_submenu_page(
 			'sem_menu',
-			__('Manage Skin', 'sem-reloaded'),
-			__('Skin', 'sem-reloaded'),
+			__('Manage Skin', 'sem-pinnacle'),
+			__('Skin', 'sem-pinnacle'),
 			'edit_theme_options',
 			'skin',
 			array('sem_skin', 'edit_options')
 			);
 		add_submenu_page(
 			'sem_menu',
-			__('Manage Font', 'sem-reloaded'),
-			__('Font', 'sem-reloaded'),
+			__('Manage Font', 'sem-pinnacle'),
+			__('Font', 'sem-pinnacle'),
 			'edit_theme_options',
 			'font',
 			array('sem_font', 'edit_options')
@@ -110,8 +110,8 @@ class sem_template {
 		if ( !( function_exists('is_multisite') && is_multisite() ) ) {
 			add_submenu_page(
 				'sem_menu',
-				__('Manage Custom', 'sem-reloaded'),
-				__('Custom CSS', 'sem-reloaded'),
+				__('Manage Custom', 'sem-pinnacle'),
+				__('Custom CSS', 'sem-pinnacle'),
 				'edit_theme_options',
 				'custom',
 				array('sem_custom', 'edit_options')
@@ -128,8 +128,8 @@ class sem_template {
 
 	function meta_boxes() {
 		if ( current_user_can('switch_themes') ) {
-			add_meta_box('sem_header', __('Post-Specific Header', 'sem-reloaded'), array('sem_header', 'edit_entry'), 'post');
-			add_meta_box('sem_header', __('Page-Specific Header', 'sem-reloaded'), array('sem_header', 'edit_entry'), 'page');
+			add_meta_box('sem_header', __('Post-Specific Header', 'sem-pinnacle'), array('sem_header', 'edit_entry'), 'post');
+			add_meta_box('sem_header', __('Page-Specific Header', 'sem-pinnacle'), array('sem_header', 'edit_entry'), 'page');
 		}
 	} # meta_boxes()
 	
@@ -440,7 +440,7 @@ class sem_template {
 			if ( current_user_can('manage_options') ) {
 				$credits .= ' - '
 					. '<a href="' . esc_url(admin_url() . 'themes.php?page=skin#sem_credits') . '">'
-					. __('Edit', 'sem-reloaded')
+					. __('Edit', 'sem-pinnacle')
 					. '</a>';
 			}
 			
@@ -460,13 +460,13 @@ class sem_template {
 	static function get_theme_credits() {
 		if ( get_option('sem_api_key') ) {
 			return '<a href="http://www.getsemiologic.com">'
-				. __('Semiologic Pro', 'sem-reloaded')
+				. __('Semiologic Pro', 'sem-pinnacle')
 				. '</a>';
 		} else {
 			$theme_descriptions = array(
-				__('the <a href="http://www.semiologic.com/software/sem-reloaded/">Semiologic theme</a>', 'sem-reloaded'),
-				__('an <a href="http://www.semiologic.com/software/sem-reloaded/">easy to use WordPress theme</a>', 'sem-reloaded'),
-				__('an <a href="http://www.semiologic.com/software/sem-reloaded/">easy to customize WordPress theme</a>', 'sem-reloaded'),
+				__('the <a href="http://www.semiologic.com/software/sem-reloaded/">Semiologic theme</a>', 'sem-pinnacle'),
+				__('an <a href="http://www.semiologic.com/software/sem-reloaded/">easy to use WordPress theme</a>', 'sem-pinnacle'),
+				__('an <a href="http://www.semiologic.com/software/sem-reloaded/">easy to customize WordPress theme</a>', 'sem-pinnacle'),
 				);
 			
 			$i = rand(0, sizeof($theme_descriptions) - 1);

@@ -14,10 +14,10 @@ class footer extends sem_nav_menu {
 	 *
 	 */
 	public function __construct() {
-		$widget_name = __('Footer: Nav Menu', 'sem-reloaded');
+		$widget_name = __('Footer: Nav Menu', 'sem-pinnacle');
 		$widget_ops = array(
 			'classname' => 'footer',
-			'description' => __('The footer\'s navigation menu, with an optional copyright notice. Must be placed in the footer area.', 'sem-reloaded'),
+			'description' => __('The footer\'s navigation menu, with an optional copyright notice. Must be placed in the footer area.', 'sem-pinnacle'),
 			);
 		$control_ops = array(
 			'width' => 330,
@@ -117,7 +117,7 @@ class footer extends sem_nav_menu {
 		$instance = wp_parse_args($instance, $defaults);
 		extract($instance, EXTR_SKIP);
 
-		echo '<h3>' . __('Captions', 'sem-reloaded') . '</h3>' . "\n";
+		echo '<h3>' . __('Captions', 'sem-pinnacle') . '</h3>' . "\n";
 
 		foreach ( array('copyright') as $field ) {
 			echo '<p>'
@@ -142,7 +142,7 @@ class footer extends sem_nav_menu {
 				. '</p>' . "\n";
 		}
 
-		echo '<h3>' . __('Config', 'sem-reloaded') . '</h3>' . "\n";
+		echo '<h3>' . __('Config', 'sem-pinnacle') . '</h3>' . "\n";
 
 		echo '<p>'
 			. '<label>'
@@ -151,7 +151,7 @@ class footer extends sem_nav_menu {
 				. checked($float_footer, true, false)
 				. ' />'
 			. '&nbsp;'
-			. __('Place the footer navigation menu and the copyright on a single line.', 'sem-reloaded')
+			. __('Place the footer navigation menu and the copyright on a single line.', 'sem-pinnacle')
 			. '</label>'
 			. '</p>' . "\n";
 
@@ -167,8 +167,8 @@ class footer extends sem_nav_menu {
 
 	function defaults() {
 		return array_merge(array(
-			'copyright' => __('Copyright %1$s, %2$s', 'sem-reloaded'),
-			'copyright_label' => __('%1$s - Site name, %2$s - Year', 'sem-reloaded'),
+			'copyright' => __('Copyright %1$s, %2$s', 'sem-pinnacle'),
+			'copyright_label' => __('%1$s - Site name, %2$s - Year', 'sem-pinnacle'),
 			'float_footer' => false,
 			), parent::defaults());
 	} # defaults()
@@ -224,10 +224,10 @@ class footer_boxes extends WP_Widget {
 	 *
 	 */
 	public function __construct() {
-		$widget_name = __('Footer: Boxes Bar', 'sem-reloaded');
+		$widget_name = __('Footer: Boxes Bar', 'sem-pinnacle');
 		$widget_ops = array(
 			'classname' => 'footer_boxes',
-			'description' => __('Lets you decide where the Footer Boxes Bar panel goes. Must be placed in the footer area.', 'sem-reloaded'),
+			'description' => __('Lets you decide where the Footer Boxes Bar panel goes. Must be placed in the footer area.', 'sem-pinnacle'),
 			);
 
 		$this->WP_Widget('footer_boxes', $widget_name, $widget_ops);

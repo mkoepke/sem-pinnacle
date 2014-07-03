@@ -73,7 +73,7 @@ class sem_nav_menu extends WP_Widget {
 	 **/
 
 	function editor_init() {
-		add_meta_box('page_meta_config', __('This Page In Menus',  'sem-reloaded'), array($this, 'page_meta_config'), 'page', 'side');
+		add_meta_box('page_meta_config', __('This Page In Menus', 'sem-pinnacle'), array($this, 'page_meta_config'), 'page', 'side');
 	} # editor_init()
 
 	/**
@@ -199,7 +199,7 @@ class sem_nav_menu extends WP_Widget {
 
 		extract($item, EXTR_SKIP);
 		if ( !isset($label) || (string) $label === '' )
-			$label = __('Home', 'sem-reloaded');
+			$label = __('Home', 'sem-pinnacle');
 		$url = esc_url(user_trailingslashit(home_url()));
 
 		$classes = array('nav_home');
@@ -240,7 +240,7 @@ class sem_nav_menu extends WP_Widget {
 
 		extract($item, EXTR_SKIP);
 		if ( !isset($label) || (string) $label === '' )
-			$label = __('Untitled', 'sem-reloaded');
+			$label = __('Untitled', 'sem-pinnacle');
 		$url = esc_url($ref);
 		if ( !$url || $url == 'http://' )
 			return;
@@ -318,7 +318,7 @@ class sem_nav_menu extends WP_Widget {
 		if ( (string) $label === '' )
 			$label = $page->post_title;
 		if ( (string) $label === '' )
-			$label = __('Untitled', 'sem-reloaded');
+			$label = __('Untitled', 'sem-pinnacle');
 
 		$url = esc_url(apply_filters('the_permalink', get_permalink($page->ID)));
 
@@ -788,29 +788,29 @@ class sem_nav_menu extends WP_Widget {
 				. checked($sep, true, false)
 				. ' />'
 			. '&nbsp;'
-			. __('Split navigation menu items with a |.', 'sem-reloaded')
+			. __('Split navigation menu items with a |.', 'sem-pinnacle')
 			. '</label>'
 			. '</p>' . "\n";
 
 
 		echo '<div class="hide-if-no-js">' . "\n";
 
-		echo '<h3>' . __('Menu Items', 'sem-reloaded') . '</h3>' . "\n";
+		echo '<h3>' . __('Menu Items', 'sem-pinnacle') . '</h3>' . "\n";
 
 		if ( $this->multi_level ) {
 			echo '<p>'
 				. '<label>'
-				. __('How many levels to display:', 'sem-reloaded') . '&nbsp;'
+				. __('How many levels to display:', 'sem-pinnacle') . '&nbsp;'
 				. '<select name="' . $this->get_field_name('menu_depth') . '">' . "\n"
 				. '<option value="0"'
 					. selected($menu_depth, 0, false)
-					. '>' . __('Top Level Only', 'sem-reloaded') . '</option>' . "\n"
+					. '>' . __('Top Level Only', 'sem-pinnacle') . '</option>' . "\n"
 				. '<option value="1"'
 					. selected($menu_depth, 1, false)
-					. '>' . __('1 Level Deep', 'sem-reloaded') . '</option>' . "\n"
+					. '>' . __('1 Level Deep', 'sem-pinnacle') . '</option>' . "\n"
 				. '<option value="2"'
 					. selected($menu_depth, 2, false)
-					. '>' . __('2 Levels Deep', 'sem-reloaded') . '</option>' . "\n"
+					. '>' . __('2 Levels Deep', 'sem-pinnacle') . '</option>' . "\n"
 				. '</select>'
 				. '</label>'
 				. '</p>' . "\n";
@@ -826,18 +826,18 @@ class sem_nav_menu extends WP_Widget {
 
 		echo '<select class="nav_menu_item_select">' . "\n"
 			. '<option value="">'
-				. esc_attr(__('- Select a menu item -', 'sem-reloaded'))
+				. esc_attr(__('- Select a menu item -', 'sem-pinnacle'))
 				. '</option>' . "\n"
-			. '<optgroup label="' . esc_attr(__('Special', 'sem-reloaded')) . '">' . "\n"
+			. '<optgroup label="' . esc_attr(__('Special', 'sem-pinnacle')) . '">' . "\n"
 			. '<option value="home" class="nav_menu_item_home">'
-				. __('Home', 'sem-reloaded')
+				. __('Home', 'sem-pinnacle')
 				. '</option>' . "\n"
 			. '<option value="url" class="nav_menu_item_url">'
-				. __('Url', 'sem-reloaded')
+				. __('Url', 'sem-pinnacle')
 				. '</option>' . "\n"
 			. '</optgroup>' . "\n"
 			. '<optgroup class="nav_menu_item_pages"'
-				. ' label="' . esc_attr(__('Pages', 'sem-reloaded')) . '"'
+				. ' label="' . esc_attr(__('Pages', 'sem-pinnacle')) . '"'
 				. '>' . "\n"
 			;
 
@@ -848,7 +848,7 @@ class sem_nav_menu extends WP_Widget {
 			if ( $label === '' )
 				$label = $page->post_title;
 			if ( $label === '' )
-				$label = __('Untitled', 'sem-reloaded');
+				$label = __('Untitled', 'sem-pinnacle');
 			$label = strip_tags($label);
 			echo '<option value="page-' . $page->ID . '">'
 				. esc_attr($label)
@@ -866,7 +866,7 @@ class sem_nav_menu extends WP_Widget {
 		echo '</div>' . "\n"; # controller
 
 		echo '<p>'
-			. __('Drag and drop menu items to rearrange them.', 'sem-reloaded')
+			. __('Drag and drop menu items to rearrange them.', 'sem-pinnacle')
 			. '</p>' . "\n";
 
 
@@ -897,7 +897,7 @@ class sem_nav_menu extends WP_Widget {
 				if ( $label === '' )
 					$label = $page->post_title;
 				if ( $label === '' )
-					$label = __('Untitled', 'sem-reloaded');
+					$label = __('Untitled', 'sem-pinnacle');
 				break;
 			}
 
@@ -932,7 +932,7 @@ class sem_nav_menu extends WP_Widget {
 
 		if ( !$items ) {
 			echo '<div class="nav_menu_item_blank">' . "\n"
-				. '<p>' . __('Empty Navigation Menu. Leave it empty to populate it automatically.', 'sem-reloaded') . '</p>' . "\n"
+				. '<p>' . __('Empty Navigation Menu. Leave it empty to populate it automatically.', 'sem-pinnacle') . '</p>' . "\n"
 				. '</div>' . "\n";
 		} elseif ( defined('DOING_AJAX') ) {
 			echo <<<EOS
@@ -980,18 +980,18 @@ EOS;
 		echo '<div id="nav_menu_item_defaults" style="display: none;">' . "\n";
 
 		echo '<div class="nav_menu_item_blank">' . "\n"
-			. '<p>' . __('Empty Navigation Menu. Leave it empty to populate it automatically.', 'sem-reloaded') . '</p>' . "\n"
+			. '<p>' . __('Empty Navigation Menu. Leave it empty to populate it automatically.', 'sem-pinnacle') . '</p>' . "\n"
 			. '</div>' . "\n";
 
 		$default_items = array(
 			array(
 				'type' => 'home',
-				'label' => __('Home', 'sem-reloaded'),
+				'label' => __('Home', 'sem-pinnacle'),
 				),
 			array(
 				'type' => 'url',
 				'ref' => 'http://',
-				'label' => __('Url Label', 'sem-reloaded'),
+				'label' => __('Url Label', 'sem-pinnacle'),
 				),
 			);
 
@@ -1000,7 +1000,7 @@ EOS;
 			if ( $label === '' )
 				$label = $page->post_title;
 			if ( $label === '' )
-				$label = __('Untitled', 'sem-reloaded');
+				$label = __('Untitled', 'sem-pinnacle');
 			$label = strip_tags($label);
 			$default_items[] = array(
 				'type' => 'page',
@@ -1032,7 +1032,7 @@ EOS;
 				if ( $label === '' )
 					$label = $page->post_title;
 				if ( $label === '' )
-					$label = __('Untitled', 'sem-reloaded');
+					$label = __('Untitled', 'sem-pinnacle');
 				$label = strip_tags($label);
 				break;
 			}
@@ -1336,7 +1336,7 @@ EOS;
 				)
 			. ' />'
 			. '&nbsp;'
-			. __('Exclude page', 'sem-reloaded')
+			. __('Exclude page', 'sem-pinnacle')
 			. '</label>'
 		 	. '</td>' . "\n"
 			. '</tr>' . "\n";
@@ -1344,7 +1344,7 @@ EOS;
 		echo '</table>' . "\n";
 
 		echo '<p>'
-			. __('Check to exclude this page from being listed in navigation menus.', 'sem-reloaded')
+			. __('Check to exclude this page from being listed in navigation menus.', 'sem-pinnacle')
 			. '</p>' . "\n";
 	} # page_meta_config()
 } # sem_nav_menu

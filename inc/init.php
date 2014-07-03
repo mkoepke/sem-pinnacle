@@ -26,7 +26,7 @@ if ( !defined('sem_header_cache_debug') )
 if ( !defined('sem_css_debug') )
 	define('sem_css_debug', false);
 
-define('sem_last_mod', sem_css_debug ? time() : '20140108');
+define('sem_last_mod', sem_css_debug ? time() : '20140703');
 
 if ( function_exists('memory_get_usage') && ( (int) @ini_get('memory_limit') < 64 ) )
 	@ini_set('memory_limit', '64M');

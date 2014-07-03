@@ -130,7 +130,7 @@ if ( $comments ) {
 		if ( !( isset($_GET['action']) && $_GET['action'] == 'print' ) ) {
 			echo '<div class="comment_actions">' . "\n";
 
-			edit_comment_link(__('Edit', 'sem-reloaded'), '<span class="edit_comment">', '</span>' . "\n");
+			edit_comment_link(__('Edit', 'sem-pinnacle'), '<span class="edit_comment">', '</span>' . "\n");
 			
 			if ( comments_open() && $comment->comment_approved ) {
 				
@@ -165,7 +165,7 @@ if ( $comments ) {
 				. '</span>'
 			. '<span class="comment_time">'
 			. ' @ ' . "\n"
-			. get_comment_date(__('g:i a', 'sem-reloaded'))
+			. get_comment_date(__('g:i a', 'sem-pinnacle'))
 			. '</span>' . "\n"
 			. '<span class="link_comment">'
 			. '<a href="#comment-' . get_comment_ID() . '" title="#">'
@@ -182,7 +182,7 @@ if ( $comments ) {
 		
 		if ( $comment->comment_approved == '0' ) {
 			echo '<p>'
-				. '<em>' . __('Your comment is awaiting moderation.', 'sem-reloaded') . '</em>'
+				. '<em>' . __('Your comment is awaiting moderation.', 'sem-pinnacle') . '</em>'
 				. '</p>' . "\n";
 		}
 		
@@ -215,7 +215,7 @@ if ( comments_open() && !( isset($_GET['action']) && $_GET['action'] == 'print' 
 	
 	echo '<p class="cancel_comment_reply">'
 		. '<a id="cancel-comment-reply-link" href="#respond" style="display:none;">'
-		. __('Click here to cancel reply.', 'sem-reloaded')
+		. __('Click here to cancel reply.', 'sem-pinnacle')
 		. '</a>'
 		. '</p>' . "\n";
 	
@@ -224,7 +224,7 @@ if ( comments_open() && !( isset($_GET['action']) && $_GET['action'] == 'print' 
 	if ( get_option('comment_registration') && !$user_ID ) {
 		$login_url = '<span class="login">'
 			. apply_filters('loginout',
-				'<a href="' . esc_url(wp_login_url(apply_filters('the_permalink', get_permalink()))) . '">' . __('Login', 'sem-reloaded') . '</a>'
+				'<a href="' . esc_url(wp_login_url(apply_filters('the_permalink', get_permalink()))) . '">' . __('Login', 'sem-pinnacle') . '</a>'
 				)
 			. '</span>';
 			
@@ -244,7 +244,7 @@ if ( comments_open() && !( isset($_GET['action']) && $_GET['action'] == 'print' 
 		if ( $user_ID ) {
 			$logout_url = '<span class="logout">'
 				. apply_filters('loginout',
-					'<a href="' . esc_url(wp_logout_url(apply_filters('the_permalink', get_permalink()))) . '">' . __('Logout', 'sem-reloaded') . '</a>'
+					'<a href="' . esc_url(wp_logout_url(apply_filters('the_permalink', get_permalink()))) . '">' . __('Logout', 'sem-pinnacle') . '</a>'
 					)
 				. '</span>';
 

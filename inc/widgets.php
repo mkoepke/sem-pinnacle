@@ -222,7 +222,7 @@ class sem_widgets {
 				? "<br />\n"
 				: ''
 				)
-			. '<input type="submit" class="go button submit" value="' . esc_attr__('Search', 'sem-reloaded') . '" />'
+			. '<input type="submit" class="go button submit" value="' . esc_attr__('Search', 'sem-pinnacle') . '" />'
 			. '</form>';
 		
 		echo $after_widget;

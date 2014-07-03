@@ -18,10 +18,10 @@ class header extends WP_Widget {
         	add_action('wp', array($this, 'wire'), 20);
         }
 
-		$widget_name = __('Header: Site Header', 'sem-reloaded');
+		$widget_name = __('Header: Site Header', 'sem-pinnacle');
 		$widget_ops = array(
 			'classname' => 'header',
-			'description' => __('The site\'s header. Must be placed in the header area.', 'sem-reloaded'),
+			'description' => __('The site\'s header. Must be placed in the header area.', 'sem-pinnacle'),
 			);
 		$control_ops = array(
 			'width' => 330,
@@ -412,7 +412,7 @@ EOS;
 		$instance = wp_parse_args($instance, $defaults);
 		extract($instance, EXTR_SKIP);
 
-		echo '<h3>' . __('Config', 'sem-reloaded') . '</h3>' . "\n";
+		echo '<h3>' . __('Config', 'sem-pinnacle') . '</h3>' . "\n";
 
 		echo '<p>'
 			. '<label>'
@@ -421,7 +421,7 @@ EOS;
 				. checked($invert_header, true, false)
 				. ' />'
 			. '&nbsp;'
-			. __('Output the site\'s name before the tagline.', 'sem-reloaded')
+			. __('Output the site\'s name before the tagline.', 'sem-pinnacle')
 			. '</label>'
 			. '</p>' . "\n";
 	} # form()
@@ -448,10 +448,10 @@ class navbar extends sem_nav_menu {
 	 *
 	 */
 	public function __construct() {
-		$widget_name = __('Header: Nav Menu', 'sem-reloaded');
+		$widget_name = __('Header: Nav Menu', 'sem-pinnacle');
 		$widget_ops = array(
 			'classname' => 'navbar',
-			'description' => __('The header\'s navigation menu, with an optional search form. Must be placed in the header area.', 'sem-reloaded'),
+			'description' => __('The header\'s navigation menu, with an optional search form. Must be placed in the header area.', 'sem-pinnacle'),
 			);
 		$control_ops = array(
 			'width' => 330,
@@ -575,7 +575,7 @@ class navbar extends sem_nav_menu {
 		$instance = wp_parse_args($instance, $defaults);
 		extract($instance, EXTR_SKIP);
 
-		echo '<h3>' . __('Captions', 'sem-reloaded') . '</h3>' . "\n";
+		echo '<h3>' . __('Captions', 'sem-pinnacle') . '</h3>' . "\n";
 
 		foreach ( array('search_field', 'search_button') as $field ) {
 			echo '<p>'
@@ -590,7 +590,7 @@ class navbar extends sem_nav_menu {
 				. '</p>' . "\n";
 		}
 
-		echo '<h3>' . __('Config', 'sem-reloaded') . '</h3>' . "\n";
+		echo '<h3>' . __('Config', 'sem-pinnacle') . '</h3>' . "\n";
 
 		echo '<p>'
 			. '<label>'
@@ -599,7 +599,7 @@ class navbar extends sem_nav_menu {
 				. checked($show_search_form, true, false)
 				. ' />'
 			. '&nbsp;'
-			. __('Show a search form in the navigation menu.', 'sem-reloaded')
+			. __('Show a search form in the navigation menu.', 'sem-pinnacle')
 			. '</label>'
 			. '</p>' . "\n";
 
@@ -615,8 +615,8 @@ class navbar extends sem_nav_menu {
 
 	function defaults() {
 		return array_merge(array(
-			'search_field' => __('Search', 'sem-reloaded'),
-			'search_button' => __('Go', 'sem-reloaded'),
+			'search_field' => __('Search', 'sem-pinnacle'),
+			'search_button' => __('Go', 'sem-pinnacle'),
 			'show_search_form' => true,
 			), parent::defaults());
 	} # defaults()
@@ -672,10 +672,10 @@ class header_boxes extends WP_Widget {
 	 *
 	 */
 	public function __construct() {
-		$widget_name = __('Header: Boxes Bar', 'sem-reloaded');
+		$widget_name = __('Header: Boxes Bar', 'sem-pinnacle');
 		$widget_ops = array(
 			'classname' => 'header_boxes',
-			'description' => __('Lets you decide where the Footer Boxes Bar panel goes. Must be placed in the header area.', 'sem-reloaded'),
+			'description' => __('Lets you decide where the Footer Boxes Bar panel goes. Must be placed in the header area.', 'sem-pinnacle'),
 			);
 
 		$this->WP_Widget('header_boxes', $widget_name, $widget_ops);

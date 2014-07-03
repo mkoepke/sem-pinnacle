@@ -6,7 +6,7 @@ $sem_theme_options['active_font'] = '';
 $sem_theme_options['skin_data'] = sem_template::get_skin_data($sem_theme_options['active_skin']);
 
 # Credits
-$sem_theme_options['credits'] = __('Made with %1$s &bull; %2$s skin by %3$s', 'sem-reloaded');
+$sem_theme_options['credits'] = __('Made with %1$s &bull; %2$s skin by %3$s', 'sem-pinnacle');
 
 # Version
 $sem_theme_options['version'] = sem_theme_version;

@@ -84,7 +84,7 @@ if ( is_admin() ) {
 **/
 function semreloaded_postsetup() {
 	# load textdomain
-	load_theme_textdomain('sem-reloaded', sem_path . '/lang');
+	load_theme_textdomain('sem-pinnacle', sem_path . '/lang');
 
 	# kill page comments
 	if ( !is_admin() )

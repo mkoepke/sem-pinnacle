@@ -176,7 +176,7 @@ EOS;
 		
 		echo '<div class="updated fade">'
 			. '<p><strong>'
-			. __('Settings saved.', 'sem-reloaded')
+			. __('Settings saved.', 'sem-pinnacle')
 			. '</strong></p>'
 			. '</div>' . "\n";
 	} # save_options()
@@ -199,22 +199,22 @@ EOS;
 		$google_fonts = sem_font::get_fonts('google');
 		$fonts = sem_font::get_fonts();
 		
-		echo '<h2>' . __('Manage Font', 'sem-reloaded') . '</h2>' . "\n";
+		echo '<h2>' . __('Manage Font', 'sem-pinnacle') . '</h2>' . "\n";
 		
-		echo '<h3>' . __('Current Font', 'sem-reloaded') . '</h3>' . "\n";
+		echo '<h3>' . __('Current Font', 'sem-pinnacle') . '</h3>' . "\n";
 
 		$font = '<span class="' . esc_attr($sem_theme_options['active_font']) . '">'
 			. $fonts[$sem_theme_options['active_font']]
 			. '</span>';
 
 		echo '<p>'
-			. sprintf(__('Font Family: %s.', 'sem-reloaded'), $font)
+			. sprintf(__('Font Family: %s.', 'sem-pinnacle'), $font)
 			. '</p>' . "\n";
 		
-		echo '<p style="font-size: larger;"><i>' . __('Select a new font below to set as the default font on your site.', 'sem-reloaded') . '</i></p>' . "\n";
+		echo '<p style="font-size: larger;"><i>' . __('Select a new font below to set as the default font on your site.', 'sem-pinnacle') . '</i></p>' . "\n";
 		echo '<p>&nbsp;</p>' . "\n";
 
-		echo '<h3>' . __('Standard Web Safe Fonts', 'sem-reloaded') . '</h3>' . "\n";
+		echo '<h3>' . __('Standard Web Safe Fonts', 'sem-pinnacle') . '</h3>' . "\n";
 
 		echo '<ul>' . "\n";
 		
@@ -232,7 +232,7 @@ EOS;
 		
 		echo '</ul>' . "\n";
 
-		echo '<h3>' . __('Google Fonts', 'sem-reloaded') . '</h3>' . "\n";
+		echo '<h3>' . __('Google Fonts', 'sem-pinnacle') . '</h3>' . "\n";
 
 		echo '<ul>' . "\n";
 
@@ -251,7 +251,7 @@ EOS;
 		echo '</ul>' . "\n";
 
 		echo '<div class="submit">'
-			. '<input type="submit" value="' . esc_attr(__('Save Changes', 'sem-reloaded')) . '" />'
+			. '<input type="submit" value="' . esc_attr(__('Save Changes', 'sem-pinnacle')) . '" />'
 			. '</div>' . "\n";
 
 		echo '</form>' . "\n";
@@ -267,28 +267,28 @@ EOS;
 
 	static function get_fonts($type = 'all') {
 		$standard = array(
-			'' =>  __('The default font stack as defined by your skin', 'sem-reloaded'),
-			'antica' => __('Antica stack: Palatino, "Book Antica", "Palatino Linotype", "URW Palladio L", Palladio, Georgia, "DejaVu Serif", Serif', 'sem-reloaded'),
-			'arial' => __('Arial stack: Arial, "Liberation Sans", "Nimbus Sans L", "DejaVu Sans", Sans-Serif', 'sem-reloaded'),
-			'courier' => __('Courier stack: "Courier New", "Liberation Mono", "Nimbus Mono L", Monospace', 'sem-reloaded'),
-			'georgia' => __('Georgia stack: Georgia, "New Century Schoolbook", "Century Schoolbook L", "DejaVu Serif", Serif', 'sem-reloaded'),
-			'helvetica' => __('Helvetica stack: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif', 'sem-reloaded'),
-            'lucida' => __('Lucida stack: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, Sans-Serif', 'sem-reloaded'),
-			'tahoma' => __('Tahoma stack: Tahoma, "Nimbus Sans L", "DejaVu Sans", Sans-Serif', 'sem-reloaded'),
-			'times' => __('Times stack: "Times New Roman", Times, "Liberation Serif", "DejaVu Serif Condensed", Serif', 'sem-reloaded'),
-			'trebuchet' =>  __('Trebuchet stack: "Trebuchet MS", "Nimbus Sans L", "DejaVu Sans", Sans-Serif', 'sem-reloaded'),
-			'verdana' =>  __('Verdana stack: Verdana, "Nimbus Sans L", "DejaVu Sans", Sans-Serif', 'sem-reloaded'),
+			'' =>  __('The default font stack as defined by your skin', 'sem-pinnacle'),
+			'antica' => __('Antica stack: Palatino, "Book Antica", "Palatino Linotype", "URW Palladio L", Palladio, Georgia, "DejaVu Serif", Serif', 'sem-pinnacle'),
+			'arial' => __('Arial stack: Arial, "Liberation Sans", "Nimbus Sans L", "DejaVu Sans", Sans-Serif', 'sem-pinnacle'),
+			'courier' => __('Courier stack: "Courier New", "Liberation Mono", "Nimbus Mono L", Monospace', 'sem-pinnacle'),
+			'georgia' => __('Georgia stack: Georgia, "New Century Schoolbook", "Century Schoolbook L", "DejaVu Serif", Serif', 'sem-pinnacle'),
+			'helvetica' => __('Helvetica stack: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif', 'sem-pinnacle'),
+            'lucida' => __('Lucida stack: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, Sans-Serif', 'sem-pinnacle'),
+			'tahoma' => __('Tahoma stack: Tahoma, "Nimbus Sans L", "DejaVu Sans", Sans-Serif', 'sem-pinnacle'),
+			'times' => __('Times stack: "Times New Roman", Times, "Liberation Serif", "DejaVu Serif Condensed", Serif', 'sem-pinnacle'),
+			'trebuchet' =>  __('Trebuchet stack: "Trebuchet MS", "Nimbus Sans L", "DejaVu Sans", Sans-Serif', 'sem-pinnacle'),
+			'verdana' =>  __('Verdana stack: Verdana, "Nimbus Sans L", "DejaVu Sans", Sans-Serif', 'sem-pinnacle'),
 		);
 
 		$google = array(
-			'lato' => __('Lato (Google Fonts) stack: "Lato", sans-serif', 'sem-reloaded'),
-			'lora' => __('Lora (Google Fonts) stack: "Lora", serif', 'sem-reloaded'),
-			'merriweather' => __('Merriweather (Google Fonts) stack: "Merriweather", Serif', 'sem-reloaded'),
-			'open_sans' => __('Open Sans (Google Fonts) stack: "Open Sans", sans-serif', 'sem-reloaded'),
-			'pt_sans' => __('PT Sans (Google Fonts) stack: "PT Sans", sans-serif', 'sem-reloaded'),
-			'roboto' => __('Roboto (Google Fonts) stack: "Roboto", sans-serif', 'sem-reloaded'),
-			'source_sans_pro' => __('Source Sans Pro (Google Fonts) stack: "Source Sans Pro", sans-serif', 'sem-reloaded'),
-			'ubuntu' => __('Ubuntu (Google Fonts) stack: "Ubuntu", sans-serif', 'sem-reloaded'),
+			'lato' => __('Lato (Google Fonts) stack: "Lato", sans-serif', 'sem-pinnacle'),
+			'lora' => __('Lora (Google Fonts) stack: "Lora", serif', 'sem-pinnacle'),
+			'merriweather' => __('Merriweather (Google Fonts) stack: "Merriweather", Serif', 'sem-pinnacle'),
+			'open_sans' => __('Open Sans (Google Fonts) stack: "Open Sans", sans-serif', 'sem-pinnacle'),
+			'pt_sans' => __('PT Sans (Google Fonts) stack: "PT Sans", sans-serif', 'sem-pinnacle'),
+			'roboto' => __('Roboto (Google Fonts) stack: "Roboto", sans-serif', 'sem-pinnacle'),
+			'source_sans_pro' => __('Source Sans Pro (Google Fonts) stack: "Source Sans Pro", sans-serif', 'sem-pinnacle'),
+			'ubuntu' => __('Ubuntu (Google Fonts) stack: "Ubuntu", sans-serif', 'sem-pinnacle'),
 		);
 
 		switch ( $type ) {

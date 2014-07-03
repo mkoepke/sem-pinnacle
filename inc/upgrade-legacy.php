@@ -126,13 +126,13 @@ function upgrade_sem_6_0() {
 		}
 		$instance['one_comment'] = !empty($sem_captions['1_comment_link'])
 			? $sem_captions['1_comment_link']
-			: __('1 Comment', 'sem-reloaded');
+			: __('1 Comment', 'sem-pinnacle');
 		$instance['n_comments'] = !empty($sem_captions['n_comments_link'])
 			? str_replace(
 				'%num%',
 				'%d',
 				$sem_captions['n_comments_link'])
-			: __('%d Comments', 'sem-reloaded');
+			: __('%d Comments', 'sem-pinnacle');
 		unset($sem_captions['cats_title']);
 		unset($sem_captions['filed_under']);
 		unset($sem_captions['by']);
@@ -431,7 +431,7 @@ function upgrade_sem_6_0() {
 		if ( isset($sem_options['show_credits']) && !$sem_options['show_credits'] )
 			$sem_options['credits'] = '';
 		else
-			$sem_options['credits'] = __('Made with %1$s &bull; %2$s skin by %3$s', 'sem-reloaded');
+			$sem_options['credits'] = __('Made with %1$s &bull; %2$s skin by %3$s', 'sem-pinnacle');
 	} else {
 		$sem_options['credits'] = str_replace(
 			array('%semiologic%', '%skin_name%', '%skin_author%'),
