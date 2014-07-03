@@ -228,4 +228,3 @@ function dump_trace() {
 
 if ( $_GET['debug'] == 'http' )
 	add_filter('http_request_args', 'dump_http', 0, 2);
-?>

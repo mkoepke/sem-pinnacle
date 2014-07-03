@@ -302,6 +302,65 @@ Theme Fonts
 	font-family: 'Ubuntu', sans-serif;
 }
 
+
+/*  non-semantic helper classes  (from html5 boilerplate)
+--------------------------------------------- */
+
+/* For image replacement */
+.ir {
+	border:0;
+	font: 0/0 a;
+	text-shadow: none;
+	color: transparent;
+	background-color: transparent;
+}
+
+/* Hide from both screenreaders and browsers: h5bp.com/u */
+.hidden {
+	display: none !important;
+	visibility: hidden;
+}
+
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+.visuallyhidden {
+	border: 0; clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+	clip: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible; position:
+	static; width: auto;
+}
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible {
+	visibility: hidden;
+}
+
+/* Contain floats: h5bp.com/q */
+.clearfix:before,
+.clearfix:after {
+	content: "";
+	display: table;
+}
+.clearfix:after {
+	clear: both;
+}
+.clearfix {
+	*zoom: 1;
+}
+
+
 /* Headings
 --------------------------------------------- */
 
@@ -983,11 +1042,12 @@ h2 a {
 }
 /* Margins and Padding */
 
-.main_widget,
 .entry,
 .post_list,
 .comment,
-.widget {
+.main_widget,
+.widget,
+.inline_box  {
 	margin-top: 0;
 	margin-bottom: 1.25em;
 	padding: 0 1.25em;

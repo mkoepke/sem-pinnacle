@@ -10,4 +10,3 @@ Template Name: Special Page
 */
 
 include sem_path . '/index.php';
-?>

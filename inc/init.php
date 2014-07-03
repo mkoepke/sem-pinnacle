@@ -9,6 +9,9 @@ if ( !defined('sem_theme') )
 if ( !defined('sem_theme_version') )
 	define('sem_theme_version', '2.0');
 
+if ( !defined('sem_html5_only') )
+	define('sem_html5_only', true);
+
 if ( !defined('sem_debug') )
 	define('sem_debug', isset($_GET['debug']) );
 elseif ( !isset($_GET['debug']) && !$_POST )
@@ -30,7 +33,8 @@ if ( function_exists('memory_get_usage') && ( (int) @ini_get('memory_limit') < 6
 
 define('sem_path', dirname(dirname(__FILE__)));
 define('sem_url', get_stylesheet_directory_uri());
-
+define('sem_content_path', WP_CONTENT_DIR . '/semiologic' );
+define('sem_content_url', WP_CONTENT_URL . '/semiologic' );
 
 #
 # extra functions
@@ -105,6 +109,8 @@ if ( sem_debug )
 	include sem_path . '/inc/debug.php';
 
 
+$sem_stock_skins = array("boxed", "clean");
+
 #
 # Initialize options
 #
@@ -148,8 +154,7 @@ if ( !isset($sem_theme_options['version']) ) {
 	else {
 		include sem_path . '/inc/install.php';
 	}
-} elseif ( $sem_theme_options['version'] != sem_theme_version ) {
+} elseif ( ( $sem_theme_options['version'] != sem_theme_version ) || defined('sem_upgrade_test') ) {
 	if ( !defined('DOING_CRON') )
 		include sem_path . '/inc/upgrade.php';
 }
-

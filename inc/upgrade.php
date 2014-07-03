@@ -17,13 +17,16 @@ function upgrade_to_sem_pinnacle() {
 		}
 	}
 
+	wp_mkdir_p( sem_content_path . '/skins' );
+	wp_mkdir_p( sem_content_path . '/custom' );
+
 } # upgrade_to_sem_pinnacle()
 
 
 
 global $sem_theme_options;
 
-if ( version_compare($sem_theme_options['version'], '2.0', '<') )
+if ( version_compare($sem_theme_options['version'], '2.1', '<') )
 	upgrade_to_sem_pinnacle();
 
 if ( !defined('sem_upgrade_test') ) {

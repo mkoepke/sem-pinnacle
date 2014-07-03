@@ -710,36 +710,38 @@ class sem_nav_menu extends WP_Widget {
 		$instance = sem_nav_menu::defaults();
 		$instance['sep'] = isset($new_instance['sep']);
 		$instance['menu_depth'] = (int) $new_instance['menu_depth'];
-		foreach ( array_keys((array) $new_instance['items']['type']) as $key ) {
-			$item = array();
-			$item['type'] = $new_instance['items']['type'][$key];
+		if ( isset( $new_instance['items']) ) {
+			foreach ( array_keys((array) $new_instance['items']['type']) as $key ) {
+				$item = array();
+				$item['type'] = $new_instance['items']['type'][$key];
 
-			if ( !in_array($item['type'], array('home', 'url', 'page')) ) {
-				continue;
+				if ( !in_array($item['type'], array('home', 'url', 'page')) ) {
+					continue;
+				}
+
+				$label = trim(strip_tags($new_instance['items']['label'][$key]));
+
+				switch ( $item['type'] ) {
+					case 'home':
+						$item['label'] = $label;
+						break;
+					case 'url':
+						$item['ref'] = trim(strip_tags($new_instance['items']['ref'][$key]));
+						$item['label'] = $label;
+						break;
+					case 'page':
+						$item['ref'] = intval($new_instance['items']['ref'][$key]);
+						$page = get_post($item['ref']);
+						if ( $page->post_title != $label ) {
+							update_post_meta($item['ref'], '_widgets_label', $label);
+						} else {
+							delete_post_meta($item['ref'], '_widgets_label');
+						}
+						break;
+				}
+
+				$instance['items'][] = $item;
 			}
-
-			$label = trim(strip_tags($new_instance['items']['label'][$key]));
-
-			switch ( $item['type'] ) {
-				case 'home':
-					$item['label'] = $label;
-					break;
-				case 'url':
-					$item['ref'] = trim(strip_tags($new_instance['items']['ref'][$key]));
-					$item['label'] = $label;
-					break;
-				case 'page':
-					$item['ref'] = intval($new_instance['items']['ref'][$key]);
-					$page = get_post($item['ref']);
-					if ( $page->post_title != $label ) {
-						update_post_meta($item['ref'], '_widgets_label', $label);
-					} else {
-						delete_post_meta($item['ref'], '_widgets_label');
-					}
-					break;
-			}
-
-			$instance['items'][] = $item;
 		}
 
 		sem_nav_menu::flush_cache();

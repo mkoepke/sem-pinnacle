@@ -347,4 +347,3 @@ if ( comments_open() && !( isset($_GET['action']) && $_GET['action'] == 'print' 
 	
 	echo '</div><!-- #respond -->' . "\n";
 } # comments_open()
-?>

@@ -12,4 +12,3 @@ Template Name: Mono Column
 add_filter('active_layout', array('sem_template', 'strip_sidebars'));
 
 include sem_path . '/index.php';
-?>

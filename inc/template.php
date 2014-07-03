@@ -213,8 +213,11 @@ class sem_template {
 
 	function styles() {
 		global $sem_theme_options;
-		$skin_path = sem_path . '/skins/' . $sem_theme_options['active_skin'];
-		$skin_url = sem_url . '/skins/' . $sem_theme_options['active_skin'];
+		global $sem_stock_skins;
+
+		$custom_skin = !in_array( strtolower($sem_theme_options['active_skin']), $sem_stock_skins );
+		$skin_path = $custom_skin ?  sem_content_path . '/skins/' . $sem_theme_options['active_skin']  : sem_path . '/skins/' . $sem_theme_options['active_skin'];
+		$skin_url = $custom_skin ?  sem_content_url . '/skins/' . $sem_theme_options['active_skin'] : sem_url . '/skins/' . $sem_theme_options['active_skin'];
 
 		wp_enqueue_style('style', sem_url . '/style.css', null, sem_last_mod);
 		
@@ -230,11 +233,12 @@ class sem_template {
 		} else {
 			wp_enqueue_style('skin', $skin_url . '/skin.css', null, sem_last_mod);
 			wp_enqueue_style('responsive', sem_url . '/css/responsive.css', null, sem_last_mod);
-			if ( file_exists(sem_path . '/custom.css') )
-				wp_enqueue_style('custom-theme', sem_url . '/custom.css', null, filemtime(sem_path . '/custom.css'));
 			if ( file_exists($skin_path . '/custom.css') )
 				wp_enqueue_style('custom-skin', $skin_url . '/custom.css', null, filemtime($skin_path . '/custom.css'));
 		}
+
+		if ( file_exists(sem_content_path . '/custom/custom.css') )
+			wp_enqueue_style('custom-theme', sem_content_url . '/custom/custom.css', null, filemtime(sem_content_path . '/custom/custom.css'));
 
 		if ( ( isset($_GET['action']) && $_GET['action'] == 'print' ) || is_singular() ) {
 			wp_enqueue_style('print', sem_url . '/css/print.css', null, sem_last_mod, 'print');
@@ -480,9 +484,12 @@ class sem_template {
 
 	static function get_skin_credits() {
 		global $sem_theme_options;
+		global $sem_stock_skins;
 		
-		if ( is_admin() || !isset($sem_theme_options['skin_data']) || !is_array($sem_theme_options['skin_data']) ) {
-			$details = sem_template::get_skin_data($sem_theme_options['active_skin']);
+		if ( !isset($sem_theme_options['skin_data']) || !is_array($sem_theme_options['skin_data']) ) {
+			$custom_skin = !in_array( strtolower($sem_theme_options['active_skin']), $sem_stock_skins );
+			$skin_path = $custom_skin ?  sem_content_path . '/skins/' . $sem_theme_options['active_skin']  : sem_path . '/skins/' . $sem_theme_options['active_skin'];
+			$details = sem_template::get_skin_data( $sem_theme_options['active_skin'], $skin_path );
 			$sem_theme_options['skin_data'] = $details;
 			if ( !defined('sem_install_test') )
 				update_option('sem6_options', $sem_theme_options);
@@ -515,8 +522,8 @@ class sem_template {
      * @return array $data
      */
 
-	static function get_skin_data($skin_id) {
-		$fields = array( 'name', 'uri', 'version', 'author_name', 'author_uri', 'description', 'tags' );
+	static function get_skin_data($skin_id, $skin_location = '' ) {
+		$fields = array( 'name', 'uri', 'version', 'author_name', 'author_uri', 'description', 'tags', 'colors', 'type' );
 		
 		$allowed_tags = array(
 			'a' => array(
@@ -533,7 +540,10 @@ class sem_template {
 			'strong' => array()
 		);
 
-		$fp = @fopen(sem_path . '/skins/' . $skin_id . '/skin.css', 'r');
+		if ( empty( $skin_location ) )
+			$skin_location = sem_path . '/skins';
+
+		$fp = @fopen( trailingslashit( $skin_location ) . $skin_id . '/skin.css', 'r' );
 		
 		if ( !$fp ) {
 			foreach ( $fields as $field )
@@ -554,6 +564,8 @@ class sem_template {
 		preg_match('/Author\s+ur[il]\s*:(.*)/i', $skin_data, $author_uri);
 		preg_match('/Description\s*:(.*)/i', $skin_data, $description);
 		preg_match('/Tags\s*:(.*)/i', $skin_data, $tags);
+		preg_match('/Colors\s*:(.*)/i', $skin_data, $colors);
+		preg_match('/Type\s*:(.*)/i', $skin_data, $type);
 		
 		foreach ( $fields as $field ) {
 			if ( !empty( ${$field} ) )
@@ -567,6 +579,7 @@ class sem_template {
 				$$field = esc_url_raw($$field);
 				break;
 			case 'tags':
+			case 'colors':
 				$$field = strip_tags($$field);
 				if ( $$field ) {
 					$$field = explode(',', $$field);

@@ -7,6 +7,14 @@
 
 class sem_custom {
 	/**
+	 * @var additional external fonts used
+	 */
+	protected $addl_fonts;
+
+
+	protected $default_font_size = 16;
+
+	/**
 	 * Holds the instance of this class.
 	 *
 	 * @since  0.5.0
@@ -29,11 +37,6 @@ class sem_custom {
 
 		return self::$instance;
 	}
-
-	/**
-	 * @var additional external fonts used
-	 */
-	protected $addl_fonts;
 
 	/**
 	 * Constructor.
@@ -75,7 +78,7 @@ class sem_custom {
 
 	function scripts() {
 		wp_enqueue_script('farbtastic');
-		wp_enqueue_script('jquery-cookie', sem_url . '/js/jquery.cookie.js', array('jquery'), '1.0');
+		wp_enqueue_script('jquery-cookie', sem_url . '/js/jquery.cookie.js', array('jquery'), '1.4');
 		wp_enqueue_script('jquery-ui-tabs');
 	} # scripts()
 	
@@ -279,6 +282,7 @@ EOS;
 		check_admin_referer('sem_custom');
 		
 		global $sem_theme_options;
+		global $sem_stock_skins;
 		$saved = false;
 		$restored = false;
 		$publish = !empty($_REQUEST['publish']);
@@ -379,12 +383,16 @@ EOS;
 					$fs_error = false;
 					switch ( true ) {
 					default:
-						if ( !$wp_filesystem->find_folder(sem_path . '/skins/' . $sem_theme_options['active_skin']) ) {
+
+						$custom_skin = !in_array( strtolower($sem_theme_options['active_skin']), $sem_stock_skins );
+						$skin_path = $custom_skin ?  sem_content_path . '/skins/' . $sem_theme_options['active_skin']  : sem_path . '/skins/' . $sem_theme_options['active_skin'];
+
+						if ( !$wp_filesystem->find_folder( $skin_path ) ) {
 							$fs_error = sprintf(__('Publish Failed: Could not locate your active skin\'s folder (<code>%s</code>).', 'sem-reloaded'), 'wp-content/themes/sem-reloaded/skins/' . $sem_theme_options['active_skin']);
 							break;
 						}
 						
-						$file = sem_path . '/skins/' . $sem_theme_options['active_skin'] . '/custom.css';
+						$file = $skin_path . '/custom.css';
 						
 						if ( $wp_filesystem->exists($file) ) {
 							if ( !$wp_filesystem->is_file($file) ) {
@@ -958,10 +966,10 @@ EOS;
 				. '-'
 				. '</option>';
 			
-			for ( $i = 9; $i <= 24; $i++ )
+			for ( $i = 6; $i <= 24; $i++ )
 				echo '<option value="' . $i . '"'
 					. selected($i, $font_size, false)
-					. '>' . sprintf(__('%dpt', 'sem-reloaded'), $i) . '</option>' . "\n";
+					. '>' . sprintf(__('%dpx', 'sem-reloaded'), $i) . '</option>' . "\n";
 			
 			echo '</select>' . "\n";
 			
@@ -1149,6 +1157,7 @@ EOS;
 			'' => __('- Default -', 'sem-reloaded'),
 			'bold' => __('Bold', 'sem-reloaded'),
 			'normal' => __('Normal', 'sem-reloaded'),
+			'light' => __('Light', 'sem-reloaded'),
 			);
 	} # get_font_weights()
 	
@@ -1215,11 +1224,12 @@ EOS;
 			'ubuntu' => '"Ubuntu", sans-serif',
 			);
 		$font_sizes = array();
-		for ( $i = 9; $i <= 24; $i++ )
-			$font_sizes[$i] = $i . 'pt';
+		for ( $i = 6; $i <= 24; $i++ )
+			$font_sizes[$i] = $i;
 		$font_weights = array(
-			'bold' => 'bold',
-			'normal' => 'normal',
+			'bold' => '700',
+			'normal' => '400',
+			'light' => '300',
 			);
 		$font_styles = array(
 			'italic' => 'italic',
@@ -1245,7 +1255,8 @@ EOS;
 				case 'font_size':
 					if ( !$v || !isset($font_sizes[$v]) )
 						continue;
-					$css[$pointer][] = 'font-size: ' . $font_sizes[$v] . ';';
+					$size = number_format( $font_sizes[$v] / $this->default_font_size, 3, '.', '' ) . 'em';
+					$css[$pointer][] = 'font-size: ' . $size . ';';
 					break;
 				
 				case 'font_weight':

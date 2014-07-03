@@ -37,6 +37,7 @@ you customize the theme's CSS without losing your changes when you upgrade.
 	       content:" <" attr(href) "> ";
 	   }
 
+	.ir a:after,
 	.entry_content a[href^="javascript:"]:after,
 	   a[href^="#"]:after {
 	       content: "";

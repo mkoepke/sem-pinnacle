@@ -50,4 +50,3 @@ include sem_path . '/header.php';
 
 # show footer
 include sem_path . '/footer.php';
-?>

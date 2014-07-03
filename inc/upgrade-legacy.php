@@ -632,8 +632,6 @@ if ( version_compare($sem_options['version'], '6.0', '<') )
 if ( version_compare($sem_options['version'], '6.1', '<') )
 	upgrade_sem_6_1();
 
-
-unset($sem_options['skin_data']);
 $sem_options['version'] = '6.3';
 
 

@@ -5,7 +5,9 @@
  * @package Semiologic Reloaded
  **/
 
+
 class sem_skin {
+
 	/**
 	 * Holds the instance of this class.
 	 *
@@ -137,11 +139,15 @@ EOS;
 			return;
 		
 		check_admin_referer('sem_skin');
-		
+
 		global $sem_theme_options;
-		
+		global $sem_stock_skins;
+
 		$sem_theme_options['active_skin'] = preg_replace("/[^a-z0-9_-]/i", "", $_POST['skin']);
-		$sem_theme_options['skin_data'] = sem_template::get_skin_data($sem_theme_options['active_skin']);
+		$custom_skin = !in_array( strtolower($sem_theme_options['active_skin']), $sem_stock_skins );
+		$sem_theme_options['skin_data'] = sem_template::get_skin_data($sem_theme_options['active_skin'],
+			$custom_skin ? sem_content_path . '/skins' : sem_path . '/skins' );
+
 		if ( current_user_can('unfiltered_html') )
 			$sem_theme_options['credits'] = stripslashes($_POST['credits']);
 		
@@ -177,7 +183,8 @@ EOS;
 		echo '<h3>' . __('Current Skin &amp; Font', 'sem-reloaded') . '</h3>' . "\n";
 		
 		$details = $skins[$sem_theme_options['active_skin']];
-		$screenshot = sem_url . '/skins/' . $sem_theme_options['active_skin'] . '/screenshot.png';
+		$custom_skin = ( isset( $details['type'] )) && in_array( $details['type'], array('custom', 'Custom'));
+		$screenshot = ($custom_skin ? sem_content_url : sem_url) . '/skins/' . $sem_theme_options['active_skin'] . '/screenshot.png';
 		$title = __('%1$s v.%2$s by %3$s', 'sem-reloaded');
 		$name = $details['uri']
 			? ( '<a href="' . esc_url($details['uri']) . '"'
@@ -269,8 +276,9 @@ EOS;
 			$i++;
 			
 			echo '<td class="' . implode(' ', $classes) . '">' . "\n";
-			
-			$screenshot = sem_url . '/skins/' . $skin . '/screenshot.png';
+
+			$custom_skin = ( isset( $details['type'] )) && in_array( $details['type'], array('custom', 'Custom'));
+			$screenshot = ($custom_skin ? sem_content_url : sem_url) . '/skins/' . $skin . '/screenshot.png';
 			$title = __('%1$s v.%2$s', 'sem-reloaded');
 			$name = $details['uri']
 				? ( '<a href="' . esc_url($details['uri']) . '"'
@@ -360,22 +368,28 @@ EOS;
 
 	static function get_skins() {
 		$skins = array();
-		$handle = @opendir(sem_path . '/skins');
 
-		if ( !$handle )
-			return array();
+		$skin_dirs = array( sem_path . '/skins',  sem_content_path . '/skins' );
 
-		while ( ($skin = readdir($handle) ) !== false ) {
-			if ( in_array($skin, array('.', '..')) )
+		foreach( $skin_dirs as $skin_dir ) {
+			$handle = @opendir( $skin_dir );
+
+			if ( !$handle )
 				continue;
-			
-			$file = sem_path . "/skins/$skin/skin.css";
-			if ( !is_file($file) || !is_readable($file) )
-				continue;
-			
-			$skins[$skin] = sem_template::get_skin_data($skin);
+
+			while ( ($skin = readdir($handle) ) !== false ) {
+				if ( in_array($skin, array('.', '..')) )
+					continue;
+
+				$skin_location = $skin_dir;
+				$file = $skin_location . "/$skin/skin.css";
+				if ( !is_file($file) || !is_readable($file) )
+					continue;
+
+				$skins[$skin] = sem_template::get_skin_data( $skin, $skin_location );
+			}
 		}
-		
+
 		uasort($skins, array('sem_skin', 'sort'));
 		
 		return $skins;		

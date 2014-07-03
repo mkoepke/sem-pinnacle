@@ -45,6 +45,8 @@ include sem_path . '/inc/wp-enhancements.php';
 
 if ( file_exists(sem_path . '/custom.php') )
 	include sem_path . '/custom.php';
+if ( file_exists(sem_content_path . '/custom.php') )
+	include sem_content_path . '/custom.php';
 
 if ( is_admin() ) {
 	include_once sem_path . '/inc/header.php';
