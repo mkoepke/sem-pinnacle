@@ -42,47 +42,29 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
  }
 
 /* Clearing floats */
-.clear:after,
-.attachment .entry-header:after,
-.site-footer .widget-area:after,
-.entry-content:after,
-.page-content:after,
-.navigation:after,
-.nav-links:after,
-.gallery:after,
-.comment-form-author:after,
-.comment-form-email:after,
-.comment-form-url:after,
-.comment-body:after {
-	clear: both;
-}
-
 .clear:before,
 .clear:after,
-.attachment .entry-header:before,
-.attachment .entry-header:after,
-.site-footer .widget-area:before,
-.site-footer .widget-area:after,
-.entry-content:before,
-.entry-content:after,
-.page-content:before,
-.page-content:after,
-.navigation:before,
-.navigation:after,
-.nav-links:before,
-.nav-links:after,
-.gallery:before,
-.gallery:after,
-.comment-form-author:before,
-.comment-form-author:after,
-.comment-form-email:before,
-.comment-form-email:after,
-.comment-form-url:before,
-.comment-form-url:after,
-.comment-body:before,
-.comment-body:after {
-	content: "";
+.entry_content:before,
+.entry_content:after,
+#comments:before,
+#comments:after,
+#header_wrapper:before,
+#header_wrapper:after,
+#body:before,
+#body:after,
+#footer_wrapper:before,
+#footer_wrapper:after {
+	content: '';
 	display: table;
+}
+
+.clear:after,
+.entry_content:after,
+#comments:after,
+#header_wrapper:after,
+#body:after,
+#footer_wrapper:after {
+	clear: both;
 }
 
 
@@ -775,14 +757,6 @@ img.align_center {
 	margin-left: 0.3125em;
 }
 
-/* Misc WP Required Classes */
-
-.bypostauthor {
-}
-
-.sticky {
-}
-
 /* Avatars */
 
 img.avatar {
@@ -1089,7 +1063,7 @@ h3.post_list_date,
 }
 
 .entry_meta {
-	margin-bottom: 0.625em;
+	margin-bottom: 0.750em;
 }
 
 .pings_header,
@@ -1100,6 +1074,20 @@ h3.post_list_date,
 .entry_categories p,
 .entry_tags p {
 	margin: 0.1875em 0;
+}
+
+.sticky {
+}
+
+.byline,
+.updated {
+	display: none;
+}
+.single .byline,
+.home .byline,
+.single .updated,
+.home .updated {
+	display: inline;
 }
 
 /* Comments
@@ -1201,6 +1189,9 @@ p.comment_label {
 	width: 99%;
 }
 
+.bypostauthor {
+}
+
 /*
  * Comment Form
  */
@@ -1228,7 +1219,7 @@ Sidebars
 
 /* dropdowns in sidebars */
 
-.sidebar select {
+.sidebar select{
 	width: 99%;
 	margin: 0.625em 0 0.3125em;
 }
@@ -1237,6 +1228,10 @@ Sidebars
 /*
 Widgets
 ---------------------------------------------------------------------------------------------------- */
+
+.widget select {
+	max-width: 100%;
+}
 
 /* WP Search Widget */
 

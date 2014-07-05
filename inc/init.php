@@ -28,9 +28,6 @@ if ( !defined('sem_css_debug') )
 
 define('sem_last_mod', sem_css_debug ? time() : '20140703');
 
-if ( function_exists('memory_get_usage') && ( (int) @ini_get('memory_limit') < 64 ) )
-	@ini_set('memory_limit', '64M');
-
 define('sem_path', dirname(dirname(__FILE__)));
 define('sem_url', get_stylesheet_directory_uri());
 define('sem_content_path', WP_CONTENT_DIR . '/semiologic' );

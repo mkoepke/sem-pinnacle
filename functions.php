@@ -41,7 +41,6 @@ add_option('sem_api_key', '');
 include sem_path . '/inc/panels.php';
 include sem_path . '/inc/widgets.php';
 include sem_path . '/inc/template.php';
-include sem_path . '/inc/wp-enhancements.php';
 
 if ( file_exists(sem_path . '/custom.php') )
 	include sem_path . '/custom.php';
@@ -108,6 +107,7 @@ function semreloaded_postsetup() {
 
 	add_theme_support( 'custom-background', array ('wp-head-callback' => array('sem_template', 'custom_background_cb')) );
 
+	add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );
 }
 
 /**

@@ -547,7 +547,7 @@ class sem_breadcrumbs extends WP_Widget {
 		$delimiters = array( '>', '/', '&raquo;');
 
 		global $post;
-		$homeLink = get_bloginfo('url');
+		$homeLink = home_url();
 		$o = '';
 
 		if (is_home() || is_front_page()) {

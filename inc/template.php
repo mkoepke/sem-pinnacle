@@ -543,18 +543,29 @@ class sem_template {
 		if ( empty( $skin_location ) )
 			$skin_location = sem_path . '/skins';
 
-		$fp = @fopen( trailingslashit( $skin_location ) . $skin_id . '/skin.css', 'r' );
-		
-		if ( !$fp ) {
+		global $wp_filesystem;
+
+		$url = wp_nonce_url('admin.php?page=skin', 'semiologic_skin_page');
+        $method = ''; //leave this empty to perform test for 'direct' writing
+        $context = trailingslashit( $skin_location ) . $skin_id; //target folder
+
+		$skin_data = '';
+        if( sem_template::filesystem_init( $url, $method, $context ) ) {
+			$target_dir = $wp_filesystem->find_folder( $context );
+			$target_file = trailingslashit( $target_dir ) . 'skin.css';
+
+			/* read the file */
+			if( $wp_filesystem->exists( $target_file ) ){ //check for existence
+				$skin_data = $wp_filesystem->get_contents($target_file);
+			}
+        }
+
+		if ( $skin_data === false ) {
 			foreach ( $fields as $field )
 				$$field = '';
 			return compact($fields);
 		}
 
-		$skin_data = fread( $fp, 4096 );
-		
-		fclose($fp);
-		
 		$skin_data = str_replace("\r", "\n", $skin_data);
 
 		preg_match('/Skin(?:\s+name)?\s*:(.*)/i', $skin_data, $name);
@@ -895,6 +906,40 @@ class sem_template {
 		$mceInit['body_class'] .= ' '  . implode( ' ', $classes);
 
 		return $mceInit;
+	}
+
+	/**
+	 * Initialize Filesystem object
+	 *
+	 * @param str $form_url - URL of the page to display request form
+	 * @param str $method - connection method
+	 * @param str $context - destination folder
+	 * @param array $fields - fields of $_POST array that should be preserved between screens
+	 * @return bool/str - false on failure, stored text on success
+	 **/
+	static function filesystem_init($form_url, $method, $context, $fields = null) {
+	  global $wp_filesystem;
+
+	  /* first attempt to get credentials */
+	  if (false === ($creds = request_filesystem_credentials($form_url, $method, false, $context, $fields))) {
+
+	    /**
+	     * if we comes here - we don't have credentials
+	     * so the request for them is displaying
+	     * no need for further processing
+	     **/
+	    return false;
+	  }
+
+	  /* now we got some credentials - try to use them*/
+	  if (!WP_Filesystem($creds)) {
+
+	    /* incorrect connection data - ask for credentials again, now with error message */
+	    request_filesystem_credentials($form_url, $method, true, $context);
+	    return false;
+	  }
+
+	  return true; //filesystem object successfully initiated
 	}
 } # sem_template
 

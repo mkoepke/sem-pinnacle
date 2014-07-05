@@ -40,10 +40,6 @@ class entry_header extends WP_Widget {
 		extract($args, EXTR_SKIP);
 		extract($instance, EXTR_SKIP);
 
-		$date = false;
-		if ( $show_post_date && !is_sticky() && ( is_single() || !is_singular() && !is_day() ) )
-			$date = the_date('', '', '', false);
-
 		$title = the_title('', '', false);
 
 		if ( $title && !is_singular() ) {
@@ -53,27 +49,24 @@ class entry_header extends WP_Widget {
 				. '</a>';
 		}
 
-        $byline = '';
-        if ( $show_author_byline) {
-            $author = get_the_author();
-            $author_url = get_author_posts_url( get_the_author_meta( 'ID' ) );
+        $author = get_the_author();
+        $author_url = get_author_posts_url( get_the_author_meta( 'ID' ) );
 
-            $byline = '<span class="byline_author vcard">'
-				. $author_byline . ' '
-				. '<a class="url fn" href="' . esc_url($author_url) . '" rel="author">'
-				. $author
-				. '</a>'
-				. '</span>' . "\n";
-        }
+        $byline = '<span class="byline vcard ' . (!$show_author_byline ? 'hidden' : '') . '">'
+			. $author_byline . ' '
+			. '<a class="url fn" href="' . esc_url($author_url) . '" rel="author">'
+			. $author
+			. '</a>'
+			. '</span>' . "\n";
 
-		$entry_date = '';
-		if ( $date ) {
-			$entry_date = '<time class="entry_date updated" datetime="' . esc_attr( get_the_date( 'c' ) ) . '">'
-				. '<span>'
-				. $date
-				. '</span>'
-		        . '</time>';
-		}
+
+		$date = the_date('', '', '', false);
+		$entry_date = '<time class="entry_date updated ' . (!$show_post_date ? 'hidden' : '') . '" datetime="'
+			. esc_attr( get_the_date( 'c' ) ) . '">'
+			. '<span>'
+			. $date
+			. '</span>'
+	        . '</time>';
 
 		if ( $title ) {
 			echo '<div class="entry_header">' . "\n"
