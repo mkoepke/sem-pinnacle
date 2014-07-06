@@ -160,7 +160,7 @@ class sem_header {
 		echo '<h2>' . __('Manage Header', 'sem-pinnacle') . '</h2>' . "\n";
 		
 		echo '<p>'
-			. __('The header\'s height will automatically adjust to fit your image. The width to use will depend on your <a href="admin.php?page=layout">layout</a>\'s canvas width, and on your <a href="admin.php?page=skin">skin</a> (strip 20px if you\'re using the Kubrick skin).', 'sem-pinnacle')
+			. __('The header\'s height will automatically adjust to fit your image. The width to use will depend on your <a href="' . admin_url('admin.php?page=layout') . '">layout</a>\'s canvas width, and on your <a href="' . admin_url('admin.php?page=skin') . '">skin</a> (strip 20px if you\'re using the Kubrick skin).', 'sem-pinnacle')
 			. '</p>' . "\n";
 		
 		if ( $header ) {
@@ -182,7 +182,7 @@ class sem_header {
 					. '</div>' . "\n";
 			} elseif ( strpos($header, "/skins/$active_skin/") !== false ) {
 				echo '<p>'
-					. sprintf(__('This header (%s) is hard-coded in your <a href="admin.php?page=skin">skin</a>. You cannot delete it, but you can override it.', 'sem-pinnacle'), 'wp-content' . $header)
+					. sprintf(__('This header (%s) is hard-coded in your <a href="' . admin_url('admin.php?page=skin') . '">skin</a>. You cannot delete it, but you can override it.', 'sem-pinnacle'), 'wp-content' . $header)
 					. '</p>' . "\n";
 			} else {
 				echo '<p>'

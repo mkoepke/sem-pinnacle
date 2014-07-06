@@ -236,7 +236,7 @@ EOS;
 		echo '<p>'
 			. sprintf(__('Font Family: %s.', 'sem-pinnacle'), $font)
 			. '&nbsp;&nbsp;'
-			.  __( 'To select a new font, visit the Semiologic <a href="admin.php?page=font">font</a> page.', 'sem-pinnacle')
+			.  __( 'To select a new font, visit the Semiologic <a href="' . admin_url('admin.php?page=font') . '">font</a> page.', 'sem-pinnacle')
 			. '</p>' . "\n";
 
 		echo '<div style="clear: both;"></div>' . "\n";
