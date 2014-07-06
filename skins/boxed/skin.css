@@ -304,6 +304,10 @@ html {
 	background-repeat: repeat;
 }
 
+body {
+	background-color: transparent;
+}
+
 #navbar {
 	background-image: url(images/navbar.jpg);
 	background-position: top center;

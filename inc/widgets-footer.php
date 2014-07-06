@@ -58,11 +58,11 @@ class footer extends sem_nav_menu {
 
 		echo '<div id="footer" class="footer_section ' . $footer_class . '" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">' . "\n";
 
-		echo '<div id="footer_nav" class="footer_nav inline_menu menu" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">';
+		echo '<nav id="footer_nav" class="footer_nav inline_menu menu" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">';
 
 		sem_nav_menu::widget($args, $instance);
 
-		echo '</div><!-- footer_nav -->' . "\n";
+		echo '</nav><!-- footer_nav -->' . "\n";
 
 		$year = date('Y');
 		$site_name = strip_tags(get_option('blogname'));

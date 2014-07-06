@@ -666,7 +666,7 @@ EOS;
 <pre>
 - body, #wrapper, #wrapper_inner
 
-  - #header_wrapper
+  - header #header_wrapper
 
     - #header_top_wrapper
 
@@ -674,7 +674,7 @@ EOS;
 
         - #header_boxes h2
 
-      - .header_widget
+      - aside .header_widget
 
         - .header_widget h2
 
@@ -688,11 +688,11 @@ EOS;
 
         - #header_boxes h2
 
-      - .header_widget
+      - aside .header_widget
 
         - .header_widget h2
 
-    - #navbar
+    - nav #navbar
 
       - #navbar a
       - #navbar a:hover, #navbar .nav_active
@@ -703,46 +703,59 @@ EOS;
 
         - #header_boxes h2
 
-      - .header_widget
+      - aside .header_widget
 
         - .header_widget h2
 
   - #body, #body_inner
 
-    - #main
+    - main #main
       - .main_content
 
-	  - article
-      - .entry
+	  - article .entry
 
-        - .entry_header, .entry_header h1
-        - .entry_date .updated, .byline
+        - header .entry_header, .entry_header h1
+          - .entry_date .updated, .byline
+
         - .entry_content
-        - .entry_categories
-        - .entry_tags
+
+        - footer .entry_footer
+          - .entry_tags
+          - .entry_categories
+
         - .entry_comments
 
       - .main_widget
 
         - .main_widget h2
 
-    - #sidebar, #sidebar2
+    - section #sidebar (smm or mms)
       - .sidebar_content
 
-      - .widget, .mm1s .widget
+        - aside .widget, .mm1s .widget
 
-    - #sidebars
+    - section #sidebar, section #sidebar2 (sms)
+      - .sidebar_content
+
+        - aside .widget, .m2s .widget
+
+    - #sidebars (mss)
      - .sidebar_content
 
-      - .wide_sidebar .widget
+      - section #top_sidebar .wide_sidebar
+      - section #sidebar
+      - section #sidebar2
+      - section #bottom_sidebar .wide_sidebar
 
-  - #footer_wrapper
+        - aside .widget, .m2s .widget
+
+  - footer #footer_wrapper
 
     - #footer_top_wrapper
 
       - #footer_boxes
 
-      - .footer_widget
+      - aside .footer_widget
 
     - #footer
 
@@ -754,7 +767,7 @@ EOS;
 
       - #footer_boxes, #footer
 
-      - .footer_widget
+      - aside .footer_widget
 
 - html, #credits
 </pre>

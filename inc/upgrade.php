@@ -17,8 +17,28 @@ function upgrade_to_sem_pinnacle() {
 		}
 	}
 
+	// create new wp-content/semiologic folders
 	wp_mkdir_p( sem_content_path . '/skins' );
 	wp_mkdir_p( sem_content_path . '/custom' );
+
+
+	// convert entry_categories to entry_footer and delete entry_tags
+	$sidebar_widgets = get_option( 'sidebars_widgets' );
+	$entry_widgets = $sidebar_widgets['the_entry'];
+
+	foreach( $entry_widgets as $widget => $widget_name ) {
+		if ( strpos( $widget_name, "entry_tags" ) !== false ) {
+			unset( $entry_widgets[$widget] );
+			continue;
+		}
+
+		$entry_widgets[$widget] = str_replace( "entry_categories", "entry_footer", $widget_name );
+	}
+	$sidebar_widgets['the_entry'] = $entry_widgets;
+
+	$sidebar_widgets['wp_inactive_widgets'] = array();
+
+	update_option( 'sidebars_widgets', $sidebar_widgets);
 
 } # upgrade_to_sem_pinnacle()
 

@@ -9,7 +9,7 @@
 		# end content
 		echo '</div><!-- main_content -->' . "\n";
 
-		echo '</div><!-- main -->' . "\n";
+		echo '</main><!-- main -->' . "\n";
 
 		# sidebars
 		switch ( $active_layout ) :
@@ -28,11 +28,11 @@
 
 			# top sidebar
 			
-			echo '<div id="top_sidebar" class="sidebar wide_sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
+			echo '<section id="top_sidebar" class="sidebar wide_sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
 
 			sem_panels::display('top_sidebar');
 
-			echo '</div><!-- top sidebar -->' . "\n";
+			echo '</section><!-- top sidebar -->' . "\n";
 
 			
 			# spacer
@@ -42,20 +42,20 @@
 			
 			# left sidebar
 			
-			echo '<div id="sidebar" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
+			echo '<section id="sidebar" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
 			
 			sem_panels::display('left_sidebar');
 
-			echo '</div><!-- left sidebar -->' . "\n";
+			echo '</section><!-- left sidebar -->' . "\n";
 
 			
 			# right sidebar
 			
-			echo '<div id="sidebar2" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
+			echo '<section id="sidebar2" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
 			
 			sem_panels::display('right_sidebar');
 
-			echo '</div><!-- right sidebar -->' . "\n";
+			echo '</section><!-- right sidebar -->' . "\n";
 			
 			
 			# spacer
@@ -65,11 +65,11 @@
 			
 			# bottom sidebar
 			
-			echo '<div id="bottom_sidebar" class="sidebar wide_sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
+			echo '<section id="bottom_sidebar" class="sidebar wide_sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
 
 			sem_panels::display('bottom_sidebar');
 
-			echo '</div><!-- bottom sidebar -->' . "\n";
+			echo '</section><!-- bottom sidebar -->' . "\n";
 
 			
 			# spacer
@@ -96,7 +96,7 @@
 			
 			# left sidebar
 			
-			echo '<div id="sidebar" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
+			echo '<section id="sidebar" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
 
 			echo '<div class="sidebar_content">' . "\n";
 
@@ -104,7 +104,7 @@
 
 			echo '</div>' . "\n";
 
-			echo '</div><!-- left sidebar -->' . "\n";
+			echo '</section><!-- left sidebar -->' . "\n";
 
 			
 			# spacer
@@ -119,7 +119,7 @@
 			
 			# right sidebar
 			
-			echo '<div id="sidebar2" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
+			echo '<section id="sidebar2" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
 
 			echo '<div class="sidebar_content">' . "\n";
 
@@ -127,7 +127,7 @@
 
 			echo '</div>' . "\n";
 
-			echo '</div><!-- right sidebar -->' . "\n";
+			echo '</section><!-- right sidebar -->' . "\n";
 
 			
 			# spacer
@@ -143,7 +143,7 @@
 			
 			# left sidebar
 			
-			echo '<div id="sidebar" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
+			echo '<section id="sidebar" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
 
 			echo '<div class="sidebar_content">' . "\n";
 
@@ -151,7 +151,7 @@
 
 			echo '</div>' . "\n";
 
-			echo '</div><!-- left sidebar -->' . "\n";
+			echo '</section><!-- left sidebar -->' . "\n";
 			
 			
 			# spacer
@@ -167,7 +167,7 @@
 			
 			# left sidebar
 			
-			echo '<div id="sidebar" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
+			echo '<section id="sidebar" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
 
 			echo '<div class="sidebar_content">' . "\n";
 
@@ -175,7 +175,7 @@
 
 			echo '</div>' . "\n";
 
-			echo '</div><!-- left sidebar -->' . "\n";
+			echo '</section><!-- left sidebar -->' . "\n";
 			
 			
 			# spacer

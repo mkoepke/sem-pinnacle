@@ -489,7 +489,7 @@ class navbar extends sem_nav_menu {
 		if ( $sep )
 			$navbar_class .= ' sep_nav';
 
-		echo '<div id="navbar" class="header_section navbar' . $navbar_class . '">' . "\n";
+		echo '<nav id="navbar" class="header_section navbar' . $navbar_class . '">' . "\n";
 
 		echo '<div id="header_nav" class="header_nav inline_menu menu" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">';
 
@@ -512,7 +512,7 @@ class navbar extends sem_nav_menu {
 						. ' onblur="if ( this.value == \'\' )'
 						 	. ' this.value = \'' . $search_caption . '\';"';
 			} else {
-				$onfocus_blur = '';
+				$onfocusblur = '';
 			}
 
 			$go = $search_button;
@@ -523,6 +523,7 @@ class navbar extends sem_nav_menu {
 			echo '<form method="get"'
 					. ' action="' . esc_url(user_trailingslashit(home_url())) . '"'
 					. ' id="searchform" name="searchform"'
+					. ' role="search"'
 					. '>'
 				. '&nbsp;'				# force line-height
 				. '<input type="text" id="s" class="s" name="s"'
@@ -537,7 +538,7 @@ class navbar extends sem_nav_menu {
 
 		echo '<div class="spacer"></div>' . "\n";
 
-		echo '</div><!-- navbar -->' . "\n";
+		echo '</nav><!-- navbar -->' . "\n";
 
 		global $did_header;
 		global $did_navbar;

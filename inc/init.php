@@ -9,9 +9,6 @@ if ( !defined('sem_theme') )
 if ( !defined('sem_theme_version') )
 	define('sem_theme_version', '2.0');
 
-if ( !defined('sem_html5_only') )
-	define('sem_html5_only', true);
-
 if ( !defined('sem_debug') )
 	define('sem_debug', isset($_GET['debug']) );
 elseif ( !isset($_GET['debug']) && !$_POST )
@@ -136,9 +133,6 @@ if ( !isset($sem_theme_options['version']) ) {
 		$sem_theme_options = $sem6_options;
 		$sem_theme_options['version'] = 0;
 
-		if ( !defined('DOING_CRON') )
-			include sem_path . '/inc/upgrade.php';
-
 		// clone the sem_reloaded options to the sem_pinnacle options on first time use
 		if ( get_option('theme_mods_sem-pinnacle') === FALSE ) {
 			$o = get_option('theme_mods_sem-reloaded');
@@ -147,6 +141,9 @@ if ( !isset($sem_theme_options['version']) ) {
 				update_option( 'sidebars_widgets', $o['sidebars_widgets'] );
 			}
 		}
+
+		if ( !defined('DOING_CRON') )
+			include sem_path . '/inc/upgrade.php';
 	}
 	else {
 		include sem_path . '/inc/install.php';

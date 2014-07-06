@@ -56,8 +56,8 @@ class sem_panels {
 		sem_panels::switch_themes();
 		
 		global $sem_theme_options;
-		$before_widget = '<div class="widget %1$s %2$s">' . "\n";
-		$after_widget = '</div>' . "\n";
+		$before_widget = '<aside id="%1$s" class="widget %2$s">' . "\n";
+		$after_widget = "\n" . '</aside>' . "\n";
 		
 		$before_title = '<div class="widget_title"><h2>';
 		$after_title = '</h2></div>' . "\n";
@@ -173,8 +173,8 @@ class sem_panels {
 			
 			case 'the_header_boxes':
 			case 'the_footer_boxes':
-				$before_widget = '<div class="inline_box %1$s %2$s">' . "\n";
-				$after_widget = '</div><!-- inline_box -->' . "\n";
+				$before_widget = '<aside class="inline_box %1$s %2$s">' . "\n";
+				$after_widget = '</aside><!-- inline_box -->' . "\n";
 				break;
 			
 			case 'before_the_entries':
@@ -241,7 +241,7 @@ class sem_panels {
 			global $did_middle_widgets;
 			global $did_bottom_widgets;
 			
-			echo '<div id="header_wrapper" class="wrapper">' . "\n";
+			echo '<header id="header_wrapper" class="wrapper">' . "\n";
 			
 			$did_header = false;
 			$did_navbar = false;
@@ -259,7 +259,7 @@ class sem_panels {
 				echo '</div>' . "\n";
 			}
 			
-			echo '</div>' . "\n";
+			echo '</header>' . "\n";
 			
 			break;
 		case 'the_footer':
@@ -270,7 +270,7 @@ class sem_panels {
 			global $did_top_widgets;
 			global $did_bottom_widgets;
 			
-			echo '<div id="footer_wrapper" class="wrapper">' . "\n";
+			echo '<footer id="footer_wrapper" class="wrapper">' . "\n";
 			
 			$did_top_widgets = false;
 			$did_footer = false;
@@ -284,7 +284,7 @@ class sem_panels {
 				echo '</div>' . "\n";
 			}
 			
-			echo '</div><!-- footer_wrapper -->' . "\n";
+			echo '</footer><!-- footer_wrapper -->' . "\n";
 			
 			break;
 		case 'the_header_boxes':
@@ -296,12 +296,12 @@ class sem_panels {
 			$class = ( $panel_id == 'the_header_boxes' ) ? 'header_widget' : 'footer_widget';
 
 			echo '<div class="spacer"></div>' . "\n"
-				. '<div id="' . $id . '" class="inline_boxes ' . $class . '">' . "\n";
+				. '<section id="' . $id . '" class="inline_boxes ' . $class . '">' . "\n";
 			
 			dynamic_sidebar($panel_id);
 			
 			echo '<div class="spacer"></div>' . "\n"
-				. '</div><!-- ' . $id . ' -->' . "\n";
+				. '</section><!-- ' . $id . ' -->' . "\n";
 			
 			break;
 		}
@@ -373,8 +373,7 @@ class sem_panels {
 			'the_entry' => array(
 				'entry_header',
 				'entry_content',
-				'entry_tags',
-				'entry_categories',
+				'entry_footer',
 				'bookmark_me',
 				'related_widget',
 				'entry_comments',

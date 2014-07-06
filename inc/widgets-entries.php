@@ -68,17 +68,19 @@ class entry_header extends WP_Widget {
 			. '</span>'
 	        . '</time>';
 
+		echo '<header class="entry_header">' . "\n";
+
 		if ( $title ) {
-			echo '<div class="entry_header">' . "\n"
-				. '<h1 class="entry-title">'
+			echo '<h1 class="entry-title">'
 				. $title
-				. '</h1>' . "\n"
-				. '</div>' . "\n";
+				. '</h1>' . "\n";
 		}
 
 		echo '<div class="entry_meta">' . "\n"
 			. $entry_date . ' ' . $byline . "\n"
 			. '</div>' . "\n";
+
+		echo '</header>' . "\n";
 
 	} # widget()
 
@@ -326,8 +328,12 @@ class entry_content extends WP_Widget {
 				. $thumbnail
 				. $content
 				. '<div class="spacer"></div>' . "\n"
-				. $after_widget;
+				. '</div>';
 		}
+
+		global $did_entry_footer;
+
+		$did_entry_footer = false;
 	} # widget()
 
 
@@ -480,28 +486,28 @@ class entry_content extends WP_Widget {
 
 
 /**
- * entry_categories
+ * entry_footer
  *
  * @package Semiologic Reloaded
  **/
 
-class entry_categories extends WP_Widget {
+class entry_footer extends WP_Widget {
 	/**
 	 * Constructor.
 	 *
 	 */
 	public function __construct() {
-		$widget_name = __('Entry: Categories', 'sem-pinnacle');
+		$widget_name = __('Entry: Footer', 'sem-pinnacle');
 		$widget_ops = array(
-			'classname' => 'entry_categories',
-			'description' => __('The entry\'s categories. Will only display on individual posts if placed outside of the loop (each entry).', 'sem-pinnacle'),
+			'classname' => 'entry_footer',
+			'description' => __('The entry\'s categories and tags. Will only display on individual posts if placed outside of the loop (each entry).', 'sem-pinnacle'),
 			);
 		$control_ops = array(
 			'width' => 330,
 			);
 
-		$this->WP_Widget('entry_categories', $widget_name, $widget_ops, $control_ops);
-	} # entry_categories()
+		$this->WP_Widget('entry_footer', $widget_name, $widget_ops, $control_ops);
+	} # entry_footer()
 
 
 	/**
@@ -524,7 +530,7 @@ class entry_categories extends WP_Widget {
 			setup_postdata($post);
 		}
 
-		$instance = wp_parse_args($instance, entry_categories::defaults());
+		$instance = wp_parse_args($instance, entry_footer::defaults());
 		extract($args, EXTR_SKIP);
 		extract($instance, EXTR_SKIP);
 
@@ -590,6 +596,41 @@ class entry_categories extends WP_Widget {
 			? apply_filters('widget_title', $title)
 			: false;
 
+		/* tags */
+		$term_links = array();
+		$terms = get_the_terms(get_the_ID(), 'post_tag');
+
+		if ( $terms && !is_wp_error($terms) ) {
+			foreach ( $terms as $term ) {
+				if ( $term->count == 0 )
+					continue;
+				$tag_link = get_term_link( $term, 'post_tag' );
+				if ( is_wp_error( $tag_link ) )
+					continue;
+				$term_links[] = '<a href="' . esc_url($tag_link) . '" rel="tag">' . $term->name . '</a>';
+			}
+
+			$term_links = apply_filters( "term_links-post_tag", $term_links );
+		}
+
+		$_tags = apply_filters('the_tags', join(', ', $term_links));
+
+		echo '<footer class="entry_footer">' . "\n";
+
+		if ( $_tags ) {
+			$title = apply_filters('widget_title', $title);
+
+			echo '<div class="spacer"></div><div class="entry_tags">'
+				. ( $args['id'] != 'the_entry' && $title
+					? '<h2>' . $title . '</h2>'
+					: ''
+					)
+				. '<p>'
+				. sprintf($tags, $_tags)
+				. '</p>' . "\n"
+				. '</div>';
+		}
+
 		echo '<div class="entry_categories">'
 			. ( $title
 				? '<h2>' . $title . '</h2>'
@@ -600,6 +641,8 @@ class entry_categories extends WP_Widget {
 			. $link
 			. '</p>' . "\n"
 			. '</div>';
+
+		echo '</footer>' . "\n";
 	} # widget()
 
 
@@ -612,7 +655,7 @@ class entry_categories extends WP_Widget {
 	 **/
 
 	function update($new_instance, $old_instance) {
-		foreach ( array_keys(entry_categories::defaults()) as $field )
+		foreach ( array_keys(entry_footer::defaults()) as $field )
 			$instance[$field] = trim(strip_tags($new_instance[$field]));
 
 		return $instance;
@@ -627,7 +670,7 @@ class entry_categories extends WP_Widget {
 	 **/
 
 	function form($instance) {
-		$instance = wp_parse_args($instance, entry_categories::defaults());
+		$instance = wp_parse_args($instance, entry_footer::defaults());
 		extract($instance, EXTR_SKIP);
 
 		echo '<h3>' . __('Captions', 'sem-pinnacle') . '</h3>' . "\n";
@@ -652,7 +695,7 @@ class entry_categories extends WP_Widget {
 			. '<label>'
 			. '<code>' . __('Filed under %1$s by %2$s on %3$s. %4$s.', 'sem-pinnacle') . '</code>'
 			. '<br />' . "\n"
-            . '<code>' . __('%1$s - categories, %2$s - $author, %3$s - $date, %4$s - $comments', 'sem-pinnacle') . '</code>'
+            . '<code>' . __('%1$s - categories, %2$s - author, %3$s - date, %4$s - comments', 'sem-pinnacle') . '</code>'
          	. '<br />' . "\n"
 			. '<input type="text" class="widefat"'
             . ' name="' . $this->get_field_name('filed_under_by') . '"'
@@ -693,6 +736,17 @@ class entry_categories extends WP_Widget {
 			. ' />'
 			. '</label>'
 			. '</p>' . "\n";
+
+		echo '<p>'
+			. '<label>'
+			. '<code>' . __('Tags: %s.', 'sem-pinnacle') . '</code>'
+			. '<br />' . "\n"
+			. '<input type="text" class="widefat"'
+				. ' name="' . $this->get_field_name('tags') . '"'
+				. ' value="' . esc_attr($tags) . '"'
+				. ' />'
+			. '</label>'
+			. '</p>' . "\n";
 	} # form()
 
 
@@ -704,14 +758,15 @@ class entry_categories extends WP_Widget {
 
 	function defaults() {
 		return array(
-			'title' => __('Categories', 'sem-pinnacle'),
+			'title' => __('', 'sem-pinnacle'),
 			'filed_under_by' => __('Filed under %1$s by %2$s on %3$s. %4$s.', 'sem-pinnacle'),
 			'one_comment' => __('1 Comment', 'sem-pinnacle'),
 			'n_comments' => __('%d Comments', 'sem-pinnacle'),
 			'add_comment' => __('Comment', 'sem-pinnacle'),
+			'tags' => __('Tags: %s.', 'sem-pinnacle'),
 			);
 	} # defaults()
-} # entry_categories
+} # entry_footer
 
 
 /**
@@ -766,37 +821,7 @@ class entry_tags extends WP_Widget {
 		extract($args, EXTR_SKIP);
 		extract($instance, EXTR_SKIP);
 
-		$term_links = array();
-		$terms = get_the_terms(get_the_ID(), 'post_tag');
 
-		if ( $terms && !is_wp_error($terms) ) {
-			foreach ( $terms as $term ) {
-				if ( $term->count == 0 )
-					continue;
-				$tag_link = get_term_link( $term, 'post_tag' );
-				if ( is_wp_error( $tag_link ) )
-					continue;
-				$term_links[] = '<a href="' . esc_url($tag_link) . '" rel="tag">' . $term->name . '</a>';
-			}
-
-			$term_links = apply_filters( "term_links-post_tag", $term_links );
-		}
-
-		$_tags = apply_filters('the_tags', join(', ', $term_links));
-
-		if ( $_tags ) {
-			$title = apply_filters('widget_title', $title);
-
-			echo '<div class="spacer"></div><div class="entry_tags">'
-				. ( $args['id'] != 'the_entry' && $title
-					? '<h2>' . $title . '</h2>'
-					: ''
-					)
-				. '<p>'
-				. sprintf($tags, $_tags)
-				. '</p>' . "\n"
-				. '</div>';
-		}
 	} # widget()
 
 
@@ -1069,7 +1094,7 @@ class entry_navigation extends WP_Widget {
 		if ( ! $next && ! $previous )
 			return;
 		?>
-		<div class="entry_navigation" role="navigation">
+		<nav class="entry_navigation" role="navigation">
 			<div class="nav-links">
 
 				<div class="nav-prev">
@@ -1080,7 +1105,7 @@ class entry_navigation extends WP_Widget {
 				</div>
 
 			</div><!-- .nav-links -->
-		</div><!-- .navigation -->
+		</nav><!-- .navigation -->
 		<?php
 
 	} # widget()

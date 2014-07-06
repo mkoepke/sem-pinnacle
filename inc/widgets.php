@@ -74,8 +74,7 @@ class sem_widgets {
 	function register() {
 		register_widget('entry_header');
 		register_widget('entry_content');
-		register_widget('entry_categories');
-		register_widget('entry_tags');
+		register_widget('entry_footer');
 		register_widget('entry_comments');
 		register_widget('entry_navigation');
 		register_widget('blog_header');
@@ -214,6 +213,7 @@ class sem_widgets {
 		echo '<form method="get"'
 				. ' action="' . esc_url(user_trailingslashit(home_url())) . '"'
 				. ' class="searchform" name="searchform"'
+				. ' role="search"'
 				. '>'
 			. '<input type="text" class="s" name="s"'
 				. ' value="' . esc_attr($query) . '"'

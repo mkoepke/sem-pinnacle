@@ -73,8 +73,6 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 
 
 html, body {
-	height: 100%;
-	min-height: 100%;
 	font-size: 100%;
 }
 
@@ -446,14 +444,13 @@ span > object {
 Structure and Layout
 ---------------------------------------------------------------------------------------------------- */
 
-#site_container {
+#site_container:before {
 	width: 100%;
 	height: 100%;
-	margin: 0 auto;
-}
-
-#wrapper {
-	height: 100%;
+	min-height: 100%;
+	margin: 0;
+	content: "";
+	display: block;
 }
 
 /* canvas margins */
