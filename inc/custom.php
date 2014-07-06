@@ -729,12 +729,12 @@ EOS;
 
         - .main_widget h2
 
-    - section #sidebar (smm or mms)
+    - #sidebar (smm or mms)
       - .sidebar_content
 
         - aside .widget, .mm1s .widget
 
-    - section #sidebar, section #sidebar2 (sms)
+    - #sidebar, section #sidebar2 (sms)
       - .sidebar_content
 
         - aside .widget, .m2s .widget
@@ -742,10 +742,10 @@ EOS;
     - #sidebars (mss)
      - .sidebar_content
 
-      - section #top_sidebar .wide_sidebar
-      - section #sidebar
-      - section #sidebar2
-      - section #bottom_sidebar .wide_sidebar
+      - #top_sidebar .wide_sidebar
+      - #sidebar
+      - #sidebar2
+      - #bottom_sidebar .wide_sidebar
 
         - aside .widget, .m2s .widget
 

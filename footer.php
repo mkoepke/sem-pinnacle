@@ -28,11 +28,11 @@
 
 			# top sidebar
 			
-			echo '<section id="top_sidebar" class="sidebar wide_sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
+			echo '<div id="top_sidebar" class="sidebar wide_sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
 
 			sem_panels::display('top_sidebar');
 
-			echo '</section><!-- top sidebar -->' . "\n";
+			echo '</div><!-- top sidebar -->' . "\n";
 
 			
 			# spacer
@@ -42,20 +42,20 @@
 			
 			# left sidebar
 			
-			echo '<section id="sidebar" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
+			echo '<div id="sidebar" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
 			
 			sem_panels::display('left_sidebar');
 
-			echo '</section><!-- left sidebar -->' . "\n";
+			echo '</div><!-- left sidebar -->' . "\n";
 
 			
 			# right sidebar
 			
-			echo '<section id="sidebar2" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
+			echo '<div id="sidebar2" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
 			
 			sem_panels::display('right_sidebar');
 
-			echo '</section><!-- right sidebar -->' . "\n";
+			echo '</div><!-- right sidebar -->' . "\n";
 			
 			
 			# spacer
@@ -65,11 +65,11 @@
 			
 			# bottom sidebar
 			
-			echo '<section id="bottom_sidebar" class="sidebar wide_sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
+			echo '<div id="bottom_sidebar" class="sidebar wide_sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
 
 			sem_panels::display('bottom_sidebar');
 
-			echo '</section><!-- bottom sidebar -->' . "\n";
+			echo '</div><!-- bottom sidebar -->' . "\n";
 
 			
 			# spacer
@@ -96,7 +96,7 @@
 			
 			# left sidebar
 			
-			echo '<section id="sidebar" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
+			echo '<div id="sidebar" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
 
 			echo '<div class="sidebar_content">' . "\n";
 
@@ -104,7 +104,7 @@
 
 			echo '</div>' . "\n";
 
-			echo '</section><!-- left sidebar -->' . "\n";
+			echo '</div><!-- left sidebar -->' . "\n";
 
 			
 			# spacer
@@ -119,7 +119,7 @@
 			
 			# right sidebar
 			
-			echo '<section id="sidebar2" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
+			echo '<div id="sidebar2" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
 
 			echo '<div class="sidebar_content">' . "\n";
 
@@ -127,7 +127,7 @@
 
 			echo '</div>' . "\n";
 
-			echo '</section><!-- right sidebar -->' . "\n";
+			echo '</div><!-- right sidebar -->' . "\n";
 
 			
 			# spacer
@@ -143,7 +143,7 @@
 			
 			# left sidebar
 			
-			echo '<section id="sidebar" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
+			echo '<div id="sidebar" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
 
 			echo '<div class="sidebar_content">' . "\n";
 
@@ -151,7 +151,7 @@
 
 			echo '</div>' . "\n";
 
-			echo '</section><!-- left sidebar -->' . "\n";
+			echo '</div><!-- left sidebar -->' . "\n";
 			
 			
 			# spacer
@@ -167,7 +167,7 @@
 			
 			# left sidebar
 			
-			echo '<section id="sidebar" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
+			echo '<div id="sidebar" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
 
 			echo '<div class="sidebar_content">' . "\n";
 
@@ -175,7 +175,7 @@
 
 			echo '</div>' . "\n";
 
-			echo '</section><!-- left sidebar -->' . "\n";
+			echo '</div><!-- left sidebar -->' . "\n";
 			
 			
 			# spacer

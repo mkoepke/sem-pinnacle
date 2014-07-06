@@ -296,12 +296,12 @@ class sem_panels {
 			$class = ( $panel_id == 'the_header_boxes' ) ? 'header_widget' : 'footer_widget';
 
 			echo '<div class="spacer"></div>' . "\n"
-				. '<section id="' . $id . '" class="inline_boxes ' . $class . '">' . "\n";
+				. '<div id="' . $id . '" class="inline_boxes ' . $class . '">' . "\n";
 			
 			dynamic_sidebar($panel_id);
 			
 			echo '<div class="spacer"></div>' . "\n"
-				. '</section><!-- ' . $id . ' -->' . "\n";
+				. '</div><!-- ' . $id . ' -->' . "\n";
 			
 			break;
 		}
