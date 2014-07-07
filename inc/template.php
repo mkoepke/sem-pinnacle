@@ -439,7 +439,7 @@ class sem_template {
 			
 			if ( current_user_can('manage_options') ) {
 				$credits .= ' - '
-					. '<a href="' . esc_url(admin_url() . 'themes.php?page=skin#sem_credits') . '" rel="nofollow">'
+					. '<a href="' . esc_url(admin_url() . 'themes.php?page=skin#sem_credits') . '">'
 					. __('Edit', 'sem-pinnacle')
 					. '</a>';
 			}
