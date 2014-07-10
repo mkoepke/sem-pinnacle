@@ -543,28 +543,17 @@ class sem_template {
 		if ( empty( $skin_location ) )
 			$skin_location = sem_path . '/skins';
 
-		global $wp_filesystem;
+		$fp = @fopen( trailingslashit( $skin_location ) . $skin_id . '/skin.css', 'r' );
 
-		$url = wp_nonce_url('admin.php?page=skin', 'semiologic_skin_page');
-        $method = ''; //leave this empty to perform test for 'direct' writing
-        $context = trailingslashit( $skin_location ) . $skin_id; //target folder
-
-		$skin_data = '';
-        if( sem_template::filesystem_init( $url, $method, $context ) ) {
-			$target_dir = $wp_filesystem->find_folder( $context );
-			$target_file = trailingslashit( $target_dir ) . 'skin.css';
-
-			/* read the file */
-			if( $wp_filesystem->exists( $target_file ) ){ //check for existence
-				$skin_data = $wp_filesystem->get_contents($target_file);
-			}
-        }
-
-		if ( $skin_data === false ) {
+		if ( !$fp ) {
 			foreach ( $fields as $field )
 				$$field = '';
 			return compact($fields);
 		}
+
+		$skin_data = fread( $fp, 4096 );
+
+		fclose($fp);
 
 		$skin_data = str_replace("\r", "\n", $skin_data);
 

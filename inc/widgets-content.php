@@ -527,9 +527,11 @@ class sem_breadcrumbs extends WP_Widget {
 
 		$o = $this->breadcrumbs( $instance );
 
-		echo $before_widget
-			. $o
-			. $after_widget;
+		if ( $o != '') {
+			echo $before_widget
+				. $o
+				. $after_widget;
+		}
 	} # widget()
 
 	/**
@@ -557,6 +559,8 @@ class sem_breadcrumbs extends WP_Widget {
 				$o .= '<a href="' . $homeLink . '" rel="home">' . $home_name . '</a>';
 				$o .= '</div>';
 			}
+			else
+				return '';
 		} else {
 
 			$o .= '<div id="breadcrumbs" itemprop="breadcrumb">';

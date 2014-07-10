@@ -175,6 +175,8 @@ EOS;
 		wp_nonce_field('sem_skin');
 		
 		global $sem_theme_options;
+		global $sem_stock_skins;
+
 		$skins = sem_skin::get_skins();
 		$fonts = sem_font::get_fonts();
 		
@@ -183,7 +185,7 @@ EOS;
 		echo '<h3>' . __('Current Skin &amp; Font', 'sem-pinnacle') . '</h3>' . "\n";
 		
 		$details = $skins[$sem_theme_options['active_skin']];
-		$custom_skin = ( isset( $details['type'] )) && in_array( $details['type'], array('custom', 'Custom'));
+		$custom_skin = !in_array( $sem_theme_options['active_skin'], $sem_stock_skins );
 		$screenshot = ($custom_skin ? sem_content_url : sem_url) . '/skins/' . $sem_theme_options['active_skin'] . '/screenshot.png';
 		$title = __('%1$s v.%2$s by %3$s', 'sem-pinnacle');
 		$name = $details['uri']
@@ -277,7 +279,7 @@ EOS;
 			
 			echo '<td class="' . implode(' ', $classes) . '">' . "\n";
 
-			$custom_skin = ( isset( $details['type'] )) && in_array( $details['type'], array('custom', 'Custom'));
+			$custom_skin = !in_array( $skin, $sem_stock_skins );
 			$screenshot = ($custom_skin ? sem_content_url : sem_url) . '/skins/' . $skin . '/screenshot.png';
 			$title = __('%1$s v.%2$s', 'sem-pinnacle');
 			$name = $details['uri']

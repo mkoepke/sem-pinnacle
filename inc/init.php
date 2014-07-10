@@ -131,7 +131,7 @@ if ( !isset($sem_theme_options['version']) ) {
 		$sem6_options = get_option('sem6_options');
 
 		$sem_theme_options = $sem6_options;
-		$sem_theme_options['version'] = 0;
+		$sem_theme_options['version'] = -1;
 
 		// clone the sem_reloaded options to the sem_pinnacle options on first time use
 		if ( get_option('theme_mods_sem-pinnacle') === FALSE ) {

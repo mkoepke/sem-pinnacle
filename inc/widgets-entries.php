@@ -49,6 +49,11 @@ class entry_header extends WP_Widget {
 				. '</a>';
 		}
 
+		if ( !is_single() && !is_home() ) {
+			$show_author_byline = false;
+			$show_post_date = false;
+		}
+
         $author = get_the_author();
         $author_url = get_author_posts_url( get_the_author_meta( 'ID' ) );
 
@@ -767,135 +772,6 @@ class entry_footer extends WP_Widget {
 			);
 	} # defaults()
 } # entry_footer
-
-
-/**
- * entry_tags
- *
- * @package Semiologic Reloaded
- **/
-
-class entry_tags extends WP_Widget {
-	/**
-	 * Constructor.
-	 *
-	 */
-	public function __construct() {
-		$widget_name = __('Entry: Tags', 'sem-pinnacle');
-		$widget_ops = array(
-			'classname' => 'entry_tags',
-			'description' => __('The entry\'s tags. Will only display on individual entries if placed outside of the loop (each entry).', 'sem-pinnacle'),
-			);
-		$control_ops = array(
-			'width' => 330,
-			);
-
-		$this->WP_Widget('entry_tags', $widget_name, $widget_ops, $control_ops);
-	} # entry_tags()
-
-
-	/**
-	 * widget()
-	 *
-	 * @param array $args widget args
-	 * @param array $instance widget options
-	 * @return void
-	 **/
-
-	function widget($args, $instance) {
-		if ( is_admin() ) {
-			return;
-		} elseif ( !in_the_loop() ) {
-			if ( !is_singular() )
-				return;
-
-			global $post, $wp_the_query;
-			$post = $wp_the_query->get_queried_object();
-			setup_postdata($post);
-		}
-
-		if ( !class_exists('widget_contexts') && is_letter() )
-			return;
-
-		$instance = wp_parse_args($instance, entry_tags::defaults());
-		extract($args, EXTR_SKIP);
-		extract($instance, EXTR_SKIP);
-
-
-	} # widget()
-
-
-	/**
-	 * update()
-	 *
-	 * @param array $new_instance new widget options
-	 * @param array $old_instance old widget options
-	 * @return array $instance
-	 **/
-
-	function update($new_instance, $old_instance) {
-		foreach ( array_keys(entry_tags::defaults()) as $field )
-			$instance[$field] = trim(strip_tags($new_instance[$field]));
-
-		return $instance;
-	} # update()
-
-
-	/**
-	 * form()
-	 *
-	 * @param array $instance widget options
-	 * @return void
-	 **/
-
-	function form($instance) {
-		$instance = wp_parse_args($instance, entry_tags::defaults());
-		extract($instance, EXTR_SKIP);
-
-		echo '<h3>' . __('Captions', 'sem-pinnacle') . '</h3>' . "\n";
-
-		echo '<p>'
-			. '<label>'
-			. __('Title:', 'sem-pinnacle')
-			. '<br />' . "\n"
-			. '<input type="text" class="widefat"'
-				. ' id="' . $this->get_field_id('title') . '"'
-				. ' name="' . $this->get_field_name('title') . '"'
-				. ' value="' . esc_attr($title) . '"'
-				. ' />'
-			. '</label>'
-			. '</p>' . "\n";
-
-		echo '<p>'
-			. __('This widget\'s title is displayed only when this widget is placed out of the loop (each entry).', 'sem-pinnacle')
-			. '</p>' . "\n";
-
-		echo '<p>'
-			. '<label>'
-			. '<code>' . __('Tags: %s.', 'sem-pinnacle') . '</code>'
-			. '<br />' . "\n"
-			. '<input type="text" class="widefat"'
-				. ' name="' . $this->get_field_name('tags') . '"'
-				. ' value="' . esc_attr($tags) . '"'
-				. ' />'
-			. '</label>'
-			. '</p>' . "\n";
-	} # form()
-
-
-	/**
-	 * defaults()
-	 *
-	 * @return array $defaults
-	 **/
-
-	function defaults() {
-		return array(
-			'title' => __('Tags', 'sem-pinnacle'),
-			'tags' => __('Tags: %s.', 'sem-pinnacle'),
-			);
-	} # defaults()
-} # entry_tags
 
 
 /**
