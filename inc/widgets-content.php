@@ -497,7 +497,7 @@ class sem_breadcrumbs extends WP_Widget {
 		$widget_name = __('Breadcrumb Navigation', 'sem-pinnacle');
 		$widget_ops = array(
 			'classname' => 'sem_breadcrumbs',
-			'description' => __('Breadcrumb Navigation. Must be placed before each entry.', 'sem-pinnacle'),
+			'description' => __('Breadcrumb Navigation. Must be placed before the entries or the top body sidebar.', 'sem-pinnacle'),
 			);
 		$control_ops = array(
 			'width' => 330,
@@ -517,7 +517,7 @@ class sem_breadcrumbs extends WP_Widget {
 
 	function widget($args, $instance) {
 
-		if ( $args['id'] != 'before_the_entries' && $args['id'] != 'the_header' )
+		if ( $args['id'] != 'before_the_entries' && $args['id'] != 'top_body_sidebar' )
 			return;
 
 		extract($args, EXTR_SKIP);

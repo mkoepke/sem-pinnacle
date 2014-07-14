@@ -106,6 +106,7 @@ Colors: Blue
 .entry,
 .post_list,
 .main_widget,
+.body_widget,
 .widget,
 .inline_box {
 	padding: 0.3125em 0.9375em 0.3125em;
@@ -119,6 +120,7 @@ Colors: Blue
 .entry,
 .post_list,
 .main_widget,
+.body_widget,
 .widget,
 .header_widget,
 .footer_widget {
@@ -128,12 +130,13 @@ Colors: Blue
 #header_wrapper,
 .entry,
 .main_widget,
+.body_widget,
 .widget {
 	margin-top: 0;
 	margin-bottom: 0.75em;
 }
 
-#body {
+#body_wrapper {
 	margin-top: 0;
 	margin-bottom: 0;
 }
@@ -165,7 +168,7 @@ Colors: Blue
 .entry,
 .post_list,
 .main_widget,
-.main_widget,
+.body_widget,
 .widget,
 .header_widget,
 .footer_widget {
@@ -231,6 +234,7 @@ Colors: Blue
 #navbar,
 .entry,
 .main_widget,
+.body_widget,
 .widget,
 .header_widget,
 .footer_widget {
@@ -328,6 +332,7 @@ body {
 
 .entry,
 .main_widget,
+.body_widget,
 .widget {
 	background-image: url(images/body.jpg);
 	background-position: top center;
@@ -394,6 +399,7 @@ html {
 .entry,
 .post_list,
 .main_widget,
+.body_widget,
 .widget,
 .header_widget,
 .footer_widget,
@@ -405,6 +411,7 @@ html {
 
 .entry,
 .main_widget,
+.body_widget,
 .widget,
 .widget_calendar table {
 	background-color: #fff;

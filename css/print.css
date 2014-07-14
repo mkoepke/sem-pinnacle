@@ -85,6 +85,7 @@ you customize the theme's CSS without losing your changes when you upgrade.
 	.entry,
 	.post_list,
 	.main_widget,
+	.body_widget,
 	.widget,
 	.header_widget,
 	.footer_widget {

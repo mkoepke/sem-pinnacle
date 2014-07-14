@@ -52,13 +52,10 @@ global $sem_theme_options;
 if ( $sem_theme_options['version'] == -1 )
 	upgrade_to_sem_pinnacle();
 
-if ( !defined('sem_upgrade_test') ) {
-	$sem_theme_options['version'] = sem_theme_version;
-}
-
 #dump($sem_theme_options);die;
 
-if ( !defined('sem_install_test') ) {
+if ( !defined('sem_upgrade_test') ) {
+	$sem_theme_options['version'] = sem_theme_version;
 	write_sem_options( $sem_theme_options);
 }
 

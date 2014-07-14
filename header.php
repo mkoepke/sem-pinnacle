@@ -46,7 +46,7 @@ echo '<div id="wrapper" class="wrapper hfeed">' . "\n";
 
 echo '<div id="wrapper_top" class="wrapper_section"><div class="hidden"></div></div>' . "\n";
 
-echo '<div id="wrapper_inner" class="wrapper_section">' . "\n";
+echo '<div id="wrapper_middle" class="wrapper_section">' . "\n";
 
 	
 	# header
@@ -60,27 +60,33 @@ echo '<div id="wrapper_inner" class="wrapper_section">' . "\n";
 	
 	# body
 	
-	echo '<div id="body" class="wrapper">' . "\n";
+	echo '<div id="body_wrapper" class="wrapper">' . "\n";
 
 	echo '<div id="body_top" class="body_section"><div class="hidden"></div></div>' . "\n";
 
-	echo '<div id="body_inner" class="body_section">' . "\n";
-		
-		switch ( $active_layout) :
-		
+	echo '<div id="body_middle" class="body_section">' . "\n";
+
+	echo '<div id="top_body_sidebar" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
+
+	sem_panels::display('top_body_sidebar');
+
+	echo '</div><!-- top_body_sidebar -->' . "\n";
+
+	switch ( $active_layout) :
+
 		case 'sms':
 
 			# sidebar wrapper for sms layout
-		
+
 			echo '<div id="sidebar_wrapper">' . "\n";
-			
+
 			break;
 
 		endswitch;
 
-			
-		# content
-		
-		echo '<main id="main" class="main" role="main" itemprop="mainContentOfPage">' . "\n";
 
-		echo '<div class="main_content' . ( is_archive() || is_404() || is_search() ? ' entry' : '' )  . '">' . "\n";
+	# content
+
+	echo '<main id="main" class="main" role="main" itemprop="mainContentOfPage">' . "\n";
+
+	echo '<div class="main_content' . ( is_archive() || is_404() || is_search() ? ' entry' : '' )  . '">' . "\n";

@@ -41,7 +41,7 @@ if ( $title = trim(wp_title('&#8211;', false)) ) {
 
 <div id="wrapper">
 <div id="wrapper_top" class="wrapper_section"><div class="hidden"></div></div>
-<div id="wrapper_inner" class="wrapper_section">
+<div id="wrapper_middle" class="wrapper_section">
 <?php
 # show header
 header::letter();

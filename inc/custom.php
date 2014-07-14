@@ -664,11 +664,12 @@ EOS;
 		
 		echo <<<EOS
 <pre>
-- body, #wrapper, #wrapper_inner
+- body, #wrapper, #wrapper_middle
 
   - header #header_wrapper
 
     - #header_top_wrapper
+    - #header_top
 
       - #header_boxes
 
@@ -683,6 +684,7 @@ EOS;
       - #sitename, #tagline
 
     - #header_middle_wrapper
+    - #header_middle
 
       - #header_boxes
 
@@ -698,6 +700,7 @@ EOS;
       - #navbar a:hover, #navbar .nav_active
 
     - #header_bottom_wrapper
+    - #header_bottom
 
       - #header_boxes
 
@@ -707,7 +710,12 @@ EOS;
 
         - .header_widget h2
 
-  - #body, #body_inner
+  - #body_wrapper
+    - #body_top
+    - #body_middle
+
+    - #top_body_sidebar
+      - aside .body_widget
 
     - main #main
       - .main_content
@@ -726,7 +734,6 @@ EOS;
         - .entry_comments
 
       - .main_widget
-
         - .main_widget h2
 
     - #sidebar (smm or mms)
@@ -749,9 +756,15 @@ EOS;
 
         - aside .widget, .m2s .widget
 
+    - #bottom_body_sidebar
+      - aside .body_widget
+
+	- #body_bottom
+
   - footer #footer_wrapper
 
     - #footer_top_wrapper
+    - #footer_top
 
       - #footer_boxes
 
@@ -764,6 +777,7 @@ EOS;
       - #footer a:hover, #footer .nav_active
 
     - #footer_bottom_wrapper
+    - #footer_bottom
 
       - #footer_boxes, #footer
 
@@ -788,7 +802,7 @@ EOS;
 		foreach ( array(
 			'p' => __('Affects all <p> tags, no matter where.', 'sem-pinnacle'),
 			'.widget' => __('Affects anything in an area with the "widget" class, i.e. <div class="widget">. "Stronger" than the previous if declared after.', 'sem-pinnacle'),
-			'#body' => __('Affects everything in the area with the "body" ID, i.e. <div id="body">. "Stronger" than the above two if declared after.', 'sem-pinnacle'),
+			'#body_wrapper' => __('Affects everything in the area with the "body" ID, i.e. <div id="body_wrapper">. "Stronger" than the above two if declared after.', 'sem-pinnacle'),
 			)
 			as $selector => $description ) {
 			$description = str_replace(array("\r\n", "\n", "\r"), "\n   * ", wordwrap(esc_attr($description), 80));
@@ -809,8 +823,8 @@ EOS;
 			. '</p>' . "\n";
 		
 		foreach ( array(
-			'div.entry_date' => __('Affects <h2> tagsclass="widget_title"> tags, i.e. sidebar widget titles. "Stronger" than the previous three (it\'s "more precise").', 'sem-pinnacle'),
-			'div#sitename' => __('Affects <div id="sitename">, i.e. the site\'s name. "Stronger" than the previous (it\'s "more precise"), but generally useless since IDs are unique.', 'sem-pinnacle'),
+			'.entry_date' => __('Affects <h2> tagsclass="widget_title"> tags, i.e. sidebar widget titles. "Stronger" than the previous three (it\'s "more precise").', 'sem-pinnacle'),
+			'#sitename' => __('Affects <div id="sitename">, i.e. the site\'s name. "Stronger" than the previous (it\'s "more precise"), but generally useless since IDs are unique.', 'sem-pinnacle'),
 			'.mm1s .widget' => __('Affects anything within an area with the "widget" class, itself within an area with the "mm1s" class, i.e. widgets when using a "Wide Content, Sidebar" layouts. "Stronger" than all of the above.'),
 			'#top_sidebar .widget' => __('Affects anything within an area with the "widget" class, itself within an area with the "top_sidebar" ID, i.e. widgets in the top sidebar when using a "Content, Wide Sidebar" layout. "Stronger" than the previous if declared after.'),
 			'.widget_title h2' => __('Affects <h2> tags within an area with the "widget_title" class, i.e. <h2> tags in sidebar widgets. "Stronger" than the previous if declared after.'),

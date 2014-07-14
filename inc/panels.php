@@ -54,14 +54,111 @@ class sem_panels {
 	function register() {
 		# autofix panels
 		sem_panels::switch_themes();
-		
+
+		$top_panels = array(
+			'the_header' => __('Header Area', 'sem-pinnacle'),
+			'the_header_boxes' => __('Header Boxes Bar', 'sem-pinnacle'),
+			'top_body_sidebar' => __('Top Body Sidebar', 'sem-pinnacle'),
+			'before_the_entries' => __('Before the Entries', 'sem-pinnacle'),
+			'the_entry' => __('Each Entry', 'sem-pinnacle'),
+			'after_the_entries' => __('After the Entries', 'sem-pinnacle'),
+		);
+		sem_panels::register_panel( $top_panels );
+
+		sem_panels::register_sidebar_panels();
+
+		$bottom_panels = array(
+			'bottom_body_sidebar' => __('Bottom Body Sidebar', 'sem-pinnacle'),
+			'the_footer_boxes' => __('Footer Boxes Bar', 'sem-pinnacle'),
+			'the_footer' => __('Footer Area', 'sem-pinnacle'),
+			'the_404' => __('Not Found Error (404)', 'sem-pinnacle'),
+		);
+
+		sem_panels::register_panel( $bottom_panels );
+
+	} # register()
+	
+	/**
+	* register_panel()
+	*
+	* @return void
+	**/
+
+	function register_panel( $panels ) {
+
+		foreach ( $panels as $panel_id => $panel_label ) {
+			$before_title = '<h2>';
+			$after_title = '</h2>' . "\n";
+
+			switch ( $panel_id ) {
+			case 'the_header':
+				$before_widget = "\n\t"
+					. '<div class="%1$s %2$s header_widget">' . "\n\t";
+				$after_widget = "\n\t"
+					. '</div><!-- header_widget -->' . "\n\n";
+				break;
+
+			case 'the_footer':
+				$before_widget = "\n\t"
+					. '<div class="%1$s %2$s footer_widget">' . "\n\t";
+				$after_widget = "\n\t"
+					. '</div><!-- footer_widget -->' . "\n\n";
+				break;
+
+			case 'the_header_boxes':
+			case 'the_footer_boxes':
+				$before_widget = '<aside class="inline_box %1$s %2$s">' . "\n";
+				$after_widget = '</aside><!-- inline_box -->' . "\n";
+				break;
+
+			case 'before_the_entries':
+			case 'after_the_entries':
+			case 'the_404':
+				$before_widget = '<div class="%1$s %2$s main_widget">' . "\n";
+				$after_widget = '</div><!-- main_widget -->' . "\n";
+				break;
+
+			case 'top_body_sidebar':
+			case 'bottom_body_sidebar':
+				$before_widget = '<aside class="%1$s %2$s body_widget">' . "\n";
+				$after_widget = '</aside><!-- body_widget -->' . "\n";
+				break;
+
+			default:
+				$before_widget = '<div class="spacer"></div>' . "\n"
+					. '<div class="%1$s %2$s">' . "\n";
+				$after_widget = '</div>' . "\n";
+				break;
+			}
+
+			register_sidebar(
+				array(
+					'id' => $panel_id,
+					'name' => $panel_label,
+					'before_widget' => $before_widget,
+					'after_widget' => $after_widget,
+					'before_title' => $before_title,
+					'after_title' => $after_title,
+					)
+				);
+		}
+	} # register()
+
+	/**
+	* register_sidebar_panels()
+	*
+	* @return void
+	**/
+
+	function register_sidebar_panels() {
+
 		global $sem_theme_options;
 		$before_widget = '<aside id="%1$s" class="widget %2$s">' . "\n";
 		$after_widget = "\n" . '</aside>' . "\n";
-		
+
 		$before_title = '<div class="widget_title"><h2>';
 		$after_title = '</h2></div>' . "\n";
-		
+
 		if ( strpos($sem_theme_options['active_layout'], 't') !== false ) {
 			register_sidebar(
 				array(
@@ -142,69 +239,8 @@ class sem_panels {
 				break;
 			}
 		}
+	}
 
-		foreach ( array(
-			'the_header' => __('Header Area', 'sem-pinnacle'),
-			'the_header_boxes' => __('Header Boxes Bar', 'sem-pinnacle'),
-			'before_the_entries' => __('Before the Entries', 'sem-pinnacle'),
-			'the_entry' => __('Each Entry', 'sem-pinnacle'),
-			'after_the_entries' => __('After the Entries', 'sem-pinnacle'),
-			'the_footer_boxes' => __('Footer Boxes Bar', 'sem-pinnacle'),
-			'the_footer' => __('Footer Area', 'sem-pinnacle'),
-			'the_404' => __('Not Found Error (404)', 'sem-pinnacle'),
-		) as $panel_id => $panel_label ) {
-			$before_title = '<h2>';
-			$after_title = '</h2>' . "\n";
-			
-			switch ( $panel_id ) {
-			case 'the_header':
-				$before_widget = "\n\t"
-					. '<div class="%1$s %2$s header_widget">' . "\n\t";
-				$after_widget = "\n\t"
-					. '</div><!-- header_widget -->' . "\n\n";
-				break;
-			
-			case 'the_footer':
-				$before_widget = "\n\t"
-					. '<div class="%1$s %2$s footer_widget">' . "\n\t";
-				$after_widget = "\n\t"
-					. '</div><!-- footer_widget -->' . "\n\n";
-				break;
-			
-			case 'the_header_boxes':
-			case 'the_footer_boxes':
-				$before_widget = '<aside class="inline_box %1$s %2$s">' . "\n";
-				$after_widget = '</aside><!-- inline_box -->' . "\n";
-				break;
-			
-			case 'before_the_entries':
-			case 'after_the_entries':
-			case 'the_404':
-				$before_widget = '<div class="%1$s %2$s main_widget">' . "\n";
-				$after_widget = '</div><!-- main_widget -->' . "\n";
-				break;
-			
-			default:
-				$before_widget = '<div class="spacer"></div>' . "\n"
-					. '<div class="%1$s %2$s">' . "\n";
-				$after_widget = '</div>' . "\n";
-				break;
-			}
-			
-			register_sidebar(
-				array(
-					'id' => $panel_id,
-					'name' => $panel_label,
-					'before_widget' => $before_widget,
-					'after_widget' => $after_widget,
-					'before_title' => $before_title,
-					'after_title' => $after_title,
-					)
-				);
-		}
-	} # register()
-	
-	
 	/**
 	 * display()
 	 *
@@ -225,6 +261,8 @@ class sem_panels {
 			break;
 		case 'top_sidebar':
 		case 'bottom_sidebar':
+		case 'top_body_sidebar':
+		case 'bottom_body_sidebar':
 		case 'before_the_entries':
 		case 'after_the_entries':
 		case 'the_404':
@@ -252,11 +290,11 @@ class sem_panels {
 			dynamic_sidebar($panel_id);
 			
 			if ( !$did_header && !$did_navbar && $did_top_widgets ) {
-				echo '</div>' . "\n";
+				echo '</div></div>' . "\n";
 			} elseif ( $did_header && $did_navbar && $did_bottom_widgets ) {
-				echo '</div>' . "\n";
+				echo '</div></div>' . "\n";
 			} elseif ( !( $did_header && $did_navbar ) && $did_middle_widgets ) {
-				echo '</div>' . "\n";
+				echo '</div></div>' . "\n";
 			}
 			
 			echo '</header>' . "\n";
@@ -279,9 +317,9 @@ class sem_panels {
 			dynamic_sidebar($panel_id);
 			
 			if ( !$did_footer && $did_top_widgets ) {
-				echo '</div>' . "\n";
+				echo '</div></div>' . "\n";
 			} elseif ( $did_bottom_widgets ) {
-				echo '</div>' . "\n";
+				echo '</div></div>' . "\n";
 			}
 			
 			echo '</footer><!-- footer_wrapper -->' . "\n";

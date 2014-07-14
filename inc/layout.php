@@ -38,7 +38,8 @@ class sem_layout {
 	public function __construct() {
         add_action('semiologic_page_layout', array($this, 'save_options'), 0);
         add_action('admin_head', array($this, 'admin_head'));
-		add_action('wp_enqueue_scripts', array($this, 'scripts'));
+  	    add_action('admin_enqueue_scripts', array($this, 'admin_scripts'));
+  	    add_action('admin_enqueue_scripts', array($this, 'admin_styles'));
     }
 
     /**
@@ -115,15 +116,27 @@ EOS;
 	} # admin_head()
 
 	/**
-	 * scripts()
+	 * admin_scripts()
 	 *
 	 * @return void
 	 **/
 
-	function scripts() {
+	function admin_scripts() {
 		wp_enqueue_script('jquery');
 	} # scripts()
-	
+
+	/**
+	 * admin_styles()
+	 *
+	 * @return void
+	 **/
+
+	function admin_styles() {
+		$folder = sem_url . '/css';
+		wp_enqueue_style('nav-menus', $folder . '/admin.css', null, '20140713');
+	} # admin_styles()
+
+
 	/**
 	 * save_options()
 	 *
@@ -138,7 +151,10 @@ EOS;
 		
 		global $sem_theme_options;
 		$sem_theme_options['active_layout'] = preg_replace("/[^mst]/", "", $_POST['layout']);
-		
+
+/*		$sem_theme_options['before_entries'] = preg_replace("/[^a-z0-9_-]/i", "", $_POST['before_entries']);
+		$sem_theme_options['after_entries'] = preg_replace("/[^a-z0-9_-]/i", "", $_POST['after_entries']);
+*/
 		write_sem_options( $sem_theme_options);
 		
 		echo '<div class="updated fade">'
@@ -277,11 +293,69 @@ EOS;
 		echo '</tr>' . "\n";
 		
 		echo '</table>' . "\n";
-		
+
 		echo '<p class="submit hide-if-js">'
 			. '<input type="submit" value="' . esc_attr(__('Save Changes', 'sem-pinnacle')) . '" />'
 			. '</p>' . "\n";
-		
+
+/*		echo '<h3>' . __('Layout Options', 'sem-pinnacle') . '</h3>' . "\n";
+
+		echo '<h4>' . __('Before the Entries Location', 'sem-pinnacle') . '</h4>' . "\n";
+
+		$before_array = array(
+			'main_only' => __('Only above the Content Area', 'sem-pinnacle'),
+			'full_body' => __('Above both the Content Area and Sidebar(s)', 'sem-pinnacle'),
+		);
+
+		if ( !isset( $sem_theme_options['before_entries'] ) )
+			$sem_theme_options['before_entries'] = 'main_only';
+
+		echo '<ul class="before_entries_options">' . "\n";
+
+		foreach ( $before_array as $k => $v ) {
+			echo '<li class="' . esc_attr($k) . '">'
+				. '<label>'
+				. '<input type="radio" name="before_entries" value="' . $k . '"'
+					. checked($sem_theme_options['before_entries'], $k, false)
+					. '/>'
+				. '&nbsp;'
+				. $v
+				. '</label>'
+				. '</li>' . "\n";
+		}
+
+		echo '</ul>' . "\n";
+
+		echo '<h4>' . __('After the Entries Location', 'sem-pinnacle') . '</h4>' . "\n";
+
+		$after_array = array(
+			'main_only' => __('Only after the Content Area', 'sem-pinnacle'),
+			'full_body' => __('After both the Content Area and Sidebar(s)', 'sem-pinnacle'),
+		);
+
+		if ( !isset( $sem_theme_options['after_entries'] ) )
+			$sem_theme_options['after_entries'] = 'main_only';
+
+		echo '<ul class="after_entries_options">' . "\n";
+
+		foreach ( $after_array as $k => $v ) {
+			echo '<li class="' . esc_attr($k) . '">'
+				. '<label>'
+				. '<input type="radio" name="after_entries" value="' . $k . '"'
+					. checked($sem_theme_options['after_entries'], $k, false)
+					. '/>'
+				. '&nbsp;'
+				. $v
+				. '</label>'
+				. '</li>' . "\n";
+		}
+
+		echo '</ul>' . "\n";
+
+		echo '<div class="submit">'
+			. '<input type="submit" value="' . esc_attr(__('Save Changes', 'sem-pinnacle')) . '" />'
+			. '</div>' . "\n";
+*/
 		echo '</form>' . "\n";
 		echo '</div>' . "\n";
 	} # edit_options()

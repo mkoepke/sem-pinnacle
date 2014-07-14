@@ -41,8 +41,8 @@ class sem_widgets {
         add_action('widgets_init', array($this, 'register'));
 
         if ( is_admin() ) {
-        	add_action('admin_print_scripts-widgets.php', array($this, 'admin_scripts'));
-        	add_action('admin_print_styles-widgets.php', array($this, 'admin_styles'));
+        	add_action('admin_enqueue_scripts', array($this, 'admin_scripts'));
+        	add_action('admin_enqueue_scripts', array($this, 'admin_styles'));
         }
 
         add_action('widget_tag_cloud_args', array($this, 'tag_cloud_args'));
@@ -112,7 +112,7 @@ class sem_widgets {
 
 	function admin_styles() {
 		$folder = sem_url . '/css';
-		wp_enqueue_style('nav-menus', $folder . '/admin.css', null, '20090903');
+		wp_enqueue_style('nav-menus', $folder . '/admin.css', null, '20140713');
 	} # admin_styles()
 	
 	

@@ -186,14 +186,19 @@
 
 		endswitch;
 
-	
+	echo '<div id="body_bottom_sidebar" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
+
+	sem_panels::display('bottom_body_sidebar');
+
+	echo '</div><!-- body_bottom_sidebar -->' . "\n";
+
 	# end body
 	
-	echo '</div><!-- body_inner -->' . "\n";
+	echo '</div><!-- body_middle -->' . "\n";
 	
 	echo '<div id="body_bottom" class="body_section"><div class="hidden"></div></div>' . "\n";
 
-	echo '</div><!-- body -->' . "\n";
+	echo '</div><!-- body_wrapper -->' . "\n";
 	
 	# footer
 	
@@ -208,7 +213,7 @@ do_action('wp_footer');
 
 # end wrapper
 
-echo '</div><!-- wrapper_inner -->' . "\n";
+echo '</div><!-- wrapper_middle -->' . "\n";
 
 echo '<div id="wrapper_bottom" class="wrapper_section"><div class="hidden"></div></div>' . "\n";
 

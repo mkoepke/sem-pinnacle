@@ -46,12 +46,14 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .clear:after,
 .entry_content:before,
 .entry_content:after,
+.entry:before,
+.entry:after,
 #comments:before,
 #comments:after,
 #header_wrapper:before,
 #header_wrapper:after,
-#body:before,
-#body:after,
+#body_wrapper:before,
+#body_wrapper:after,
 #footer_wrapper:before,
 #footer_wrapper:after {
 	content: '';
@@ -62,7 +64,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .entry_content:after,
 #comments:after,
 #header_wrapper:after,
-#body:after,
+#body_wrapper:after,
 #footer_wrapper:after {
 	clear: both;
 }
@@ -1020,6 +1022,7 @@ h2 a {
 .post_list,
 .comment,
 .main_widget,
+.body_widget,
 .widget,
 .inline_box  {
 	margin-top: 0;
@@ -1444,6 +1447,7 @@ p.newsletter_fields {
 
 .ad_unit .widget,
 .ad_unit .main_widget,
+.ad_unit .body_widget,
 .ad_unit .header_widget,
 .ad_unit .footer_widget{
 	padding: 0;
@@ -1469,7 +1473,7 @@ p.newsletter_fields {
 	}
 
 	#wrapper,
-	#body {
+	#body_wrapper {
         width: 100%;
         margin: 0;
 		padding: 0;

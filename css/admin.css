@@ -42,3 +42,9 @@ input.nav_menu_item_ref {
 div.nav_menu_item_preview {
 	padding-top: 5px;
 }
+
+.before_entries_options li,
+.after_entries_options li {
+	display: inline;
+	padding-right: 2em;
+}

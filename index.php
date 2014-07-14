@@ -14,7 +14,7 @@ include sem_path . '/header.php';
 
 
 			# the loop
-			
+
 			sem_panels::display('before_the_entries');
 
 			if ( have_posts() ) :
