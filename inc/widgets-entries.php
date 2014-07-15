@@ -49,15 +49,17 @@ class entry_header extends WP_Widget {
 				. '</a>';
 		}
 
+		$show_comment_count = true;
 		if ( !is_single() && !is_home() ) {
 			$show_author_byline = false;
 			$show_post_date = false;
+			$show_comment_count = false;
 		}
 
         $author = get_the_author();
         $author_url = get_author_posts_url( get_the_author_meta( 'ID' ) );
 
-        $byline = '<span class="byline vcard ' . (!$show_author_byline ? 'hidden' : '') . '">'
+        $byline = '<span class="entry_author byline vcard ' . (!$show_author_byline ? 'hidden' : '') . '">'
 			. $author_byline . ' '
 			. '<a class="url fn" href="' . esc_url($author_url) . '" rel="author">'
 			. $author
@@ -71,7 +73,45 @@ class entry_header extends WP_Widget {
 			. '<span>'
 			. $date
 			. '</span>'
-	        . '</time>';
+	        . '</time> ';
+
+		$comments_link = '';
+		$edit_link = '';
+		if ( !isset($_GET['action']) || $_GET['action'] != 'print' ) {
+			global $post;
+
+			$num_comments = (int) get_comments_number();
+			if ( $show_comment_count && ( $num_comments || comments_open() ) ) {
+
+				$comments_link = apply_filters('the_permalink', get_permalink());
+				$comments_link .= $num_comments ? '#comments' : '#respond';
+
+				$comments_link = '<a href="' . esc_url($comments_link) . '">'
+					. $num_comments . ' ' . ( $num_comments == 1 ? __('Comment', 'sem-pinnacle') : __('Comments', 'sem-pinnacle') )
+					. '</a>';
+
+				$comments_link = apply_filters('entry_comments_link', $comments_link, $post->ID);
+
+				$comments_link = ' &bull; ' . '<span class="entry_comments_link">'
+					. $comments_link
+					. '</span>' . "\n";
+			}
+
+			$edit_link = get_edit_post_link($post->ID, 'raw');
+			if ( $edit_link ) {
+				$edit_link = '<a class="post-edit-link"'
+					. ' href="' . esc_url($edit_link) . '"'
+					. ' title="' . esc_attr(__('Edit', 'sem-pinnacle')) . '">'
+					. __('Edit', 'sem-pinnacle')
+					. '</a>';
+				$edit_link = apply_filters('edit_post_link', $edit_link, $post->ID);
+
+				$edit_link = (!is_page() ? ' &bull; ' : '') . '<span class="edit_entry">'
+					. $edit_link
+					. '</span>' . "\n";
+			}
+		}
+
 
 		echo '<header class="entry_header">' . "\n";
 
@@ -82,7 +122,11 @@ class entry_header extends WP_Widget {
 		}
 
 		echo '<div class="entry_meta">' . "\n"
-			. $entry_date . ' ' . $byline . "\n"
+			. $entry_date
+			. $byline
+			. $comments_link
+			. $edit_link
+			. "\n"
 			. '</div>' . "\n";
 
 		echo '</header>' . "\n";
@@ -275,45 +319,6 @@ class entry_content extends WP_Widget {
             $content_class = "entry-content";
 		}
 
-		$actions = '';
-
-		if ( !isset($_GET['action']) || $_GET['action'] != 'print' ) {
-			global $post;
-
-			$edit_link = get_edit_post_link($post->ID, 'raw');
-			if ( $edit_link ) {
-				$edit_link = '<a class="post-edit-link"'
-					. ' href="' . esc_url($edit_link) . '"'
-					. ' title="' . esc_attr(__('Edit', 'sem-pinnacle')) . '">'
-					. __('Edit', 'sem-pinnacle')
-					. '</a>';
-				$edit_link = apply_filters('edit_post_link', $edit_link, $post->ID);
-
-				$actions .= '<span class="edit_entry">'
-					. $edit_link
-					. '</span>' . "\n";
-			}
-
-			$num_comments = (int) get_comments_number();
-
-			if ( $show_comment_box && ( $num_comments || comments_open() ) ) {
-				$comments_link = apply_filters('the_permalink', get_permalink());
-				$comments_link .= $num_comments ? '#comments' : '#respond';
-
-				$actions .= '<span class="comment_box">'
-					. '<a href="' . esc_url($comments_link) . '">'
-					. $num_comments
-					. '</a>'
-					. '</span>' . "\n";
-			}
-
-			if ( $actions ) {
-				$actions = '<div class="entry_actions">' . "\n"
-					. $actions
-					. '</div>' . "\n";
-			}
-		}
-
 		$thumbnail = '';
 		if ( !is_single() && $show_thumbnail && function_exists('get_the_post_thumbnail') ) {
 			add_filter('image_downsize', array($this, 'thumbnail_downsize'), 10, 3);
@@ -327,14 +332,11 @@ class entry_content extends WP_Widget {
 				. '</div>' . "\n";
 		}
 
-		if ( $actions || $content ) {
-			echo '<div class="entry_content ' . $content_class . '">' . "\n"
-				. $actions
-				. $thumbnail
-				. $content
-				. '<div class="spacer"></div>' . "\n"
-				. '</div>';
-		}
+		echo '<div class="entry_content ' . $content_class . '">' . "\n"
+			. $thumbnail
+			. $content
+			. '<div class="spacer"></div>' . "\n"
+			. '</div>';
 
 		global $did_entry_footer;
 
@@ -390,7 +392,6 @@ class entry_content extends WP_Widget {
 	 **/
 
 	function update($new_instance, $old_instance) {
-		$instance['show_comment_box'] = isset($new_instance['show_comment_box']);
 		$instance['show_excerpts'] = isset($new_instance['show_excerpts']);
 		$instance['more_link'] = trim(strip_tags($new_instance['more_link']));
 		$instance['paginate'] = trim(strip_tags($new_instance['paginate']));
@@ -412,17 +413,6 @@ class entry_content extends WP_Widget {
 		extract($instance, EXTR_SKIP);
 
 		echo '<h3>' . __('Config', 'sem-pinnacle') . '</h3>' . "\n";
-
-		echo '<p>'
-			. '<label>'
-			. '<input type="checkbox"'
-			. ' name="' . $this->get_field_name('show_comment_box') . '"'
-			. checked($show_comment_box, true, false)
-			. ' />'
-			. '&nbsp;'
-			. __('Display the box with the number of comments.', 'sem-pinnacle')
-			. '</label>'
-			. '</p>' . "\n";
 
 		echo '<p>'
 			. '<label>'
@@ -480,7 +470,6 @@ class entry_content extends WP_Widget {
 
 	function defaults() {
 		return array(
-			'show_comment_box' => true,
 			'show_excerpts' => false,
 			'more_link' => __('Read more on %s...', 'sem-pinnacle'),
 			'paginate' => __('Pages:', 'sem-pinnacle'),
