@@ -18,10 +18,6 @@ Colors: Blue
 	margin-bottom: 0.375em;
 }
 
-.sem_admin_menu #wrapper {
-	margin-top: 1.25em;
-}
-
 .m2s #main {
 	width: 56.631578947368%;    /* 538px / 950 px */
 }
@@ -129,10 +125,15 @@ Colors: Blue
 
 #header_wrapper,
 .entry,
-.main_widget,
 .body_widget,
+.entry_widget,
 .widget {
 	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+.entry_widget {
+	margin-top: 0.75em;
 	margin-bottom: 0.75em;
 }
 
@@ -308,10 +309,6 @@ html {
 	background-repeat: repeat;
 }
 
-body {
-	background-color: transparent;
-}
-
 #navbar {
 	background-image: url(images/navbar.jpg);
 	background-position: top center;
@@ -367,16 +364,29 @@ body {
 	background-repeat: repeat-x;
 }
 
-
 .error404 .entry,
 .search .entry,
 .archive .entry {
 	background-image: none;
 }
 
+@media (max-width: 40.5625em) {     /* 649px */
+	/* remove skin menu colors for now */
+	#navbar,
+	#navbar a,
+	#navbar a:hover {
+		background-image: none;
+	}
+}
+
+
 /*
  * Skin Colors
  */
+
+body {
+	background-color: transparent;
+}
 
 html {
 	background-color: #fff;
@@ -413,11 +423,11 @@ html {
 .main_widget,
 .body_widget,
 .widget,
+.comment-metadata time:after,
 .widget_calendar table {
 	background-color: #fff;
 	color: #222;
 }
-
 
 /*
  * Scheme Colors
@@ -480,13 +490,4 @@ html {
 .widget_calendar thead,
 .widget_title h2 {
 	border-color: #545454; /* B/2 S0 */
-}
-
-@media (max-width: 40.5625em) {     /* 649px */
-	/* remove skin menu colors for now */
-	#navbar,
-	#navbar a,
-	#navbar a:hover {
-		background-image: none;
-	}
 }

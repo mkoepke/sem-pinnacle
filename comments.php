@@ -11,221 +11,203 @@ if (  post_password_required() )
 
 
 global $comments_captions;
+global $show_pings;
 
 #
 # Extract pings
 #
 
 $pings = separate_comments($comments);
-$comments = $pings['comment'];
+$coms = $pings['comment'];
 $pings = $pings['pings'];
 
 
-if ( $pings || $comments )
-	echo '<div id="comments">' . "\n";
+echo '<div id="comments">' . "\n";
 
 #
 # Display comments
 #
-
-if ( $comments ) {
-	semiologic_display_comments( $comments );
+if ( $coms ) {
+	semiologic_display_comments( );
 } # if $comments
 
-#
+
 # Display pings
-#
+if ( $show_pings  && $pings ) {
+	semiologic_display_pings();
+}
 
-if ( $pings ) {
-	semiologic_display_pings( $pings );
-} # if ( $pings )
-
-
-if ( $pings || $comments )
-	echo '</div><!-- #comments -->' . "\n";
+echo '</div><!-- #comments -->' . "\n";
 
 #
 # Display comment form
 #
 
 if ( comments_open() && !( isset($_GET['action']) && $_GET['action'] == 'print' ) ) {
-	semiologic_display_comment_form();
+//	semiologic_display_comment_form();
+	;
 } # comments_open()
 
 
-
-function semiologic_display_comments( $comments ) {
+function semiologic_display_comments() {
 
 	global $comments_captions;
-	global $post;
 
-	$title = the_title('', '', false);
+    if ( have_comments() ) {
+		$title = the_title('', '', false);
 
-	$caption = $comments_captions['comments_on'];
-	$caption = sprintf($caption, $title);
+		$caption = $comments_captions['comments_on'];
+		$caption = sprintf($caption, $title);
 
-	if ( comments_open() && !( isset($_GET['action']) && $_GET['action'] == 'print' ) ) {
+		if ( comments_open() && !( isset($_GET['action']) && $_GET['action'] == 'print' ) ) {
 
-		$comment_form_link = ' <span class="comment_entry">'
-			. '<a href="#respond" title="' . esc_attr($comments_captions['leave_comment']) . '" class="no_icon">'
-			. '<img src="' . sem_url . '/icons/pixel.gif" height="16" width="16" alt="' . esc_attr($comments_captions['leave_comment']) . '" />'
-			. '</a>'
-			. '</span>';
-	} else {
-		$comment_form_link = false;
-	}
-
-	echo '<div class="comments_header">' . "\n"
-		. '<h2>' . $caption . $comment_form_link . '</h2>' . "\n"
-		. '</div>' . "\n";
-
-	foreach ( (array) $comments as $comment ) {
-		$cur_date = get_comment_date();
-
-		if ( !isset($prev_date) || $cur_date != $prev_date ) {
-			echo '<div class="comment_date">' . "\n"
-				. '<span>'
-				. $cur_date
-				. '</span>'
-				. '</div>' . "\n";
-
-			$prev_date = $cur_date;
-		}
-
-		echo '<div class="spacer"></div>' . "\n";
-
-		echo '<div id="comment-' . get_comment_ID() . '">' . "\n";
-
-		echo '<div class="comment'
-				. ( $comment->user_id == $post->post_author
-					? ' comment_entry_author'
-					: ''
-					)
-				. '">' . "\n"
-			. '<div class="comment_pad">' . "\n";
-
-		echo '<div class="comment_header">' . "\n";
-
-		if ( !( isset($_GET['action']) && $_GET['action'] == 'print' ) ) {
-			echo '<div class="comment_actions">' . "\n";
-
-			edit_comment_link(__('Edit', 'sem-pinnacle'), '<span class="edit_comment">', '</span>' . "\n");
-
-			if ( comments_open() && $comment->comment_approved ) {
-
-				echo '<span class="reply_comment">'
-				. '<a href="#respond"'
-					. ' onclick="'
-						. "jQuery('#comment').val("
-							. "'@&lt;a href=&quot;#comment-$comment->comment_ID&quot;&gt;'"
-							. " + jQuery('#comment_author-$comment->comment_ID').text()"
-							. " + '&lt;/a&gt;: '"
-							. ");"
-						. ' return addComment.moveForm('
-							. "'comment-$comment->comment_ID', '$comment->comment_ID',"
-							. " 'respond', '$post->ID'"
-							. ');"'
-					. '>'
-				. $comments_captions['reply_link']
+			$comment_form_link = ' <span class="comment_entry">'
+				. '<a href="#respond" title="' . esc_attr($comments_captions['leave_comment']) . '" class="no_icon">'
+				. '<img src="' . sem_url . '/icons/pixel.gif" height="16" width="16" alt="' . esc_attr($comments_captions['leave_comment']) . '" />'
 				. '</a>'
-				. '</span>' . "\n";
-			}
-
-			echo '</div>' . "\n";
+				. '</span>';
+		}
+		else {
+			$comment_form_link = false;
 		}
 
-		echo '<h3>'
-			. '<span class="comment_author vcard" id="comment_author-' . get_comment_ID() . '">'
-				. get_avatar($comment, 60)
-				. ( $comment->user_id == $post->post_author
-					? ( '<em>' . get_comment_author_link() . '</em>' )
-					: get_comment_author_link()
-					)
-				. '</span>'
-			. '<span class="comment_time">'
-			. ' @ ' . "\n"
-			. get_comment_date(__('g:i a', 'sem-pinnacle'))
-			. '</span>' . "\n"
-			. '<span class="link_comment">'
-			. '<a href="#comment-' . get_comment_ID() . '" title="#">'
-			. '<img src="' . sem_url . '/icons/pixel.gif' . '" height="12" width="14" class="no_icon" alt="#" />'
-			. '</a>'
-			. '</span>' . "\n"
-			. '</h3>' . "\n";
+		echo '<div class="comments_header">' . "\n"
+			. '<h2 class="comments_title">' . $caption . $comment_form_link . '</h2>' . "\n"
+			. '</div>' . "\n";
 
-		echo '</div>' . "\n";
+	?>
+	<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
+	<nav id="comment-nav-above" class="comment-navigation" role="navigation">
+		<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'sem-pinnacle' ) ); ?></div>
+		<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'sem-pinnacle' ) ); ?></div>
+	</nav><!-- #comment-nav-above -->
+	<?php endif; // check for comment navigation ?>
 
-		echo '<div class="comment_content">' . "\n";
+	<ol class="comment-list">
+		<?php
+			wp_list_comments( array(
+				'type'        => 'comment',
+				'style'      => 'ul',
+				'short_ping' => true,
+				'avatar_size' => 60,
+				'max_depth' => 4,
+				'callback' => 'semiologic_display_comments_callback'
+			) );
+		?>
+	</ol><!-- .comment-list -->
 
-		echo apply_filters('comment_text', get_comment_text());
+	<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
+	<nav id="comment-nav-below" class="comment-navigation" role="navigation">
+		<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'sem-pinnacle' ) ); ?></div>
+		<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'sem-pinnacle' ) ); ?></div>
+	</nav><!-- #comment-nav-below -->
+	<?php endif; // check for comment navigation ?>
 
-		if ( $comment->comment_approved == '0' ) {
-			echo '<p>'
-				. '<em>' . __('Your comment is awaiting moderation.', 'sem-pinnacle') . '</em>'
-				. '</p>' . "\n";
-		}
+<?php } // have_comments() ?>
 
-		echo '</div>' . "\n";
+<?php
+	// If comments are closed and there are comments, let's leave a little note, shall we?
+	if ( ! comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
+?>
+	<p class="no-comments"><?php __( 'Comments are closed.', 'sem-pinnacle' ); ?></p>
+<?php endif; ?>
 
-		echo '<div class="spacer"></div>' . "\n";
+	<?php comment_form(); ?>
 
-		echo '</div>' . "\n"
-			. '</div> <!-- comment -->' . "\n";
-
-		echo '<div class="spacer"></div>' . "\n";
-
-		echo '</div> <!-- comment-id -->' . "\n";
-	} # foreach $comments as $comment
+<?php
 
 }
 
-function semiologic_display_pings( $pings ) {
+function semiologic_display_comments_callback( $comment, array $args, $depth  ) {
+
+	global $comments_captions;
+?>
+	<<?php echo 'li'; ?> id="comment-<?php comment_ID(); ?>" <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ); ?>>
+		<article id="div-comment-<?php comment_ID(); ?>" class="comment-body">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<?php if ( 0 != $args['avatar_size'] ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
+					<?php printf( __( '%s <span class="says">says:</span>', 'sem-pinnacle' ), sprintf( '<b class="fn">%s</b>', get_comment_author_link() ) ); ?>
+				</div><!-- .comment-author -->
+
+				<div class="comment-metadata">
+					<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID, $args ) ); ?>">
+						<time datetime="<?php comment_time( 'c' ); ?>">
+							<?php printf( _x( '%1$s at %2$s', '1: date, 2: time' ), get_comment_date(), get_comment_time() ); ?>
+						</time>
+					</a>
+
+					<div class="comment-actions">
+						<?php edit_comment_link( __( 'Edit', 'sem-pinnacle' ), '<span class="edit-link">', '</span>' ); ?>
+
+						<div class="reply reply_comment">
+							<?php comment_reply_link(
+								array_merge( $args, array(
+										'add_below' => 'div-comment',
+										'depth' => $depth,
+										'max_depth' => $args['max_depth'],
+										'reply_text' => $comments_captions['reply_link'],
+								) ) ); ?>
+						</div><!-- .reply -->
+					</div><!-- .comment_actions -->
+				</div><!-- .comment-metadata -->
+
+				<?php if ( '0' == $comment->comment_approved ) : ?>
+				<p class="comment-awaiting-moderation"><?php __( 'Your comment is awaiting moderation.', 'sem-pinnacle' ); ?></p>
+				<?php endif; ?>
+			</footer><!-- .comment-meta -->
+
+			<div class="comment-content">
+				<?php comment_text(); ?>
+			</div><!-- .comment-content -->
+		</article><!-- .comment-body -->
+<?php
+}
+
+function semiologic_display_pings( ) {
 
 	global $comments_captions;
 
-	$title = the_title('', '', false);
+//	$title = the_title('', '', false);
 
 	$caption = $comments_captions['pings_on'];
-	$caption = sprintf($caption, $title);
+//	$caption = sprintf($caption, $title);
 
 	echo '<div class="pings_header">' . "\n"
 		. '<h2>' . $caption . '</h2>' . "\n"
 		. '</div>' . "\n";
 
-	foreach ( $pings as $comment ) {
-		$cur_date = get_comment_date();
 
-		if ( !isset($prev_date) || $cur_date != $prev_date ) {
-			if ( isset($prev_date) ) {
-				echo '</ul>' . "\n";
+	echo '<ol class="pings_list">' . "\n";
 
-				echo '</div>' . "\n"
-					. '</div> <!-- pings_list -->' . "\n";
-			}
+	$args = array(
+		'style' => 'ul',
+		'type' => 'pings',
+	);
 
-			echo '<div class="pings_date">' . "\n"
-				. '<span>'
-				. $cur_date
-				. '</span>'
-				. '</div>' . "\n";
+	wp_list_comments( $args );
 
-			echo '<div class="pings_list">' . "\n";
+	echo '</ol> <!-- pings_list -->' . "\n";
+}
 
-			echo '<ul>' . "\n";
+/**
+ * semiologic_pings_callback()
+ *
+ * Comment callback for pings
+ *
+ * @param stdClass $comment Comment object.
+ * @param array    $args    Comment args.
+ * @param integer  $depth   Depth of current comment.
+ */
+function semiologic_pings_callback( $comment, array $args, $depth ) {
 
-			$prev_date = $cur_date;
-		}
-
-		echo '<li id="comment-' . get_comment_ID() . '">'
-			. get_comment_author_link()
-			. '</li>' . "\n";
-	}
-
-	echo '</ul>' . "\n";
-
-	echo '</div> <!-- pings_list -->' . "\n";
-
-	unset($prev_date);
+	echo '<li id="comment-' . get_comment_ID() . '" ';
+		comment_class();
+		echo '<p>';
+        comment_author_link();
+		echo edit_comment_link( __( '(Edit)', 'sem-pinnacle' ), '<span class="edit-link">', '</span>' )
+        . '</p>'
+		. '</li>' . "\n";
 }
 
 

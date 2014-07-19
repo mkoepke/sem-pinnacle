@@ -38,9 +38,8 @@ class sem_template {
         if ( !is_admin() ) {
         	add_action('wp', array($this, 'wp'), 0);
         	add_action('template_redirect', array($this, 'template_redirect'), 0);
-        	add_action('wp_enqueue_scripts', array($this, 'scripts'));
-        	add_action('wp_enqueue_scripts', array($this, 'styles'));
-	        add_action('wp_head', array($this, 'fonts'));
+        	add_action('wp_enqueue_scripts', array($this, 'scripts'), 11);
+        	add_action('wp_enqueue_scripts', array($this, 'styles'), 10);
         	add_action('wp_head', array($this, 'trackback_rdf'), 100);
         	add_filter('body_class', array($this, 'body_class'));
         	add_filter('widget_title', array($this, 'widget_title'));
@@ -200,6 +199,7 @@ class sem_template {
 		}
 
 		wp_enqueue_script( 'doubletaptogo', sem_url . '/js/doubletaptogo.js', array('jquery'), '1.0.0', false );
+		wp_enqueue_script( 'ios-orientationchange-fix', sem_url . '/js/ios-orientationchange-fix.js', null, '1.0.0', false );
 		wp_enqueue_script( 'resp-menu', sem_url . '/js/resp-menu.js', array('jquery', 'doubletaptogo'), '1.0.0', false );
 
 	} # scripts()
@@ -220,6 +220,8 @@ class sem_template {
 		$skin_url = $custom_skin ?  sem_content_url . '/skins/' . $sem_theme_options['active_skin'] : sem_url . '/skins/' . $sem_theme_options['active_skin'];
 
 		wp_enqueue_style('style', sem_url . '/style.css', null, sem_last_mod);
+
+		$this->fonts();
 
 		if ( file_exists($skin_path . '/icons.css') )
 			wp_enqueue_style('custom-icons', $skin_url . '/icons.css', null, filemtime($skin_path . '/icons.css'));
@@ -258,7 +260,7 @@ class sem_template {
 	function fonts() {
 		global $sem_theme_options;
 
-		echo '<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">';
+		echo '<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">' . "\n";
 
 		sem_template::load_font( $sem_theme_options['active_font']);
 

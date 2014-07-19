@@ -118,6 +118,11 @@ class sem_panels {
 				$after_widget = '</div><!-- main_widget -->' . "\n";
 				break;
 
+			case 'the_entry':
+				$before_widget = '<div class="%1$s %2$s entry_widget">' . "\n";
+				$after_widget = '</div><!-- entry_widget -->' . "\n";
+				break;
+
 			case 'top_body_sidebar':
 			case 'bottom_body_sidebar':
 				$before_widget = '<aside class="%1$s %2$s body_widget">' . "\n";

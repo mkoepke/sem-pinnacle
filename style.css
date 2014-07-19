@@ -60,6 +60,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 	display: table;
 }
 
+article,
 .clear:after,
 .entry_content:after,
 #comments:after,
@@ -81,7 +82,7 @@ html, body {
 body {
 	color:#000;
 	background:#fff;
-	line-height: 1.432;
+	line-height: 1.625;
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-weight: normal;
 	text-rendering: optimizeLegibility;
@@ -144,6 +145,7 @@ ins, u {
 h1, h2, h3, h4, h5, h6 {
 	font-size:100%;
 	font-weight: inherit;
+	line-height: 1.3;
 }
 
 address, caption, cite, code, dfn, em, strong, th, var {
@@ -156,7 +158,7 @@ caption, th {
 }
 
 input, button, textarea {
-	line-height: 123.1%;
+	line-height: 1.231;
 }
 
 pre, blockquote, li, dt, dd {
@@ -346,17 +348,14 @@ Theme Fonts
 /* Headings
 --------------------------------------------- */
 
+
 h1 {
 	font-size: 1.750em;
 	letter-spacing: -1px;
-	line-height: 1.2;
-    font-family: inherit;
 }
 
 h2 {
 	font-size: 1.3125em;
-	line-height: 1.2;
-    font-family: inherit;
 }
 
 h3 {
@@ -965,7 +964,7 @@ Site Navigation
 
 #header_nav li.nav_sep a,
 #footer_nav li.nav_sep a {
-	border-left: 1px solid black;
+	border-left: 2px solid black;
 	padding: 0 0.5em;
 }
 
@@ -1016,11 +1015,11 @@ h2 a {
     word-wrap: break-word;
     overflow: hidden;
 }
+
 /* Margins and Padding */
 
 .entry,
 .post_list,
-.comment,
 .main_widget,
 .body_widget,
 .widget,
@@ -1030,6 +1029,11 @@ h2 a {
 	padding: 0 1.25em;
 }
 
+.entry_widget {
+	margin-top: 1.25em;
+	margin-bottom: 1.25em;
+}
+
 .archive .entry .entry {
 	padding: 0;
 }
@@ -1037,10 +1041,6 @@ h2 a {
 .header_widget p,
 .footer_widget p {
 	padding: 0 1.25em;
-}
-
-.post_list h3 {
-	margin-top: 0.9375em;
 }
 
 .entry_header {
@@ -1055,25 +1055,55 @@ h2 a {
     margin-bottom: 0;
 }
 
-h3.post_list_date,
-.comment_date,
-.pings_date {
-	font-weight: bold;
-	margin: 0.625em 0 0.3125em;
-}
-
 .entry_meta {
 	margin-bottom: 0.750em;
 }
 
-.pings_header,
-.comments_header {
-	margin-bottom: 0.625em;
+.post_list h3 {
+	margin-top: 0.9375em;
+}
+
+h3.post_list_date {
+	font-weight: bold;
+	margin: 0.625em 0 0.3125em;
 }
 
 .entry_categories p,
 .entry_tags p {
 	margin: 0.1875em 0;
+}
+
+.entry_content {
+	margin-bottom: 0.625em;
+}
+
+.entry_navigation {
+	content: "";
+	display: table;
+	width: 100%;
+}
+
+.entry_navigation a {
+	padding: 0.625em 0;
+	text-decoration: none;
+	font-size: 1.125em;
+	line-height: 1.231;
+	font-family: inherit;
+	font-style: italic;
+}
+
+.entry_navigation .nav-links {
+	padding: 0.9375em 0;
+}
+
+.entry_navigation .nav-prev {
+	display: inline-block;
+}
+
+.entry_navigation .nav-next {
+	display: inline-block;
+	text-align: right;
+	float: right;
 }
 
 .sticky {
@@ -1093,6 +1123,37 @@ h3.post_list_date,
 /* Comments
 --------------------------------------------- */
 
+.comment {
+	margin-top: 0;
+	margin-bottom: 2em;
+	padding: 0 0.5em;
+}
+
+.comment-list li ul.children li {
+	padding: 0 0 0 1.5em;
+}
+
+.comment-list {
+	margin-left: 0;
+}
+
+.comment-list ul {
+	list-style-image: none;
+}
+
+.comment-list li {
+	list-style-type: none;
+}
+
+.comment-body {
+	margin-bottom: 2em;
+}
+
+.pings_header,
+.comments_header {
+	margin-bottom: 0.625em;
+}
+
 .comment_header h3 {
 	margin-top: 0.3125em;
 }
@@ -1101,72 +1162,41 @@ h3.post_list_date,
 	font-style: normal;
 }
 
-.comment_time {
-	font-weight: normal;
+.comment_date,
+.pings_date {
+	font-weight: bold;
+	margin: 0.625em 0 0.3125em;
 }
 
-.entry_content,
-.comment_content {
+.comment-content {
+	margin-left: 4.375em;
 	margin-bottom: 0.625em;
 }
 
-.entry_navigation {
-	content: "";
-	display: table;
-	width: 100%;
-}
-
-.entry_navigation a {
-	padding: 0.625em 0;
-	text-decoration: none;
-	font-size: 1.125em;
-	line-height: 123.1%;
-	font-family: inherit;
-	font-style: italic;
-}
-
-.entry_navigation .nav-links {
-	padding: 0.9375em 0;
-}
-
-.entry_navigation .nav-prev {
-	display: inline-block;
-}
-
-.entry_navigation .nav-next {
-	display: inline-block;
-	text-align: right;
-	float: right;
-}
-
-.comment_actions a {
+.comment-actions {
 	float: right;
 	margin-left: 0.3125em;
 	margin-bottom: 0.1875em;
 }
 
-.comment_box a {
-	display: block !important;
-	text-align: center !important;
-	height: 2.125em !important;
-	width: 2.5em !important;
-	overflow: hidden !important;
-	background: url(icons/comment_box.gif) top center no-repeat !important;
-	color: #222 !important;
-	text-decoration: none !important;
-	font-weight: bold !important;
-	font-size: 1.125em !important;
-	line-height: 1.5 !important;
-	padding-top: 1px !important;
-	padding-bottom: 1px !important;
+.pings_list li {
+	list-style-type: none;
+	margin: 0 0 1.5em;
 }
 
-.comment_box a:hover {
-	color: #b11 !important;
+.comment-metadata a {
+	text-decoration: none;
 }
 
-.comment_content {
-	margin-left: 4.375em;
+.comment-metadata .edit-link {
+	text-decoration: underline;
+	float: right;
+	padding-left: 0.5em;
+}
+
+.comment-metadata .reply_comment {
+	text-decoration: underline;
+	float: right;
 }
 
 .comment_label {
@@ -1253,7 +1283,7 @@ Widgets
 
 .widget_calendar caption {
 	font-size: 1.0625em;
-	line-height: 123.1%;
+	line-height: 1.231;
     font-family: inherit;
 }
 
@@ -1266,7 +1296,7 @@ Widgets
 	margin: 0.625em auto 0.3125em;
 	width: 66.6667%;
 	font-size: 0.875em;
-	line-height: 123.1%;
+	line-height: 1.231;
 }
 
 #sidebar .widget_calendar table,

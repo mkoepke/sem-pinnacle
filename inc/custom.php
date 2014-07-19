@@ -720,10 +720,13 @@ EOS;
     - main #main
       - .main_content
 
+      - .main_widget
+        - .main_widget h2
+
 	  - article .entry
 
         - header .entry_header, .entry_header h1
-          - .entry_date .updated, .byline
+          - .entry_date .updated, .byline, .entry_comments_link, .edit_entry
 
         - .entry_content
 
@@ -733,8 +736,7 @@ EOS;
 
         - .entry_comments
 
-      - .main_widget
-        - .main_widget h2
+        - .entry_widget
 
     - #sidebar (smm or mms)
       - .sidebar_content

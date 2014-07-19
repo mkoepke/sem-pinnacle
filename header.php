@@ -9,7 +9,7 @@
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
-<meta name="viewport" content="width=device-width" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title><?php
 if ( $title = trim(wp_title('&#8211;', false)) ) {
 	if ( strpos($title, '&#8211;') === 0 )

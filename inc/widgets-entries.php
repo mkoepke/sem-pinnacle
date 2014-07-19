@@ -805,8 +805,17 @@ class entry_comments extends WP_Widget {
 
 		echo '<div class="entry_comments">' . "\n";
 
+		global $show_pings;
+		$show_pings = true;
+		if ( isset( $instance['show_pings'] ) ) {
+			$show_pings = $instance['show_pings'];
+			unset( $instance['show_pings'] );
+		}
+
 		global $comments_captions;
 		$comments_captions = wp_parse_args($instance, entry_comments::defaults());
+		extract($args, EXTR_SKIP);
+		extract($comments_captions, EXTR_SKIP);
 
 		comments_template('/comments.php');
 
@@ -823,6 +832,9 @@ class entry_comments extends WP_Widget {
 	 **/
 
 	function update($new_instance, $old_instance) {
+
+		$instance['show_pings'] = isset($new_instance['show_pings']);
+
 		foreach ( array_keys(entry_comments::defaults()) as $field ) {
 			switch ( $field ) {
 			case 'policy':
@@ -853,6 +865,22 @@ class entry_comments extends WP_Widget {
 		$defaults = entry_comments::defaults();
 		$instance = wp_parse_args($instance, $defaults);
 		extract($instance, EXTR_SKIP);
+
+		if ( !isset( $show_pings ) )
+			$show_pings = true;
+
+		echo '<h3>' . __('Config', 'sem-pinnacle') . '</h3>' . "\n";
+
+		echo '<p>'
+			. '<label>'
+			. '<input type="checkbox"'
+			. ' name="' . $this->get_field_name('show_pings') . '"'
+			. checked($show_pings, true, false)
+			. ' />'
+			. '&nbsp;'
+			. __('Show pings and trackbacks in a post\'s comment list.', 'sem-pinnacle')
+			. '</label>'
+			. '</p>' . "\n";
 
 		echo '<h3>' . __('Captions', 'sem-pinnacle') . '</h3>' . "\n";
 
@@ -897,7 +925,7 @@ class entry_comments extends WP_Widget {
 
 	function defaults() {
 		return array(
-			'pings_on' => __('Pings on %s', 'sem-pinnacle'),
+			'pings_on' => __('Pings and Trackbacks', 'sem-pinnacle'),
 			'comments_on' => __('Comments on %s', 'sem-pinnacle'),
 			'leave_comment' => __('Leave a Comment', 'sem-pinnacle'),
 			'reply_link' => __('Reply', 'sem-pinnacle'),
