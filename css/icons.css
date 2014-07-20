@@ -86,19 +86,22 @@ h3.post_list_date {
 	padding-right: 0;
 }
 
-.name_label label {
+.name_label label,
+.comment-form-author label{
 	background: url(../icons/user.gif) center left no-repeat;
 	padding-left: 1.125em;
 	padding-right: 0;
 }
 
-.email_label label {
+.email_label label,
+.comment-form-email label{
 	background: url(../icons/email.gif) center left no-repeat;
 	padding-left: 1.125em;
 	padding-right: 0;
 }
 
-.url_label label {
+.url_label label,
+.comment-form-url label {
 	background: url(../icons/world_link.gif) center left no-repeat;
 	padding-left: 1.125em;
 	padding-right: 0;

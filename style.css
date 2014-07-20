@@ -370,7 +370,8 @@ th {
 /* Forms/Buttons
 --------------------------------------------- */
 
-.button {
+.button,
+input[type=submit] {
 	font-weight: bold;
 	background-image: none;
 	background-position: top center;
@@ -1199,6 +1200,17 @@ h3.post_list_date {
 	float: right;
 }
 
+.bypostauthor {
+}
+
+/*
+ * Comment Form
+ */
+
+#commentform div {
+	margin: 0.3125em 0;
+}
+
 .comment_label {
 	width: 7.5em;
 	float: left;
@@ -1218,15 +1230,9 @@ p.comment_label {
 	width: 99%;
 }
 
-.bypostauthor {
-}
-
-/*
- * Comment Form
- */
-
-#commentform div {
-	margin: 0.3125em 0;
+.form-submit {
+	text-align: center;
+	padding-bottom: 1em;
 }
 
 /*

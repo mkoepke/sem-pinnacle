@@ -106,7 +106,8 @@ class entry_header extends WP_Widget {
 					. '</a>';
 				$edit_link = apply_filters('edit_post_link', $edit_link, $post->ID);
 
-				$edit_link = (!is_page() ? ' &bull; ' : '') . '<span class="edit_entry">'
+				$edit_link = (!is_page() ? ' &bull; ' : '')
+					. ( !empty( $title ) ? '<span class="edit_entry">' : '<span class="edit_entry float_right">')
 					. $edit_link
 					. '</span>' . "\n";
 			}

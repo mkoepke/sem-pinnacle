@@ -44,8 +44,7 @@ echo '</div><!-- #comments -->' . "\n";
 #
 
 if ( comments_open() && !( isset($_GET['action']) && $_GET['action'] == 'print' ) ) {
-//	semiologic_display_comment_form();
-	;
+	semiologic_display_comment_form();
 } # comments_open()
 
 
@@ -111,8 +110,6 @@ function semiologic_display_comments() {
 ?>
 	<p class="no-comments"><?php __( 'Comments are closed.', 'sem-pinnacle' ); ?></p>
 <?php endif; ?>
-
-	<?php comment_form(); ?>
 
 <?php
 
@@ -213,151 +210,156 @@ function semiologic_pings_callback( $comment, array $args, $depth ) {
 
 function semiologic_display_comment_form() {
 
+	add_filter( 'comment_form_defaults', 'semiologic_comment_form_args' );
+	add_filter( 'comment_form_after_fields', 'semiologic_comment_form_after_fields' );
+	add_filter( 'comment_form_after', 'semiologic_comment_form_after' );
+	add_filter( 'comment_form_top', 'semiologic_comment_form_top' );
+	add_filter( 'comment_form_field_comment', 'semiologic_comment_field' );
+
+	comment_form();
+	return;
+}
+
+
+function semiologic_comment_form_args( array $defaults ) {
+
 	global $comments_captions;
-	global $user_ID;
-	global $user_identity;
-	global $post;
 	global $req;
-	global $comment_author_email;
-	global $comment_author;
-	global $comment_author_url;
+	global $post_id;
+	global $user_identity;
 
-	echo '<div id="respond">' . "\n";
+	$commenter = wp_get_current_commenter();
+	$req       = get_option( 'require_name_email' );
+	$aria_req  = ( $req ? ' aria-required="true"' : '' );
 
-	echo '<div class="comments_header">' . "\n"
-		. '<h2>' . $comments_captions['leave_comment'] . '</h2>' . "\n";
 
-	echo '<p class="cancel_comment_reply">'
+	$cancel_reply = '<p class="cancel_comment_reply">'
 		. '<a id="cancel-comment-reply-link" href="#respond" style="display:none;">'
 		. __('Click here to cancel reply.', 'sem-pinnacle')
 		. '</a>'
+		. '</p>';
+
+	$login_url = '<span class="login">'
+		. apply_filters('loginout',
+			'<a href="' . esc_url(wp_login_url(apply_filters('the_permalink', get_permalink( $post_id )))) . '">' . __('Login', 'sem-pinnacle') . '</a>'
+			)
+		. '</span>';
+
+	$must_log_in = '<p class="must-log-in">'
+		. sprintf($comments_captions['login_required'], $login_url)
 		. '</p>' . "\n";
 
-	echo '</div>' . "\n";
 
-	if ( get_option('comment_registration') && !$user_ID ) {
-		$login_url = '<span class="login">'
-			. apply_filters('loginout',
-				'<a href="' . esc_url(wp_login_url(apply_filters('the_permalink', get_permalink()))) . '">' . __('Login', 'sem-pinnacle') . '</a>'
-				)
-			. '</span>';
+	$logout_url = '<span class="logout">'
+		. apply_filters('loginout',
+			'<a href="' . esc_url(wp_logout_url(apply_filters('the_permalink', get_permalink( $post_id )))) . '">' . __('Logout', 'sem-pinnacle') . '</a>'
+			)
+		. '</span>';
 
-		echo '<div class="comments_login">' . "\n"
-			. '<p>'
-			. sprintf($comments_captions['login_required'], $login_url)
-			. '</p>' . "\n"
-			. '</div>' . "\n";
-	} else {
-		echo '<form method="post" id="commentform"'
-			. ' action="' . trailingslashit(site_url()) . 'wp-comments-post.php"'
-			. '>' . "\n";
+	$identity = '<span class="signed_in_author">'
+		. '<a href="' . trailingslashit(site_url()) . 'wp-admin/profile.php">'
+		. $user_identity
+		. '</a>'
+		. '</span>';
 
-		if ( $comments_captions['policy'] )
-			echo apply_filters('widget_text', wpautop($comments_captions['policy']));
+	$logged_in_as = '<p class="logged-in-as">'
+		. sprintf($comments_captions['logged_in_as'], $identity, $logout_url)
+		. '</p>' . "\n";
 
-		if ( $user_ID ) {
-			$logout_url = '<span class="logout">'
-				. apply_filters('loginout',
-					'<a href="' . esc_url(wp_logout_url(apply_filters('the_permalink', get_permalink()))) . '">' . __('Logout', 'sem-pinnacle') . '</a>'
-					)
-				. '</span>';
 
-			$identity = '<span class="signed_in_author">'
-				. '<a href="' . trailingslashit(site_url()) . 'wp-admin/profile.php">'
-				. $user_identity
-				. '</a>'
-				. '</span>';
+	$author = '<p class="comment_label name_label">' .
+				'<label for="author">' . $comments_captions['name_field']
+					. ( $req
+						? ' (*)'
+						: ''
+						) .
+					'</label>' .
+					'</p>' .
+		        '<p class="comment-form-author comment_field name_field">' .
+	            '<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30" tabindex="1"' . $aria_req . ' />' .
+	            '</p>';
 
-			echo '<p>'
-				. sprintf($comments_captions['logged_in_as'], $identity, $logout_url)
-				. '</p>' . "\n";
-		} else {
-			echo '<p class="comment_label name_label">'
-				. '<label for="author">'
-				. $comments_captions['name_field']
+	$email = '<p class="comment_label email_label">' .
+				'<label for="email">' . $comments_captions['email_field']
 				. ( $req
 					? ' (*)'
 					: ''
-					)
-				. '</label>'
-				. '</p>' . "\n";
+					) .
+				'</label>' .
+				'</p>' .
+			'<p class="comment-form-email comment_field email_field">' .
+            '<input id="email" name="email" type="text" value="' . esc_attr( $commenter['comment_author_email'] ) . '" size="30" tabindex="2"' . $aria_req . ' />' .
+            '</p>';
 
-			echo '<p class="comment_field name_field">'
-				. '<input type="text" name="author" id="author"'
-					. ' value="' . esc_attr($comment_author) . '" />'
-				. '</p>' . "\n";
+	$url =  '<p class="comment_label url_label">' .
+			'<label for="url">' . $comments_captions['url_field'] . '</label>' .
+			'</p>' .
+			'<p class="comment-form-url comment_field url_field">' .
+	        '<input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" tabindex="3" />' .
+	        '</p>';
 
-			echo '<div class="spacer"></div>' . "\n";
+	$comment_field = '<p class="comment-form-comment">' .
+	                 '<textarea id="comment" name="comment" cols="48" rows="10" tabindex="4" aria-required="true"></textarea>' .
+	                 '</p>';
 
-			echo '<p class="comment_label email_label">'
-				. '<label for="email">'
-				. $comments_captions['email_field']
-				. ( $req
-					? ' (*)'
-					: ''
-					)
-				. '</label>'
-				. '</p>' . "\n";
+	$args = array(
+		'comment_field'        => $comment_field,
+		'title_reply'          => $comments_captions['leave_comment'],
+		'comment_notes_before' => '',
+		'comment_notes_after'  => '',
+//		'comment_notes_before' => '<p class="comment-notes">' . __( 'Your email address will not be published.', 'sem-pinnacle' ) . '</p>',
+//		'comment_notes_after'  => '<p class="form-allowed-tags">' . sprintf( __( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: %s', 'sem-pinnacle' ), ' <code>' . allowed_tags() . '</code>' ) . '</p>',
+		'must_log_in'          => $must_log_in,
+		'logged_in_as'         => $logged_in_as,
+		'cancel_reply_link'    => $cancel_reply,
+		'fields'               => array(
+			'author' => $author,
+			'email'  => $email,
+			'url'    => $url,
+		),
+		'label_submit' => esc_attr($comments_captions['submit_field']),
+		'format'               => 'html5',
+	);
 
-			echo '<p class="comment_field email_field">'
-				. '<input type="text" name="email" id="email"'
-					. ' value="' . esc_attr($comment_author_email) . '" />'
-				. '</p>' . "\n";
+	//* Merge $args with $defaults
+	$args = wp_parse_args( $args, $defaults );
 
-			echo '<div class="spacer"></div>' . "\n";
+	return $args;
+}
 
-			echo '<p class="comment_label url_label">'
-				. '<label for="url">'
-				. $comments_captions['url_field']
-				. '</label>'
-				. '</p>' . "\n";
+function semiologic_comment_form_top() {
 
-			echo '<p class="comment_field url_field">'
-				. '<input type="text" name="url" id="url"'
-					. ' value="' . esc_attr($comment_author_url) . '" />'
-				. '</p>' . "\n";
+	global $comments_captions;
 
-			echo '<div class="spacer"></div>' . "\n";
-		} # if ( $user_ID )
+	if ( $comments_captions['policy'] )
+		echo apply_filters('widget_text', wpautop($comments_captions['policy']));
+}
 
-		if ( !$user_ID && $req ) {
-			echo '<p>'
-				.  $comments_captions['required_fields']
-				. '</p>' . "\n";
-		}
+function semiologic_comment_form_after_fields() {
 
-		# Subscribe to comments
+	global $comments_captions;
+	global $req;
 
-		if ( function_exists('show_subscription_checkbox') && has_filter('comment_form', 'show_subscription_checkbox') ) {
-			remove_action('comment_form', 'show_subscription_checkbox');
-			show_subscription_checkbox();
-		}
-
-		# WP Review Site support
-
-		if ( function_exists('ratings_input_table') && has_filter('comment_form', 'ratings_input_table') ) {
-			remove_action('comment_form', 'ratings_input_table');
-			ratings_input_table();
-		}
-
-		echo '<textarea name="comment" id="comment" cols="48" rows="10"></textarea>' . "\n";
-
-		echo '<p class="submit">'
-			. '<input name="submit" type="submit" id="submit" class="button"'
-				. ' value="' . esc_attr($comments_captions['submit_field']) . '"'
-				. ' />'
+	if ( !is_user_logged_in() && $req ) {
+		echo '<p>'
+			.  $comments_captions['required_fields']
 			. '</p>' . "\n";
+	}
+}
 
-		comment_id_fields();
+function semiologic_comment_field( $comment ) {
 
-		do_action('comment_form', $post->ID);
+	# Subscribe to comments
+	if ( function_exists('show_subscription_checkbox') && has_filter('comment_form', 'show_subscription_checkbox') ) {
+		remove_action('comment_form', 'show_subscription_checkbox');
+		show_subscription_checkbox();
+	}
 
-		echo '</form>' . "\n";
+	return $comment;
+}
 
-		if ( function_exists('show_manual_subscription_form') ) {
-			show_manual_subscription_form();
-		}
-	} # get_option('comment_registration') && !$user_ID
-
-	echo '</div><!-- #respond -->' . "\n";
+function semiologic_comment_form_after() {
+	if ( function_exists('show_manual_subscription_form') ) {
+		show_manual_subscription_form();
+	}
 }
