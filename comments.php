@@ -75,19 +75,12 @@ function semiologic_display_comments() {
 			. '</div>' . "\n";
 
 	?>
-	<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
-	<nav id="comment-nav-above" class="comment-navigation" role="navigation">
-		<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'sem-pinnacle' ) ); ?></div>
-		<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'sem-pinnacle' ) ); ?></div>
-	</nav><!-- #comment-nav-above -->
-	<?php endif; // check for comment navigation ?>
 
 	<ol class="comment-list">
 		<?php
 			wp_list_comments( array(
 				'type'        => 'comment',
 				'style'      => 'ul',
-				'short_ping' => true,
 				'avatar_size' => 60,
 				'max_depth' => 4,
 				'callback' => 'semiologic_display_comments_callback'
@@ -95,12 +88,10 @@ function semiologic_display_comments() {
 		?>
 	</ol><!-- .comment-list -->
 
-	<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
-	<nav id="comment-nav-below" class="comment-navigation" role="navigation">
-		<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'sem-pinnacle' ) ); ?></div>
-		<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'sem-pinnacle' ) ); ?></div>
-	</nav><!-- #comment-nav-below -->
-	<?php endif; // check for comment navigation ?>
+	<nav id="comment-nav" class="comment-navigation" role="navigation">
+		<div class="nav-previous alignleft"><?php previous_comments_link( __( '&larr; Older Comments', 'sem-pinnacle' ) ); ?></div>
+		<div class="nav-next alignright"><?php next_comments_link( __( 'Newer Comments &rarr;', 'sem-pinnacle' ) ); ?></div>
+	</nav><!-- #comment-nav -->
 
 <?php } // have_comments() ?>
 
