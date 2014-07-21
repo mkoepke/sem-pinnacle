@@ -82,7 +82,7 @@ function semiologic_display_comments() {
 				'type'        => 'comment',
 				'style'      => 'ul',
 				'avatar_size' => 60,
-				'max_depth' => 4,
+				'max_depth' => 5,
 				'callback' => 'semiologic_display_comments_callback'
 			) );
 		?>

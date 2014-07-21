@@ -41,8 +41,6 @@ class sem_panels {
         if ( !defined('DOING_CRON') )
         	add_action('init', array($this, 'init_widgets'), 2000);
 
-        add_action( 'after_switch_theme', array($this, 'reload_widgets'), 2000);
-
     } # sem_panels()
 
     /**
@@ -599,7 +597,24 @@ class sem_panels {
 			$widget_id = $wp_widget_factory->widgets['footer_boxes']->id;
 			array_unshift($sidebars_widgets['the_footer'], $widget_id);
 		}
-		
+
+		if ( !is_active_widget(false, false, 'entry_footer') ) {
+			$sidebars_widgets['the_entry'] = (array) $sidebars_widgets['the_entry'];
+			$key = false;
+			$entry_widgets = $sidebars_widgets['the_entry'];
+			foreach( $entry_widgets as $widget => $widget_name ) {
+				if ( ( strpos( $widget_name, 'entry_content' ) !== false )) {
+					$key = $widget + 1;
+					break;
+				}
+			}
+			$widget_id = $wp_widget_factory->widgets['entry_footer']->id;
+			if ( $key !== false )
+				array_splice( $sidebars_widgets['the_entry'], $key, 0, (array) $widget_id );
+			else
+				array_push($sidebars_widgets['the_entry'], $widget_id);
+		}
+
 		return $sidebars_widgets;
 	} # upgrade()
 	
@@ -642,16 +657,6 @@ class sem_panels {
 		}
 	} # switch_themes()
 
-    /**
-   	 * reload_widgets()
-   	 *
-   	 * @return void
-   	 **/
-
-   	function reload_widgets() {
-        // WP 3.3 function to handle preserving theme switches
-        _wp_sidebars_changed();
-    }  # reload_widgets()
 } # sem_panels
 
 //$sem_panels = new sem_panels();

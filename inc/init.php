@@ -7,7 +7,7 @@ if ( !defined('sem_theme') )
 	define('sem_theme', 'sem-pinnacle');
 
 if ( !defined('sem_theme_version') )
-	define('sem_theme_version', '2.0 Beta');
+	define('sem_theme_version', '2.0 Beta2');
 
 if ( !defined('sem_debug') )
 	define('sem_debug', isset($_GET['debug']) );
@@ -23,7 +23,7 @@ if ( !defined('sem_header_cache_debug') )
 if ( !defined('sem_css_debug') )
 	define('sem_css_debug', false);
 
-define('sem_last_mod', sem_css_debug ? time() : '20140706');
+define('sem_last_mod', sem_css_debug ? time() : '20140720');
 
 define('sem_path', dirname(dirname(__FILE__)));
 define('sem_url', get_stylesheet_directory_uri());
@@ -132,15 +132,6 @@ if ( !isset($sem_theme_options['version']) ) {
 
 		$sem_theme_options = $sem6_options;
 		$sem_theme_options['version'] = -1;
-
-		// clone the sem_reloaded options to the sem_pinnacle options on first time use
-		if ( get_option('theme_mods_sem-pinnacle') === FALSE ) {
-			$o = get_option('theme_mods_sem-reloaded');
-			if ( $o !== FALSE ) {
-				update_option( 'theme_mods_sem-pinnacle', $o );
-				update_option( 'sidebars_widgets', $o['sidebars_widgets'] );
-			}
-		}
 
 		if ( !defined('DOING_CRON') )
 			include sem_path . '/inc/upgrade.php';
