@@ -618,7 +618,7 @@ class navbar extends sem_nav_menu {
 		return array_merge(array(
 			'search_field' => __('Search', 'sem-pinnacle'),
 			'search_button' => __('Go', 'sem-pinnacle'),
-			'show_search_form' => true,
+			'show_search_form' => false,
 			), parent::defaults());
 	} # defaults()
 
