@@ -7,6 +7,9 @@
  **/
 
 function upgrade_to_sem_pinnacle() {
+	global $sem_theme_options;
+	global $sem_stock_skins;
+
 	# convert multi-level menus excludes to semiologic menu exclude
 	$menu = get_option('pixopoint-menu', array());
 	$front_page_id = get_option('page_on_front');
@@ -24,52 +27,11 @@ function upgrade_to_sem_pinnacle() {
 	wp_mkdir_p( sem_content_path . '/skins' );
 	wp_mkdir_p( sem_content_path . '/custom' );
 
-	// clone the sem_reloaded options to the sem_pinnacle options on first time use
-	global $_wp_sidebars_widgets;
 
-	$reloaded_widgets = get_option('theme_mods_sem-reloaded');
-	if ( $reloaded_widgets !== FALSE ) {
+	if (  !in_array( $sem_theme_options['active_skin'], $sem_stock_skins ))
+		$sem_theme_options['active_skin'] = 'boxed';
 
-		$sidebars_widgets = wp_get_sidebars_widgets();
-		$sidebars = array_keys($sidebars_widgets);
-		foreach ( $sidebars as $sidebar ) {
-            $sidebars_widgets[$sidebar] = array();
-		}
-
-		$reloaded_widgets = $reloaded_widgets['sidebars_widgets']['data'];
-		$reloaded_sidebars = array_keys($reloaded_widgets);
-		foreach ( $reloaded_sidebars as $sidebar ) {
-            $sidebars_widgets[$sidebar] = (array) $reloaded_widgets[$sidebar];
-		}
-
-		global $_wp_sidebars_widgets;
-
-		$_wp_sidebars_widgets = $sidebars_widgets;
-
-		wp_set_sidebars_widgets( $sidebars_widgets );
-	}
-
-	// convert entry_categories to entry_footer and delete entry_tags
-	$sidebars_widgets = wp_get_sidebars_widgets();
-	$entry_widgets = $sidebars_widgets['the_entry'];
-
-	foreach( $entry_widgets as $widget => $widget_name ) {
-		if ( ( strpos( $widget_name, "entry_tags" ) !== false ) || ( strpos( $widget_name, "entry_categories" ) !== false )) {
-			unset( $entry_widgets[$widget] );
-			continue;
-		}
-
-	}
-
-	$sidebars_widgets['the_entry'] = $entry_widgets;
-
-	$_wp_sidebars_widgets = $sidebars_widgets;
-
-	wp_set_sidebars_widgets( $sidebars_widgets );
-
-	$sem_theme_options['active_skin'] = 'boxed';
-
-	update_option('init_sem_panels', '1');
+	update_option('upgrade_sempinnacle_panels', '1');
 
 } # upgrade_to_sem_pinnacle()
 

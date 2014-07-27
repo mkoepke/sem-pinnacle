@@ -75,12 +75,13 @@ class sem_panels {
 		sem_panels::register_panel( $bottom_panels );
 
 	} # register()
-	
+
 	/**
-	* register_panel()
-	*
-	* @return void
-	**/
+	 * register_panel()
+	 *
+	 * @param $panels
+	 * @return void
+	 */
 
 	function register_panel( $panels ) {
 
@@ -356,8 +357,11 @@ class sem_panels {
 	 **/
 
 	function init_widgets() {
-		if ( !intval(get_option('init_sem_panels')) )
+		if ( !intval(get_option('init_sem_panels')) ) {
+			if ( intval(get_option('upgrade_sempinnacle_panels')) )
+				sem_panels::upgrade_sem_pinnacle_widgets();
 			return;
+		}
 		
 		if ( is_admin() ) {
 			global $wp_filter;
@@ -376,6 +380,7 @@ class sem_panels {
 			if ( empty($_GET['preview']) && empty($_GET['stylesheet']) ) {
 				wp_set_sidebars_widgets($sidebars_widgets);
 				update_option('init_sem_panels', '0');
+				update_option('upgrade_sempinnacle_panels', '0');
 			}
 		} else {
 			if ( empty($GLOBALS['_wp_sidebars_widgets']) )
@@ -598,23 +603,6 @@ class sem_panels {
 			array_unshift($sidebars_widgets['the_footer'], $widget_id);
 		}
 
-		if ( !is_active_widget(false, false, 'entry_footer') ) {
-			$sidebars_widgets['the_entry'] = (array) $sidebars_widgets['the_entry'];
-			$key = false;
-			$entry_widgets = $sidebars_widgets['the_entry'];
-			foreach( $entry_widgets as $widget => $widget_name ) {
-				if ( ( strpos( $widget_name, 'entry_content' ) !== false )) {
-					$key = $widget + 1;
-					break;
-				}
-			}
-			$widget_id = $wp_widget_factory->widgets['entry_footer']->id;
-			if ( $key !== false )
-				array_splice( $sidebars_widgets['the_entry'], $key, 0, (array) $widget_id );
-			else
-				array_push($sidebars_widgets['the_entry'], $widget_id);
-		}
-
 		return $sidebars_widgets;
 	} # upgrade()
 	
@@ -637,8 +625,75 @@ class sem_panels {
 		
 		return $sidebars_widgets;
 	} # convert()
-	
-	
+
+
+	/**
+	 * upgrade_sem_reloaded_widgets()
+	 *
+	 * @return void
+	 **/
+	function upgrade_sem_pinnacle_widgets() {
+
+		global $_wp_sidebars_widgets;
+		global $wp_widget_factory;
+
+		$reloaded_widgets = get_option('theme_mods_sem-reloaded');
+		if ( $reloaded_widgets !== FALSE ) {
+
+			$sidebars_widgets = wp_get_sidebars_widgets();
+			$sidebars = array_keys($sidebars_widgets);
+			foreach ( $sidebars as $sidebar ) {
+	            $sidebars_widgets[$sidebar] = array();
+			}
+
+			$reloaded_widgets = $reloaded_widgets['sidebars_widgets']['data'];
+			$reloaded_sidebars = array_keys($reloaded_widgets);
+			foreach ( $reloaded_sidebars as $sidebar ) {
+	            $sidebars_widgets[$sidebar] = (array) $reloaded_widgets[$sidebar];
+			}
+
+			$_wp_sidebars_widgets = $sidebars_widgets;
+
+			wp_set_sidebars_widgets( $sidebars_widgets );
+		}
+
+		// convert entry_categories to entry_footer and delete entry_tags
+		$sidebars_widgets = wp_get_sidebars_widgets();
+		$entry_widgets = $sidebars_widgets['the_entry'];
+
+		foreach( $entry_widgets as $widget => $widget_name ) {
+			if ( ( strpos( $widget_name, "entry_tags" ) !== false ) || ( strpos( $widget_name, "entry_categories" ) !== false )) {
+				unset( $entry_widgets[$widget] );
+				continue;
+			}
+
+		}
+
+		if ( !is_active_widget(false, false, 'entry_footer') ) {
+			$key = false;
+			foreach( $entry_widgets as $widget => $widget_name ) {
+				if ( ( strpos( $widget_name, 'entry_content' ) !== false )) {
+					$key = $widget + 1;
+					break;
+				}
+			}
+			$widget_id = $wp_widget_factory->widgets['entry_footer']->id;
+			if ( $key !== false )
+				array_splice( $entry_widgets, $key, 0, (array) $widget_id );
+			else
+				array_push($entry_widgets, $widget_id);
+		}
+
+		$sidebars_widgets['the_entry'] = $entry_widgets;
+
+		wp_set_sidebars_widgets( $sidebars_widgets );
+
+		$_wp_sidebars_widgets = $sidebars_widgets;
+
+		update_option('upgrade_sempinnacle_panels', '0');
+	}
+
+
 	/**
 	 * switch_themes()
 	 *

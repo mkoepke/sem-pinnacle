@@ -12,3 +12,12 @@ Colors:
  * Canvas
  */
 
+/*
+ * Skin Images
+ */
+
+html {
+	background-image: url(images/pattern.jpg);
+	background-position: top center;
+	background-repeat: repeat;
+}
