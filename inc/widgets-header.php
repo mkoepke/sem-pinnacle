@@ -14,9 +14,6 @@ class header extends WP_Widget {
 	 *
 	 */
 	public function __construct() {
-        if ( !is_admin() ) {
-        	add_action('wp', array($this, 'wire'), 20);
-        }
 
 		$widget_name = __('Header: Site Header', 'sem-pinnacle');
 		$widget_ops = array(
@@ -64,32 +61,30 @@ class header extends WP_Widget {
 
 		echo "\n";
 
-		if ( !$header ) {
-			echo '<div id="header_img">' . "\n";
+		echo '<div id="header_img">' . "\n";
 
-			$tagline = '<div id="tagline" class="tagline">'
-				. get_option('blogdescription')
-				. '</div>' . "\n";
+		$title_class = ( $header ) ? ' hidden' : '';
 
-			$site_name = '<div id="sitename" class="sitename">'
-				. ( !( is_front_page() && !is_paged() )
-					? ( '<a href="' . esc_url(user_trailingslashit(home_url())) . '">' . get_option('blogname') . '</a>' )
-					: get_option('blogname')
-					)
-				. '</div>' . "\n";
+		$tagline = '<h2 id="tagline" itemprop="description" class="tagline' . $title_class . '">'
+			. get_option('blogdescription')
+			. '</h2>' . "\n";
 
-			if ( $invert_header ) {
-				echo $site_name;
-				echo $tagline;
-			} else {
-				echo $tagline;
-				echo $site_name;
-			}
+		$site_name = '<h1 id="sitename" itemprop="headline" class="sitename' . $title_class . '">'
+			. '<a href="' . esc_url(user_trailingslashit(home_url())) . '" rel="home">' . get_option('blogname') . '</a>'
+			. '</h1>' . "\n";
 
-			echo '</div>' . "\n";
+		if ( $invert_header ) {
+			echo $site_name;
+			echo $tagline;
 		} else {
+			echo $tagline;
+			echo $site_name;
+		}
+
+		if ( $header ) {
 			echo header::display($header);
 		}
+		echo '</div>' . "\n";
 
 		echo '</div><!-- header -->' . "\n";
 
@@ -113,9 +108,8 @@ class header extends WP_Widget {
 		if ( !$header )
 			return;
 
-		echo '<div id="header_img">' . header::display_header_image($header);
+		echo header::display_header_image($header);
 
-		echo '</div>' . "\n";
 	} # display()
 
 	/**
@@ -129,7 +123,9 @@ class header extends WP_Widget {
 			$header_size = @getimagesize(WP_CONTENT_DIR . $header);
 		list($width, $height) = $header_size;
 
-		$html = '<img src="' . sem_url . '/icons/pixel.gif"'
+		$html = '<img src="' . WP_CONTENT_URL . $header . '"'
+			. ' width="' . intval($width) . '"'
+			. ' height="' . intval($height) . '"'
 			. ' alt="'
 				. esc_attr(get_option('blogname'))
 				. ' &bull; '
@@ -137,16 +133,14 @@ class header extends WP_Widget {
 				. '"'
 			. ' />';
 
-		if ( !( is_front_page() && !is_paged() ) ) {
-			$html = '<a'
-			. ' href="' . esc_url(user_trailingslashit(home_url())) . '"'
-			. ' title="'
-				. esc_attr(get_option('blogname'))
-				. ' &bull; '
-				. esc_attr(get_option('blogdescription'))
-				. '"'
-			. '>' . $html . '</a>';
-		}
+		$html = '<a'
+		. ' href="' . esc_url(user_trailingslashit(home_url())) . '"'
+		. ' title="'
+			. esc_attr(get_option('blogname'))
+			. ' &bull; '
+			. esc_attr(get_option('blogdescription'))
+			. '" rel="home"'
+		. '>' . $html . '</a>';
 
 		return $html;
 	}
@@ -331,61 +325,6 @@ class header extends WP_Widget {
 
 
 	/**
-	 * wire()
-	 *
-	 * @param object &$wp
-	 * @return void
-	 **/
-
-	function wire(&$wp) {
-
-		add_action('wp_head', array($this, 'css'), 30);
-
-	} # wire()
-
-
-	/**
-	 * css()
-	 *
-	 * @return void
-	 **/
-
-	function css() {
-		$header = header::get();
-
-		list($width, $height) = wp_cache_get('sem_header', 'sem_header');
-
-		if ( !$height )
-			return;
-
-		$header = esc_url(content_url() . $header);
-
-		$height = $height / 16;
-
-		echo <<<EOS
-
-<style type="text/css">
-.skin #header_img {
-	background: url(${header}) no-repeat top center;
-	background-size: 100%;
-	width: 100%;
-	border: 0;
-	position: relative;
-	padding: 0;
-	margin: 0 auto;
-}
-.skin #header_img img {
-	display: block;
-    width: 100%;
-    height: ${height}em;
-}
-</style>
-
-EOS;
-	} # css()
-
-
-	/**
 	 * update()
 	 *
 	 * @param array $new_instance new widget options
@@ -491,6 +430,7 @@ class navbar extends sem_nav_menu {
 
 		echo '<nav id="navbar" class="header_section navbar' . $navbar_class . '">' . "\n";
 
+		echo '<div id="header-menu-icon">' . $resp_menubar_text . '<span class="fa fa-bars"></span></div>';
 		echo '<div id="header_nav" class="header_nav inline_menu menu" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">';
 
 		parent::widget($args, $instance);
@@ -559,6 +499,7 @@ class navbar extends sem_nav_menu {
 		$instance['show_search_form'] = isset($new_instance['show_search_form']);
 		$instance['search_field'] = trim(strip_tags($new_instance['search_field']));
 		$instance['search_button'] = trim(strip_tags($new_instance['search_button']));
+		$instance['resp_menubar_text'] = trim(strip_tags($new_instance['resp_menubar_text']));
 
 		return $instance;
 	} # update()
@@ -578,7 +519,7 @@ class navbar extends sem_nav_menu {
 
 		echo '<h3>' . __('Captions', 'sem-pinnacle') . '</h3>' . "\n";
 
-		foreach ( array('search_field', 'search_button') as $field ) {
+		foreach ( array('search_field', 'search_button', 'resp_menubar_text') as $field ) {
 			echo '<p>'
 				. '<label>'
 				. '<code>' . $defaults[$field] . '</code>'
@@ -618,6 +559,7 @@ class navbar extends sem_nav_menu {
 		return array_merge(array(
 			'search_field' => __('Search', 'sem-pinnacle'),
 			'search_button' => __('Go', 'sem-pinnacle'),
+			'resp_menubar_text' => __('Menu', 'sem-pinnacle'),
 			'show_search_form' => false,
 			), parent::defaults());
 	} # defaults()

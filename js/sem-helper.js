@@ -11,7 +11,6 @@ jQuery(document).ready(function($) {
         $(this).removeClass('hover');
     });
 
-	$('#header_nav').before('<div id="header-menu-icon" class="fa fa-bars"></div>');
 	$('#header-menu-icon').click(function() {
 		$('#header_nav').slideToggle();
 	});

@@ -96,6 +96,10 @@ Media Queries
 		text-align: center;
 	}
 
+	#header-menu-icon span {
+		padding-left: 5px;
+	}
+
 	#header-menu-icon:hover::before {
 		opacity: 0.7;
 	}
