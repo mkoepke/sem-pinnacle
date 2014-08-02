@@ -59,7 +59,13 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 #body_wrapper:before,
 #body_wrapper:after,
 #footer_wrapper:before,
-#footer_wrapper:after {
+#footer_wrapper:after,
+.header_section:before,
+.header_section:after,
+.body_section:before,
+.body_section:after,
+.footer_section:before,
+.footer_section:after {
 	content: '';
 	display: table;
 }
@@ -70,7 +76,10 @@ article,
 #comments:after,
 #header_wrapper:after,
 #body_wrapper:after,
-#footer_wrapper:after {
+#footer_wrapper:after,
+.header_section:after,
+.body_section:after,
+.footer_section:after {
 	clear: both;
 }
 
@@ -907,17 +916,37 @@ Site Navigation
 	position: relative;
 }
 
+#header_nav ul.justified {
+	display: table;
+}
+
 #header_nav li {
 	position: relative;
 	float: left;
 	padding: 0;
 	margin: 0;
+	text-align: left;
+}
+
+#header_nav li.justified {
+	float: none;
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
 }
 
 #header_nav a {
-	display: block;
+	display: inline-block;
 	white-space: nowrap;
-	padding: 0 0.4em;
+	padding: 0 0.625em;
+	width: 100%;
+}
+
+#header_nav li.justified a {
+	white-space: normal;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	line-height: 1.25;
 }
 
 #header_nav .sub-menu {
@@ -933,10 +962,14 @@ Site Navigation
 	float:none;
 	width: 100%;
 	clear: both;
+	display: block;
+	text-align: left;
 }
 
 #header_nav .sub-menu a {
+	display: block;
 	font-weight: normal;
+	white-space: nowrap !important;
 }
 
 #header_nav li.hover > .sub-menu {
@@ -965,15 +998,18 @@ Site Navigation
 	position: relative;
 	float: left;
 	padding: 0;
+}
+
+#footer_nav li a {
 	margin: 0 0.4em;
+	width: 100%;
 }
 
-#header_nav li.nav_sep a,
-#footer_nav li.nav_sep a {
-	border-left: 2px solid black;
-	padding: 0 0.5em;
+#header_nav li.nav_sep + li.nav_sep:after,
+#footer_nav li.nav_sep + li.nav_sep:before {
+    content: "|";
+	font-weight: normal;
 }
-
 
 .sep_nav #header_nav li.nav_sep,
 .sep_nav #footer_nav li.nav_sep,
@@ -1063,6 +1099,11 @@ h2 a {
 
 .entry_meta {
 	margin-bottom: 0.750em;
+}
+
+.page .entry_meta {
+	text-align: right;
+	margin: 0;
 }
 
 .post_list h3 {

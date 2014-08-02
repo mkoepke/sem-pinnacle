@@ -1,7 +1,7 @@
 /*
 Skin name: Boxed
 Skin uri: http://skins.semiologic.com/boxed/
-Version: 2.0 dev
+Version: 2.0 rc
 Author: Mike Koepke
 Author uri: http://www.semiologic.com
 Type: Standard
@@ -62,28 +62,22 @@ Colors: Blue
 }
 
 #search_form {
-	padding-left: 0.9375em;;
+	padding-left: 0.9375em;
 	padding-right: 0.625em;
 }
 
 #navbar a {
 	padding-left: 0.9375em;
-	padding-right: 1.0625em;;
+	padding-right: 0.9375em;
 	margin: 0;
 }
 
 
-#navbar span.nav_active {
+#navbar .nav_active {
 	font-weight: normal;
-	padding-left: 0.9375em;
-	padding-right: 1.0625em;
 	margin: 0;
 }
 
-#navbar span.nav_active a {
-	margin-left: -0.9375em;
-	margin-right: -1.0625em;
-}
 
 #navbar {
 	border: solid 1px;
@@ -188,6 +182,7 @@ Colors: Blue
 	border-bottom-left-radius: 0.4375em;
 }
 
+/*
 #navbar li:last-child,
 #navbar li:last-child a {
 	-moz-border-radius-topright: 0.4375em;
@@ -200,6 +195,7 @@ Colors: Blue
 	border-bottom-right-radius: 0.4375em;
 	border-right: 0;
 }
+*/
 
 /* add to others */
 
@@ -450,7 +446,7 @@ html {
 	color: #fff;
 }
 
-#navbar a:hover {
+#navbar li:hover {
 	background: #2979c6; /* Old browsers */
 	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
 	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzI5NzljNiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxZDcyYzIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
@@ -463,9 +459,25 @@ html {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2979c6', endColorstr='#1d72c2',GradientType=0 ); /* IE6-8 */
 }
 
-#navbar li a,
+#navbar li.nav_sep a,
 #header_nav .sub-menu li a {
+	border-left: 1px solid #0E3055;
+}
+
+#navbar li.nav_sep:first-child a {
+	border-left: 0;
+}
+
+#navbar li.nav_sep:last-child a {
 	border-right: 1px solid #0E3055;
+}
+
+#navbar li.nav_sep.justified:last-child a {
+	border-right: 0;
+}
+
+#header_nav li.nav_sep + li.nav_sep:after {
+	content: '';
 }
 
 /* add to others */

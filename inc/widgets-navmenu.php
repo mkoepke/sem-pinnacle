@@ -20,6 +20,12 @@ class sem_nav_menu extends WP_Widget {
 	protected $ul_menu_class = '';
 
 	/**
+	 * Display as justified menu
+	 *
+	 */
+	protected $display_justified = false;
+
+	/**
 	 * Constructor.
 	 *
 	 */
@@ -91,6 +97,8 @@ class sem_nav_menu extends WP_Widget {
 		if ( is_admin() )
 			return;
 
+		$this->display_justified = $display_justified;
+
 		if ( is_page() ) {
 			global $_wp_using_ext_object_cache;
 			global $wp_the_query;
@@ -133,30 +141,28 @@ class sem_nav_menu extends WP_Widget {
 		if ( $this->ul_menu_class != '' )
 			$classes[] = $this->ul_menu_class;
 
+		if ( $this->display_justified )
+			$classes[] = "justified";
+
 		ob_start();
 
 		echo '<ul class="' . implode(' ', $classes) . '">' . "\n";
 
-		$did_first = false;
-
 		foreach ( $items as $item ) {
 			$add_sep = false;
-			if ( $sep && $did_first )
+			if ( $sep )
 				$add_sep = true;
 
 			switch ( $item['type'] ) {
 			case 'home':
 				sem_nav_menu::display_home($item, $menu_depth, $add_sep);
-				$did_first = true;
 				break;
 			case 'url':
 				sem_nav_menu::display_url($item, $menu_depth, $add_sep);
-				$did_first = true;
 				break;
 			case 'page':
 				if ( in_array($item['ref'], $root_pages) ) {
 					sem_nav_menu::display_page($item, $menu_depth, $add_sep);
-					$did_first = true;
 				}
 				break;
 			}
@@ -194,7 +200,8 @@ class sem_nav_menu extends WP_Widget {
 		if ( get_option('show_on_front') == 'page' && get_option('page_on_front') ) {
 			$item['type'] = 'page';
 			$item['ref'] = get_option('page_on_front');
-			return sem_nav_menu::display_page($item, $menu_depth, $add_sep);
+			sem_nav_menu::display_page($item, $menu_depth, $add_sep);
+			return;
 		}
 
 		extract($item, EXTR_SKIP);
@@ -205,6 +212,8 @@ class sem_nav_menu extends WP_Widget {
 		$classes = array('nav_home');
 		if ( $add_sep )
 			$classes[] = "nav_sep";
+		if ( $this->display_justified )
+			$classes[] = "justified";
 
 		$link = $label;
 
@@ -232,6 +241,7 @@ class sem_nav_menu extends WP_Widget {
 	 * display_url()
 	 *
 	 * @param array $item
+	 * @param $menu_depth
 	 * @param $add_sep
 	 * @return void
 	 */
@@ -245,8 +255,10 @@ class sem_nav_menu extends WP_Widget {
 		if ( !$url || $url == 'http://' )
 			return;
 
-		if ( rtrim($url, '/') == rtrim(home_url(), '/') )
-			return sem_nav_menu::display_home($item, $menu_depth, $add_sep);
+		if ( rtrim($url, '/') == rtrim(home_url(), '/') ) {
+			sem_nav_menu::display_home($item, $menu_depth, $add_sep);
+			return;
+		}
 
 		if ( !sem_nav_menu::is_local_url($url) ) {
 			$classes = array('nav_url');
@@ -264,6 +276,8 @@ class sem_nav_menu extends WP_Widget {
 
 		if ( $add_sep )
 			$classes[] = "nav_sep";
+		if ( $this->display_justified )
+			$classes[] = "justified";
 
 		$link = '<a href="' . $url . '" title="' . esc_attr($label) . '">'
 			. $label
@@ -322,12 +336,14 @@ class sem_nav_menu extends WP_Widget {
 
 		$url = esc_url(apply_filters('the_permalink', get_permalink($page->ID)));
 
-		$ancestors = $page_id ? wp_cache_get($page_id, 'page_ancestors') : array();
+		$ancestors = $page_id ? wp_cache_get($page->ID, 'page_ancestors') : array();
 		$children = wp_cache_get($page->ID, 'page_children');
 
 		$classes = array();
 		if ( $add_sep )
 			$classes[] = "nav_sep";
+		if ( $this->display_justified )
+			$classes[] = "justified";
 
 		$link = $label;
 
@@ -564,18 +580,16 @@ class sem_nav_menu extends WP_Widget {
 	 **/
 
 	function cache_extra_pages() {
-		if ( is_page() ) {
-			global $wp_the_query;
-			$page_id = (int) $wp_the_query->get_queried_object_id();
-		} else {
-			$page_id = 0;
-		}
+
+		$page_id = 0;
 
 		$to_do = array();
-		foreach ( wp_cache_get($page_id, 'page_children') as $child_id ) {
-			foreach ( wp_cache_get($child_id, 'page_children') as $extra_id ) {
-				if ( !is_array(wp_cache_get($extra_id)) )
-					$to_do[] = $extra_id;
+		$children_ids = wp_cache_get($page_id, 'page_children');
+		foreach ( $children_ids as $child_id ) {
+			$grandchildren_ids = wp_cache_get($child_id, 'page_children');
+			foreach ( $grandchildren_ids as $grandchildren_id ) {
+				if ( !is_array(wp_cache_get($grandchildren_id)) )
+					$to_do[] = $grandchildren_id;
 			}
 		}
 
@@ -710,6 +724,8 @@ class sem_nav_menu extends WP_Widget {
 		$instance = sem_nav_menu::defaults();
 		$instance['sep'] = isset($new_instance['sep']);
 		$instance['menu_depth'] = (int) $new_instance['menu_depth'];
+		$instance['display_justified'] = isset($new_instance['display_justified']);
+
 		if ( isset( $new_instance['items']) ) {
 			foreach ( array_keys((array) $new_instance['items']['type']) as $key ) {
 				$item = array();
@@ -1082,6 +1098,7 @@ EOS;
 			'sep' => false,
 			'items' => array(),
 			'menu_depth' => 1,
+			'display_justified' => false,
 			);
 	} # defaults()
 

@@ -91,9 +91,11 @@ Media Queries
 
 	#header-menu-icon {
 		cursor: pointer;
-		display: block;
-		padding: 1.5em 1.5em;
+		padding: 1em 1em;
 		text-align: center;
+		display: table;
+		width: 100%;
+		font-size: 1.2em;
 	}
 
 	#header-menu-icon span {
@@ -120,6 +122,19 @@ Media Queries
 	#header_nav li {
 		float:none;
 		width: 100%;
+	}
+
+	#header_nav li.justified,
+	#header_nav ul.justified {
+		display: block;
+		text-align: left;
+	}
+
+	#header_nav li.justified a {
+		white-space: nowrap;
+		padding-top: 0;
+		padding-bottom: 0;
+		line-height: inherit;
 	}
 
 	#header_nav li.nav_sep a,

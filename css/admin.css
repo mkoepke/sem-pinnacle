@@ -12,10 +12,15 @@ input.nav_menu_item_remove {
 }
 
 div.nav_menu_item {
-	width: 304px;
-	padding: 8px;
-	margin: 5px 0px;
+	min-width: 304px;
+	padding: 8px !important;
+	margin: 5px 0 !important;
 	cursor: move !important;
+	height: auto !important;
+}
+
+div.nav_menu_item:last-child {
+	margin-bottom: 15px !important;
 }
 
 div.nav_menu_item_blank {
@@ -30,8 +35,8 @@ div.nav_menu_item_blank:hover {
 }
 
 div.nav_menu_item_data {
-	padding-left: 0px;
-	margin-left: 0px;
+	padding-left: 0;
+	margin-left: 0;
 }
 
 input.nav_menu_item_label,
@@ -42,6 +47,7 @@ input.nav_menu_item_ref {
 div.nav_menu_item_preview {
 	padding-top: 5px;
 }
+
 
 .before_entries_options li,
 .after_entries_options li {

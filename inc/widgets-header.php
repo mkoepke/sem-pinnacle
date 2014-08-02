@@ -545,6 +545,17 @@ class navbar extends sem_nav_menu {
 			. '</label>'
 			. '</p>' . "\n";
 
+		echo '<p>'
+			. '<label>'
+			. '<input type="checkbox"'
+				. ' name="' . $this->get_field_name('display_justified') . '"'
+				. checked($display_justified, true, false)
+				. ' />'
+			. '&nbsp;'
+			. __('Display top level menu items justified.', 'sem-pinnacle')
+			. '</label>'
+			. '</p>' . "\n";
+
 		parent::form($instance);
 	} # form()
 
