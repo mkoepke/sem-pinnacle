@@ -459,20 +459,20 @@ html {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2979c6', endColorstr='#1d72c2',GradientType=0 ); /* IE6-8 */
 }
 
-#navbar li.nav_sep a,
+#navbar li.nav_sep,
 #header_nav .sub-menu li a {
 	border-left: 1px solid #0E3055;
 }
 
-#navbar li.nav_sep:first-child a {
+#navbar li.nav_sep:first-child {
 	border-left: 0;
 }
 
-#navbar li.nav_sep:last-child a {
+#navbar li.nav_sep:last-child {
 	border-right: 1px solid #0E3055;
 }
 
-#navbar li.nav_sep.justified:last-child a {
+#navbar li.nav_sep.justified:last-child {
 	border-right: 0;
 }
 
