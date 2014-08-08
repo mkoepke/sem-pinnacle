@@ -963,6 +963,7 @@ Site Navigation
 }
 
 #header_nav .sub-menu li {
+	display: block;
 	width: 100%;
 	text-align: left;
 }
