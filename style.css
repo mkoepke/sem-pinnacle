@@ -893,6 +893,10 @@ Site Header
 	text-decoration: none;
 }
 
+#header_img img {
+	display: block;
+
+}
 /*
 Site Navigation
 ---------------------------------------------------------------------------------------------------- */
@@ -939,7 +943,6 @@ Site Navigation
 	display: inline-block;
 	white-space: nowrap;
 	padding: 0 0.625em;
-	width: 100%;
 }
 
 #header_nav li.justified a {
@@ -1019,6 +1022,10 @@ Site Navigation
 #footer_nav li.nav_sep + li.nav_sep:before {
     content: "|";
 	font-weight: normal;
+}
+
+#navbar li.nav_sep.justified:after {
+	content: "" !important;
 }
 
 .sep_nav #header_nav li.nav_sep,
@@ -1357,14 +1364,14 @@ Widgets
 .widget_calendar table {
 	border-collapse: collapse;
 	margin: 0.625em auto 0.3125em;
-	width: 66.6667%;
-	font-size: 0.875em;
-	line-height: 1.231;
+	width: 75%;
+	font-size: 0.9375em;;
 }
 
 #sidebar .widget_calendar table,
 #sidebar2 .widget_calendar table {
 	width: 100%;
+	font-size: .875em;
 }
 
 .widget_calendar caption {

@@ -120,6 +120,7 @@ Media Queries
 
 	#header_nav a {
 		line-height: 2.5;
+		width: 100%;
 	}
 
 	#header_nav ul,

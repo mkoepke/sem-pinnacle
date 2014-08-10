@@ -1,17 +1,17 @@
-=== Semiologic theme ===
+=== Semiologic Pinnacle theme ===
 Contributors: Denis-de-Bernardy, Mike_Koepke
 Donate link: http://www.semiologic.com/partners/
 Tags: semiologic, wordpress theme
-Requires at least: 3.2
-Tested up to: 3.8
+Requires at least: 3.9
+Tested up to: 3.9
 Stable tag: trunk
 
-The Semiologic theme, Reloaded for WordPress.
+The Semiologic Pinnacle theme for Wordpress
 
 
 == Description ==
 
-The Semiologic theme, Reloaded for WordPress.
+The latest Semiologic Theme building on the widget and panel-centric approach of Semiologic Reloaded.   The Pinnacle theme is HTML5, CSS3, and responsive meant to look the same across all devices.
 
 
 = Help Me! =
@@ -21,129 +21,77 @@ The [Semiologic forum](http://forum.semiologic.com) is the best place to report 
 
 == Installation ==
 
-1. Upload the plugin folder to the `/wp-content/themes/` directory
+1. Upload the themes folder to the `/wp-content/themes/` directory
 2. Activate the theme through the 'Themes' menu in WordPress
+
+If you previously had been using the Semiologic Reloaded theme, that widget configuration will be cloned over.
 
 
 == Change Log ==
 
 = 2.0 =
 
+== New Features ==
+
+- Responsive Implementation w/ accordian-style smartphone menu.
+- HTML5 sematic markup
+- Dropdown Menu support using the Semiologic menu implementation found in prior themes
+	- Option for top only, 1 level or 2 levels of dropdowns
+	- Caption for smartphone menu
+	- All child pages of parent included in menu if 1 or 2 level selected
+	- New exclude from menu checkbox in page editor.  (along with prior this page in widgets support)
+- New Semiologic Admin menu section for all the Semiologic theme and package settings
+- Breadcrumb navigation widget
+- Post navigation widget (move between single post pages)
+- Added support for some of the more common Google Fonts
+- Top and Bottom Sidebars Panels - these span both the Main and Left and Right Sidebar areas
+- New wp-content/semiologic folder for custom skins and css.
+- New Sidebar-Wide Content and Wide Content-Sidebar templates for alternative page layouts on the site.
+- Better typography
+- WordPress' comment system with thread comments (up to 5 levels) is now supported.
+
+
+
+== Enhanced/Change Functionality ==
+
+- Fonts selection now on its own configuration page
+- Order of Panels in the Widgets screen is more intuitive
+- Option to display Header Top Level Menu as justified
+- Enhanced schema.org and microformats markup
+- Comment bubble has been removed
+- Entry:Categories and Entry:Tags widgets have been consolidated into a single Entry:Footer widget
+- The print style sheet has been redone for better site printing
+- Post date is now displayed under the post title.
+- Post/page date and author are always generated (though maybe hidden) to pass Rich Snippets/microformats validation
+- Comment count and edit post are now under post title
+- Flash header support has been removed.
 - Fix: Sidebar widget lists with long post/page titles don't overflow widget boundaries
-- 404, Search and Archive pages now set with .entry class for consistency with blog, page, home and single post pages
-
-= 1.3 =
-
-- Page-specific header functionality was creating a bogus empty extra folder (headerNNNN) in the wp-content directory.  These folders can simply be removed.
-- Deleting a page-specific now removes the subfolder under /wp-content/header/NNNN.
-- WP 3.8 compat
-
-= 1.2.1 =
-
-- Disabled editor style for now as still too quirky in the presentation
-
-= 1.2 =
-
-- Initial implementation of editor style to match select skin and fonts
-- Compressed presentation of skin and layout pages
-- Added missing required WP css class rules
-- New themes added in version 1.0 and 1.1 are now available as choices in the custom css editor.
-- Added new .main_content and .sidebar_content css class for additional skinning options
-- Use size_format in place of deprecated wp_convert_bytes_to_hr
-- WP 3.6 compat
-- PHP 5.4 compat
-
-= 1.1 =
-
-- Alter css encoding for header image shadow for W3C compliance
-- Fix hardcoded font-family for sitename, h1, h2 and calendar caption
-- Embellished Helvetica font stack
-- Fixed incorrect url being generated for hierarchies with children of children in Pages, Nav-Menus and Silo widgets.  url was being generated as parent/grandparent/child
-- Don't show featured image post thumbnail on a single post page
-- Setting a custom background color now fully extends to the top and bottom of the screen.  (Top and bottom white stripes are now gone)
-
-= 1.0.3 =
-
-- Fixed shadow bug in header image on some skins I broke in 1.0
-
-= 1.0.2 =
-
-- Added template files aren't being preserved upon updating
-
-= 1.0.1 =
-
-- Fix .entry link overflow wrapping side effect with Firefox
-
-= 1.0 =
-
-- WP 3.5 compatibility
-- Add WP 3.4 theme support
-- Microformat support in the theme
-- Author byline under post/page title
-- Author name now links to author page
-- Author page now support author image and additional css skinning options
-- Post feature image can now be disabled for post entry.
-- PHP code now natively supported in text widgets.
-- Text widgets now allow shortcodes including video embeds
-- Convert to HTML5 HTML Headers
-- Added Helvetica and Lucinda font stacks
-- Added post/page-post_name css class for more specific post/page skinning
-- Theme upgrades now preserve custom skins and added template files
-- W3C HTML and CSS Validation improvements
-- Replace deprecated WP functions
-- Fix .entry link overflow wrapping
-- Fix php lint warnings and errors
-- Fix unknown index warnings
+- Fix: Creation of header_top_wrapper was occurring after 1st widget
+- Added option to display/not display pings/trackbacks in comment list
+- Revamped Header SEO with H1 and H2 sitename and tagline.
 
 
-= 0.9.7 =
+== Under the Hood ==
 
-- Add a unique class to widgets
-- jQuery compat / Nav Menus
+- Collapsed many of the div sections to make skinning more straightforward.  Also benefits dom performance
+	- All the pad class divs have been removed
+	- Most _top and _bottom divs removed
+	- xxxx_bg class divs changed to xxxx_inner
+- The body div (#body) has been renamed to #body_wrapper for consistency with #header_wrapper and #footer_wrapper.   It also was confusing given the html body tag
+- Theme has been tested with Automattic's Theme Checker and all required errors fixed
+- Full reorg of the main stylesheet (style.css)
+- Implementation of the normalize.css reset
+- Menu separators now implemented in css so a different character (' / ' for example) can be used instead of just a pipe ( ' | ' )
+- All font sizes are now in em units.  The base font size is 1em = 16px
+- print.css is now only used to style a single post/page
+- Theme has it's own WP options entry that is separate from the overall Semiologic Pro options.
+- Closing php brace ?> has been removed from all source files to how eliminate header sent issues
+- Multi-part has been removed with elimination of flash headers
+- Font-awesome icon font is now linked (via cdn) and used in the theme
+- New entry_widget, main_widget and body_widget classes
+- Header image is standard html img and no longer a background image
+- New ie, ie7, ie8 and ie9 classes for conditional ie skinning
+- Standard WP css classes have been used for comment styling
 
-= 0.9.6 =
 
-- Header optimizations
 
-= 0.9.5 =
-
-- Fix a bug when dealing with headers
-
-= 0.9.4 =
-
-- WP 3.0.1 compat
-
-= 0.9.3 =
-
-- WP 3.0 compat
-- Integrate WP 3.0 custom background handler
-
-= 0.9.2 =
-
-- Autofix panels when moving in and out of themes
-- Change default menu items: sections in navbar, non-sections in footer
-- Fix the check for a custom letter.css
-- Fix WP's built-in post thumbnail processing (i.e. downsize them automatically)
-- Fix a potential infinite loop
-
-= 0.9.1 =
-
-- Sem Cache 2.0 related tweaks
-- Apply filters to permalinks
-- Fix blog link on search/404 pages
-- Fix thumbnail support (broken by WP API change before releasing)
-
-= 0.9 =
-
-- Switch to 3 inline boxes instead of 4 in wide layouts
-- Skin revamp (30 new skins)
-- WP 2.9 compat
-- WP 2.9 post thumbnails
-- Improved local url identification
-
-= 0.8 =
-
-- Enhanced navigation for archives
-- Enhanced comments: wider text, larger gravatar
-- Enhanced comment form: narrower field captions, place WP-Review Site stuff and Subscribe to Comments above the form rather than below
-- Miscellaneous optimizations and fixes

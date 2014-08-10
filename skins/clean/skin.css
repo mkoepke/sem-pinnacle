@@ -21,3 +21,57 @@ html {
 	background-position: top center;
 	background-repeat: repeat;
 }
+
+body {
+	background-color: #fefefe;
+	color: #333;
+}
+
+a {
+	color: #e5554e;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #333;
+}
+
+aside ul,
+aside ul > li,
+.entry ul,
+.entry ul > li {
+	list-style-type: disc;
+	list-style-image: none;
+}
+
+
+#navbar {
+	background-color: #333;
+	margin-bottom: 1em;
+}
+
+#header-menu-icon,
+#header_nav a,
+#header_nav li.nav_sep {
+	color: #FFF;
+}
+
+#header-menu-icon:hover,
+#header_nav a:hover {
+	color: #e5554e;
+}
+
+#header_nav .sub-menu li {
+	background-color: #fff;
+	color: #333;
+	border: 1px solid #eee;
+	border-top: none;
+}
+
+#header_nav .sub-menu li a {
+	color: #333;
+}
+
+#header_nav .sub-menu li a:hover {
+	color: #e5554e;
+}
