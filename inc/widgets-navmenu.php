@@ -260,19 +260,7 @@ class sem_nav_menu extends WP_Widget {
 			return;
 		}
 
-		if ( !sem_nav_menu::is_local_url($url) ) {
-			$classes = array('nav_url');
-		} else {
-			$bits = parse_url($url);
-			if ( !empty($bits['query']) )
-				$classes = array('nav_leaf');
-			elseif ( empty($bits['path']) || substr($bits['path'], -1) == '/' )
-				$classes = array('nav_branch');
-			elseif ( strpos(basename($bits['path']), '.') !== false )
-				$classes = array('nav_leaf');
-			else
-				$classes = array('nav_branch');
-		}
+		$classes = array('nav_leaf');
 
 		if ( $add_sep )
 			$classes[] = "nav_sep";
@@ -311,8 +299,18 @@ class sem_nav_menu extends WP_Widget {
 		$ref = (int) $ref;
 		$page = get_post($ref);
 
-		if ( !$page || (int) get_post_meta($page->ID, '_widgets_exclude', true)
-			|| (int) get_post_meta($page->ID, '_menu_exclude', true) )
+		if ( !$page )
+			return;
+
+		$exclude = get_post_meta($page->ID, '_menu_exclude', true);
+		if ( $exclude != "" ) {
+			$exclude = (int) $exclude;
+		}
+		else {
+			$exclude = (int) get_post_meta($page->ID, '_widgets_exclude', true);
+		}
+
+		if ( $exclude )
 			return;
 
 		if ( !$this->multi_level && $page->post_parent != 0 )
@@ -1175,13 +1173,17 @@ EOS;
 			$update = true;
 		}
 
+		if ( !isset($old['widgets_label']) ) {
+			$old[$key] = get_post_meta($post_id, "_$key", true);
+			$update = true;
+		}
+		
 		foreach ( array(
-			'widgets_label',
 			'widgets_exclude',
 			'menu_exclude'
 			) as $key ) {
 			if ( !isset($old[$key]) ) {
-				$old[$key] = get_post_meta($post_id, "_$key", true);
+				$old[$key] = (int) get_post_meta($post_id, "_$key", true);
 				$update = true;
 			}
 		}
@@ -1338,7 +1340,13 @@ EOS;
 	function page_meta_config($post) {
 		$post_ID = $post->ID;
 
-		$exclude = (int) get_post_meta($post_ID, '_menu_exclude', true) || (int) get_post_meta($post_ID, '_widgets_exclude', true);
+		$exclude = get_post_meta($post_ID, '_menu_exclude', true);
+		if ( $exclude != "" ) {
+			$exclude = (int) $exclude;
+		}
+		else {
+			$exclude = (int) get_post_meta($post_ID, '_widgets_exclude', true);
+		}
 
 		echo '<table style="width: 100%;">';
 

@@ -967,7 +967,7 @@ Site Navigation
 
 #header_nav .sub-menu li {
 	display: block;
-	width: 100%;
+	width: auto;
 	text-align: left;
 }
 
@@ -1550,6 +1550,11 @@ p.newsletter_fields {
 .ad_unit .header_widget,
 .ad_unit .footer_widget{
 	padding: 0;
+	max-width: 100%;
+}
+
+.ad_event {
+	max-width: 100%;
 }
 
 /**

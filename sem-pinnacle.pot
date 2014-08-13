@@ -1,0 +1,1603 @@
+# Copyright (C) 2014 Mike Koepke
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Semiologic Pinnacle 2.0 beta2\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/theme/sem-pinnacle\n"
+"POT-Creation-Date: 2014-08-10 16:01:45+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: comments.php:92
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: comments.php:93
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: comments.php:102
+msgid "Comments are closed."
+msgstr ""
+
+#: comments.php:118
+msgid "%s <span class=\"says\">says:</span>"
+msgstr ""
+
+#: comments.php:124
+msgctxt "1: date, 2: time"
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: comments.php:129 inc/template.php:467 inc/widgets-entries.php:104
+#: inc/widgets-entries.php:105
+msgid "Edit"
+msgstr ""
+
+#: comments.php:144
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: comments.php:196
+msgid "(Edit)"
+msgstr ""
+
+#: comments.php:229
+msgid "Click here to cancel reply."
+msgstr ""
+
+#: comments.php:235
+msgid "Login"
+msgstr ""
+
+#: comments.php:246
+msgid "Logout"
+msgstr ""
+
+#: inc/custom.php:391
+msgid ""
+"Publish Failed: Could not locate your active skin's folder (<code>%s</code>)."
+msgstr ""
+
+#: inc/custom.php:399
+msgid ""
+"Publish Failed: A custom.css <strong>folder<strong> is located in your "
+"skin's folder (<code>%s</code>). Please delete it and try again."
+msgstr ""
+
+#: inc/custom.php:402
+msgid ""
+"Publish Failed: Cannot overwrite your skin's custom.css file (<code>%s</"
+"code>). Please check its permissions and try again."
+msgstr ""
+
+#: inc/custom.php:410
+msgid ""
+"Publish Failed: Cannot write to your skin folder (<code>%s</code>). Please "
+"check its permissions and try again."
+msgstr ""
+
+#: inc/custom.php:452
+msgid ""
+"Publish Failed: A WP filesystem error occurred (probably related to <a href="
+"\"%1$s\">this WP bug</a>) occurred. Paste the following code in %2$s:<pre>"
+"%3$s</pre>"
+msgstr ""
+
+#: inc/custom.php:463
+msgid "Settings Restored."
+msgstr ""
+
+#: inc/custom.php:469
+msgid "Settings Saved. <a href=\"%s\">Preview Changes</a>."
+msgstr ""
+
+#: inc/custom.php:476 inc/custom.php:495
+msgid "Settings Saved."
+msgstr ""
+
+#: inc/custom.php:489
+msgid "Settings Saved and Published. <a href=\"%s\">View Changes</a>."
+msgstr ""
+
+#: inc/custom.php:530
+msgid "Manage Custom CSS"
+msgstr ""
+
+#: inc/custom.php:536
+msgid ""
+"This screen allows to customize your skin. Up to a certain point, anyway: "
+"backgrounds and borders are not supported because the latter are managed "
+"using images<span style=\"hide-if-no-js\"> (for <a href=\"#\" onclick=\"%s"
+"\">good reasons</a>)</span>. To customize the rest, select an area below, "
+"and customize it to your liking."
+msgstr ""
+
+#: inc/custom.php:540
+msgid ""
+"Your changes will not appear on your site until you publish them. You can <a "
+"href=\"%s\">preview your changes</a> if you save without publishing."
+msgstr ""
+
+#: inc/custom.php:546
+msgid ""
+"The Semiologic Theme's canvas and its key cosmetic elements are image-"
+"driven. End-users wanted rounded corners and sexy gradients. They got it. "
+"But the only means to do so while ensuring IE compatibility is through the "
+"use of background images. The recommended method to change your site's "
+"background colors, and general look and feel, would be to change your skin "
+"&#8212; there are <a href=\"%s\">plentiful choices</a>, and more to come."
+msgstr ""
+
+#: inc/custom.php:550
+msgid ""
+"At least for now, adding an interface to manage background images is not an "
+"option. We know users are craving for it. But coming up with an interface to "
+"create the needed images that fit all of the layout options and potential "
+"look and feels, using php and javascript, is much about impossible. If "
+"someone ever writes a free equivalent of photoshop in javascript, we'll "
+"definitely give it a go. In the meanwhile, we'll stick to the manual "
+"approach."
+msgstr ""
+
+#: inc/custom.php:554
+msgid ""
+"That being said, it definitely <em>is</em> possible to customize the images. "
+"Here's how:"
+msgstr ""
+
+#: inc/custom.php:558
+msgid ""
+"Please keep in mind, at all times, that you're doing this on your own, and "
+"that you should expect no support when trying to change these images. As "
+"much as we're documenting this, we're making the assumption that, if you try "
+"it, you're familiar with Photoshop masks, layer effects, etc."
+msgstr ""
+
+#: inc/custom.php:559
+msgid ""
+"Grab the assets of your favorite skin on <a href=\"http://skins.semiologic."
+"com\">skins.semiologic.com</a>."
+msgstr ""
+
+#: inc/custom.php:560
+msgid ""
+"Create a copy of (or rename) your favorite skin, in <code>wp-content/themes/"
+"sem-reloaded/skins</code>. This will allow you to edit it as much as you "
+"want without needing to worry about losing your changes during upgrades."
+msgstr ""
+
+#: inc/custom.php:561
+msgid ""
+"Edit the images in Photoshop. Save for the web. (The psd files are pre-"
+"sliced for your convenience.) "
+msgstr ""
+
+#: inc/custom.php:562
+msgid "Upload the resulting images into your new skin's images folder."
+msgstr ""
+
+#: inc/custom.php:563
+msgid ""
+"We're dead serious about the fact that you're on your own if you try the "
+"above. If you do not understand it all, please stick to the existing skins; "
+"or prepare yourself to spend long hours learning Photoshop. We can also put "
+"you in touch with a <a href=\"http://www.semiologic.com/services/\">virtual "
+"assistant</a>."
+msgstr ""
+
+#: inc/custom.php:572 inc/layout.php:200
+msgid "Content"
+msgstr ""
+
+#: inc/custom.php:575 inc/layout.php:202
+msgid "Sidebars"
+msgstr ""
+
+#: inc/custom.php:578 inc/template.php:81
+msgid "Header"
+msgstr ""
+
+#: inc/custom.php:581
+msgid "Footer"
+msgstr ""
+
+#: inc/custom.php:584
+msgid "Extra"
+msgstr ""
+
+#: inc/custom.php:589
+msgid ""
+"You are about to delete all changes you've done since the last time you've "
+"published. Please confirm to continue."
+msgstr ""
+
+#: inc/custom.php:589
+msgid "Restore"
+msgstr ""
+
+#: inc/custom.php:593
+msgid ""
+"You are about to reset all of your custom.css declarations without "
+"publishing. Please confirm to continue."
+msgstr ""
+
+#: inc/custom.php:593
+msgid "Reset"
+msgstr ""
+
+#: inc/custom.php:598 inc/custom.php:654 inc/custom.php:1136 inc/font.php:254
+#: inc/header.php:181 inc/header.php:226 inc/layout.php:298 inc/skin.php:338
+#: inc/skin.php:358
+msgid "Save Changes"
+msgstr ""
+
+#: inc/custom.php:601
+msgid "Publish"
+msgstr ""
+
+#: inc/custom.php:607
+msgid "Content Area"
+msgstr ""
+
+#: inc/custom.php:616
+msgid "Sidebar Areas"
+msgstr ""
+
+#: inc/custom.php:625 inc/panels.php:57
+msgid "Header Area"
+msgstr ""
+
+#: inc/custom.php:634 inc/panels.php:71
+msgid "Footer Area"
+msgstr ""
+
+#: inc/custom.php:643
+msgid "Extra CSS"
+msgstr ""
+
+#: inc/custom.php:646
+msgid "Anything you want... You'll find a CSS cheat sheet below."
+msgstr ""
+
+#: inc/custom.php:658
+msgid "Theme ID/Classes Cheat Sheet"
+msgstr ""
+
+#: inc/custom.php:662
+msgid ""
+"The more commonly used CSS selectors in the Semiologic theme are indicated "
+"below, grouped by area. For more examples, please check the CSS code of the "
+"built-in skins."
+msgstr ""
+
+#: inc/custom.php:793
+msgid "CSS Cheat Sheet"
+msgstr ""
+
+#: inc/custom.php:797
+msgid ""
+"Many users have some basic understanding of Stylesheets, but have no idea of "
+"what a <strong>Cascading</strong> Stylesheet might be. So here goes..."
+msgstr ""
+
+#: inc/custom.php:801
+msgid "There are three basic types of selectors:"
+msgstr ""
+
+#: inc/custom.php:805
+msgid "Affects all <p> tags, no matter where."
+msgstr ""
+
+#: inc/custom.php:806
+msgid ""
+"Affects anything in an area with the \"widget\" class, i.e. <div class="
+"\"widget\">. \"Stronger\" than the previous if declared after."
+msgstr ""
+
+#: inc/custom.php:807
+msgid ""
+"Affects everything in the area with the \"body\" ID, i.e. <div id="
+"\"body_wrapper\">. \"Stronger\" than the above two if declared after."
+msgstr ""
+
+#: inc/custom.php:824
+msgid "They can be combined and cascaded:"
+msgstr ""
+
+#: inc/custom.php:828
+msgid ""
+"Affects <h2> tagsclass=\"widget_title\"> tags, i.e. sidebar widget titles. "
+"\"Stronger\" than the previous three (it's \"more precise\")."
+msgstr ""
+
+#: inc/custom.php:829
+msgid ""
+"Affects <div id=\"sitename\">, i.e. the site's name. \"Stronger\" than the "
+"previous (it's \"more precise\"), but generally useless since IDs are unique."
+msgstr ""
+
+#: inc/custom.php:830
+msgid ""
+"Affects anything within an area with the \"widget\" class, itself within an "
+"area with the \"mm1s\" class, i.e. widgets when using a \"Wide Content, "
+"Sidebar\" layouts. \"Stronger\" than all of the above."
+msgstr ""
+
+#: inc/custom.php:831
+msgid ""
+"Affects anything within an area with the \"widget\" class, itself within an "
+"area with the \"top_sidebar\" ID, i.e. widgets in the top sidebar when using "
+"a \"Content, Wide Sidebar\" layout. \"Stronger\" than the previous if "
+"declared after."
+msgstr ""
+
+#: inc/custom.php:832
+msgid ""
+"Affects <h2> tags within an area with the \"widget_title\" class, i.e. <h2> "
+"tags in sidebar widgets. \"Stronger\" than the previous if declared after."
+msgstr ""
+
+#: inc/custom.php:849
+msgid ""
+"There are, of course, many more <a href=\"%s\">CSS selectors</a>, but "
+"they're not universally supported..."
+msgstr ""
+
+#: inc/custom.php:853
+msgid ""
+"The gist, here, is to remember that the C in CSS stands for cascading and "
+"that CSS is applied on a &quot;last strongest declaration gets used&quot; "
+"basis (i.e. mind the order). `foo`, `.foo`, and `#foo` are interchangeable "
+"in CSS-compliant browsers; `foo.bar` is stronger than `foo`, and `foo bar` "
+"is even stronger. In other words, to affect a particular area, use `.foo` or "
+"`#foo`; to affect `bar` within a particular area, use `.foo bar` or `#foo "
+"bar`."
+msgstr ""
+
+#: inc/custom.php:857
+msgid ""
+"In some rare cases, you may also need a knock-out declaration that overrides "
+"everything regardless of the order it's declared in. This is where the `!"
+"important` keyword, placed immediately before the semi-colon, comes in:"
+msgstr ""
+
+#: inc/custom.php:869
+msgid "The latter declaration overrides absolutely everything."
+msgstr ""
+
+#: inc/custom.php:892
+msgid "Entries"
+msgstr ""
+
+#: inc/custom.php:893
+msgid "Entry Titles"
+msgstr ""
+
+#: inc/custom.php:894
+msgid "Entry Subtitles"
+msgstr ""
+
+#: inc/custom.php:895
+msgid "Entry Dates"
+msgstr ""
+
+#: inc/custom.php:896
+msgid "Entry Categories"
+msgstr ""
+
+#: inc/custom.php:897
+msgid "Entry Tags"
+msgstr ""
+
+#: inc/custom.php:898
+msgid "Comment Dates"
+msgstr ""
+
+#: inc/custom.php:899
+msgid "Comment Header"
+msgstr ""
+
+#: inc/custom.php:900
+msgid "Comment Content"
+msgstr ""
+
+#: inc/custom.php:904
+msgid "Sidebar Widgets"
+msgstr ""
+
+#: inc/custom.php:905
+msgid "Sidebar Widget Titles"
+msgstr ""
+
+#: inc/custom.php:906
+msgid "Sidebar Widget Subtitles"
+msgstr ""
+
+#: inc/custom.php:907
+msgid "Sidebar Calendar"
+msgstr ""
+
+#: inc/custom.php:908
+msgid "Sidebar Calendar Header"
+msgstr ""
+
+#: inc/custom.php:909
+msgid "Sidebar Calendar Footer"
+msgstr ""
+
+#: inc/custom.php:913
+msgid "Site Name"
+msgstr ""
+
+#: inc/custom.php:914
+msgid "Tagline"
+msgstr ""
+
+#: inc/custom.php:915
+msgid "Navigation Menu"
+msgstr ""
+
+#: inc/custom.php:916
+msgid "Header Widgets"
+msgstr ""
+
+#: inc/custom.php:917
+msgid "Header Widget Titles"
+msgstr ""
+
+#: inc/custom.php:918
+msgid "Header Widget Subtitles"
+msgstr ""
+
+#: inc/custom.php:919
+msgid "Header Bar Widgets"
+msgstr ""
+
+#: inc/custom.php:920
+msgid "Header Bar Widget Titles"
+msgstr ""
+
+#: inc/custom.php:921
+msgid "Header Bar Widget Subtitles"
+msgstr ""
+
+#: inc/custom.php:925
+msgid "Footer Nav Menu &amp; Copyright Notice"
+msgstr ""
+
+#: inc/custom.php:926
+msgid "Credits &amp; Footer Scripts"
+msgstr ""
+
+#: inc/custom.php:927
+msgid "Footer Widgets"
+msgstr ""
+
+#: inc/custom.php:928
+msgid "Footer Widget Titles"
+msgstr ""
+
+#: inc/custom.php:929
+msgid "Footer Widget Subtitles"
+msgstr ""
+
+#: inc/custom.php:930
+msgid "Footer Bar Widgets"
+msgstr ""
+
+#: inc/custom.php:931
+msgid "Footer Bar Widget Titles"
+msgstr ""
+
+#: inc/custom.php:932
+msgid "Footer Bar Widget Subtitles"
+msgstr ""
+
+#: inc/custom.php:962 inc/template.php:105
+msgid "Font"
+msgstr ""
+
+#: inc/custom.php:1001
+msgid "%dpx"
+msgstr ""
+
+#: inc/custom.php:1018
+msgid "Font Style"
+msgstr ""
+
+#: inc/custom.php:1056
+msgid "Links"
+msgstr ""
+
+#: inc/custom.php:1095
+msgid "Hovered Links"
+msgstr ""
+
+#: inc/custom.php:1155
+msgid "- Default Font Family -"
+msgstr ""
+
+#: inc/custom.php:1156
+msgid "Antica stack / Serif"
+msgstr ""
+
+#: inc/custom.php:1157
+msgid "Arial stack / Sans-Serif"
+msgstr ""
+
+#: inc/custom.php:1158
+msgid "Courier stack / Monospace"
+msgstr ""
+
+#: inc/custom.php:1159
+msgid "Georgia stack / Serif"
+msgstr ""
+
+#: inc/custom.php:1160
+msgid "Helvetica stack/, Sans-Serif"
+msgstr ""
+
+#: inc/custom.php:1161
+msgid "Lucida stack / Sans-Serif"
+msgstr ""
+
+#: inc/custom.php:1162
+msgid "Tahoma stack / Sans-Serif"
+msgstr ""
+
+#: inc/custom.php:1163
+msgid "Times stack / Serif"
+msgstr ""
+
+#: inc/custom.php:1164
+msgid "Trebuchet stack / Sans-Serif"
+msgstr ""
+
+#: inc/custom.php:1165
+msgid "Verdana stack / Sans-Serif"
+msgstr ""
+
+#: inc/custom.php:1166
+msgid "Lato (Google Fonts) stack / San-Serif"
+msgstr ""
+
+#: inc/custom.php:1167
+msgid "Lora (Google Fonts) stack / Serif"
+msgstr ""
+
+#: inc/custom.php:1168
+msgid "Merriweather (Google Fonts) stack / Serif"
+msgstr ""
+
+#: inc/custom.php:1169
+msgid "Open Sans (Google Fonts) stack / San-Serif"
+msgstr ""
+
+#: inc/custom.php:1170
+msgid "PT Sans (Google Fonts) stack / San-Serif"
+msgstr ""
+
+#: inc/custom.php:1171
+msgid "Roboto (Google Fonts) stack / San-Serif"
+msgstr ""
+
+#: inc/custom.php:1172
+msgid "Source Sans Pro (Google Fonts) stack / San-Serif"
+msgstr ""
+
+#: inc/custom.php:1173
+msgid "Ubuntu (Google Fonts) stack / San-Serif"
+msgstr ""
+
+#: inc/custom.php:1186 inc/custom.php:1202 inc/custom.php:1217
+msgid "- Default -"
+msgstr ""
+
+#: inc/custom.php:1187
+msgid "Bold"
+msgstr ""
+
+#: inc/custom.php:1188 inc/custom.php:1204
+msgid "Normal"
+msgstr ""
+
+#: inc/custom.php:1189
+msgid "Light"
+msgstr ""
+
+#: inc/custom.php:1203
+msgid "Italic"
+msgstr ""
+
+#: inc/custom.php:1218
+msgid "None"
+msgstr ""
+
+#: inc/custom.php:1219
+msgid "Underline"
+msgstr ""
+
+#: inc/font.php:179 inc/header.php:136 inc/layout.php:162 inc/skin.php:159
+msgid "Settings saved."
+msgstr ""
+
+#: inc/font.php:202 inc/template.php:104
+msgid "Manage Font"
+msgstr ""
+
+#: inc/font.php:204
+msgid "Current Font"
+msgstr ""
+
+#: inc/font.php:211 inc/skin.php:239
+msgid "Font Family: %s."
+msgstr ""
+
+#: inc/font.php:214
+msgid "Select a new font below to set as the default font on your site."
+msgstr ""
+
+#: inc/font.php:217
+msgid "Standard Web Safe Fonts"
+msgstr ""
+
+#: inc/font.php:235
+msgid "Google Fonts"
+msgstr ""
+
+#: inc/font.php:270
+msgid "The default font stack as defined by your skin"
+msgstr ""
+
+#: inc/font.php:271
+msgid ""
+"Antica stack: Palatino, \"Book Antica\", \"Palatino Linotype\", \"URW "
+"Palladio L\", Palladio, Georgia, \"DejaVu Serif\", Serif"
+msgstr ""
+
+#: inc/font.php:272
+msgid ""
+"Arial stack: Arial, \"Liberation Sans\", \"Nimbus Sans L\", \"DejaVu Sans\", "
+"Sans-Serif"
+msgstr ""
+
+#: inc/font.php:273
+msgid ""
+"Courier stack: \"Courier New\", \"Liberation Mono\", \"Nimbus Mono L\", "
+"Monospace"
+msgstr ""
+
+#: inc/font.php:274
+msgid ""
+"Georgia stack: Georgia, \"New Century Schoolbook\", \"Century Schoolbook L"
+"\", \"DejaVu Serif\", Serif"
+msgstr ""
+
+#: inc/font.php:275
+msgid ""
+"Helvetica stack: \"HelveticaNeue-Light\", \"Helvetica Neue Light\", "
+"\"Helvetica Neue\", Helvetica, Arial, \"Lucida Grande\", sans-serif"
+msgstr ""
+
+#: inc/font.php:276
+msgid ""
+"Lucida stack: \"Lucida Grande\", \"Lucida Sans Unicode\", \"Lucida Sans\", "
+"Geneva, Verdana, Sans-Serif"
+msgstr ""
+
+#: inc/font.php:277
+msgid "Tahoma stack: Tahoma, \"Nimbus Sans L\", \"DejaVu Sans\", Sans-Serif"
+msgstr ""
+
+#: inc/font.php:278
+msgid ""
+"Times stack: \"Times New Roman\", Times, \"Liberation Serif\", \"DejaVu "
+"Serif Condensed\", Serif"
+msgstr ""
+
+#: inc/font.php:279
+msgid ""
+"Trebuchet stack: \"Trebuchet MS\", \"Nimbus Sans L\", \"DejaVu Sans\", Sans-"
+"Serif"
+msgstr ""
+
+#: inc/font.php:280
+msgid "Verdana stack: Verdana, \"Nimbus Sans L\", \"DejaVu Sans\", Sans-Serif"
+msgstr ""
+
+#: inc/font.php:284
+msgid "Lato (Google Fonts) stack: \"Lato\", sans-serif"
+msgstr ""
+
+#: inc/font.php:285
+msgid "Lora (Google Fonts) stack: \"Lora\", serif"
+msgstr ""
+
+#: inc/font.php:286
+msgid "Merriweather (Google Fonts) stack: \"Merriweather\", Serif"
+msgstr ""
+
+#: inc/font.php:287
+msgid "Open Sans (Google Fonts) stack: \"Open Sans\", sans-serif"
+msgstr ""
+
+#: inc/font.php:288
+msgid "PT Sans (Google Fonts) stack: \"PT Sans\", sans-serif"
+msgstr ""
+
+#: inc/font.php:289
+msgid "Roboto (Google Fonts) stack: \"Roboto\", sans-serif"
+msgstr ""
+
+#: inc/font.php:290
+msgid "Source Sans Pro (Google Fonts) stack: \"Source Sans Pro\", sans-serif"
+msgstr ""
+
+#: inc/font.php:291
+msgid "Ubuntu (Google Fonts) stack: \"Ubuntu\", sans-serif"
+msgstr ""
+
+#: inc/header.php:68 inc/header.php:115
+msgid "%s is not writable."
+msgstr ""
+
+#: inc/header.php:77 inc/header.php:124
+msgid "Failed to delete %s."
+msgstr ""
+
+#: inc/header.php:93
+msgid "Invalid File Type."
+msgstr ""
+
+#: inc/header.php:160 inc/template.php:80
+msgid "Manage Header"
+msgstr ""
+
+#: inc/header.php:167 inc/header.php:266
+msgid "Current Header"
+msgstr ""
+
+#: inc/header.php:176 inc/header.php:280
+msgid "Delete Header"
+msgstr ""
+
+#: inc/header.php:189 inc/header.php:289
+msgid ""
+"This header (%s) is not writable by the server. Please delete it manually to "
+"change it."
+msgstr ""
+
+#: inc/header.php:202 inc/header.php:301
+msgid "Upload a New Header (jpg, jpeg, png, gif)"
+msgstr ""
+
+#: inc/header.php:203 inc/header.php:302
+msgid "Upload a New Header (jpg, jpeg)"
+msgstr ""
+
+#: inc/header.php:213 inc/header.php:314
+msgid "Your wp-content folder is not writable by the server"
+msgstr ""
+
+#: inc/header.php:217 inc/header.php:318
+msgid "Your wp-content/header folder is not writable by the server"
+msgstr ""
+
+#: inc/header.php:222
+msgid "Maximum file size is %s based on your server's configuration."
+msgstr ""
+
+#: inc/header.php:285 inc/header.php:310
+msgid "Save"
+msgstr ""
+
+#: inc/header.php:323
+msgid ""
+"Maximum uploadable file size is %s based on your server's configuration."
+msgstr ""
+
+#: inc/info.php:2
+msgid "Semiologic, Reloaded"
+msgstr ""
+
+#: inc/info.php:3
+msgid "The Semiologic theme, reloaded."
+msgstr ""
+
+#. #-#-#-#-#  sem-pinnacle.pot (Semiologic Pinnacle 2.0 beta2)  #-#-#-#-#
+#. Template Name of the plugin/theme
+#: inc/info.php:4
+msgid "Sales Letter"
+msgstr ""
+
+#. #-#-#-#-#  sem-pinnacle.pot (Semiologic Pinnacle 2.0 beta2)  #-#-#-#-#
+#. Template Name of the plugin/theme
+#: inc/info.php:5
+msgid "Mono Column"
+msgstr ""
+
+#. #-#-#-#-#  sem-pinnacle.pot (Semiologic Pinnacle 2.0 beta2)  #-#-#-#-#
+#. Template Name of the plugin/theme
+#: inc/info.php:6
+msgid "Special Page"
+msgstr ""
+
+#: inc/install.php:9 inc/skin.php:346 inc/upgrade-legacy.php:434
+msgid "Made with %1$s &bull; %2$s skin by %3$s"
+msgstr ""
+
+#: inc/layout.php:183 inc/template.php:88
+msgid "Manage Layout"
+msgstr ""
+
+#: inc/layout.php:185
+msgid "Current Layout"
+msgstr ""
+
+#: inc/layout.php:199
+msgid "Canvas"
+msgstr ""
+
+#: inc/layout.php:201
+msgid "Wide Sidebar"
+msgstr ""
+
+#: inc/layout.php:203
+msgid "Inline Boxes"
+msgstr ""
+
+#: inc/layout.php:216
+msgid ""
+"Note: These numbers may vary slightly depending on the skin you are using."
+msgstr ""
+
+#: inc/layout.php:222
+msgid "Available Layouts"
+msgstr ""
+
+#: inc/layout.php:225
+msgid "Click on a layout below to activate it immediately."
+msgstr ""
+
+#: inc/layout.php:373
+msgid "Content, Wide Sidebar"
+msgstr ""
+
+#: inc/layout.php:374 inc/layout.php:382 inc/layout.php:390 inc/layout.php:398
+#: inc/layout.php:406 inc/layout.php:446
+msgid "950px"
+msgstr ""
+
+#: inc/layout.php:375 inc/layout.php:383 inc/layout.php:391 inc/layout.php:415
+#: inc/layout.php:423
+msgid "550px (490px net)"
+msgstr ""
+
+#: inc/layout.php:376 inc/layout.php:384
+msgid "400px (370px net)"
+msgstr ""
+
+#: inc/layout.php:377 inc/layout.php:385 inc/layout.php:393
+msgid "2 x 200px (170px net)"
+msgstr ""
+
+#: inc/layout.php:378 inc/layout.php:386 inc/layout.php:394 inc/layout.php:402
+#: inc/layout.php:410 inc/layout.php:450
+msgid "3 x 317px (287px net)"
+msgstr ""
+
+#: inc/layout.php:381
+msgid "Wide Sidebar, Content"
+msgstr ""
+
+#: inc/layout.php:389
+msgid "Sidebar, Content, Sidebar"
+msgstr ""
+
+#: inc/layout.php:392 inc/layout.php:400 inc/layout.php:408 inc/layout.php:416
+#: inc/layout.php:424 inc/layout.php:432 inc/layout.php:433 inc/layout.php:440
+#: inc/layout.php:441 inc/layout.php:448 inc/layout.php:449
+msgid "Not Available"
+msgstr ""
+
+#. #-#-#-#-#  sem-pinnacle.pot (Semiologic Pinnacle 2.0 beta2)  #-#-#-#-#
+#. Template Name of the plugin/theme
+#: inc/layout.php:397
+msgid "Wide Content, Sidebar"
+msgstr ""
+
+#: inc/layout.php:399 inc/layout.php:407
+msgid "650px (590px net)"
+msgstr ""
+
+#: inc/layout.php:401 inc/layout.php:409
+msgid "1 x 300px (270px net)"
+msgstr ""
+
+#. #-#-#-#-#  sem-pinnacle.pot (Semiologic Pinnacle 2.0 beta2)  #-#-#-#-#
+#. Template Name of the plugin/theme
+#: inc/layout.php:405
+msgid "Sidebar, Wide Content"
+msgstr ""
+
+#: inc/layout.php:413
+msgid "Content, Sidebar"
+msgstr ""
+
+#: inc/layout.php:414 inc/layout.php:422 inc/layout.php:438
+msgid "750px"
+msgstr ""
+
+#: inc/layout.php:417 inc/layout.php:425
+msgid "1 x 200px (170px net)"
+msgstr ""
+
+#: inc/layout.php:418 inc/layout.php:426 inc/layout.php:442
+msgid "2 x 375px (345px net)"
+msgstr ""
+
+#: inc/layout.php:421
+msgid "Sidebar, Content"
+msgstr ""
+
+#: inc/layout.php:429
+msgid "Narrow Content"
+msgstr ""
+
+#: inc/layout.php:430
+msgid "620px"
+msgstr ""
+
+#: inc/layout.php:431
+msgid "620px (560px net)"
+msgstr ""
+
+#: inc/layout.php:434
+msgid "2 x 310px (290px net)"
+msgstr ""
+
+#: inc/layout.php:437
+msgid "Wide Content"
+msgstr ""
+
+#: inc/layout.php:439
+msgid "750px (690px net)"
+msgstr ""
+
+#: inc/layout.php:445
+msgid "Extra Wide Content"
+msgstr ""
+
+#: inc/layout.php:447
+msgid "950px (890px net)"
+msgstr ""
+
+#: inc/panels.php:58
+msgid "Header Boxes Bar"
+msgstr ""
+
+#: inc/panels.php:59
+msgid "Top Body Sidebar"
+msgstr ""
+
+#: inc/panels.php:60
+msgid "Before the Entries"
+msgstr ""
+
+#: inc/panels.php:61
+msgid "Each Entry"
+msgstr ""
+
+#: inc/panels.php:62
+msgid "After the Entries"
+msgstr ""
+
+#: inc/panels.php:69
+msgid "Bottom Body Sidebar"
+msgstr ""
+
+#: inc/panels.php:70
+msgid "Footer Boxes Bar"
+msgstr ""
+
+#: inc/panels.php:72
+msgid "Not Found Error (404)"
+msgstr ""
+
+#: inc/panels.php:170
+msgid "Top Wide Sidebar"
+msgstr ""
+
+#: inc/panels.php:180 inc/panels.php:213
+msgid "Sidebar 1/Leftmost"
+msgstr ""
+
+#: inc/panels.php:190 inc/panels.php:223
+msgid "Sidebar 2/Rightmost"
+msgstr ""
+
+#: inc/panels.php:200
+msgid "Bottom Wide Sidebar"
+msgstr ""
+
+#: inc/panels.php:236
+msgid "Sidebar"
+msgstr ""
+
+#: inc/skin.php:183 inc/template.php:96
+msgid "Manage Skin"
+msgstr ""
+
+#: inc/skin.php:185
+msgid "Current Skin &amp; Font"
+msgstr ""
+
+#: inc/skin.php:190
+msgid "%1$s v.%2$s by %3$s"
+msgstr ""
+
+#: inc/skin.php:193
+msgid "Visit the skin' page"
+msgstr ""
+
+#: inc/skin.php:199
+msgid "Visit the skin authors' site"
+msgstr ""
+
+#: inc/skin.php:216
+msgid "Tags: %s"
+msgstr ""
+
+#: inc/skin.php:230
+msgid "Credits: %s"
+msgstr ""
+
+#: inc/skin.php:248
+msgid "Available Skins"
+msgstr ""
+
+#: inc/skin.php:251
+msgid "Click on a skin below to activate it immediately."
+msgstr ""
+
+#: inc/skin.php:284
+msgid "%1$s v.%2$s"
+msgstr ""
+
+#: inc/skin.php:287
+msgid "Visit the skin's page"
+msgstr ""
+
+#: inc/skin.php:293
+msgid "Visit the skin author's site"
+msgstr ""
+
+#: inc/skin.php:310
+msgid "By %s"
+msgstr ""
+
+#: inc/skin.php:341
+msgid "Designer Credits"
+msgstr ""
+
+#: inc/skin.php:349
+msgid "%1$s - Theme Name, %2$s - Skin Name, %3$s - Skin Author"
+msgstr ""
+
+#: inc/template.php:69 inc/template.php:70
+msgid "Semiologic"
+msgstr ""
+
+#: inc/template.php:89
+msgid "Layout"
+msgstr ""
+
+#: inc/template.php:97
+msgid "Skin"
+msgstr ""
+
+#: inc/template.php:113
+msgid "Manage Custom"
+msgstr ""
+
+#: inc/template.php:114
+msgid "Custom CSS"
+msgstr ""
+
+#: inc/template.php:131
+msgid "Post-Specific Header"
+msgstr ""
+
+#: inc/template.php:132
+msgid "Page-Specific Header"
+msgstr ""
+
+#: inc/template.php:487
+msgid "Semiologic Pro"
+msgstr ""
+
+#: inc/template.php:491
+msgid ""
+"the <a href=\"http://www.semiologic.com/software/sem-reloaded/\">Semiologic "
+"theme</a>"
+msgstr ""
+
+#: inc/template.php:492
+msgid ""
+"an <a href=\"http://www.semiologic.com/software/sem-reloaded/\">easy to use "
+"WordPress theme</a>"
+msgstr ""
+
+#: inc/template.php:493
+msgid ""
+"an <a href=\"http://www.semiologic.com/software/sem-reloaded/\">easy to "
+"customize WordPress theme</a>"
+msgstr ""
+
+#: inc/update.php:66
+msgid "Importing Semiologic Reloaded Customizations"
+msgstr ""
+
+#: inc/upgrade-legacy.php:129 inc/widgets-entries.php:704
+#: inc/widgets-entries.php:758
+msgid "1 Comment"
+msgstr ""
+
+#: inc/upgrade-legacy.php:135 inc/widgets-entries.php:715
+#: inc/widgets-entries.php:759
+msgid "%d Comments"
+msgstr ""
+
+#: inc/widgets-content.php:14
+msgid "Blog: Header"
+msgstr ""
+
+#: inc/widgets-content.php:17
+msgid ""
+"The title and description that appear on category, tag, search, 404 and date "
+"archive pages. Must be placed before each entry."
+msgstr ""
+
+#: inc/widgets-content.php:57 inc/widgets-content.php:366
+#: inc/widgets-content.php:414
+msgid "Y"
+msgstr ""
+
+#: inc/widgets-content.php:61 inc/widgets-content.php:358
+#: inc/widgets-content.php:406 inc/widgets-entries.php:546
+msgid "M jS, Y"
+msgstr ""
+
+#: inc/widgets-content.php:140 inc/widgets-content.php:453
+#: inc/widgets-content.php:735 inc/widgets-entries.php:189
+#: inc/widgets-entries.php:440 inc/widgets-entries.php:671
+#: inc/widgets-entries.php:886 inc/widgets-footer.php:120
+#: inc/widgets-header.php:520
+msgid "Captions"
+msgstr ""
+
+#: inc/widgets-content.php:182
+msgid "404: Not Found"
+msgstr ""
+
+#: inc/widgets-content.php:183
+msgid "The page you've requested was not found."
+msgstr ""
+
+#: inc/widgets-content.php:184
+msgid "%s Archives"
+msgstr ""
+
+#: inc/widgets-content.php:185
+msgid "Search: %s"
+msgstr ""
+
+#: inc/widgets-content.php:203
+msgid "Blog: Footer"
+msgstr ""
+
+#: inc/widgets-content.php:206
+msgid "The next/previous blog posts links. Must be placed after each entry."
+msgstr ""
+
+#: inc/widgets-content.php:362 inc/widgets-content.php:373
+#: inc/widgets-content.php:410
+msgid "M, Y"
+msgstr ""
+
+#: inc/widgets-content.php:478
+msgid "Next"
+msgstr ""
+
+#: inc/widgets-content.php:479
+msgid "Previous"
+msgstr ""
+
+#: inc/widgets-content.php:497
+msgid "Breadcrumb Navigation"
+msgstr ""
+
+#: inc/widgets-content.php:500
+msgid ""
+"Breadcrumb Navigation. Must be placed before the entries or the top body "
+"sidebar."
+msgstr ""
+
+#: inc/widgets-content.php:656
+msgid "Page"
+msgstr ""
+
+#: inc/widgets-content.php:694 inc/widgets-entries.php:165
+#: inc/widgets-entries.php:416 inc/widgets-entries.php:873
+#: inc/widgets-footer.php:145 inc/widgets-header.php:354
+#: inc/widgets-header.php:535
+msgid "Config"
+msgstr ""
+
+#: inc/widgets-content.php:703
+msgid "Display breadcrumb navigation on the home/front page."
+msgstr ""
+
+#: inc/widgets-content.php:714
+msgid "Show current post/page title in breadcrumbs."
+msgstr ""
+
+#: inc/widgets-content.php:720
+msgid "Delimiter to use between levels:"
+msgstr ""
+
+#: inc/widgets-content.php:739
+msgid "Text for 'Home' link"
+msgstr ""
+
+#: inc/widgets-content.php:760 inc/widgets-navmenu.php:209
+#: inc/widgets-navmenu.php:849 inc/widgets-navmenu.php:1005
+msgid "Home"
+msgstr ""
+
+#: inc/widgets-entries.php:14
+msgid "Entry: Header"
+msgstr ""
+
+#: inc/widgets-entries.php:17
+msgid "The entry's title and date. Must be placed in the loop (each entry)."
+msgstr ""
+
+#: inc/widgets-entries.php:90 inc/widgets-entries.php:726
+#: inc/widgets-entries.php:760
+msgid "Comment"
+msgstr ""
+
+#: inc/widgets-entries.php:90
+msgid "Comments"
+msgstr ""
+
+#: inc/widgets-entries.php:174
+msgid "Show post dates."
+msgstr ""
+
+#: inc/widgets-entries.php:185
+msgid "Show author byline."
+msgstr ""
+
+#: inc/widgets-entries.php:193 inc/widgets-entries.php:214
+msgid "by"
+msgstr ""
+
+#: inc/widgets-entries.php:232
+msgid "Entry: Content"
+msgstr ""
+
+#: inc/widgets-entries.php:235
+msgid "The entry's content. Must be placed in the loop (each entry)."
+msgstr ""
+
+#: inc/widgets-entries.php:425
+msgid "Use the post's excerpt on blog and archive pages."
+msgstr ""
+
+#: inc/widgets-entries.php:436
+msgid "Show the featured image, if set, for the post."
+msgstr ""
+
+#: inc/widgets-entries.php:444 inc/widgets-entries.php:475
+msgid "Read more on %s..."
+msgstr ""
+
+#: inc/widgets-entries.php:455 inc/widgets-entries.php:476
+msgid "Pages:"
+msgstr ""
+
+#: inc/widgets-entries.php:495
+msgid "Entry: Footer"
+msgstr ""
+
+#: inc/widgets-entries.php:498
+msgid ""
+"The entry's categories and tags. Will only display on individual posts if "
+"placed outside of the loop (each entry)."
+msgstr ""
+
+#: inc/widgets-entries.php:675
+msgid "Title:"
+msgstr ""
+
+#: inc/widgets-entries.php:686
+msgid ""
+"This widget's title is displayed only when this widget is placed out of the "
+"loop (each entry)."
+msgstr ""
+
+#: inc/widgets-entries.php:691 inc/widgets-entries.php:757
+msgid "Filed under %1$s by %2$s on %3$s. %4$s."
+msgstr ""
+
+#: inc/widgets-entries.php:693
+msgid "%1$s - categories, %2$s - author, %3$s - date, %4$s - comments"
+msgstr ""
+
+#: inc/widgets-entries.php:737 inc/widgets-entries.php:761
+msgid "Tags: %s."
+msgstr ""
+
+#: inc/widgets-entries.php:779
+msgid "Entry: Comments"
+msgstr ""
+
+#: inc/widgets-entries.php:782
+msgid "The entry's comments. Must be placed in the loop (each entry)."
+msgstr ""
+
+#: inc/widgets-entries.php:882
+msgid "Show pings and trackbacks in a post's comment list."
+msgstr ""
+
+#: inc/widgets-entries.php:893
+msgid "Comment Policy"
+msgstr ""
+
+#: inc/widgets-entries.php:929
+msgid "Pings and Trackbacks"
+msgstr ""
+
+#: inc/widgets-entries.php:930
+msgid "Comments on %s"
+msgstr ""
+
+#: inc/widgets-entries.php:931
+msgid "Leave a Comment"
+msgstr ""
+
+#: inc/widgets-entries.php:932
+msgid "Reply"
+msgstr ""
+
+#: inc/widgets-entries.php:934
+msgid "You must be logged in to post a comment. %s."
+msgstr ""
+
+#: inc/widgets-entries.php:935
+msgid "You are logged in as %1$s. %2$s."
+msgstr ""
+
+#: inc/widgets-entries.php:936
+msgid "Name:"
+msgstr ""
+
+#: inc/widgets-entries.php:937
+msgid "Email:"
+msgstr ""
+
+#: inc/widgets-entries.php:938
+msgid "Website:"
+msgstr ""
+
+#: inc/widgets-entries.php:939
+msgid "Fields marked by an asterisk (*) are required."
+msgstr ""
+
+#: inc/widgets-entries.php:940
+msgid "Submit Comment"
+msgstr ""
+
+#: inc/widgets-entries.php:957
+msgid "Entry: Post Navigation"
+msgstr ""
+
+#: inc/widgets-entries.php:960
+msgid ""
+"The next/previous blog post/page links. Must be placed in the loop (each "
+"entry)."
+msgstr ""
+
+#: inc/widgets-entries.php:995
+msgctxt "Previous post link"
+msgid "<span class=\"meta-nav\">&laquo;</span> %title"
+msgstr ""
+
+#: inc/widgets-entries.php:998
+msgctxt "Next post link"
+msgid "%title <span class=\"meta-nav\">&raquo;</span>"
+msgstr ""
+
+#: inc/widgets-footer.php:17
+msgid "Footer: Nav Menu"
+msgstr ""
+
+#: inc/widgets-footer.php:20
+msgid ""
+"The footer's navigation menu, with an optional copyright notice. Must be "
+"placed in the footer area."
+msgstr ""
+
+#: inc/widgets-footer.php:154
+msgid "Place the footer navigation menu and the copyright on a single line."
+msgstr ""
+
+#: inc/widgets-footer.php:170
+msgid "Copyright %1$s, %2$s"
+msgstr ""
+
+#: inc/widgets-footer.php:171
+msgid "%1$s - Site name, %2$s - Year"
+msgstr ""
+
+#: inc/widgets-footer.php:227
+msgid "Footer: Boxes Bar"
+msgstr ""
+
+#: inc/widgets-footer.php:230
+msgid ""
+"Lets you decide where the Footer Boxes Bar panel goes. Must be placed in the "
+"footer area."
+msgstr ""
+
+#: inc/widgets-header.php:18
+msgid "Header: Site Header"
+msgstr ""
+
+#: inc/widgets-header.php:21
+msgid "The site's header. Must be placed in the header area."
+msgstr ""
+
+#: inc/widgets-header.php:363
+msgid "Output the site's name before the tagline."
+msgstr ""
+
+#: inc/widgets-header.php:390
+msgid "Header: Nav Menu"
+msgstr ""
+
+#: inc/widgets-header.php:393
+msgid ""
+"The header's navigation menu, with an optional search form. Must be placed "
+"in the header area."
+msgstr ""
+
+#: inc/widgets-header.php:544
+msgid "Show a search form in the navigation menu."
+msgstr ""
+
+#: inc/widgets-header.php:555
+msgid "Display top level menu items justified."
+msgstr ""
+
+#: inc/widgets-header.php:571 inc/widgets.php:225
+msgid "Search"
+msgstr ""
+
+#: inc/widgets-header.php:572
+msgid "Go"
+msgstr ""
+
+#: inc/widgets-header.php:573
+msgid "Menu"
+msgstr ""
+
+#: inc/widgets-header.php:629
+msgid "Header: Boxes Bar"
+msgstr ""
+
+#: inc/widgets-header.php:632
+msgid ""
+"Lets you decide where the Footer Boxes Bar panel goes. Must be placed in the "
+"header area."
+msgstr ""
+
+#: inc/widgets-navmenu.php:82
+msgid "This Page In Menus"
+msgstr ""
+
+#: inc/widgets-navmenu.php:253 inc/widgets-navmenu.php:335
+#: inc/widgets-navmenu.php:867 inc/widgets-navmenu.php:916
+#: inc/widgets-navmenu.php:1019 inc/widgets-navmenu.php:1051
+msgid "Untitled"
+msgstr ""
+
+#: inc/widgets-navmenu.php:807
+msgid "Split navigation menu items with a |."
+msgstr ""
+
+#: inc/widgets-navmenu.php:814
+msgid "Menu Items"
+msgstr ""
+
+#: inc/widgets-navmenu.php:819
+msgid "How many levels to display:"
+msgstr ""
+
+#: inc/widgets-navmenu.php:823
+msgid "Top Level Only"
+msgstr ""
+
+#: inc/widgets-navmenu.php:826
+msgid "1 Level Deep"
+msgstr ""
+
+#: inc/widgets-navmenu.php:829
+msgid "2 Levels Deep"
+msgstr ""
+
+#: inc/widgets-navmenu.php:845
+msgid "- Select a menu item -"
+msgstr ""
+
+#: inc/widgets-navmenu.php:847
+msgid "Special"
+msgstr ""
+
+#: inc/widgets-navmenu.php:852
+msgid "Url"
+msgstr ""
+
+#: inc/widgets-navmenu.php:856
+msgid "Pages"
+msgstr ""
+
+#: inc/widgets-navmenu.php:885
+msgid "Drag and drop menu items to rearrange them."
+msgstr ""
+
+#: inc/widgets-navmenu.php:951 inc/widgets-navmenu.php:999
+msgid "Empty Navigation Menu. Leave it empty to populate it automatically."
+msgstr ""
+
+#: inc/widgets-navmenu.php:1010
+msgid "Url Label"
+msgstr ""
+
+#: inc/widgets-navmenu.php:1356
+msgid "Exclude page"
+msgstr ""
+
+#: inc/widgets-navmenu.php:1364
+msgid "Check to exclude this page from being listed in navigation menus."
+msgstr ""
+
+#. Theme Name of the plugin/theme
+msgid "Semiologic Pinnacle"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "http://www.semiologic.com/software/sem-pinnacle/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"The latest Semiologic Theme building on the widget and panel-centric "
+"approach of Semiologic Reloaded.   The Pinnacle theme is HTML5, CSS3, and "
+"responsive meant to look the same across all devices."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Mike Koepke"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.semiologic.com"
+msgstr ""

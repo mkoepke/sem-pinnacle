@@ -508,3 +508,14 @@ html {
 .widget_title h2 {
 	border-color: #545454; /* B/2 S0 */
 }
+
+/*****
+* Media Queries   *******/
+
+@media only screen and (max-width: 40.5625em) {   /* 649 */
+
+	#body_wrapper {
+		width: 98%;
+	}
+}
+
