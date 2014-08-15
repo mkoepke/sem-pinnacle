@@ -14,17 +14,22 @@ jQuery(document).ready(function($) {
 	$('#header-menu-icon').click(function() {
 		$('#header_nav').slideToggle();
 	});
+
+	var windowWidth = $(window).width();
+
 	$(window).resize(function(){
-		if(window.innerWidth > 649) {
+		if(windowWidth > 649) {
 			$('#header_nav').removeAttr("style");
 		}
 	});
 
-	$('#header_nav').find('li.nav_branch > a').click(function(e) {
-		e.preventDefault();
-		var $this = $(this);
-		$this.toggleClass('open').next('ul').toggleClass('open');
-	});
+	if(windowWidth <= 649) {
+		$('#header_nav').find('li.nav_branch > a').click(function(e) {
+			e.preventDefault();
+			var $this = $(this);
+			$this.toggleClass('open').next('ul').toggleClass('open');
+		});
+	}
 });
 
 

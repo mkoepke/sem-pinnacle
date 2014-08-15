@@ -1,4 +1,7 @@
 <?php
+
+include sem_path . '/inc/template.php';
+
 # Skin, layout, font
 $sem_theme_options['active_skin'] = 'boxed';
 $sem_theme_options['active_layout'] = 'mts';

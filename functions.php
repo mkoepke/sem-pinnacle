@@ -40,7 +40,8 @@ add_option('sem_api_key', '');
 # load depends
 include sem_path . '/inc/panels.php';
 include sem_path . '/inc/widgets.php';
-include sem_path . '/inc/template.php';
+if ( !class_exists('sem_template') )
+	include sem_path . '/inc/template.php';
 
 if ( file_exists(sem_path . '/custom.php') )
 	include sem_path . '/custom.php';
