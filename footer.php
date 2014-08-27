@@ -186,6 +186,8 @@
 
 		endswitch;
 
+	echo '</div><!-- main_wrapper -->' . "\n";
+
 	echo '<div id="body_bottom_sidebar" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
 
 	sem_panels::display('bottom_body_sidebar');

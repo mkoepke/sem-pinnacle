@@ -40,7 +40,7 @@ class footer extends sem_nav_menu {
 	 **/
 
 	function widget($args, $instance) {
-		if ( $args['id'] != 'the_footer' )
+		if ( $args['id'] != 'the_footer' && $args['id'] !='the_footer_boxes' )
 			return;
 
 		$instance = wp_parse_args($instance, footer::defaults());

@@ -769,7 +769,7 @@ EOS;
 	 **/
 
 	function the_footer_sidebar_params($params) {
-		if ( !is_array($params) || !is_array($params[0]) || $params[0]['id'] != 'the_footer' )
+		if ( !is_array($params) || !is_array($params[0]) || ($params[0]['id'] != 'the_footer' && $params[0]['id'] != 'the_footer_boxes') )
 			return $params;
 
 		global $did_footer;

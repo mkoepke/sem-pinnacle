@@ -83,6 +83,8 @@ echo '<div id="wrapper_middle" class="wrapper_section">' . "\n";
 
 	echo '</div><!-- top_body_sidebar -->' . "\n";
 
+	echo '<div id="main_wrapper">' . "\n";
+
 	switch ( $active_layout) :
 
 		case 'sms':
