@@ -311,17 +311,20 @@ class sem_panels {
 			global $did_footer;
 			global $did_top_widgets;
 			global $did_bottom_widgets;
+			global $closed_top_widgets;
 			
 			echo '<footer id="footer_wrapper" class="wrapper">' . "\n";
 			
 			$did_top_widgets = false;
 			$did_footer = false;
 			$did_bottom_widgets = false;
+			$closed_top_widgets = false;
 			
 			dynamic_sidebar($panel_id);
 			
-			if ( !$did_footer && $did_top_widgets ) {
+			if ( $did_top_widgets && !$closed_top_widgets ) {
 				echo '</div></div>' . "\n";
+				$closed_top_widgets = true;
 			} elseif ( $did_bottom_widgets ) {
 				echo '</div></div>' . "\n";
 			}
@@ -333,18 +336,18 @@ class sem_panels {
 		case 'the_footer_boxes':
 			if ( !is_active_sidebar($panel_id) )
 			 	break;
-			
+
 			$id = ( $panel_id == 'the_header_boxes' ) ? 'header_boxes' : 'footer_boxes';
 			$class = ( $panel_id == 'the_header_boxes' ) ? 'header_widget' : 'footer_widget';
 
 			echo '<div class="spacer"></div>' . "\n"
 				. '<div id="' . $id . '" class="inline_boxes ' . $class . '">' . "\n";
-			
+
 			dynamic_sidebar($panel_id);
-			
+
 			echo '<div class="spacer"></div>' . "\n"
 				. '</div><!-- ' . $id . ' -->' . "\n";
-			
+
 			break;
 		}
 	} # display()

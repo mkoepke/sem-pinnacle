@@ -38,6 +38,7 @@ default:
 add_option('sem_api_key', '');
 
 # load depends
+include sem_path . '/inc/utils.php';
 include sem_path . '/inc/panels.php';
 include sem_path . '/inc/widgets.php';
 if ( !class_exists('sem_template') )

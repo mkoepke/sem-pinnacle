@@ -802,26 +802,37 @@ EOS;
 			$type = $wp_registered_widgets[$widget_id]['callback'];
 		}
 
-		switch ( $type ) {
-		case 'footer':
-			if ( $did_top_widgets ) {
-				echo '</div></div>' . "\n";
-			}
-			break;
+		global $in_footer_boxes_panel;
+		global $closed_top_widgets;
 
-		default:
-			if ( !$did_footer ) {
-				if ( !$did_top_widgets ) {
-					echo '<div id="footer_top_wrapper" class="footer_section"><div id="footer_top">' . "\n";
-					$did_top_widgets = true;
+		if ( !$in_footer_boxes_panel ) {
+
+			switch ( $type ) {
+			case 'footer':
+				if ( $did_top_widgets ) {
+					echo '</div></div>' . "\n";
+					$closed_top_widgets = true;
 				}
-			} else {
-				if ( !$did_bottom_widgets ) {
-					echo '<div id="footer_bottom_wrapper" class="footer_section"><div id="footer_bottom">' . "\n";
-					$did_bottom_widgets = true;
+				break;
+
+			default:
+				if ( !$did_footer ) {
+					if ( !$did_top_widgets ) {
+						echo '<div id="footer_top_wrapper" class="footer_section"><div id="footer_top">' . "\n";
+						$did_top_widgets = true;
+					}
+				} else {
+					if ( !$did_bottom_widgets ) {
+						if ( !$closed_top_widgets ) {
+							echo '</div></div>' . "\n";
+							$closed_top_widgets = true;
+						}
+						echo '<div id="footer_bottom_wrapper" class="footer_section"><div id="footer_bottom">' . "\n";
+						$did_bottom_widgets = true;
+					}
 				}
+				break;
 			}
-			break;
 		}
 
 		return $params;

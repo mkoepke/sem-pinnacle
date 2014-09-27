@@ -246,7 +246,12 @@ class footer_boxes extends WP_Widget {
 		if ( $args['id'] != 'the_footer' )
 			return;
 
+		global $in_footer_boxes_panel;
+		$in_footer_boxes_panel = true;
+
 		sem_panels::display('the_footer_boxes');
+
+		$in_footer_boxes_panel = false;
 	} # widget()
 } # footer_boxes
 
