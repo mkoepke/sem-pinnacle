@@ -19,15 +19,7 @@ remove_action('wp_footer', array('sem_template', 'display_credits'), 5);
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
-<title><?php
-if ( $title = trim(wp_title('&#8211;', false)) ) {
-	if ( strpos($title, '&#8211;') === 0 )
-		$title = trim(substr($title, strlen('&#8211;')));
-	echo $title;
-} else {
-	bloginfo('description');
-}
-?></title>
+<title><?php wp_title( '&#8211;', true, 'right'); ?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 <?php

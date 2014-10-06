@@ -26,6 +26,12 @@ class sem_nav_menu extends WP_Widget {
 	protected $display_justified = false;
 
 	/**
+	 * Use Menu exclusion checkbox in menu display
+	 *
+	 */
+	protected $use_menu_exclusion = true;
+
+	/**
 	 * Constructor.
 	 *
 	 */
@@ -303,7 +309,7 @@ class sem_nav_menu extends WP_Widget {
 			return;
 
 		$exclude = get_post_meta($page->ID, '_menu_exclude', true);
-		if ( $exclude != "" ) {
+		if ( $this->use_menu_exclusion && $exclude != "" ) {
 			$exclude = (int) $exclude;
 		}
 		else {
@@ -856,7 +862,7 @@ class sem_nav_menu extends WP_Widget {
 			;
 
 		foreach ( $pages as $page ) {
-			if ( (int) get_post_meta($page->ID, '_menu_exclude', true) )
+			if ( $this->use_menu_exclusion && (int) get_post_meta($page->ID, '_menu_exclude', true) )
 				continue;
 			$label = get_post_meta($page->ID, '_widgets_label', true);
 			if ( $label === '' )
@@ -1124,7 +1130,7 @@ EOS;
 				continue;
 			if ( get_post_meta($root_id, '_widgets_exclude', true) )
 				continue;
-			if ( get_post_meta($root_id, '_menu_exclude', true) )
+			if ( $this->use_menu_exclusion && get_post_meta($root_id, '_menu_exclude', true) )
 				continue;
 
 			$items[] = array(

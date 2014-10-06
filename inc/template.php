@@ -49,6 +49,8 @@ class sem_template {
         	add_filter('dynamic_sidebar_params', array($this, 'the_header_sidebar_params'), 15);
         	add_filter('dynamic_sidebar_params', array($this, 'the_footer_sidebar_params'), 15);
         	remove_action('wp_print_styles', array($this, 'styles'), 5);
+	        add_filter( 'wp_title', array($this, 'sem_wp_title'), 10, 2);
+
         } else {
         	add_action('admin_menu', array($this, 'admin_menu'));
         	add_action('admin_menu', array($this, 'meta_boxes'));
@@ -328,6 +330,38 @@ EOS;
 				break;
 		}
 	}
+
+	/**
+	 *
+	 * sem_wp_title()
+	 * Filter the page title.
+	 *
+	 *
+	 * @param string $title Default title text for current view.
+	 * @param string $sep   Optional separator.
+	 * @return string The filtered title.
+	 */
+	function sem_wp_title( $title, $sep ) {
+		global $paged, $page;
+
+		if ( is_feed() )
+			return $title;
+
+		// Add the site name.
+		$title .= get_bloginfo( 'name', 'display' );
+
+		// Add the site description for the home/front page.
+		$site_description = get_bloginfo( 'description', 'display' );
+		if ( $site_description && ( is_home() || is_front_page() ) )
+			$title = "$title $sep $site_description";
+
+		// Add a page number if necessary.
+		if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() )
+			$title = "$title $sep " . sprintf( __( 'Page %s', 'sem-pinnacle' ), max( $paged, $page ) );
+
+		return $title;
+	}
+
 	/**
 	 * strip_sidebars()
 	 *
