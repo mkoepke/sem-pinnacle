@@ -46,8 +46,8 @@ if ( !class_exists('sem_template') )
 
 if ( file_exists(sem_path . '/custom.php') )
 	include sem_path . '/custom.php';
-if ( file_exists(sem_content_path . '/custom.php') )
-	include sem_content_path . '/custom.php';
+if ( file_exists(sem_content_path . '/custom/custom.php') )
+	include sem_content_path . '/custom/custom.php';
 
 if ( is_admin() ) {
 	include_once sem_path . '/inc/header.php';

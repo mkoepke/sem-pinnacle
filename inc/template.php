@@ -54,6 +54,7 @@ class sem_template {
         } else {
         	add_action('admin_menu', array($this, 'admin_menu'));
         	add_action('admin_menu', array($this, 'meta_boxes'));
+	        add_action('admin_enqueue_scripts', array($this, 'admin_scripts'));
 //	        add_action('admin_menu', array($this, 'add_editor_styles'));
 //	        add_filter('tiny_mce_before_init', array($this, 'add_editor_body_class'));
         }
@@ -207,7 +208,27 @@ class sem_template {
 		}
 		wp_enqueue_script( 'sem-helper', sem_url . '/js/sem-helper.js', array('jquery'), '1.0.0', false );
 
+		if ( is_admin() ) {
+			if( !isset($_GET['page']) || ( isset($_GET['page']) && strstr($_GET['page'], 'widgetkit' ) === false ) ) {
+				wp_enqueue_script('jquery-ui-tabs');
+			}
+		}
+
 	} # scripts()
+
+	/**
+	 * admin_scripts()
+	 *
+	 * @return void
+	 **/
+
+	function admin_scripts() {
+		// add workaround for widgetkit that chokes if we load the standard WP jquery-ui-tab
+		if( !isset($_GET['page']) || ( isset($_GET['page']) && strstr($_GET['page'], 'widgetkit' ) === false ) ) {
+			wp_enqueue_script('jquery-ui-tabs');
+		}
+
+	} # admin_scripts()
 
 
 	/**

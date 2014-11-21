@@ -2,7 +2,7 @@
 Theme Name: Semiologic Pinnacle
 Theme URI: http://www.semiologic.com/software/sem-pinnacle/
 Description: The latest Semiologic Theme building on the widget and panel-centric approach of Semiologic Reloaded.   The Pinnacle theme is HTML5, CSS3, and responsive meant to look the same across all devices.
-Version: 2.0 beta7
+Version: 2.0
 Author: Mike Koepke
 Author URI: http://www.semiologic.com
 Text Domain: sem-pinnacle
@@ -125,13 +125,17 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, dl {
 }
 
 blockquote, q, ul, ol, dl {
-	margin-left: 1.250em;
+	margin-left: 1.50em;
 }
 
 ul ul,
 ol ol,
 dl dl {
 	margin: 0.250em 0.250em 0 0.500em;
+}
+
+ol li {
+    margin-left: 2.5em;
 }
 
 q:before,
@@ -1076,6 +1080,7 @@ h2 a {
 .entry {
     word-wrap: break-word;
     overflow: hidden;
+	width: 100%;
 }
 
 /* Margins and Padding */
@@ -1435,9 +1440,12 @@ div.media {
 	margin-right: auto;
 }
 
+.entry_author_image.alignleft {
+	margin-right: 0.625em;
+}
+
 .entry .entry_author_image {
 	float: left;
-	border: outset 1px;
 	margin: 0.250em 0.625em 0 0.250em;
 }
 

@@ -7,7 +7,7 @@ if ( !defined('sem_theme') )
 	define('sem_theme', 'sem-pinnacle');
 
 if ( !defined('sem_theme_version') )
-	define('sem_theme_version', '2.0 Beta2');
+	define('sem_theme_version', '2.0');
 
 if ( !defined('sem_debug') )
 	define('sem_debug', isset($_GET['debug']) );

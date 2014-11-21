@@ -79,7 +79,6 @@ class sem_custom {
 	function scripts() {
 		wp_enqueue_script('farbtastic');
 		wp_enqueue_script('jquery-cookie', sem_url . '/js/jquery.cookie.js', array('jquery'), '1.4');
-		wp_enqueue_script('jquery-ui-tabs');
 	} # scripts()
 	
 	
