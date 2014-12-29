@@ -3,7 +3,7 @@ Contributors: Denis-de-Bernardy, Mike_Koepke
 Donate link: http://www.semiologic.com/partners/
 Tags: semiologic, wordpress theme
 Requires at least: 3.9
-Tested up to: 3.9
+Tested up to: 4.1
 Stable tag: trunk
 
 The Semiologic Pinnacle theme for Wordpress
@@ -28,6 +28,10 @@ If you previously had been using the Semiologic Reloaded theme, that widget conf
 
 
 == Change Log ==
+
+= 2.0.1 =
+
+- Fix date not being shown for blog posts.
 
 = 2.0 =
 

@@ -1182,10 +1182,6 @@ h3.post_list_date {
 .sticky {
 }
 
-.byline,
-.updated {
-	display: none;
-}
 .single .byline,
 .home .byline,
 .single .updated,
