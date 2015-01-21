@@ -63,7 +63,13 @@ class sem_panels {
 		);
 		sem_panels::register_panel( $top_panels );
 
+		//* Run the pinnacle_top_panels_setup hook
+		do_action( 'pinnacle_top_panels_setup' );
+
 		sem_panels::register_sidebar_panels();
+
+		//* Run the pinnacle_sidebar_panels_setup hook
+		do_action( 'pinnacle_sidebar_panels_setup' );
 
 		$bottom_panels = array(
 			'bottom_body_sidebar' => __('Bottom Body Sidebar', 'sem-pinnacle'),
@@ -73,6 +79,9 @@ class sem_panels {
 		);
 
 		sem_panels::register_panel( $bottom_panels );
+
+		//* Run the pinnacle_sidebar_panels_setup hook
+		do_action( 'pinnacle_bottom_panels_setup' );
 
 	} # register()
 
@@ -124,13 +133,13 @@ class sem_panels {
 
 			case 'top_body_sidebar':
 			case 'bottom_body_sidebar':
-				$before_widget = '<aside class="%1$s %2$s body_widget">' . "\n";
+				$before_widget = '<aside class="widget %1$s %2$s body_widget">' . "\n";
 				$after_widget = '</aside><!-- body_widget -->' . "\n";
 				break;
 
 			default:
 				$before_widget = '<div class="spacer"></div>' . "\n"
-					. '<div class="%1$s %2$s">' . "\n";
+					. '<div class="widget %1$s %2$s">' . "\n";
 				$after_widget = '</div>' . "\n";
 				break;
 			}
@@ -349,10 +358,44 @@ class sem_panels {
 				. '</div><!-- ' . $id . ' -->' . "\n";
 
 			break;
+		default:
+			dynamic_sidebar($panel_id);
+			break;
 		}
 	} # display()
 	
-	
+	/**
+	 * Count number of widgets in a sidebar
+	 * Used to add classes to widget areas so widgets can be displayed one, two, three or four per row
+	 */
+	static function count_widgets( $sidebar_id ) {
+		// If loading from front page, consult $_wp_sidebars_widgets rather than options
+		// to see if wp_convert_widget_settings() has made manipulations in memory.
+		global $_wp_sidebars_widgets;
+		if ( empty( $_wp_sidebars_widgets ) ) :
+			$_wp_sidebars_widgets = get_option( 'sidebars_widgets', array() );
+		endif;
+
+		$sidebars_widgets_count = $_wp_sidebars_widgets;
+
+		if ( isset( $sidebars_widgets_count[ $sidebar_id ] ) ) :
+			$widget_count = count( $sidebars_widgets_count[ $sidebar_id ] );
+			$widget_classes = 'widget-count-' . count( $sidebars_widgets_count[ $sidebar_id ] );
+			if ( $widget_count % 4 == 0 || $widget_count > 6 ) :
+				// Four widgets er row if there are exactly four or more than six
+				$widget_classes .= ' per-row-4';
+			elseif ( $widget_count >= 3 ) :
+				// Three widgets per row if there's three or more widgets
+				$widget_classes .= ' per-row-3';
+			elseif ( 2 == $widget_count ) :
+				// Otherwise show two widgets per row
+				$widget_classes .= ' per-row-2';
+			endif;
+
+			return $widget_classes;
+		endif;
+	}
+
 	/**
 	 * init_widgets()
 	 *
@@ -361,7 +404,7 @@ class sem_panels {
 
 	function init_widgets() {
 		if ( !intval(get_option('init_sem_panels')) ) {
-			if ( intval(get_option('upgrade_sempinnacle_panels')) )
+			if ( intval(get_option('upgrade_sempinnacle_panels')) && !is_child_theme() )
 				sem_panels::upgrade_sem_pinnacle_widgets();
 			return;
 		}

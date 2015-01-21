@@ -1,7 +1,7 @@
 /*
 Skin name: Clean
 Skin uri: http://skins.semiologic.com/clean/
-Version: 2.0 rc
+Version: 2.0
 Author: Mike Koepke
 Author uri: http://www.semiologic.com
 Colors:
@@ -34,6 +34,14 @@ a {
 
 a:hover {
 	color: #333;
+}
+
+table, th, td {
+	border: 1px solid #ddd;
+}
+
+td {
+	border-width: 0 1px 1px 0;
 }
 
 aside ul,

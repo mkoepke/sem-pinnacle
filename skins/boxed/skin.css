@@ -1,7 +1,7 @@
 /*
 Skin name: Boxed
 Skin uri: http://skins.semiologic.com/boxed/
-Version: 2.0 rc
+Version: 2.0
 Author: Mike Koepke
 Author uri: http://www.semiologic.com
 Type: Standard
@@ -12,6 +12,14 @@ Colors: Blue
 /*
  * Canvas
  */
+
+table, th, td {
+	border: 1px solid #ddd;
+}
+
+td {
+	border-width: 0 1px 1px 0;
+}
 
 #wrapper {
 	margin-top: 0.375em;
@@ -52,6 +60,28 @@ Colors: Blue
 	width: 67.157894736842%;    /* 638px / 950 px */
 }
 
+/* Two per row */
+.flexible-widget-area.per-row-2 .widget {
+    width: 48%;
+	margin-left: 1%;
+	margin-right: 0.5%;
+}
+
+/* Three per row */
+.flexible-widget-area.per-row-3 .widget {
+    width: 32%;
+	margin-left: 1%;
+	margin-right: 0.3333%;
+}
+
+/* Four per row */
+.flexible-widget-area.per-row-4 .widget {
+    width: 24%;
+	margin-left: .75%;
+	margin-right: 0.25%;
+}
+
+
 .post_list {
 	padding: 0 0.9375em;
 }
@@ -90,12 +120,27 @@ Colors: Blue
 	border-top: solid 1px;
 }
 
-.entry,
-.post_list,
+.widget,
 .main_widget,
 .body_widget,
-.widget,
+.header_widget,
+.footer_widget {
+	padding: 0.3125em 0.9375em 0.3125em;
+}
+
+.sidebar .widget ul,
+.sidebar .widget ul {
+	margin-left: 0.9375em;
+}
+
 .inline_box {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding: 0;
+}
+
+.entry,
+.post_list {
 	padding: 0.3125em 0.9375em 0.3125em;
 }
 
@@ -148,11 +193,13 @@ Colors: Blue
 	margin-bottom: 0.75em;
 }
 
-#footer,
-.footer_widget {
-	margin-top: 0;
+.footer_widget,
+#footer_top_wrapper,
+#footer_middle_wrapper {
+	margin-top: 0.75em;
 	margin-bottom: 0.75em;
 }
+
 
 #header,
 #header_img img,

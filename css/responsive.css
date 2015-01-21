@@ -67,6 +67,21 @@ Media Queries
 		width: 100%;
 	}
 
+	.mmm #header_boxes .inline_box:first-child,
+	.mmm #footer_boxes .inline_box:first-child,
+	.mmm #header_boxes .inline_box ~ .inline_box,
+	.mmm #footer_boxes .inline_box ~ .inline_box,
+	.mmm #header_boxes .inline_box:first-child + .inline_box,
+	.mmm #footer_boxes .inline_box:first-child + .inline_box {
+		width: 100%;
+	}
+
+	.flexible-widget-area.per-row-2 .widget,
+	.flexible-widget-area.per-row-3 .widget,
+	.flexible-widget-area.per-row-4 .widget {
+	    width: 100%;
+	}
+
 	.sem_breadcrumbs,
 	#navbar #searchform {
 		display: none;

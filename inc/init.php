@@ -7,7 +7,7 @@ if ( !defined('sem_theme') )
 	define('sem_theme', 'sem-pinnacle');
 
 if ( !defined('sem_theme_version') )
-	define('sem_theme_version', '2.0.1');
+	define('sem_theme_version', '2.1.0');
 
 if ( !defined('sem_debug') )
 	define('sem_debug', isset($_GET['debug']) );
@@ -23,10 +23,10 @@ if ( !defined('sem_header_cache_debug') )
 if ( !defined('sem_css_debug') )
 	define('sem_css_debug', false);
 
-define('sem_last_mod', sem_css_debug ? time() : '20141229');
+define('sem_last_mod', sem_css_debug ? time() : '20150120');
 
 define('sem_path', dirname(dirname(__FILE__)));
-define('sem_url', get_stylesheet_directory_uri());
+define('sem_url', get_template_directory_uri());
 define('sem_content_path', WP_CONTENT_DIR . '/semiologic' );
 define('sem_content_url', WP_CONTENT_URL . '/semiologic' );
 
@@ -99,6 +99,29 @@ function dump($in = null) {
 } # dump()
 endif;
 
+
+if ( !function_exists('read_sem_options') ) :
+/**
+* read_sem_options()
+*
+* @return mixed
+**/
+
+function read_sem_options() {
+	return get_option( 'sem_pinnacle_options' );
+}
+
+/**
+* write_sem_options()
+*
+* @param mixed
+* @return void
+**/
+function write_sem_options( $options ) {
+	update_option( 'sem_pinnacle_options', $options );
+}
+endif;
+
 if ( sem_debug )
 	include sem_path . '/inc/debug.php';
 
@@ -143,3 +166,8 @@ if ( !isset($sem_theme_options['version']) ) {
 	if ( !defined('DOING_CRON') )
 		include sem_path . '/inc/upgrade.php';
 }
+
+//* Run the pinnacle_init hook
+do_action( 'pinnacle_init' );
+
+include(sem_path . '/inc/setup.php');

@@ -29,6 +29,26 @@ If you previously had been using the Semiologic Reloaded theme, that widget conf
 
 == Change Log ==
 
+= 2.1.0 =
+
+- Support child theme development
+- Added Column Classes for post/page content
+- Fixed Header Boxes widget layout for responsive
+- New theme actions for init and theme setup
+- FontAwesome 4.2
+- Refactored functions.php, init.php and new setup.php files
+- Initial support of home page featured panels
+- Minor CSS tweaks
+	- Vertical Spacing/padding/margins for Headers & paragraphs,
+	- Nested list indentation padding
+	- Font Size for Headers H1-H6 altered for better H1, H2, H3 noticeable sizing
+	- Quotation marks for quote tag missing
+	- Blockquote graphics changed from image to image font
+	- Default styling for table, tr, td not set
+- Language file template (pot) moved to correct directory
+- Officially release 2 included skins
+
+
 = 2.0.1 =
 
 - Fix date not being shown for blog posts.

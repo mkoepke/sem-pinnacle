@@ -245,7 +245,7 @@ class sem_template {
 		$skin_path = $custom_skin ?  sem_content_path . '/skins/' . $sem_theme_options['active_skin']  : sem_path . '/skins/' . $sem_theme_options['active_skin'];
 		$skin_url = $custom_skin ?  sem_content_url . '/skins/' . $sem_theme_options['active_skin'] : sem_url . '/skins/' . $sem_theme_options['active_skin'];
 
-		wp_enqueue_style('style', sem_url . '/style.css', null, sem_last_mod);
+		wp_enqueue_style('pinnacle-style', sem_url . '/style.css', null, sem_last_mod);
 
 		$this->fonts();
 
@@ -305,7 +305,7 @@ EOS;
 	function fonts() {
 		global $sem_theme_options;
 
-		echo '<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">' . "\n";
+		echo '<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">' . "\n";
 
 		sem_template::load_font( $sem_theme_options['active_font']);
 

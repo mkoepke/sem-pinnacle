@@ -2,7 +2,7 @@
 Theme Name: Semiologic Pinnacle
 Theme URI: http://www.semiologic.com/software/sem-pinnacle/
 Description: The latest Semiologic Theme building on the widget and panel-centric approach of Semiologic Reloaded.   The Pinnacle theme is HTML5, CSS3, and responsive meant to look the same across all devices.
-Version: 2.0.1
+Version: 2.1.0
 Author: Mike Koepke
 Author URI: http://www.semiologic.com
 Text Domain: sem-pinnacle
@@ -30,10 +30,9 @@ or adjust them accordingly. This will let you customize the theme's CSS without 
 when you upgrade.
 */
 
-/* normalize.css v3.0.1 | MIT License | git.io/normalize */
+/* normalize.css v3.0.2 | MIT License | git.io/normalize */
 
-html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background:0 0}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#333}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:700}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}
-
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:bold}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}
 
 *, *:before, *:after {
 	-moz-box-sizing: border-box;
@@ -85,7 +84,7 @@ article,
 
 
 /* Semiologic Defaults
---------------------------------------------- */
+---------------------------------------------------------------------------------------------------- */
 
 
 html, body {
@@ -119,23 +118,31 @@ a img {
 	margin-bottom: -0.250em;
 }
 
-h1, h2, h3, h4, h5, h6, p, ul, ol, dl {
+h1, h2, h3, h4, h5, h6 {
+	margin: 0.625em 0 0.3125em;
+	padding: 0;
+}
+
+p {
 	margin: 0.625em 0;
 	padding: 0;
 }
 
-blockquote, q, ul, ol, dl {
+ul, ol, dl {
+	margin: 0.625em 0 1.25em;
+	padding: 0;
+}
+
+blockquote,
+q,
+ul,
+ol {
 	margin-left: 1.50em;
 }
 
-ul ul,
-ol ol,
-dl dl {
-	margin: 0.250em 0.250em 0 0.500em;
-}
-
-ol li {
-    margin-left: 2.5em;
+li > ul,
+li > ol {
+	margin: 0 0 0 1.5em;
 }
 
 q:before,
@@ -173,18 +180,48 @@ h1, h2, h3, h4, h5, h6 {
 
 address {
 	font-style: italic;
-	margin-bottom: 24px;
+	margin: 0 0 1.25em;
+	padding: 0;
 }
+
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+	border-width: 1px 0 0 1px;
+	margin-bottom: 1.5em;
+	width: 100%;
+}
+
+/*
+table, th, td {
+	border: 1px solid #ddd;
+}
+
+td {
+	border-width: 0 1px 1px 0;
+}
+*/
 
 caption, th {
 	text-align:left;
+}
+
+th,
+td {
+	padding: 0.5em;
+	line-height: 1.4;
+	vertical-align: baseline;
+}
+
+th {
+	font-weight: bold;
 }
 
 input, button, textarea {
 	line-height: 1.231;
 }
 
-pre, blockquote, li, dt, dd {
+pre, blockquote, li, dt {
 	margin: 0.1875em 0;
 }
 
@@ -195,13 +232,24 @@ pre {
 	border: dotted 1px #bbb;
 }
 
-.main blockquote {
-	background: url(icons/blockquote.gif) top left no-repeat;
-	padding: 1px 0.625em 1px 3.125em;
-	margin: 0;
-	min-height: 3.125em;
+
+blockquote {
+	margin-left: 1.50em;
+	font-style: italic;
 }
 
+blockquote::before {
+	content: "\201C";
+	display: block;
+	font-size: 2em;
+	height: 0;
+	position: relative;
+	top: -10px;
+}
+
+blockquote p {
+	margin: 0 1.25em 1.25em;
+}
 
 pre, code, kbd, samp, tt {
 	font-family: Consolas, Menlo, Monaco, "Lucida Console", "DejaVu Sans Mono", Monospace;
@@ -209,9 +257,6 @@ pre, code, kbd, samp, tt {
 	line-height: 1.231;
 }
 
-cite {
-	font-style: normal;
-}
 
 legend {
 	color:#000;
@@ -224,85 +269,6 @@ abbr, acronym {
 
 .hidden {
 	display: none;
-}
-
-/*
-Theme Fonts
------------
-*/
-
-.arial {
-	font-family: Arial, "Liberation Sans", "Nimbus Sans L", "DejaVu Sans", Sans-Serif;
-}
-
-.tahoma {
-	font-family: Tahoma, "Nimbus Sans L", "DejaVu Sans", Sans-Serif;
-}
-
-.trebuchet {
-	font-family: "Trebuchet MS", "Nimbus Sans L", "DejaVu Sans", Sans-Serif;
-}
-
-.verdana {
-	font-family: Verdana, "Nimbus Sans L", "DejaVu Sans", Sans-Serif;
-}
-
-.antica,
-.bookman,
-.garamond {
-	font-family: Palatino, "Book Antica", "Palatino Linotype", "URW Palladio L", Palladio, Georgia, "DejaVu Serif", Serif;
-}
-
-.georgia {
-	font-family: Georgia, "New Century Schoolbook", "Century Schoolbook L", "DejaVu Serif", Serif;
-}
-
-.times {
-	font-family: "Times New Roman", Times, "Liberation Serif", "DejaVu Serif Condensed", Serif;
-}
-
-.courier {
-	font-family: "Courier New", "Liberation Mono", "Nimbus Mono L", Monospace;
-}
-
-.helvetica {
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-}
-
-.lucida {
-    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
-}
-
-.lato {
-	font-family: 'Lato', sans-serif;
-}
-
-.lora {
-	font-family: 'Lora', serif;
-}
-
-.merriweather {
-	font-family: 'Merriweather', serif;
-}
-
-.open_sans {
-	font-family: 'Open Sans', sans-serif;
-}
-
-.pt_sans {
-	font-family: 'PT Sans', sans-serif;
-}
-
-.roboto {
-	font-family: 'Roboto', sans-serif;
-}
-
-.source_sans_pro {
-	font-family: 'Source Sans Pro', sans-serif;
-}
-
-.ubuntu {
-	font-family: 'Ubuntu', sans-serif;
 }
 
 
@@ -375,17 +341,27 @@ h1 {
 }
 
 h2 {
-	font-size: 1.3125em;
+	font-size: 1.5em;
 }
 
 h3 {
+	font-size: 1.25em;
+}
+
+h4 {
 	font-size: 1.125em;
 }
 
-th {
-	font-weight: bold;
+h5,
+h6 {
+	font-size: 1em;
 }
 
+h1 a,
+h2 a,
+h3 a {
+	text-decoration: none;
+}
 
 /* Forms/Buttons
 --------------------------------------------- */
@@ -535,6 +511,10 @@ Structure and Layout
 	max-width: 960px;
 }
 
+.mmm #main {
+	width: 100%;
+}
+
 .mmm #credits {
 	width: 98.958333333333%;    /* 950px;  */
 }
@@ -642,6 +622,152 @@ Inline Boxes
 }
 
 /*
+Content Panels
+--------------------------------------------------------- */
+/* Flexible widget areas - number of widgets per row (1, 2, 3 or 4) changes depending on number of widgets used */
+.flexible-widget-area .widget {
+	float: left;
+	width: 100%;
+}
+.flexible-widget-area.widget-count-1 .widget {
+}
+/* Two per row */
+.flexible-widget-area.per-row-2 .widget {
+    width: 50%;
+}
+.flexible-widget-area.per-row-2 .widget:nth-of-type(2n+1) {
+	clear: left;
+}
+.flexible-widget-area.per-row-2 .widget:nth-of-type(2n) {
+}
+/* Three per row */
+.flexible-widget-area.per-row-3 .widget {
+    width: 33.33333%;
+}
+.flexible-widget-area.per-row-3 .widget:nth-of-type(3n+1) {
+	clear: left;
+}
+.flexible-widget-area.per-row-3 .widget:nth-of-type(3n) {
+}
+/* Four per row */
+.flexible-widget-area.per-row-4 .widget {
+    width: 25%;
+}
+.flexible-widget-area.per-row-4 .widget:nth-of-type(4n+1) {
+	clear: left;
+}
+.flexible-widget-area.per-row-4 .widget:nth-of-type(4n) {
+}
+
+
+/*
+Widgets
+---------------------------------------------------------------------------------------------------- */
+
+.widget,
+.main_widget,
+.body_widget {
+	margin-top: 0;
+	margin-bottom: 1.25em;
+	padding: 0 1.25em;
+}
+
+.inline_box {
+	margin-top: 0;
+	margin-bottom: 1.25em;
+	padding: .625em 1.25em;
+}
+
+/*
+.header_widget,
+.footer_widget {
+	margin-top: 0;
+	margin-bottom: 1.25em;
+	padding: 0 1.25em;
+}
+*/
+
+.widget li > ul,
+.widget li > ol {
+	margin: 0 0 0 0.75em;
+}
+
+.widget select {
+	max-width: 100%;
+}
+
+.widget_title a {
+	color: inherit;
+}
+
+.header_widget p,
+.footer_widget p {
+	padding: 0 1.25em;
+}
+
+.flexible-widget-area .widget {
+	margin: 0 0 1.25em;
+	padding: 0 0.5em;
+}
+
+/* Column Classes - Adapted from Genesis
+---------------------------------------------------------------------------------------------------- */
+/* Link: http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css */
+
+.five-sixths,
+.four-sixths,
+.one-fourth,
+.one-half,
+.one-sixth,
+.one-third,
+.three-fourths,
+.three-sixths,
+.two-fourths,
+.two-sixths,
+.two-thirds {
+	float: left;
+	margin-left: 2.564102564102564%;
+}
+
+.one-half,
+.three-sixths,
+.two-fourths {
+	width: 48.717948717948715%;
+}
+
+.one-third,
+.two-sixths {
+	width: 31.623931623931625%;
+}
+
+.four-sixths,
+.two-thirds {
+	width: 65.81196581196582%;
+}
+
+.one-fourth {
+	width: 23.076923076923077%;
+}
+
+.three-fourths {
+	width: 74.35897435897436%;
+}
+
+.one-sixth {
+	width: 14.52991452991453%;
+}
+
+.five-sixths {
+	width: 82.90598290598291%;
+}
+
+.first {
+	clear: both;
+	margin-left: 0;
+}
+
+
+/*
 Page Elements
 --------------------------------------------------------- */
 
@@ -727,7 +853,6 @@ Common Classes
 /* WordPress
 --------------------------------------------- */
 
-
 .align_center {
 	text-align: center;
 }
@@ -748,14 +873,12 @@ img.align_center {
 
 .float_left {
 	float: left;
-	margin-right: 0.3125em;
-	margin-bottom: 0.1875em;
+	margin: 0 0.75em 0.5em 0;
 }
 
 .float_right {
 	float: right;
-	margin-left: 0.3125em;
-	margin-bottom: 0.1875em;
+	margin: 0 0 0.5em 0.75em;
 }
 
 /* WP Image Aligns */
@@ -771,12 +894,17 @@ img.align_center {
 
 .skin .alignleft {
 	float: left;
-	margin-right: 0.3125em;
+	margin: 0 0.75em 0.5em 0;
 }
 
 .skin .alignright {
 	float: right;
-	margin-left: 0.3125em;
+	margin: 0 0 0.5em 0.75em;
+}
+
+.skin .alignnone {
+	float: none;
+	margin: 0 0 0.5em;
 }
 
 /* Avatars */
@@ -829,10 +957,13 @@ p.attachment {
 }
 
 .wp_thumbnail {
-	display: block;
+	display: inline;
 	float: left;
-	border: outset 1px;
-	margin: 0.25em 0.625em 0 0.25em;
+	margin: 0 0.7em 0.5em 0;
+}
+
+.wp_thumbnail img {
+	display: block;
 }
 
 /* WP Image Captions */
@@ -907,6 +1038,7 @@ Site Header
 /*
 Site Navigation
 ---------------------------------------------------------------------------------------------------- */
+
 #header-menu-icon {
 	display: none;
 }
@@ -1067,30 +1199,14 @@ Content Area
 /* Entries
 --------------------------------------------- */
 
-h1 a,
-h2 a {
-	text-decoration: none;
-}
-
-.entry_header a,
-.widget_title a {
-	color: inherit;
-}
-
 .entry {
     word-wrap: break-word;
     overflow: hidden;
 	width: 100%;
 }
 
-/* Margins and Padding */
-
 .entry,
-.post_list,
-.main_widget,
-.body_widget,
-.widget,
-.inline_box  {
+.post_list {
 	margin-top: 0;
 	margin-bottom: 1.25em;
 	padding: 0 1.25em;
@@ -1101,25 +1217,16 @@ h2 a {
 	margin-bottom: 1.25em;
 }
 
-.archive .entry .entry {
-	padding: 0;
+.entry_header a {
+	color: inherit;
 }
 
-.header_widget p,
-.footer_widget p {
-	padding: 0 1.25em;
-}
-
-.entry_header {
-	margin-top: 0.625em;
-	padding: 0;
+h1.entry-title {
 	margin-bottom: 0;
 }
 
-.entry_header h1 {
-	margin-top: 0;
+.archive .entry .entry {
 	padding: 0;
-    margin-bottom: 0;
 }
 
 .entry_meta {
@@ -1140,15 +1247,23 @@ h3.post_list_date {
 	margin: 0.625em 0 0.3125em;
 }
 
+.entry_content {
+	margin: 0 0 0.625em;
+}
+
+.entry_content p,
+.entry_content pre {
+	margin: 0 0 1.5em;
+}
+
+.entry_content blockquote p {
+	margin: 0 1.25em 1.25em;
+}
+
 .entry_categories p,
 .entry_tags p {
 	margin: 0.1875em 0;
 }
-
-.entry_content {
-	margin-bottom: 0.625em;
-}
-
 
 .entry_navigation {
 	content: "";
@@ -1314,11 +1429,11 @@ Site Footer
 /*
 Sidebars
 ---------------------------------------------------------------------------------------------------- */
+
 #sidebar li,
 #sidebar2 li {
 	word-wrap: break-word;
 }
-
 
 /* dropdowns in sidebars */
 
@@ -1329,12 +1444,8 @@ Sidebars
 
 
 /*
-Widgets
+Widget Controls
 ---------------------------------------------------------------------------------------------------- */
-
-.widget select {
-	max-width: 100%;
-}
 
 /* WP Search Widget */
 
@@ -1563,6 +1674,84 @@ p.newsletter_fields {
 .ad_event {
 	max-width: 100%;
 }
+
+/* Theme Fonts
+---------------------------------------------------------------------------------------------------- */
+
+.arial {
+	font-family: Arial, "Liberation Sans", "Nimbus Sans L", "DejaVu Sans", Sans-Serif;
+}
+
+.tahoma {
+	font-family: Tahoma, "Nimbus Sans L", "DejaVu Sans", Sans-Serif;
+}
+
+.trebuchet {
+	font-family: "Trebuchet MS", "Nimbus Sans L", "DejaVu Sans", Sans-Serif;
+}
+
+.verdana {
+	font-family: Verdana, "Nimbus Sans L", "DejaVu Sans", Sans-Serif;
+}
+
+.antica,
+.bookman,
+.garamond {
+	font-family: Palatino, "Book Antica", "Palatino Linotype", "URW Palladio L", Palladio, Georgia, "DejaVu Serif", Serif;
+}
+
+.georgia {
+	font-family: Georgia, "New Century Schoolbook", "Century Schoolbook L", "DejaVu Serif", Serif;
+}
+
+.times {
+	font-family: "Times New Roman", Times, "Liberation Serif", "DejaVu Serif Condensed", Serif;
+}
+
+.courier {
+	font-family: "Courier New", "Liberation Mono", "Nimbus Mono L", Monospace;
+}
+
+.helvetica {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+.lucida {
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+}
+
+.lato {
+	font-family: 'Lato', sans-serif;
+}
+
+.lora {
+	font-family: 'Lora', serif;
+}
+
+.merriweather {
+	font-family: 'Merriweather', serif;
+}
+
+.open_sans {
+	font-family: 'Open Sans', sans-serif;
+}
+
+.pt_sans {
+	font-family: 'PT Sans', sans-serif;
+}
+
+.roboto {
+	font-family: 'Roboto', sans-serif;
+}
+
+.source_sans_pro {
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+.ubuntu {
+	font-family: 'Ubuntu', sans-serif;
+}
+
 
 /**
  * Print
