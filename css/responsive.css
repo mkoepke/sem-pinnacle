@@ -82,6 +82,10 @@ Media Queries
 	    width: 100%;
 	}
 
+	a[href^="tel:"] {
+		text-decoration: underline !important;
+	}
+
 	.sem_breadcrumbs,
 	#navbar #searchform {
 		display: none;
