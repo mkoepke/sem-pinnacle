@@ -2,7 +2,7 @@
 Theme Name: Semiologic Pinnacle
 Theme URI: http://www.semiologic.com/software/sem-pinnacle/
 Description: The latest Semiologic Theme building on the widget and panel-centric approach of Semiologic Reloaded.   The Pinnacle theme is HTML5, CSS3, and responsive meant to look the same across all devices.
-Version: 2.1.1 dev
+Version: 2.2.0
 Author: Mike Koepke
 Author URI: http://www.semiologic.com
 Text Domain: sem-pinnacle
@@ -791,6 +791,8 @@ li.search_result {
 }
 
 #navbar {
+	width: 100%;
+	float: left;
 	line-height: 2.0;
 	position: relative;
 	z-index: 500;

@@ -26,7 +26,12 @@ include sem_path . '/header.php';
 					the_post();
 					
 					$class = get_post_class();
-					
+
+					// remove hentry so prevent snippets validation error
+					if ( is_page() ) {
+				        $class = array_diff( $class, array( 'hentry' ) );
+				    }
+
 					echo '<article class="entry' . ( $class ? ( ' ' . implode(' ', $class) ) : '' ) . '">' . "\n";
 					
 					sem_panels::display('the_entry');

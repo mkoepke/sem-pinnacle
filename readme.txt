@@ -6,7 +6,7 @@ Requires at least: 3.9
 Tested up to: 4.1
 Stable tag: trunk
 
-The Semiologic Pinnacle theme for Wordpress
+The Semiologic Pinnacle Theme for WordPress
 
 
 == Description ==
@@ -29,6 +29,14 @@ If you previously had been using the Semiologic Reloaded theme, that widget conf
 
 == Change Log ==
 
+= 2.2.0 =
+
+- Navbar can now be set in Header Widgets Panel
+- Microformat entry date/time and author not added for hentry if not a post.
+- Comment reply cancel link was creating invalid link within a link
+- Navbar class floated to fix firefox problem
+- Boxed skin was showing menu separator in mobile menu
+
 = 2.1.0 =
 
 - Support child theme development
@@ -47,7 +55,6 @@ If you previously had been using the Semiologic Reloaded theme, that widget conf
 	- Default styling for table, tr, td not set
 - Language file template (pot) moved to correct directory
 - Officially release 2 included skins
-
 
 = 2.0.1 =
 

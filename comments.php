@@ -224,11 +224,9 @@ function semiologic_comment_form_args( array $defaults ) {
 	$aria_req  = ( $req ? ' aria-required="true"' : '' );
 
 
-	$cancel_reply = '<p class="cancel_comment_reply">'
-		. '<a id="cancel-comment-reply-link" href="#respond" style="display:none;">'
+	$cancel_reply = '<span class="cancel_comment_reply">'
 		. __('Click here to cancel reply.', 'sem-pinnacle')
-		. '</a>'
-		. '</p>';
+		. '</span>';
 
 	$login_url = '<span class="login">'
 		. apply_filters('loginout',

@@ -291,6 +291,8 @@ class sem_panels {
 			global $did_top_widgets;
 			global $did_middle_widgets;
 			global $did_bottom_widgets;
+			global $closed_header_top_widgets;
+			global $closed_header_middle_widgets;
 			
 			echo '<header id="header_wrapper" class="wrapper">' . "\n";
 			
@@ -299,17 +301,21 @@ class sem_panels {
 			$did_top_widgets = false;
 			$did_middle_widgets = false;
 			$did_bottom_widgets = false;
+			$closed_header_top_widgets = false;
+			$closed_header_middle_widgets = false;
 			
 			dynamic_sidebar($panel_id);
 			
-			if ( !$did_header && !$did_navbar && $did_top_widgets ) {
+			if ( !$did_header && !$did_navbar && $did_top_widgets && !$closed_header_top_widgets ) {
 				echo '</div></div>' . "\n";
+				$closed_header_top_widgets = true;
+			} elseif ( !( $did_header && $did_navbar ) && $did_middle_widgets  && !$closed_header_middle_widgets) {
+				echo '</div></div>' . "\n";
+				$closed_header_middle_widgets = true;
 			} elseif ( $did_header && $did_navbar && $did_bottom_widgets ) {
 				echo '</div></div>' . "\n";
-			} elseif ( !( $did_header && $did_navbar ) && $did_middle_widgets ) {
-				echo '</div></div>' . "\n";
 			}
-			
+
 			echo '</header>' . "\n";
 			
 			break;
@@ -320,20 +326,20 @@ class sem_panels {
 			global $did_footer;
 			global $did_top_widgets;
 			global $did_bottom_widgets;
-			global $closed_top_widgets;
+			global $closed_footer_top_widgets;
 			
 			echo '<footer id="footer_wrapper" class="wrapper">' . "\n";
 			
 			$did_top_widgets = false;
 			$did_footer = false;
 			$did_bottom_widgets = false;
-			$closed_top_widgets = false;
+			$closed_footer_top_widgets = false;
 			
 			dynamic_sidebar($panel_id);
 			
-			if ( $did_top_widgets && !$closed_top_widgets ) {
+			if ( $did_top_widgets && !$closed_footer_top_widgets ) {
 				echo '</div></div>' . "\n";
-				$closed_top_widgets = true;
+				$closed_footer_top_widgets = true;
 			} elseif ( $did_bottom_widgets ) {
 				echo '</div></div>' . "\n";
 			}

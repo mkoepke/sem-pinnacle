@@ -415,7 +415,7 @@ class navbar extends sem_nav_menu {
 	 **/
 
 	function widget($args, $instance) {
-		if ( $args['id'] != 'the_header' )
+		if ( $args['id'] != 'the_header' && $args['id'] !='the_header_boxes' )
 			return;
 
 		$instance = wp_parse_args($instance, navbar::defaults());
@@ -648,7 +648,12 @@ class header_boxes extends WP_Widget {
 		if ( $args['id'] != 'the_header' )
 			return;
 
+		global $in_header_boxes_panel;
+		$in_header_boxes_panel = true;
+
 		sem_panels::display('the_header_boxes');
+
+		$in_header_boxes_panel = false;
 	} # widget()
 } # header_boxes
 

@@ -1,7 +1,7 @@
 /*
 Skin name: Boxed
 Skin uri: http://skins.semiologic.com/boxed/
-Version: 2.0
+Version: 2.0.1
 Author: Mike Koepke
 Author uri: http://www.semiologic.com
 Type: Standard
@@ -564,5 +564,15 @@ html {
 	#wrapper {
 		width: 98%;
 	}
+
+	#navbar li.nav_sep,
+	#header_nav .sub-menu li a {
+		border-left: 0;
+	}
+
+	#navbar li.nav_sep:last-child {
+		border-right: 0;
+	}
+
 }
 

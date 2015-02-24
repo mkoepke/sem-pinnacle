@@ -49,54 +49,90 @@ class entry_header extends WP_Widget {
 				. '</a>';
 		}
 
-		$show_comment_count = true;
-		if ( !is_single() && !is_home() ) {
-			$show_author_byline = false;
-			$show_post_date = false;
-			$show_comment_count = false;
+
+		echo '<header class="entry_header">' . "\n";
+
+		if ( $title ) {
+			echo '<h1 class="entry-title">'
+				. $title
+				. '</h1>' . "\n";
 		}
 
-        $author = get_the_author();
-        $author_url = get_author_posts_url( get_the_author_meta( 'ID' ) );
+		$this->entry_meta( $show_author_byline, $author_byline, $show_post_date, empty( $title ) );
 
-        $byline = '<span class="entry_author byline vcard ' . (!$show_author_byline ? 'hidden' : '') . '">'
-			. $author_byline . ' '
-			. '<a class="url fn" href="' . esc_url($author_url) . '" rel="author">'
-			. $author
-			. '</a>'
-			. '</span>' . "\n";
+		echo '</header>' . "\n";
 
+	} # widget()
 
-		$date = the_date('', '', '', false);
-		$entry_date = '<time class="entry_date updated ' . (!$show_post_date ? 'hidden' : '') . '" datetime="'
-			. esc_attr( get_the_date( 'c' ) ) . '">'
-			. '<span>'
-			. $date
-			. '</span>'
-	        . '</time> ';
+	/**
+	 * entry_meta()
+	 *
+	 * @param $show_author_byline
+	 * @param $author_byline
+	 * @param $show_post_date
+	 * @param string $show_edit_right
+	 * @internal param $post
+	 * @return void
+	 */
+	function entry_meta( $show_author_byline, $author_byline, $show_post_date, $show_edit_right = 'false' ) {
 
+		global $post;
+		$entry_date = '';
+		$byline = '';
 		$comments_link = '';
 		$edit_link = '';
-		if ( !isset($_GET['action']) || $_GET['action'] != 'print' ) {
-			global $post;
 
-			$num_comments = (int) get_comments_number();
-			if ( $show_comment_count && ( $num_comments || comments_open() ) ) {
+		if ( 'post' == get_post_type() ) {
 
-				$comments_link = apply_filters('the_permalink', get_permalink());
-				$comments_link .= $num_comments ? '#comments' : '#respond';
-
-				$comments_link = '<a href="' . esc_url($comments_link) . '">'
-					. $num_comments . ' ' . ( $num_comments == 1 ? __('Comment', 'sem-pinnacle') : __('Comments', 'sem-pinnacle') )
-					. '</a>';
-
-				$comments_link = apply_filters('entry_comments_link', $comments_link, $post->ID);
-
-				$comments_link = ' &bull; ' . '<span class="entry_comments_link">'
-					. $comments_link
-					. '</span>' . "\n";
+			$show_comment_count = true;
+			if ( !is_single() && !is_home() ) {
+				$show_author_byline = false;
+				$show_post_date = false;
+				$show_comment_count = false;
 			}
 
+	        $author = get_the_author();
+	        $author_url = get_author_posts_url( get_the_author_meta( 'ID' ) );
+
+	        $byline = '<span class="entry_author byline vcard ' . (!$show_author_byline ? 'hidden' : '') . '">'
+				. $author_byline . ' '
+				. '<a class="url fn" href="' . esc_url($author_url) . '" rel="author">'
+				. $author
+				. '</a>'
+				. '</span>' . "\n";
+
+
+			$date = the_date('', '', '', false);
+			$entry_date = '<time class="entry_date updated ' . (!$show_post_date ? 'hidden' : '') . '" datetime="'
+				. esc_attr( get_the_date( 'c' ) ) . '">'
+				. '<span>'
+				. $date
+				. '</span>'
+		        . '</time> ';
+
+			if ( !isset($_GET['action']) || $_GET['action'] != 'print' ) {
+				global $post;
+
+				$num_comments = (int) get_comments_number();
+				if ( $show_comment_count && ( $num_comments || comments_open() ) ) {
+
+					$comments_link = apply_filters('the_permalink', get_permalink());
+					$comments_link .= $num_comments ? '#comments' : '#respond';
+
+					$comments_link = '<a href="' . esc_url($comments_link) . '">'
+						. $num_comments . ' ' . ( $num_comments == 1 ? __('Comment', 'sem-pinnacle') : __('Comments', 'sem-pinnacle') )
+						. '</a>';
+
+					$comments_link = apply_filters('entry_comments_link', $comments_link, $post->ID);
+
+					$comments_link = ' &bull; ' . '<span class="entry_comments_link">'
+						. $comments_link
+						. '</span>' . "\n";
+				}
+			}
+		}
+
+		if ( !isset($_GET['action']) || $_GET['action'] != 'print' ) {
 			$edit_link = get_edit_post_link($post->ID, 'raw');
 			if ( $edit_link ) {
 				$edit_link = '<a class="post-edit-link"'
@@ -107,32 +143,23 @@ class entry_header extends WP_Widget {
 				$edit_link = apply_filters('edit_post_link', $edit_link, $post->ID);
 
 				$edit_link = (!is_page() ? ' &bull; ' : '')
-					. ( !empty( $title ) ? '<span class="edit_entry">' : '<span class="edit_entry float_right">')
+					. ( $show_edit_right ? '<span class="edit_entry float_right">' : '<span class="edit_entry">' )
 					. $edit_link
 					. '</span>' . "\n";
 			}
 		}
 
 
-		echo '<header class="entry_header">' . "\n";
-
-		if ( $title ) {
-			echo '<h1 class="entry-title">'
-				. $title
-				. '</h1>' . "\n";
+		if ( $entry_date || $byline || $comments_link || $edit_link ) {
+			echo '<div class="entry_meta">' . "\n"
+				. $entry_date
+				. $byline
+				. $comments_link
+				. $edit_link
+				. "\n"
+				. '</div>' . "\n";
 		}
-
-		echo '<div class="entry_meta">' . "\n"
-			. $entry_date
-			. $byline
-			. $comments_link
-			. $edit_link
-			. "\n"
-			. '</div>' . "\n";
-
-		echo '</header>' . "\n";
-
-	} # widget()
+	}
 
 	/**
 	 * update()

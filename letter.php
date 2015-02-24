@@ -48,6 +48,11 @@ if ( have_posts() ) :
 
 	$class = get_post_class();
 
+	// remove hentry so prevent snippets validation error
+	if ( is_page() ) {
+        $class = array_diff( $class, array( 'hentry' ) );
+    }
+
 	echo '<article>'
 	    . '<div class="entry' . ( $class ? ( ' ' . implode(' ', $class) ) : '' ) . '">' . "\n";
 
