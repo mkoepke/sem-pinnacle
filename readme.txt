@@ -29,6 +29,10 @@ If you previously had been using the Semiologic Reloaded theme, that widget conf
 
 == Change Log ==
 
+= 2.2.1 =
+
+- Reverse navbar change in 2.2.0
+
 = 2.2.0 =
 
 - Navbar can now be set in Header Widgets Panel
