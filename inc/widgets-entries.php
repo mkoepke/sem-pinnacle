@@ -341,6 +341,8 @@ class entry_content extends WP_Widget {
 				array(
 					'before' => '<div class="entry_nav"> ' . $paginate . ' ',
 					'after' => '</div>' . "\n",
+					'link_before' => '<span class="page_numbers">',
+					'link_after'  => '</span>',
 					'echo' => 0,
 					)
 				);

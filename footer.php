@@ -4,16 +4,18 @@
 # ---------------------
 # You would lose your changes when you upgrade your site. Use php widgets instead.
 #
-
-			
 		# end content
 		echo '</div><!-- main_content -->' . "\n";
 
 		echo '</main><!-- main -->' . "\n";
 
+		global $sem_theme_options;
+
+		if ( !isset( $active_layout ) )
+			$active_layout = apply_filters('active_layout', $sem_theme_options['active_layout']);
+
 		# sidebars
 		switch ( $active_layout ) :
-
 
 		case 'mts' :
 		case 'tsm' :
@@ -185,6 +187,8 @@
 			break;
 
 		endswitch;
+
+	do_action('main_wrapper_end');
 
 	echo '</div><!-- main_wrapper -->' . "\n";
 

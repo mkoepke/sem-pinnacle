@@ -202,7 +202,7 @@ class blog_footer extends WP_Widget {
 	public function __construct() {
 		$widget_name = __('Blog: Footer', 'sem-pinnacle');
 		$widget_ops = array(
-			'classname' => 'blog_footer next_prev_posts',
+			'classname' => 'blog_footer next_prev_posts paging_navigation',
 			'description' => __('The next/previous blog posts links. Must be placed after each entry.', 'sem-pinnacle'),
 			);
 		$control_ops = array(
@@ -227,6 +227,9 @@ class blog_footer extends WP_Widget {
 
 		if ( $args['id'] != 'after_the_entries' || is_singular() || ( !is_date() && $max_num_pages <= 1 ) )
 			return;
+
+		add_filter('next_posts_link_attributes', array( 'blog_footer', 'pagination_link_attributes' ) );
+		add_filter('previous_posts_link_attributes', array( 'blog_footer', 'pagination_link_attributes' ) );
 
 		extract($args, EXTR_SKIP);
 		$instance = wp_parse_args($instance, blog_footer::defaults());
@@ -270,16 +273,16 @@ class blog_footer extends WP_Widget {
 
 			foreach ( $range as $i ) {
 				if ( $i == $paged ) {
-					$pages[] = '<strong>' . $i . '</strong>';
+					$pages[] = '<span class="page_numbers current">' . $i . '</span>';
 				} else {
-					$pages[] = '<a href="' . get_pagenum_link($i) . '">'
+					$pages[] = '<a class="page_numbers" href="' . get_pagenum_link($i) . '">'
 						. $i
 						. '</a>';
 				}
 			}
 
 			if ( end($range) != $max_num_pages )
-				$pages[] = '...';
+				$pages[] = '<span class="page_numbers">...</span>';
 
 			if ( $paged < $max_num_pages ) {
 				$pages[] = get_next_posts_link(trim($next . ' &raquo;'));
@@ -304,6 +307,11 @@ class blog_footer extends WP_Widget {
 			. $after_widget;
 	} # widget()
 
+
+	static function pagination_link_attributes( $attr ) {
+		$attr .= ' class="page_numbers"';
+		return $attr;
+	}
 
 	/**
 	 * date_nav()

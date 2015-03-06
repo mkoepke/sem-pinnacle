@@ -7,7 +7,8 @@
 
 global $sem_theme_options;
 
-$active_layout = apply_filters('active_layout', $sem_theme_options['active_layout']);
+if ( !isset( $active_layout ) )
+	$active_layout = apply_filters('active_layout', $sem_theme_options['active_layout']);
 
 # show header
 include sem_path . '/header.php';

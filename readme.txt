@@ -29,6 +29,13 @@ If you previously had been using the Semiologic Reloaded theme, that widget conf
 
 == Change Log ==
 
+= 2.3.0 =
+
+
+- Add default proportional sizing to entry_content images for handheld and tablets.
+- Add class to page number navigation and style for mobile compliance
+- Created template-starter file
+
 = 2.2.1 =
 
 - Reverse navbar change in 2.2.0

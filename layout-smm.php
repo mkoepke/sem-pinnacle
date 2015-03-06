@@ -1,12 +1,9 @@
 <?php
-#
-#
-# Based on (special.PHP) - Different Layouts
-#
 /*
 Template Name: Sidebar, Wide Content
 */
 
+global $sem_theme_options;
 $sem_theme_options['active_layout'] = 'smm';
 
 function sem_template_active_layout( $layout ) {

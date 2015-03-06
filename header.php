@@ -28,6 +28,11 @@
 	<script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 <?php
+	global $sem_theme_options;
+
+	if ( !isset( $active_layout ) )
+		$active_layout = apply_filters('active_layout', $sem_theme_options['active_layout']);
+
     if ( is_singular() && get_option( 'thread_comments' ) )
   		wp_enqueue_script( 'comment-reply' );
 
@@ -76,6 +81,8 @@ echo '<div id="wrapper_middle" class="wrapper_section">' . "\n";
 	echo '</div><!-- top_body_sidebar -->' . "\n";
 
 	echo '<div id="main_wrapper">' . "\n";
+
+	do_action('main_wrapper_begin');
 
 	switch ( $active_layout) :
 
