@@ -18,7 +18,7 @@ remove_action('wp_footer', array('sem_template', 'display_credits'), 5);
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
-<meta name="viewport" content="width=device-width" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title><?php wp_title( '&#8211;', true, 'right'); ?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
@@ -39,6 +39,10 @@ remove_action('wp_footer', array('sem_template', 'display_credits'), 5);
 header::letter();
 ?>
 <?php
+echo '<main id="main" class="main" role="main" itemprop="mainContentOfPage">' . "\n";
+
+echo '<div class="main_content' . ( is_archive() || is_404() || is_search() ? ' entry' : '' )  . '">' . "\n";
+
 sem_panels::display('before_the_entries');
 
 # show posts
@@ -70,6 +74,10 @@ elseif ( is_404() ) :
 endif;
 
 sem_panels::display('after_the_entries');
+echo '</div><!-- main_content -->' . "\n";
+
+echo '</main><!-- main -->' . "\n";
+
 ?>
 </div>
 <div id="wrapper_bottom" class="wrapper_section"><div class="hidden"></div></div>

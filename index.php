@@ -11,8 +11,13 @@ if ( !isset( $active_layout ) )
 	$active_layout = apply_filters('active_layout', $sem_theme_options['active_layout']);
 
 # show header
-include sem_path . '/header.php';
+get_header();
 
+	# content
+
+	echo '<main id="main" class="main" role="main" itemprop="mainContentOfPage">' . "\n";
+
+	echo '<div class="main_content' . ( is_archive() || is_404() || is_search() ? ' entry' : '' )  . '">' . "\n";
 
 			# the loop
 
@@ -52,5 +57,10 @@ include sem_path . '/header.php';
 
 			sem_panels::display('after_the_entries');
 
+echo '</div><!-- main_content -->' . "\n";
+
+echo '</main><!-- main -->' . "\n";
+
+get_sidebar();
 # show footer
-include sem_path . '/footer.php';
+get_footer();
