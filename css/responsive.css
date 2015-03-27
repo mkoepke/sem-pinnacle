@@ -82,6 +82,25 @@ Media Queries
 	    width: 100%;
 	}
 
+	/* Column Classes - Adapted from Genesis
+	---------------------------------------------------------------------------------------------------- */
+	/* Link: http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css */
+
+	.five-sixths,
+	.four-sixths,
+	.one-fourth,
+	.one-half,
+	.one-sixth,
+	.one-third,
+	.three-fourths,
+	.three-sixths,
+	.two-fourths,
+	.two-sixths,
+	.two-thirds {
+		margin: 0;
+		width: 100%;
+	}
+
 	a[href^="tel:"] {
 		text-decoration: underline !important;
 	}
