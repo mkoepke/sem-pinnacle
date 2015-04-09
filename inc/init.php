@@ -23,6 +23,9 @@ if ( !defined('sem_header_cache_debug') )
 if ( !defined('sem_css_debug') )
 	define('sem_css_debug', false);
 
+if ( !defined('sem_layout_extra_wide') )
+	define('sem_layout_extra_wide', false);
+
 define('sem_last_mod', sem_css_debug ? time() : '20150306');
 
 define('sem_path', dirname(dirname(__FILE__)));

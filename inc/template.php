@@ -206,7 +206,12 @@ class sem_template {
 		if(preg_match('/(?i)msie [1-8]/',$_SERVER['HTTP_USER_AGENT'])) {
 			wp_enqueue_script( 'respond-js', sem_url . '/js/respond.min.js',  null, '1.4.2', false );
 		}
-		wp_enqueue_script( 'sem-helper', sem_url . '/js/sem-helper.js', array('jquery'), '1.0.0', false );
+
+		$sem_helper = 'sem-helper';
+		if (sem_layout_extra_wide)
+			$sem_helper = 'sem-helper-wd';
+
+		wp_enqueue_script( 'sem-helper', sem_url . '/js/' . $sem_helper . '.js', array('jquery'), '1.0.1', false );
 
 		if ( is_admin() ) {
 			if( !isset($_GET['page']) || ( isset($_GET['page']) && strstr($_GET['page'], 'widgetkit' ) === false ) ) {
@@ -260,7 +265,12 @@ class sem_template {
 				wp_enqueue_style('custom-letter', $skin_url . '/letter.css', null, filemtime($skin_path . '/letter.css'));
 		} else {
 			wp_enqueue_style('skin', $skin_url . '/skin.css', null, sem_last_mod);
-			wp_enqueue_style('responsive', sem_url . '/css/responsive.css', null, sem_last_mod);
+
+			$sem_responsive = 'responsive';
+			if (sem_layout_extra_wide)
+				$sem_responsive = 'responsive-wd';
+
+			wp_enqueue_style('responsive', sem_url . '/css/' . $sem_responsive . '.css', null, sem_last_mod);
 			if ( file_exists($skin_path . '/custom.css') )
 				wp_enqueue_style('custom-skin', $skin_url . '/custom.css', null, filemtime($skin_path . '/custom.css'));
 		}

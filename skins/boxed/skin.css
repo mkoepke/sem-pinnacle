@@ -558,12 +558,14 @@ html {
 
 /*****
 * Media Queries   *******/
-
-@media only screen and (max-width: 40.5625em) {   /* 649 */
+@media only screen and (max-width: 50em) {  /* 800px */
 
 	#wrapper {
 		width: 98%;
 	}
+
+}
+@media only screen and (max-width: 40.5625em) {   /* 649 */
 
 	#navbar li.nav_sep,
 	#header_nav .sub-menu li a {

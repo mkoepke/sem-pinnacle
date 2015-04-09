@@ -1,0 +1,254 @@
+/*
+We are using a separate file for this as it needs to follow the skin.css due to cascading of rules.
+If we don't we need to !important all the media query rules which will then break custom.css rules.
+Custom.css follows this file so you can still override its behavior.
+
+
+Media Queries
+---------------------------------------------------------------------------------------------------- */
+
+/* Does the same thing as <meta name="viewport" content="width=device-width">,
+ * but in the future W3C standard way. -ms- prefix is required for IE10+ to
+ * render responsive styling in Windows 8 "snapped" views; IE10+ does not honor
+ * the meta tag. See http://core.trac.wordpress.org/ticket/25888.
+ */
+@-ms-viewport {
+	width: device-width;
+}
+@viewport {
+	width: device-width;
+}
+
+
+@media only screen and (max-width: 74.9375em) {   /* 1199 */
+
+}
+
+
+@media only screen and (min-width: 48em) and (max-width: 59.9375em) {    /* 768px - 959px */
+
+	.mts #sidebar,
+	.mts #sidebar2,
+	.tsm #sidebar,
+	.tsm #sidebar2{
+		width: 100%;
+	}
+
+	.m2s #sidebar2 {
+		float: left;
+	}
+
+	.m2s #main {
+		width: 66.0%;    /* matches mm1s at this point */
+	}
+
+	.m2s #sidebars {
+		width: 33.0%;
+	}
+
+	.sms #sidebar_wrapper {
+		width: 100%;
+	}
+	.sms #sidebar2 {
+		width: 50%;
+	}
+
+	#tagline {
+		text-align: center;
+	}
+}
+
+@media only screen and (max-width: 47.9375em) {     /* 767px */
+
+	.m2s #main,
+	.sms #sidebar_wrapper,
+	.mmm #sidebars,
+	.mm1s #main,
+	.mm1s #sidebar,
+	.m1s #main,
+	.m1s #sidebar,
+	.sms #sidebar,
+	.sms #sidebar2 {
+		width: 100%;
+	}
+
+	.mmm #header_boxes .inline_box:first-child,
+	.mmm #footer_boxes .inline_box:first-child,
+	.mmm #header_boxes .inline_box ~ .inline_box,
+	.mmm #footer_boxes .inline_box ~ .inline_box,
+	.mmm #header_boxes .inline_box:first-child + .inline_box,
+	.mmm #footer_boxes .inline_box:first-child + .inline_box {
+		width: 100%;
+	}
+
+	.flexible-widget-area.per-row-2 .widget,
+	.flexible-widget-area.per-row-3 .widget,
+	.flexible-widget-area.per-row-4 .widget {
+	    width: 100%;
+	}
+
+	/* Column Classes - Adapted from Genesis
+	---------------------------------------------------------------------------------------------------- */
+	/* Link: http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css */
+
+	.five-sixths,
+	.four-sixths,
+	.one-fourth,
+	.one-half,
+	.one-sixth,
+	.one-third,
+	.three-fourths,
+	.three-sixths,
+	.two-fourths,
+	.two-sixths,
+	.two-thirds {
+		margin: 0;
+		width: 100%;
+	}
+
+	a[href^="tel:"] {
+		text-decoration: underline !important;
+	}
+
+	.sem_breadcrumbs,
+	#navbar #searchform {
+		display: none;
+	}
+/*
+	#header_boxes,
+	#footer_boxes {
+		display: none;
+		width: 100%;
+	}
+
+	#footer_nav {
+		display: none;
+	}
+*/
+    #sitename {
+	    font-size: 1.875em;
+	    line-height: 2.25;
+    }
+
+      /* Primary Navigation Menu Icon properties */
+
+	#header-menu-icon {
+		cursor: pointer;
+		padding: 1em 1em;
+		text-align: center;
+		display: table;
+		width: 100%;
+		font-size: 1.2em;
+	}
+
+	#header-menu-icon span {
+		padding-left: 5px;
+	}
+
+	#header-menu-icon:hover::before {
+		opacity: 0.7;
+	}
+
+
+	/* Hide Header Navigation Menu until it's toggled via script */
+
+	#navbar {
+		line-height: 0.3125;
+	}
+
+	#header_nav {
+		display: none;
+		width: 100%;
+	}
+
+	#header_nav a {
+		line-height: 2.5;
+		width: 100%;
+	}
+
+	#header_nav ul,
+	#header_nav li {
+		float:none;
+		width: 100%;
+	}
+
+	#header_nav li.justified,
+	#header_nav ul.justified {
+		display: block;
+		text-align: left;
+	}
+
+
+	#header_nav li.nav_sep a,
+	#footer_nav li.nav_sep a {
+		border: none;
+	}
+
+	#header_nav li ul.open,
+	#header_nav li ul.open ul.open {
+        position: static;
+		display: block;
+		left: 0;
+		clip: inherit;
+		overflow: inherit;
+		height: inherit;
+		width: inherit;
+    }
+
+
+	#header_nav li,
+	#navbar li:first-child,
+	#navbar li:first-child a,
+	#navbar li:last-child,
+	#navbar li:last-child a {
+		-moz-border-radius: 0;
+		-khtml-border-radius: 0;
+		-webkit-border-radius: 0;
+		border-radius: 0;
+		margin: 0;
+	}
+
+
+	#header_nav li .sub-menu {
+		top: 100%;
+		display: none;
+	}
+
+	#header_nav li.nav_branch > a:after,
+	#header_nav .sub-menu li.nav_branch > a:after {
+		content: '+';
+		font-size: 1em;
+		padding-left: 0.625em;
+		vertical-align: bottom;
+		float: right;
+	}
+
+
+	#header_nav li.nav_branch  > a.open:after {
+		content: "-";
+	}
+
+	#header_nav .sub-menu a::before {
+		content: "-  ";
+		font-size: 0.875em;
+	}
+
+	#header_nav .sub-menu a {
+		text-indent: 1em;
+		white-space: normal !important;
+	}
+
+	#header_nav .sub-menu .sub-menu a {
+		text-indent: 2em;
+	}
+}
+
+/* Mobile devices */
+@media only screen and (max-width: 22.4375em) {    /* 359px */
+
+	.m2s #sidebar,
+	.m2s #sidebar2 {
+		width: 100%;
+	}
+}
+
