@@ -13,53 +13,44 @@ if ( !isset( $active_layout ) )
 # show header
 get_header();
 
-	# content
+	# the loop
 
-	echo '<main id="main" class="main" role="main" itemprop="mainContentOfPage">' . "\n";
+	sem_panels::display('before_the_entries');
 
-	echo '<div class="main_content' . ( is_archive() || is_404() || is_search() ? ' entry' : '' )  . '">' . "\n";
+	if ( have_posts() ) :
 
-			# the loop
+		# loop through entries
 
-			sem_panels::display('before_the_entries');
+		while ( have_posts() ) :
 
-			if ( have_posts() ) :
+			the_post();
 
-				# loop through entries
+			$class = get_post_class();
 
-				while ( have_posts() ) :
+			// remove hentry so prevent snippets validation error
+			if ( is_page() ) {
+		        $class = array_diff( $class, array( 'hentry' ) );
+		    }
 
-					the_post();
-					
-					$class = get_post_class();
+			echo '<article class="entry' . ( $class ? ( ' ' . implode(' ', $class) ) : '' ) . '">' . "\n";
 
-					// remove hentry so prevent snippets validation error
-					if ( is_page() ) {
-				        $class = array_diff( $class, array( 'hentry' ) );
-				    }
+			sem_panels::display('the_entry');
 
-					echo '<article class="entry' . ( $class ? ( ' ' . implode(' ', $class) ) : '' ) . '">' . "\n";
-					
-					sem_panels::display('the_entry');
-					
-					echo '<div class="spacer"></div>' . "\n"
-                        . '</article>'  . "\n";
+			echo '<div class="spacer"></div>' . "\n"
+                . '</article>'  . "\n";
 
-				endwhile; # have_posts()
+		endwhile; # have_posts()
 
-			else :
+	else :
 
-				# fallback
+		# fallback
 
-				sem_panels::display('the_404');
+		sem_panels::display('the_404');
 
-			endif; # have_posts()
+	endif; # have_posts()
 
-			sem_panels::display('after_the_entries');
+	sem_panels::display('after_the_entries');
 
-echo '</div><!-- main_content -->' . "\n";
-
-echo '</main><!-- main -->' . "\n";
 
 get_sidebar();
 # show footer

@@ -56,6 +56,22 @@ Media Queries
 	#tagline {
 		text-align: center;
 	}
+
+	.hidden-desktop {
+		display: inherit !important;
+	}
+
+	.visible-desktop {
+		display: none !important;
+	}
+
+	.visible-tablet {
+		display: inherit !important;
+	}
+
+	.hidden-tablet {
+		display: none !important;
+	}
 }
 
 @media only screen and (max-width: 47.9375em) {     /* 767px */
@@ -104,6 +120,26 @@ Media Queries
 	.two-thirds {
 		margin: 0;
 		width: 100%;
+	}
+
+	/* Visibility Classes - Adapted from Rockettheme/Bootstrap
+	---------------------------------------------------------------------------------------------------- */
+	/* Link: http://www.rockettheme.com/docs/joomla/basic/responsive_support_classes.md */
+
+	.hidden-desktop {
+		display: inherit !important;
+	}
+
+	.visible-desktop {
+		display: none !important;
+	}
+
+	.visible-phone {
+		display: inherit !important;
+	}
+
+	.hidden-phone {
+		display: none !important;
 	}
 
 	a[href^="tel:"] {
@@ -250,5 +286,10 @@ Media Queries
 	.m2s #sidebar2 {
 		width: 100%;
 	}
+
+	.hidden-small-mobile {
+		display: none !important;
+	}
+
 }
 
