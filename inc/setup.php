@@ -36,6 +36,7 @@ add_option('sem_api_key', '');
 
 # load depends
 include sem_path . '/inc/utils.php';
+include sem_path . '/inc/structure-markup.php';
 include sem_path . '/inc/panels.php';
 include sem_path . '/inc/widgets.php';
 if ( !class_exists('sem_template') )
@@ -58,8 +59,15 @@ if ( is_admin() ) {
 		include_once sem_path . '/inc/header.php';
 	}
 
+	if ( !function_exists('load_multipart_entry') ) :
+	function load_multipart_entry() {
+		include_once sem_path . '/inc/multipart-entry/multipart-entry.php';
+	} # load_multipart_entry()
+	endif;
+
 	foreach ( array('post.php', 'post-new.php', 'page.php', 'page-new.php') as $hook ) {
 		add_action("load-$hook", 'sem_header_admin');
+		add_action("load-$hook", 'load_multipart_entry');
 	}
 
 	function sem_update() {
@@ -109,7 +117,7 @@ function sempinnacle_postsetup() {
 
 	add_theme_support( 'custom-background', array ('wp-head-callback' => array('sem_template', 'custom_background_cb')) );
 
-	add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );
+	add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'widgets' ) );
 }
 
 add_action( 'after_setup_theme', 'sempinnacle_postsetup' );

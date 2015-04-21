@@ -1034,8 +1034,9 @@ Site Header
 
 #header_img img {
 	display: block;
-
+	margin: 0 auto;
 }
+
 /*
 Site Navigation
 ---------------------------------------------------------------------------------------------------- */

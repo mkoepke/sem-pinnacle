@@ -14,11 +14,11 @@ you customize the theme's CSS without losing your changes when you upgrade.
 	padding-left: 0;
 	padding-right: 0.875em;
 }
-
+/*
 ul {
 	list-style-image: url(../icons/bullet.gif);
 }
-
+*/
 .entry_content ul,
 .search_result ul {
 	list-style: square;

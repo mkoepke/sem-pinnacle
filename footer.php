@@ -26,7 +26,11 @@
 	echo '</div><!-- body_wrapper -->' . "\n";
 	
 	# footer
-	
+	global $sem_theme_options;
+
+	if ( !isset( $active_layout ) )
+		$active_layout = apply_filters('active_layout', $sem_theme_options['active_layout']);
+
 	if ( $active_layout != 'letter') :
 		
 		sem_panels::display('the_footer');
