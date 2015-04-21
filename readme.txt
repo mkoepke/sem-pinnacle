@@ -3,7 +3,7 @@ Contributors: Denis-de-Bernardy, Mike_Koepke
 Donate link: http://www.semiologic.com/partners/
 Tags: semiologic, wordpress theme
 Requires at least: 3.9
-Tested up to: 4.1
+Tested up to: 4.2
 Stable tag: trunk
 
 The Semiologic Pinnacle Theme for WordPress
@@ -35,6 +35,12 @@ If you previously had been using the Semiologic Reloaded theme, that widget conf
 - Add class to page number navigation and style for mobile compliance
 - Created template-starter file
 - Ensure active_layout if set in the header and footer php files, when used with a template
+- Break index.php into standard get_header, get_footer, get_sidebar calls to support templating better
+- Added visibility classes for desktop, tablet, mobile and extra-wide (> 1200px) devices
+- Fix broken page specific headers functionality
+- Removed bullet.gif list-item image and use standard disc as default
+- Add support for wide themes (> 1200px). Alter media breakpoints for mobile landscape
+- Missed the responsive css rules for the new column classes.
 
 = 2.2.1 =
 

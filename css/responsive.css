@@ -130,11 +130,13 @@ Media Queries
 		display: none !important;
 	}
 
-	.visible-phone {
+	.visible-phone,
+	.visible-mobile {
 		display: inherit !important;
 	}
 
-	.hidden-phone {
+	.hidden-phone,
+	.hidden-mobile {
 		display: none !important;
 	}
 

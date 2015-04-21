@@ -39,10 +39,10 @@ remove_action('wp_footer', array('sem_template', 'display_credits'), 5);
 header::letter();
 ?>
 <?php
-echo '<main id="main" class="main" role="main" itemprop="mainContentOfPage">' . "\n";
+/*echo '<main id="main" class="main" role="main" itemprop="mainContentOfPage">' . "\n";
 
 echo '<div class="main_content' . ( is_archive() || is_404() || is_search() ? ' entry' : '' )  . '">' . "\n";
-
+*/
 sem_panels::display('before_the_entries');
 
 # show posts
@@ -74,10 +74,10 @@ elseif ( is_404() ) :
 endif;
 
 sem_panels::display('after_the_entries');
-echo '</div><!-- main_content -->' . "\n";
+/*echo '</div><!-- main_content -->' . "\n";
 
 echo '</main><!-- main -->' . "\n";
-
+*/
 ?>
 </div>
 <div id="wrapper_bottom" class="wrapper_section"><div class="hidden"></div></div>

@@ -13,45 +13,45 @@ if ( !isset( $active_layout ) )
 # show header
 get_header();
 
-	# the loop
 
-	sem_panels::display('before_the_entries');
+			# the loop
 
-	if ( have_posts() ) :
+			sem_panels::display('before_the_entries');
 
-		# loop through entries
+			if ( have_posts() ) :
 
-		while ( have_posts() ) :
+				# loop through entries
 
-			the_post();
+				while ( have_posts() ) :
 
-			$class = get_post_class();
+					the_post();
 
-			// remove hentry so prevent snippets validation error
-			if ( is_page() ) {
-		        $class = array_diff( $class, array( 'hentry' ) );
-		    }
+					$class = get_post_class();
 
-			echo '<article class="entry' . ( $class ? ( ' ' . implode(' ', $class) ) : '' ) . '">' . "\n";
+					// remove hentry so prevent snippets validation error
+					if ( is_page() ) {
+				        $class = array_diff( $class, array( 'hentry' ) );
+				    }
 
-			sem_panels::display('the_entry');
+					echo '<article class="entry' . ( $class ? ( ' ' . implode(' ', $class) ) : '' ) . '">' . "\n";
 
-			echo '<div class="spacer"></div>' . "\n"
-                . '</article>'  . "\n";
+					sem_panels::display('the_entry');
 
-		endwhile; # have_posts()
+					echo '<div class="spacer"></div>' . "\n"
+                        . '</article>'  . "\n";
 
-	else :
+				endwhile; # have_posts()
 
-		# fallback
+			else :
 
-		sem_panels::display('the_404');
+				# fallback
 
-	endif; # have_posts()
+				sem_panels::display('the_404');
 
-	sem_panels::display('after_the_entries');
+			endif; # have_posts()
+
+			sem_panels::display('after_the_entries');
 
 
-get_sidebar();
 # show footer
 get_footer();
