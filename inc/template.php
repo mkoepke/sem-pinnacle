@@ -315,7 +315,7 @@ EOS;
 	function fonts() {
 		global $sem_theme_options;
 
-		echo '<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">' . "\n";
+		echo '<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">' . "\n";
 
 		sem_template::load_font( $sem_theme_options['active_font']);
 
@@ -750,6 +750,9 @@ EOS;
 		global $did_top_widgets;
 		global $did_middle_widgets;
 		global $did_bottom_widgets;
+		global $closed_header_top_widgets;
+		global $closed_header_middle_widgets;
+		global $in_header_boxes_panel;
 
 		global $wp_registered_widgets;
 		$widget_id = $params[0]['widget_id'];
@@ -760,6 +763,27 @@ EOS;
 					if ( !$did_top_widgets ) {
 						echo '<div id="header_top_wrapper" class="header_section"><div id="header_top">' . "\n";
 						$did_top_widgets = true;
+					}
+				}
+				else {
+					if ( !is_a($wp_registered_widgets[$widget_id]['callback'][0], 'header') &&
+					!is_a($wp_registered_widgets[$widget_id]['callback'][0], 'navbar') &&
+					$did_top_widgets ) {
+						if ( !$did_middle_widgets ) {
+							if (!$closed_header_top_widgets) {
+								echo '</div></div>' . "\n";
+								$closed_header_top_widgets = true;
+							}
+
+							if ( $did_header && $did_navbar ) {
+								echo '<div id="header_bottom_wrapper" class="header_section"><div id="header_bottom">' . "\n";
+								$did_bottom_widgets = true;
+							}
+							else {
+								echo '<div id="header_middle_wrapper" class="header_section"><div id="header_middle">' . "\n";
+							}
+							$did_middle_widgets = true;
+						}
 					}
 				}
 				$instance = $wp_registered_widgets[$widget_id]['callback'][0]->get_settings();
@@ -777,27 +801,15 @@ EOS;
 			$type = $wp_registered_widgets[$widget_id]['callback'];
 		}
 
-		global $closed_header_top_widgets;
-		global $closed_header_middle_widgets;
-		global $in_header_boxes_panel;
-
 		if ( !$in_header_boxes_panel ) {
 
 			switch ( $type ) {
 			case 'header':
-				if ( $did_navbar && !$closed_header_top_widgets ) {
-					if ( $did_middle_widgets ) {
-						echo '</div></div>' . "\n";
-						$closed_header_middle_widgets = true;
-					}
-					else {
-						if ( !$closed_header_top_widgets ) {
-							echo '</div></div>' . "\n";
-							$closed_header_top_widgets = true;
-						}
-					}
+				if ( $did_middle_widgets && !$closed_header_middle_widgets ) {
+					echo '</div></div>' . "\n";
+					$closed_header_middle_widgets = true;
 				} else {
-					if ( $did_top_widgets && !$closed_header_top_widgets ) {
+					if ($did_top_widgets && !$closed_header_top_widgets) {
 						echo '</div></div>' . "\n";
 						$closed_header_top_widgets = true;
 					}
@@ -805,13 +817,11 @@ EOS;
 				break;
 
 			case 'navbar':
-				if ( $did_header ) {
-					if ( $did_middle_widgets ) {
-						echo '</div></div>' . "\n";
-						$closed_header_middle_widgets = true;
-					}
+				if ( $did_middle_widgets && !$closed_header_middle_widgets ) {
+					echo '</div></div>' . "\n";
+					$closed_header_middle_widgets = true;
 				} else {
-					if ( $did_top_widgets ) {
+					if ($did_top_widgets && !$closed_header_top_widgets) {
 						echo '</div></div>' . "\n";
 						$closed_header_top_widgets = true;
 					}

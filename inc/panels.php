@@ -101,28 +101,28 @@ class sem_panels {
 			switch ( $panel_id ) {
 			case 'the_header':
 				$before_widget = "\n\t"
-					. '<div class="%1$s %2$s header_widget">' . "\n\t";
+					. '<div id="%1$s" class="%2$s header_widget">' . "\n\t";
 				$after_widget = "\n\t"
 					. '</div><!-- header_widget -->' . "\n\n";
 				break;
 
 			case 'the_footer':
 				$before_widget = "\n\t"
-					. '<div class="%1$s %2$s footer_widget">' . "\n\t";
+					. '<div id="%1$s" class="%2$s footer_widget">' . "\n\t";
 				$after_widget = "\n\t"
 					. '</div><!-- footer_widget -->' . "\n\n";
 				break;
 
 			case 'the_header_boxes':
 			case 'the_footer_boxes':
-				$before_widget = '<aside class="inline_box %1$s %2$s">' . "\n";
+				$before_widget = '<aside id="%1$s" class="inline_box %2$s">' . "\n";
 				$after_widget = '</aside><!-- inline_box -->' . "\n";
 				break;
 
 			case 'before_the_entries':
 			case 'after_the_entries':
 			case 'the_404':
-				$before_widget = '<div class="%1$s %2$s main_widget">' . "\n";
+				$before_widget = '<div id="%1$s" class="%2$s main_widget">' . "\n";
 				$after_widget = '</div><!-- main_widget -->' . "\n";
 				break;
 
@@ -133,13 +133,13 @@ class sem_panels {
 
 			case 'top_body_sidebar':
 			case 'bottom_body_sidebar':
-				$before_widget = '<aside class="widget %1$s %2$s body_widget">' . "\n";
+				$before_widget = '<aside id="%1$s" class="widget %2$s body_widget">' . "\n";
 				$after_widget = '</aside><!-- body_widget -->' . "\n";
 				break;
 
 			default:
 				$before_widget = '<div class="spacer"></div>' . "\n"
-					. '<div class="widget %1$s %2$s">' . "\n";
+					. '<div id="%1$s" class="widget %2$s">' . "\n";
 				$after_widget = '</div>' . "\n";
 				break;
 			}
@@ -293,6 +293,7 @@ class sem_panels {
 			global $did_bottom_widgets;
 			global $closed_header_top_widgets;
 			global $closed_header_middle_widgets;
+			global $in_header_boxes_panel;
 			
 			echo '<header id="header_wrapper" class="wrapper">' . "\n";
 			
@@ -303,6 +304,7 @@ class sem_panels {
 			$did_bottom_widgets = false;
 			$closed_header_top_widgets = false;
 			$closed_header_middle_widgets = false;
+			$in_header_boxes_panel = false;
 			
 			dynamic_sidebar($panel_id);
 			
@@ -327,6 +329,7 @@ class sem_panels {
 			global $did_top_widgets;
 			global $did_bottom_widgets;
 			global $closed_footer_top_widgets;
+			global $in_footer_boxes_panel;
 			
 			echo '<footer id="footer_wrapper" class="wrapper">' . "\n";
 			
@@ -334,6 +337,7 @@ class sem_panels {
 			$did_footer = false;
 			$did_bottom_widgets = false;
 			$closed_footer_top_widgets = false;
+			$in_footer_boxes_panel = false;
 			
 			dynamic_sidebar($panel_id);
 			

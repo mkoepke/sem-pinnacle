@@ -82,10 +82,10 @@ class entry_header extends WP_Widget {
 		$comments_link = '';
 		$edit_link = '';
 
-		if ( 'post' == get_post_type() ) {
+		if ( 'post' == get_post_type() || is_date() ) {
 
 			$show_comment_count = true;
-			if ( !is_single() && !is_home() ) {
+			if ( !is_single() && !is_home() && !is_date() ) {
 				$show_author_byline = false;
 				$show_post_date = false;
 				$show_comment_count = false;

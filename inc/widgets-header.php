@@ -89,8 +89,7 @@ class header extends WP_Widget {
 		echo '</div><!-- header -->' . "\n";
 
 		global $did_header;
-		global $did_navbar;
-		$did_header = intval($did_navbar) + 1;
+		$did_header = true;
 	} # widget()
 
 
@@ -480,9 +479,8 @@ class navbar extends sem_nav_menu {
 
 		echo '</nav><!-- navbar -->' . "\n";
 
-		global $did_header;
 		global $did_navbar;
-		$did_navbar = intval($did_header) + 1;
+		$did_navbar = true;
 	} # widget()
 
 

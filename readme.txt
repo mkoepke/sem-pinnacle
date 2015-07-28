@@ -16,7 +16,7 @@ The latest Semiologic Theme building on the widget and panel-centric approach of
 
 = Help Me! =
 
-The [Semiologic forum](http://forum.semiologic.com) is the best place to report issues.
+The [Semiologic Support Contact Form](https://www.semiologic.com/support/) is the best place to report issues.
 
 
 == Installation ==
@@ -28,6 +28,15 @@ If you previously had been using the Semiologic Reloaded theme, that widget conf
 
 
 == Change Log ==
+
+= 2.3.1 =
+
+- Dropdown menu of the rightmost top menu item now flows leftward and not off the device
+- Fix issue with 3rd party widgets that use CSS id as part of their css rules when widget is used in non-sidebar panels
+- Fix issue in header area divs where first widget may not be enclosed properly in header_top_wrapper
+- Removed extra padding in top level menu of boxed blue skin causing menu to expand too much vertical when justified
+- FontAwesome 4.3
+- Normalize.css 3.0.3
 
 = 2.3.0 =
 
