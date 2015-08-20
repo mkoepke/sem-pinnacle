@@ -35,8 +35,10 @@ class sem_nav_menu extends WP_Widget {
 	 * Constructor.
 	 *
 	 */
-	public function __construct() {
+	public function __construct( $id_base, $name, $widget_options = array(), $control_options = array() ) {
 		add_action( 'init', array ( $this, 'init' ) );
+
+		parent::__construct( $id_base, $name, $widget_options, $control_options );
     }
 
 

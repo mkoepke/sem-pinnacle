@@ -1,6 +1,5 @@
 === Semiologic Pinnacle theme ===
 Contributors: Denis-de-Bernardy, Mike_Koepke
-Donate link: http://www.semiologic.com/partners/
 Tags: semiologic, wordpress theme
 Requires at least: 3.9
 Tested up to: 4.2
@@ -16,7 +15,7 @@ The latest Semiologic Theme building on the widget and panel-centric approach of
 
 = Help Me! =
 
-The [Semiologic Support Contact Form](https://www.semiologic.com/support/) is the best place to report issues.
+The [Semiologic Support Page](https://www.semiologic.com/support/) is the best place to report issues.
 
 
 == Installation ==
@@ -28,6 +27,13 @@ If you previously had been using the Semiologic Reloaded theme, that widget conf
 
 
 == Change Log ==
+
+= 2.4.0 =
+
+- FontAwesome 4.4.0
+- Right justify menu items for the dropdown menu of the rightmost top menu item
+- Convert all subclass items to only use PHP5 constructor conventions.  PHP4 calls to WP_Widget deprecated WP 4.3
+- WP 4.3 compat
 
 = 2.3.1 =
 

@@ -23,13 +23,11 @@ class footer extends sem_nav_menu {
 			'width' => 330,
 			);
 
-		$this->WP_Widget('footer', $widget_name, $widget_ops, $control_ops);
-
 		$this->ul_menu_class = "footer_menu";
 
 		$this->use_menu_exclusion = false;
 
-		parent::__construct();
+		parent::__construct('footer', $widget_name, $widget_ops, $control_ops);
 	} # footer()
 
 
@@ -232,7 +230,7 @@ class footer_boxes extends WP_Widget {
 			'description' => __('Lets you decide where the Footer Boxes Bar panel goes. Must be placed in the footer area.', 'sem-pinnacle'),
 			);
 
-		$this->WP_Widget('footer_boxes', $widget_name, $widget_ops);
+		parent::__construct('footer_boxes', $widget_name, $widget_ops);
 	} # footer_boxes()
 
 

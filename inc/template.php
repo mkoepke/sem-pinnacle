@@ -315,7 +315,7 @@ EOS;
 	function fonts() {
 		global $sem_theme_options;
 
-		echo '<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">' . "\n";
+		echo '<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">' . "\n";
 
 		sem_template::load_font( $sem_theme_options['active_font']);
 

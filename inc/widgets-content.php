@@ -20,7 +20,7 @@ class blog_header extends WP_Widget {
 			'width' => 330,
 			);
 
-		$this->WP_Widget('blog_header', $widget_name, $widget_ops, $control_ops);
+		parent::__construct('blog_header', $widget_name, $widget_ops, $control_ops);
 	} # blog_header()
 
 
@@ -209,7 +209,7 @@ class blog_footer extends WP_Widget {
 			'width' => 330,
 			);
 
-		$this->WP_Widget('blog_footer', $widget_name, $widget_ops, $control_ops);
+		parent::__construct('blog_footer', $widget_name, $widget_ops, $control_ops);
 	} # blog_footer()
 
 
@@ -511,7 +511,7 @@ class sem_breadcrumbs extends WP_Widget {
 			'width' => 330,
 			);
 
-		$this->WP_Widget('sem_breadcrumbs', $widget_name, $widget_ops, $control_ops);
+		parent::__construct('sem_breadcrumbs', $widget_name, $widget_ops, $control_ops);
 	} # blog_footer()
 
 

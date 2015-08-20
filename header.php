@@ -96,8 +96,3 @@ echo '<div id="wrapper_middle" class="wrapper_section">' . "\n";
 
 		endswitch;
 
-	# content
-
-	echo '<main id="main" class="main" role="main" itemprop="mainContentOfPage">' . "\n";
-
-	echo '<div class="main_content' . ( is_archive() || is_404() || is_search() ? ' entry' : '' )  . '">' . "\n";

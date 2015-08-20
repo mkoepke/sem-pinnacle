@@ -6,11 +6,6 @@
 #
 		# end content
 
-echo '</div><!-- main_content -->' . "\n";
-
-echo '</main><!-- main -->' . "\n";
-
-get_sidebar();
 
 	do_action('main_wrapper_end');
 

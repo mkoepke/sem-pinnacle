@@ -20,7 +20,7 @@ class entry_header extends WP_Widget {
 			'width' => 330,
 			);
 
-		$this->WP_Widget('entry_header', $widget_name, $widget_ops, $control_ops);
+		parent::__construct('entry_header', $widget_name, $widget_ops, $control_ops);
 	} # entry_header()
 
 
@@ -265,7 +265,7 @@ class entry_content extends WP_Widget {
 			'width' => 330,
 			);
 
-		$this->WP_Widget('entry_content', $widget_name, $widget_ops, $control_ops);
+		parent::__construct('entry_content', $widget_name, $widget_ops, $control_ops);
 
 		if ( class_exists('fancy_excerpt') )
 			add_filter('the_content_more_link', array($this, 'more_link'), 0);
@@ -530,7 +530,7 @@ class entry_footer extends WP_Widget {
 			'width' => 330,
 			);
 
-		$this->WP_Widget('entry_footer', $widget_name, $widget_ops, $control_ops);
+		parent::__construct('entry_footer', $widget_name, $widget_ops, $control_ops);
 	} # entry_footer()
 
 
@@ -814,7 +814,7 @@ class entry_comments extends WP_Widget {
 			'width' => 330,
 			);
 
-		$this->WP_Widget('entry_comments', $widget_name, $widget_ops, $control_ops);
+		parent::__construct('entry_comments', $widget_name, $widget_ops, $control_ops);
 	} # entry_comments()
 
 
@@ -992,7 +992,7 @@ class entry_navigation extends WP_Widget {
 			'width' => 330,
 			);
 
-		$this->WP_Widget('entry_navigation', $widget_name, $widget_ops, $control_ops);
+		parent::__construct('entry_navigation', $widget_name, $widget_ops, $control_ops);
 	} # entry_comments()
 
 

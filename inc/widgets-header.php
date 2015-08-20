@@ -24,7 +24,7 @@ class header extends WP_Widget {
 			'width' => 330,
 			);
 
-		$this->WP_Widget('header', $widget_name, $widget_ops, $control_ops);
+		parent::__construct('header', $widget_name, $widget_ops, $control_ops);
 	} # header()
 
 
@@ -395,13 +395,11 @@ class navbar extends sem_nav_menu {
 			'width' => 330,
 			);
 
-		$this->WP_Widget('navbar', $widget_name, $widget_ops, $control_ops);
-
 		$this->multi_level = true;
 
 		$this->ul_menu_class = "header_menu";
 
-		parent::__construct();
+		parent::__construct('navbar', $widget_name, $widget_ops, $control_ops);
 	} # navbar()
 
 
@@ -630,7 +628,7 @@ class header_boxes extends WP_Widget {
 			'description' => __('Lets you decide where the Footer Boxes Bar panel goes. Must be placed in the header area.', 'sem-pinnacle'),
 			);
 
-		$this->WP_Widget('header_boxes', $widget_name, $widget_ops);
+		parent::__construct('header_boxes', $widget_name, $widget_ops);
 	} # header_boxes()
 
 
