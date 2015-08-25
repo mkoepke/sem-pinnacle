@@ -1556,6 +1556,11 @@ Widget Controls
 	padding: 0;
 }
 
+.widget.author_image {
+	overflow: hidden;
+}
+
+
 /* WP Calendar */
 
 .widget_calendar caption {
