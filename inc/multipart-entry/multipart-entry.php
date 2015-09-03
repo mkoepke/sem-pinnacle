@@ -1,8 +1,8 @@
 <?php
 /*
  * Multipart Entry Form
- * Author: Denis de Bernardy <http://www.mesoconcepts.com>
- * Version: 1.0
+ * Author: Denis de Bernardy & Mike Koepke <http://www.semiologic.com>
+ * Version: 1.0.1
  */
 
 /**
@@ -30,7 +30,7 @@ if ( !function_exists('add_max_file_size') ) :
 
 function add_max_file_size() {
 	$bytes = apply_filters('import_upload_size_limit', wp_max_upload_size());
-	
+
 	echo  "\n" . '<input type="hidden" name="MAX_FILE_SIZE" value="' . esc_attr($bytes) .'" />' . "\n";
 } # add_max_file_size()
 endif;
@@ -39,4 +39,3 @@ ob_start('ob_multipart_entry');
 
 add_action('edit_form_advanced', 'add_max_file_size');
 add_action('edit_page_form', 'add_max_file_size');
-?>

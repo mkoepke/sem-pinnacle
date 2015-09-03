@@ -1,8 +1,9 @@
 === Semiologic Pinnacle theme ===
 Contributors: Denis-de-Bernardy, Mike_Koepke
+Donate Link: https://www.semiologic.com/donate/
 Tags: semiologic, wordpress theme
 Requires at least: 3.9
-Tested up to: 4.2
+Tested up to: 4.3
 Stable tag: trunk
 
 The Semiologic Pinnacle Theme for WordPress
@@ -30,10 +31,14 @@ If you previously had been using the Semiologic Reloaded theme, that widget conf
 
 = 2.4.0 =
 
-- FontAwesome 4.4.0
+- Restructured header.php, index.php and footer.php to more standard WP conventions of template partitioning
 - Right justify menu items for the dropdown menu of the rightmost top menu item
 - Convert all subclass items to only use PHP5 constructor conventions.  PHP4 calls to WP_Widget deprecated WP 4.3
+- Added a FontAwesome round background (.fa-round) helper class for styling social icons
 - WP 4.3 compat
+- FontAwesome 4.4.0
+- JQuery cookie 1.4.1
+
 
 = 2.3.1 =
 
