@@ -12,11 +12,22 @@ add_filter( 'active_layout', 'sem_template_active_layout' );
 
 
 # show header
-include sem_path . '/header.php';
+get_header();
 
-	echo '<div id="your_id" class="body_section">' . "\n";
+# content
+echo '<main id="main" class="main" role="main" itemprop="mainContentOfPage">' . "\n";
 
-	echo '</div><!-- your_id -->' . "\n";
+echo '<div class="main_content' . ( is_archive() || is_404() || is_search() ? ' entry' : '' )  . '">' . "\n";
+
+echo '<div id="your_id" class="body_section">' . "\n";
+
+echo '</div><!-- your_id -->' . "\n";
+
+echo '</div><!-- main_content -->' . "\n";
+
+echo '</main><!-- main -->' . "\n";
+
+get_sidebar();
 
 # show footer
-include sem_path . '/footer.php';
+get_footer();
