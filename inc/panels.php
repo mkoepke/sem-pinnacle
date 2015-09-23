@@ -74,6 +74,7 @@ class sem_panels {
 		$bottom_panels = array(
 			'bottom_body_sidebar' => __('Bottom Body Sidebar', 'sem-pinnacle'),
 			'the_footer_boxes' => __('Footer Boxes Bar', 'sem-pinnacle'),
+			'the_footer_boxes-2' => __('Footer Boxes Bar 2', 'sem-pinnacle'),
 			'the_footer' => __('Footer Area', 'sem-pinnacle'),
 			'the_404' => __('Not Found Error (404)', 'sem-pinnacle'),
 		);
@@ -115,6 +116,7 @@ class sem_panels {
 
 			case 'the_header_boxes':
 			case 'the_footer_boxes':
+			case 'the_footer_boxes-2':
 				$before_widget = '<aside id="%1$s" class="inline_box %2$s">' . "\n";
 				$after_widget = '</aside><!-- inline_box -->' . "\n";
 				break;
@@ -266,106 +268,122 @@ class sem_panels {
 			return;
 		
 		switch ( $panel_id ) {
-		case 'left_sidebar':
-			dynamic_sidebar('sidebar-1');
-			break;
-		case 'right_sidebar':
-			dynamic_sidebar('sidebar-2');
-			break;
-		case 'top_sidebar':
-		case 'bottom_sidebar':
-		case 'top_body_sidebar':
-		case 'bottom_body_sidebar':
-		case 'before_the_entries':
-		case 'after_the_entries':
-		case 'the_404':
-		case 'the_entry':
-			dynamic_sidebar($panel_id);
-			break;
-		case 'the_header':
-			if ( !is_active_sidebar($panel_id) )
-			 	break;
-			
-			global $did_header;
-			global $did_navbar;
-			global $did_top_widgets;
-			global $did_middle_widgets;
-			global $did_bottom_widgets;
-			global $closed_header_top_widgets;
-			global $closed_header_middle_widgets;
-			global $in_header_boxes_panel;
-			
-			echo '<header id="header_wrapper" class="wrapper">' . "\n";
-			
-			$did_header = false;
-			$did_navbar = false;
-			$did_top_widgets = false;
-			$did_middle_widgets = false;
-			$did_bottom_widgets = false;
-			$closed_header_top_widgets = false;
-			$closed_header_middle_widgets = false;
-			$in_header_boxes_panel = false;
-			
-			dynamic_sidebar($panel_id);
-			
-			if ( !$did_header && !$did_navbar && $did_top_widgets && !$closed_header_top_widgets ) {
-				echo '</div></div>' . "\n";
-				$closed_header_top_widgets = true;
-			} elseif ( !( $did_header && $did_navbar ) && $did_middle_widgets  && !$closed_header_middle_widgets) {
-				echo '</div></div>' . "\n";
-				$closed_header_middle_widgets = true;
-			} elseif ( $did_header && $did_navbar && $did_bottom_widgets ) {
-				echo '</div></div>' . "\n";
-			}
+			case 'left_sidebar':
+				dynamic_sidebar( 'sidebar-1' );
+				break;
+			case 'right_sidebar':
+				dynamic_sidebar( 'sidebar-2' );
+				break;
+			case 'top_sidebar':
+			case 'bottom_sidebar':
+			case 'top_body_sidebar':
+			case 'bottom_body_sidebar':
+			case 'before_the_entries':
+			case 'after_the_entries':
+			case 'the_404':
+			case 'the_entry':
+				dynamic_sidebar( $panel_id );
+				break;
+			case 'the_header':
+				if ( ! is_active_sidebar( $panel_id ) ) {
+					break;
+				}
 
-			echo '</header>' . "\n";
-			
-			break;
-		case 'the_footer':
-			if ( !is_active_sidebar($panel_id) )
-			 	break;
-			
-			global $did_footer;
-			global $did_top_widgets;
-			global $did_bottom_widgets;
-			global $closed_footer_top_widgets;
-			global $in_footer_boxes_panel;
-			
-			echo '<footer id="footer_wrapper" class="wrapper">' . "\n";
-			
-			$did_top_widgets = false;
-			$did_footer = false;
-			$did_bottom_widgets = false;
-			$closed_footer_top_widgets = false;
-			$in_footer_boxes_panel = false;
-			
-			dynamic_sidebar($panel_id);
-			
-			if ( $did_top_widgets && !$closed_footer_top_widgets ) {
-				echo '</div></div>' . "\n";
-				$closed_footer_top_widgets = true;
-			} elseif ( $did_bottom_widgets ) {
-				echo '</div></div>' . "\n";
-			}
-			
-			echo '</footer><!-- footer_wrapper -->' . "\n";
-			
-			break;
-		case 'the_header_boxes':
-		case 'the_footer_boxes':
-			if ( !is_active_sidebar($panel_id) )
-			 	break;
+				global $did_header;
+				global $did_navbar;
+				global $did_top_widgets;
+				global $did_middle_widgets;
+				global $did_bottom_widgets;
+				global $closed_header_top_widgets;
+				global $closed_header_middle_widgets;
+				global $in_header_boxes_panel;
 
-			$id = ( $panel_id == 'the_header_boxes' ) ? 'header_boxes' : 'footer_boxes';
-			$class = ( $panel_id == 'the_header_boxes' ) ? 'header_widget' : 'footer_widget';
+				echo '<header id="header_wrapper" class="wrapper">' . "\n";
 
-			echo '<div class="spacer"></div>' . "\n"
-				. '<div id="' . $id . '" class="inline_boxes ' . $class . '">' . "\n";
+				$did_header                   = false;
+				$did_navbar                   = false;
+				$did_top_widgets              = false;
+				$did_middle_widgets           = false;
+				$did_bottom_widgets           = false;
+				$closed_header_top_widgets    = false;
+				$closed_header_middle_widgets = false;
+				$in_header_boxes_panel        = false;
 
-			dynamic_sidebar($panel_id);
+				dynamic_sidebar( $panel_id );
 
-			echo '<div class="spacer"></div>' . "\n"
-				. '</div><!-- ' . $id . ' -->' . "\n";
+				if ( ! $did_header && ! $did_navbar && $did_top_widgets && ! $closed_header_top_widgets ) {
+					echo '</div></div>' . "\n";
+					$closed_header_top_widgets = true;
+				} elseif ( ! ( $did_header && $did_navbar ) && $did_middle_widgets && ! $closed_header_middle_widgets ) {
+					echo '</div></div>' . "\n";
+					$closed_header_middle_widgets = true;
+				} elseif ( $did_header && $did_navbar && $did_bottom_widgets ) {
+					echo '</div></div>' . "\n";
+				}
+
+				echo '</header>' . "\n";
+
+				break;
+			case 'the_footer':
+				if ( ! is_active_sidebar( $panel_id ) ) {
+					break;
+				}
+
+				global $did_footer;
+				global $did_top_widgets;
+				global $did_bottom_widgets;
+				global $closed_footer_top_widgets;
+				global $in_footer_boxes_panel;
+
+				echo '<footer id="footer_wrapper" class="wrapper">' . "\n";
+
+				$did_top_widgets           = false;
+				$did_footer                = false;
+				$did_bottom_widgets        = false;
+				$closed_footer_top_widgets = false;
+				$in_footer_boxes_panel     = false;
+
+				dynamic_sidebar( $panel_id );
+
+				if ( $did_top_widgets && ! $closed_footer_top_widgets ) {
+					echo '</div></div>' . "\n";
+					$closed_footer_top_widgets = true;
+				} elseif ( $did_bottom_widgets ) {
+					echo '</div></div>' . "\n";
+				}
+
+				echo '</footer><!-- footer_wrapper -->' . "\n";
+
+				break;
+			case 'the_header_boxes':
+			case 'the_footer_boxes':
+			case 'the_footer_boxes-2':
+				if ( ! is_active_sidebar( $panel_id ) ) {
+					break;
+				}
+
+				switch ( $panel_id ) {
+					case 'the_header_boxes':
+						$id = 'header_boxes';
+						$class = 'header_widget';
+						break;
+					case 'the_footer_boxes':
+						$id = 'footer_boxes';
+						$class = 'footer_boxes_1 footer_widget';
+						break;
+					case 'the_footer_boxes-2':
+						$id = 'footer_boxes';
+						$class = 'footer_boxes_2 footer_widget';
+						break;
+				}
+
+				echo '<div class="spacer"></div>' . "\n"
+					. '<div id="' . $id . '" class="inline_boxes ' . $class . '">' . "\n";
+
+				dynamic_sidebar($panel_id);
+
+				echo '<div class="spacer"></div>' . "\n"
+					. '</div><!-- ' . $id . ' -->' . "\n";
 
 			break;
 		default:

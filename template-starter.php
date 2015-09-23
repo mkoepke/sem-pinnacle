@@ -17,7 +17,7 @@ get_header();
 # content
 echo '<main id="main" class="main" role="main" itemprop="mainContentOfPage">' . "\n";
 
-echo '<div class="main_content' . ( is_archive() || is_404() || is_search() ? ' entry' : '' )  . '">' . "\n";
+echo '<div class="main_content entry">' . "\n";
 
 echo '<div id="your_id" class="body_section">' . "\n";
 

@@ -81,6 +81,7 @@ class sem_widgets {
 		register_widget('blog_footer');
 		register_widget('header_boxes');
 		register_widget('footer_boxes');
+		register_widget('footer_boxes_2');
 		register_widget('header');
 		register_widget('navbar');
 		register_widget('footer');
