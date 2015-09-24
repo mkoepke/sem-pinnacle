@@ -1,5 +1,11 @@
 <?php
 
+function upgrade_sem_pinnacle_2_5() {
+	global $sem_theme_options;
+
+	$sem_theme_options['external_fonts'] = '';
+}
+
 /**
  * upgrade_to_sem_pinnacle()
  *
@@ -30,6 +36,7 @@ function upgrade_to_sem_pinnacle() {
 
 	if (  !in_array( $sem_theme_options['active_skin'], $sem_stock_skins ))
 		$sem_theme_options['active_skin'] = 'boxed';
+	$sem_theme_options['external_fonts'] = '';
 
 	update_option('upgrade_sempinnacle_panels', '1');
 
@@ -41,6 +48,9 @@ global $sem_theme_options;
 
 if ( $sem_theme_options['version'] == -1 )
 	upgrade_to_sem_pinnacle();
+
+if ( version_compare( $sem_theme_options['version'], '2.5', '<' ) )
+	upgrade_sem_pinnacle_2_5();
 
 #dump($sem_theme_options);die;
 

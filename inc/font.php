@@ -170,6 +170,8 @@ EOS;
 		global $sem_theme_options;
 
 		$sem_theme_options['active_font'] = preg_replace("/[^a-z0-9_-]/i", "", $_POST['font']);
+
+		$sem_theme_options['external_fonts'] = stripslashes($_POST['external_fonts']);
 		
 		write_sem_options( $sem_theme_options);
 		delete_transient('sem_header');
@@ -198,6 +200,7 @@ EOS;
 		$standard_fonts = sem_font::get_fonts('standard');
 		$google_fonts = sem_font::get_fonts('google');
 		$fonts = sem_font::get_fonts();
+		$external_fonts = isset( $sem_theme_options['external_fonts'] ) ? $sem_theme_options['external_fonts'] : '';
 		
 		echo '<h2>' . __('Manage Font', 'sem-pinnacle') . '</h2>' . "\n";
 		
@@ -249,6 +252,29 @@ EOS;
 		}
 
 		echo '</ul>' . "\n";
+
+		echo '&nbsp;' . "\n";
+
+		echo '<h3>' . __('External Fonts', 'sem-pinnacle') . '</h3>' . "\n";
+
+		echo '<table class="form-table">' . "\n";
+
+		echo '<tr valign="top">' . "\n"
+			. '<td>' . "\n"
+			. '<textarea name="external_fonts" cols="58" rows="8" class="code widefat">'
+			. esc_html( $external_fonts )
+			. '</textarea>' . "\n"
+			. '<p>'
+			. __('Include any external font(s), such as Google Fonts, you\'d like to use on your site.   Use the &lt;link&gt; format (as opposed to @import) to include in the website\'s &lt;head&gt; section', 'sem-pinnacle')
+			. '<pre>'
+			. esc_html(__('<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic" rel="stylesheet" type="text/css">', 'sem-pinnacle'))
+			. '</pre>' . "\n"
+			. '</p>' ."\n"
+			. '</td>' . "\n"
+			. '</tr>' . "\n";
+
+		echo '</table>' . "\n";
+
 
 		echo '<div class="submit">'
 			. '<input type="submit" value="' . esc_attr(__('Save Changes', 'sem-pinnacle')) . '" />'

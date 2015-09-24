@@ -6,6 +6,7 @@ include sem_path . '/inc/template.php';
 $sem_theme_options['active_skin'] = 'boxed';
 $sem_theme_options['active_layout'] = 'mts';
 $sem_theme_options['active_font'] = '';
+$sem_theme_options['external_fonts'] = '';
 $sem_theme_options['skin_data'] = sem_template::get_skin_data($sem_theme_options['active_skin']);
 
 # Credits

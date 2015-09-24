@@ -7,7 +7,7 @@ if ( !defined('sem_theme') )
 	define('sem_theme', 'sem-pinnacle');
 
 if ( !defined('sem_theme_version') )
-	define('sem_theme_version', '2.4.1 dev');
+	define('sem_theme_version', '2.4.2 dev');
 
 if ( !defined('sem_debug') )
 	define('sem_debug', isset($_GET['debug']) );
@@ -129,7 +129,7 @@ if ( sem_debug )
 	include sem_path . '/inc/debug.php';
 
 
-$sem_stock_skins = array("boxed", "clean");
+$sem_stock_skins = array('boxed', 'clean', 'classic', 'red-boxed');
 
 #
 # Initialize options

@@ -319,10 +319,13 @@ EOS;
 
 		sem_template::load_font( $sem_theme_options['active_font']);
 
-		if ( isset($sem_theme_options['addl_fonts']))
+		if ( isset( $sem_theme_options['addl_fonts'] ) )
 			foreach( $sem_theme_options['addl_fonts'] as $font)
 				if ( $sem_theme_options['active_font'] != $font )
 					sem_template::load_font( $font );
+
+		if ( isset( $sem_theme_options['external_fonts'] ) )
+			echo $sem_theme_options['external_fonts'] . "\n";
 	}
 
 	/**
