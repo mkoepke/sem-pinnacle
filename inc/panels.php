@@ -377,6 +377,8 @@ class sem_panels {
 						break;
 				}
 
+				$class .= ' ' . sem_panels::count_widgets( $panel_id );
+
 				echo '<div class="spacer"></div>' . "\n"
 					. '<div id="' . $id . '" class="inline_boxes ' . $class . '">' . "\n";
 
