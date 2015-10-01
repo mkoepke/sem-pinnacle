@@ -211,6 +211,7 @@ class sem_template {
 		if (sem_layout_extra_wide)
 			$sem_helper = 'sem-helper-wd';
 
+		$sem_helper = $sem_helper . ( ! WP_DEBUG ? '.min' : '' );
 		wp_enqueue_script( 'sem-helper', sem_url . '/js/' . $sem_helper . '.js', array('jquery'), '1.0.1', false );
 
 		if ( is_admin() ) {

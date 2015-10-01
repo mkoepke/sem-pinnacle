@@ -13,7 +13,11 @@
 
 	echo '<div id="bottom_body_sidebar" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
 
+	echo '<div class="bottom_body_sidebar_content">' . "\n";
+
 	sem_panels::display('bottom_body_sidebar');
+
+	echo '</div><!-- bottom_body_sidebar_content -->' . "\n";
 
 	echo '</div><!-- body_bottom_sidebar -->' . "\n";
 

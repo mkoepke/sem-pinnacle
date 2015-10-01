@@ -670,13 +670,11 @@ EOS;
     - #header_top_wrapper
     - #header_top
 
-      - #header_boxes
-
-        - #header_boxes h2
+      - #header_boxes .inline_boxes
+        - .header_boxes_content
+		  - aside .inline_box
 
       - aside .header_widget
-
-        - .header_widget h2
 
     - #header
 
@@ -687,11 +685,7 @@ EOS;
 
       - #header_boxes
 
-        - #header_boxes h2
-
       - aside .header_widget
-
-        - .header_widget h2
 
     - nav #navbar
 
@@ -703,24 +697,21 @@ EOS;
 
       - #header_boxes
 
-        - #header_boxes h2
-
       - aside .header_widget
 
-        - .header_widget h2
 
   - #body_wrapper
     - #body_top
     - #body_middle
 
     - #top_body_sidebar
-      - aside .body_widget
+      - .top_body_sidebar_content
+        - aside .body_widget
 
     - main #main
       - .main_content
 
       - .main_widget
-        - .main_widget h2
 
 	  - article .entry
 
@@ -758,7 +749,8 @@ EOS;
         - aside .widget, .m2s .widget
 
     - #bottom_body_sidebar
-      - aside .body_widget
+      - .bottom_body_sidebar_content
+        - aside .body_widget
 
 	- #body_bottom
 
@@ -767,7 +759,10 @@ EOS;
     - #footer_top_wrapper
     - #footer_top
 
-      - #footer_boxes
+      - #footer_boxes .inline_boxes
+      - #footer_boxes_2 .inline_boxes
+        - .footer_boxes_content
+		  - aside .inline_box
 
       - aside .footer_widget
 
@@ -780,7 +775,10 @@ EOS;
     - #footer_bottom_wrapper
     - #footer_bottom
 
-      - #footer_boxes, #footer
+      - #footer_boxes .inline_boxes
+      - #footer_boxes_2 .inline_boxes
+        - .footer_boxes_content
+		  - aside .inline_box
 
       - aside .footer_widget
 

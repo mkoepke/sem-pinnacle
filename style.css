@@ -722,18 +722,23 @@ Content Panels
 Widgets
 ---------------------------------------------------------------------------------------------------- */
 
-.widget,
-.main_widget,
-.body_widget {
+.widget {
 	margin-top: 0;
 	margin-bottom: 1.25em;
 	padding: 0 1.25em;
 }
 
+
 .inline_box {
 	margin-top: 0;
 	margin-bottom: 1.25em;
 	padding: .625em 1.25em;
+}
+
+.main_widget,
+.body_widget {
+    margin: 0;
+    padding: 0;
 }
 
 /*

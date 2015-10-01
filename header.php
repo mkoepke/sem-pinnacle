@@ -76,7 +76,11 @@ echo '<div id="wrapper_middle" class="wrapper_section">' . "\n";
 
 	echo '<div id="top_body_sidebar" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
 
+	echo '<div class="top_body_sidebar_content">' . "\n";
+
 	sem_panels::display('top_body_sidebar');
+
+	echo '</div><!-- top_body_sidebar_content -->' . "\n";
 
 	echo '</div><!-- top_body_sidebar -->' . "\n";
 

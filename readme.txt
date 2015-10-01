@@ -1,5 +1,5 @@
 === Semiologic Pinnacle theme ===
-Contributors: Denis-de-Bernardy, Mike_Koepke
+Contributors: Mike_Koepke
 Donate Link: https://www.semiologic.com/donate/
 Tags: semiologic, wordpress theme
 Requires at least: 3.9
@@ -28,6 +28,14 @@ If you previously had been using the Semiologic Reloaded theme, that widget conf
 
 
 == Change Log ==
+
+= 2.5.0 =
+
+- Added: Footer Boxes Bar 2 for more footer configuration and styling options
+- Added: External Fonts links can now be added under Semiologic->Fonts.
+- Added: New classes added to Header and Footer Boxes div specifying number of widgets contained in each bar (ex: widget-count-3)
+- Added: top_body_sidebar_content, bottom_body_sidebar_content, header_boxes_content and footer_boxes_content inner classes for additional styling ability
+
 
 = 2.4.0 =
 

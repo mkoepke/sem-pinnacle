@@ -366,25 +366,30 @@ class sem_panels {
 					case 'the_header_boxes':
 						$id = 'header_boxes';
 						$class = 'header_widget';
+						$inner_class = 'header_boxes_content';
 						break;
 					case 'the_footer_boxes':
 						$id = 'footer_boxes';
 						$class = 'footer_boxes_1 footer_widget';
+						$inner_class = 'footer_boxes_content';
 						break;
 					case 'the_footer_boxes-2':
 						$id = 'footer_boxes';
 						$class = 'footer_boxes_2 footer_widget';
+						$inner_class = 'footer_boxes_content';
 						break;
 				}
 
 				$class .= ' ' . sem_panels::count_widgets( $panel_id );
 
 				echo '<div class="spacer"></div>' . "\n"
-					. '<div id="' . $id . '" class="inline_boxes ' . $class . '">' . "\n";
+					. '<div id="' . $id . '" class="inline_boxes ' . $class . '">' . "\n"
+					. '<div class="' . $inner_class . '">' . "\n";
 
 				dynamic_sidebar($panel_id);
 
 				echo '<div class="spacer"></div>' . "\n"
+					. '</div><!-- ' . $inner_class . ' -->' . "\n"
 					. '</div><!-- ' . $id . ' -->' . "\n";
 
 			break;
