@@ -31,11 +31,13 @@ If you previously had been using the Semiologic Reloaded theme, that widget conf
 
 = 2.5.0 =
 
-- Added: Footer Boxes Bar 2 for more footer configuration and styling options
+- Added: Header Boxes Bar 2 for more Header configuration and styling options
+- Added: Footer Boxes Bar 2 and Footer Boxes Bar 3 for more Footer configuration and styling options
 - Added: External Fonts links can now be added under Semiologic->Fonts.
 - Added: New classes added to Header and Footer Boxes div specifying number of widgets contained in each bar (ex: widget-count-3)
 - Added: top_body_sidebar_content, bottom_body_sidebar_content, header_boxes_content and footer_boxes_content inner classes for additional styling ability
-
+- Changed: Custom CSS page now reflects latest Panels and styling divs
+- Changed: javascript helper file now minimized
 
 = 2.4.0 =
 

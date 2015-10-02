@@ -18,7 +18,7 @@ class header extends WP_Widget {
 		$widget_name = __('Header: Site Header', 'sem-pinnacle');
 		$widget_ops = array(
 			'classname' => 'header',
-			'description' => __('The site\'s header. Must be placed in the header area.', 'sem-pinnacle'),
+			'description' => __('The site\'s header. Must be placed in the Header Area panel.', 'sem-pinnacle'),
 			);
 		$control_ops = array(
 			'width' => 330,
@@ -389,7 +389,7 @@ class navbar extends sem_nav_menu {
 		$widget_name = __('Header: Nav Menu', 'sem-pinnacle');
 		$widget_ops = array(
 			'classname' => 'navbar',
-			'description' => __('The header\'s navigation menu, with an optional search form. Must be placed in the header area.', 'sem-pinnacle'),
+			'description' => __('The header\'s navigation menu, with an optional search form. Must be placed in the Header Area panel.', 'sem-pinnacle'),
 			);
 		$control_ops = array(
 			'width' => 330,
@@ -618,17 +618,28 @@ class navbar extends sem_nav_menu {
 
 class header_boxes extends WP_Widget {
 	/**
+	 * Header Boxes number
+	 *
+	 * We allow for 2 bars now
+	 *
+	 */
+	protected $bar_num = 1;
+	/**
 	 * Constructor.
 	 *
 	 */
 	public function __construct() {
+		$classname = 'header_boxes';
+		$classname .= ( $this->bar_num > 1 ) ? '_' . $this->bar_num : '';
+
 		$widget_name = __('Header: Boxes Bar', 'sem-pinnacle');
+		$widget_name .= ( $this->bar_num > 1 ) ? ' ' . $this->bar_num : '';
 		$widget_ops = array(
-			'classname' => 'header_boxes',
-			'description' => __('Lets you decide where the Footer Boxes Bar panel goes. Must be placed in the header area.', 'sem-pinnacle'),
+			'classname' => $classname,
+			'description' => __('Lets you decide where the Header Boxes Bar panel goes. Must be placed in the Header Area panel.', 'sem-pinnacle'),
 			);
 
-		parent::__construct('header_boxes', $widget_name, $widget_ops);
+		parent::__construct($classname, $widget_name, $widget_ops);
 	} # header_boxes()
 
 
@@ -647,10 +658,69 @@ class header_boxes extends WP_Widget {
 		global $in_header_boxes_panel;
 		$in_header_boxes_panel = true;
 
-		sem_panels::display('the_header_boxes');
+		$panel_name = 'the_header_boxes';
+		$panel_name .= ( $this->bar_num > 1 ) ? '-' . $this->bar_num : '';
+		sem_panels::display( $panel_name );
 
 		$in_header_boxes_panel = false;
 	} # widget()
 } # header_boxes
 
 
+/**
+ * header_boxes_2
+ *
+ * @package Semiologic Reloaded
+ **/
+
+class header_boxes_2 extends header_boxes {
+
+	/**
+	 * Constructor.
+	 *
+	 */
+	public function __construct() {
+		$this->bar_num = 2;
+
+		parent::__construct();
+	} # header_boxes_2()
+} # header_boxes_2
+
+
+/**
+ * header_boxes_3
+ *
+ * @package Semiologic Reloaded
+ **/
+
+class header_boxes_3 extends header_boxes {
+
+	/**
+	 * Constructor.
+	 *
+	 */
+	public function __construct() {
+		$this->bar_num = 3;
+
+		parent::__construct();
+	} # header_boxes_3()
+} # header_boxes_3
+
+/**
+ * header_boxes_4
+ *
+ * @package Semiologic Reloaded
+ **/
+
+class header_boxes_4 extends header_boxes {
+
+	/**
+	 * Constructor.
+	 *
+	 */
+	public function __construct() {
+		$this->bar_num = 4;
+
+		parent::__construct();
+	} # header_boxes_4()
+} # header_boxes_4

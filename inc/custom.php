@@ -671,6 +671,7 @@ EOS;
     - #header_top
 
       - #header_boxes .inline_boxes
+      - #header_boxes_2 .inline_boxes
         - .header_boxes_content
 		  - aside .inline_box
 
@@ -683,7 +684,10 @@ EOS;
     - #header_middle_wrapper
     - #header_middle
 
-      - #header_boxes
+      - #header_boxes .inline_boxes
+      - #header_boxes_2 .inline_boxes
+        - .header_boxes_content
+		  - aside .inline_box
 
       - aside .header_widget
 
@@ -695,7 +699,10 @@ EOS;
     - #header_bottom_wrapper
     - #header_bottom
 
-      - #header_boxes
+      - #header_boxes .inline_boxes
+      - #header_boxes_2 .inline_boxes
+        - .header_boxes_content
+		  - aside .inline_box
 
       - aside .header_widget
 
@@ -761,6 +768,7 @@ EOS;
 
       - #footer_boxes .inline_boxes
       - #footer_boxes_2 .inline_boxes
+      - #footer_boxes_3 .inline_boxes
         - .footer_boxes_content
 		  - aside .inline_box
 
@@ -777,6 +785,7 @@ EOS;
 
       - #footer_boxes .inline_boxes
       - #footer_boxes_2 .inline_boxes
+      - #footer_boxes_3 .inline_boxes
         - .footer_boxes_content
 		  - aside .inline_box
 

@@ -56,6 +56,9 @@ class sem_panels {
 		$top_panels = array(
 			'the_header' => __('Header Area', 'sem-pinnacle'),
 			'the_header_boxes' => __('Header Boxes Bar', 'sem-pinnacle'),
+			'the_header_boxes-2' => __('Header Boxes Bar 2', 'sem-pinnacle'),
+			'the_header_boxes-3' => __('Header Boxes Bar 3', 'sem-pinnacle'),
+			'the_header_boxes-4' => __('Header Boxes Bar 4', 'sem-pinnacle'),
 			'top_body_sidebar' => __('Top Body Sidebar', 'sem-pinnacle'),
 			'before_the_entries' => __('Before the Entries', 'sem-pinnacle'),
 			'the_entry' => __('Each Entry', 'sem-pinnacle'),
@@ -75,6 +78,7 @@ class sem_panels {
 			'bottom_body_sidebar' => __('Bottom Body Sidebar', 'sem-pinnacle'),
 			'the_footer_boxes' => __('Footer Boxes Bar', 'sem-pinnacle'),
 			'the_footer_boxes-2' => __('Footer Boxes Bar 2', 'sem-pinnacle'),
+			'the_footer_boxes-3' => __('Footer Boxes Bar 3', 'sem-pinnacle'),
 			'the_footer' => __('Footer Area', 'sem-pinnacle'),
 			'the_404' => __('Not Found Error (404)', 'sem-pinnacle'),
 		);
@@ -115,8 +119,12 @@ class sem_panels {
 				break;
 
 			case 'the_header_boxes':
+			case 'the_header_boxes-2':
+			case 'the_header_boxes-3':
+			case 'the_header_boxes-4':
 			case 'the_footer_boxes':
 			case 'the_footer_boxes-2':
+			case 'the_footer_boxes-3':
 				$before_widget = '<aside id="%1$s" class="inline_box %2$s">' . "\n";
 				$after_widget = '</aside><!-- inline_box -->' . "\n";
 				break;
@@ -356,8 +364,12 @@ class sem_panels {
 
 				break;
 			case 'the_header_boxes':
+			case 'the_header_boxes-2':
+			case 'the_header_boxes-3':
+			case 'the_header_boxes-4':
 			case 'the_footer_boxes':
 			case 'the_footer_boxes-2':
+			case 'the_footer_boxes-3':
 				if ( ! is_active_sidebar( $panel_id ) ) {
 					break;
 				}
@@ -365,7 +377,22 @@ class sem_panels {
 				switch ( $panel_id ) {
 					case 'the_header_boxes':
 						$id = 'header_boxes';
-						$class = 'header_widget';
+						$class = 'header_boxes_1 header_widget';
+						$inner_class = 'header_boxes_content';
+						break;
+					case 'the_header_boxes-2':
+						$id = 'header_boxes';
+						$class = 'header_boxes_2 header_widget';
+						$inner_class = 'header_boxes_content';
+						break;
+					case 'the_header_boxes-3':
+						$id = 'header_boxes';
+						$class = 'header_boxes_3 header_widget';
+						$inner_class = 'header_boxes_content';
+						break;
+					case 'the_header_boxes-4':
+						$id = 'header_boxes';
+						$class = 'header_boxes_4 header_widget';
 						$inner_class = 'header_boxes_content';
 						break;
 					case 'the_footer_boxes':
@@ -376,6 +403,11 @@ class sem_panels {
 					case 'the_footer_boxes-2':
 						$id = 'footer_boxes';
 						$class = 'footer_boxes_2 footer_widget';
+						$inner_class = 'footer_boxes_content';
+						break;
+					case 'the_footer_boxes-3':
+						$id = 'footer_boxes';
+						$class = 'footer_boxes_3 footer_widget';
 						$inner_class = 'footer_boxes_content';
 						break;
 				}

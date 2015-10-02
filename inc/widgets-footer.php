@@ -17,7 +17,7 @@ class footer extends sem_nav_menu {
 		$widget_name = __('Footer: Nav Menu', 'sem-pinnacle');
 		$widget_ops = array(
 			'classname' => 'footer',
-			'description' => __('The footer\'s navigation menu, with an optional copyright notice. Must be placed in the footer area.', 'sem-pinnacle'),
+			'description' => __('The footer\'s navigation menu, with an optional copyright notice. Must be placed in the Footer Area panel.', 'sem-pinnacle'),
 			);
 		$control_ops = array(
 			'width' => 330,
@@ -222,7 +222,7 @@ class footer_boxes extends WP_Widget {
 	/**
 	 * Footer Boxes number
 	 *
-	 * We allow for 2 bars now
+	 * We allow for 3 bars now
 	 *
 	 */
 	protected $bar_num = 1;
@@ -239,7 +239,7 @@ class footer_boxes extends WP_Widget {
 		$widget_name .= ( $this->bar_num > 1 ) ? ' ' . $this->bar_num : '';
 		$widget_ops = array(
 			'classname' => $classname,
-			'description' => __('Lets you decide where the Footer Boxes Bar panel goes. It must be placed in the footer area.', 'sem-pinnacle'),
+			'description' => __('Lets you decide where the Footer Boxes Bar panel goes. It must be placed in the Footer Area panel.', 'sem-pinnacle'),
 			);
 
 		parent::__construct($classname, $widget_name, $widget_ops);
@@ -271,7 +271,7 @@ class footer_boxes extends WP_Widget {
 
 
 /**
- * footer_boxes
+ * footer_boxes_2
  *
  * @package Semiologic Reloaded
  **/
@@ -288,3 +288,22 @@ class footer_boxes_2 extends footer_boxes {
 		parent::__construct();
 	} # footer_boxes_2()
 } # footer_boxes_2
+
+/**
+ * footer_boxes_3
+ *
+ * @package Semiologic Reloaded
+ **/
+
+class footer_boxes_3 extends footer_boxes {
+
+	/**
+	 * Constructor.
+	 *
+	 */
+	public function __construct() {
+		$this->bar_num = 3;
+
+		parent::__construct();
+	} # footer_boxes_3()
+} # footer_boxes_3
