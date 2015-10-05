@@ -56,9 +56,10 @@ class sem_panels {
 		$top_panels = array(
 			'the_header' => __('Header Area', 'sem-pinnacle'),
 			'the_header_boxes' => __('Header Boxes Bar', 'sem-pinnacle'),
-			'the_header_boxes-2' => __('Header Boxes Bar 2', 'sem-pinnacle'),
-			'the_header_boxes-3' => __('Header Boxes Bar 3', 'sem-pinnacle'),
-			'the_header_boxes-4' => __('Header Boxes Bar 4', 'sem-pinnacle'),
+			'header_section-1' => __('Header Section 1', 'sem-pinnacle'),
+			'header_section-2' => __('Header Section 2', 'sem-pinnacle'),
+			'header_section-3' => __('Header Section 3', 'sem-pinnacle'),
+			'header_section-4' => __('Header Section 4', 'sem-pinnacle'),
 			'top_body_sidebar' => __('Top Body Sidebar', 'sem-pinnacle'),
 			'before_the_entries' => __('Before the Entries', 'sem-pinnacle'),
 			'the_entry' => __('Each Entry', 'sem-pinnacle'),
@@ -76,10 +77,12 @@ class sem_panels {
 
 		$bottom_panels = array(
 			'bottom_body_sidebar' => __('Bottom Body Sidebar', 'sem-pinnacle'),
-			'the_footer_boxes' => __('Footer Boxes Bar', 'sem-pinnacle'),
-			'the_footer_boxes-2' => __('Footer Boxes Bar 2', 'sem-pinnacle'),
-			'the_footer_boxes-3' => __('Footer Boxes Bar 3', 'sem-pinnacle'),
 			'the_footer' => __('Footer Area', 'sem-pinnacle'),
+			'the_footer_boxes' => __('Footer Boxes Bar', 'sem-pinnacle'),
+			'footer_section-1' => __('Footer Section 1', 'sem-pinnacle'),
+			'footer_section-2' => __('Footer Section 2', 'sem-pinnacle'),
+			'footer_section-3' => __('Footer Section 3', 'sem-pinnacle'),
+			'footer_section-4' => __('Footer Section 4', 'sem-pinnacle'),
 			'the_404' => __('Not Found Error (404)', 'sem-pinnacle'),
 		);
 
@@ -119,14 +122,21 @@ class sem_panels {
 				break;
 
 			case 'the_header_boxes':
-			case 'the_header_boxes-2':
-			case 'the_header_boxes-3':
-			case 'the_header_boxes-4':
 			case 'the_footer_boxes':
-			case 'the_footer_boxes-2':
-			case 'the_footer_boxes-3':
 				$before_widget = '<aside id="%1$s" class="inline_box %2$s">' . "\n";
 				$after_widget = '</aside><!-- inline_box -->' . "\n";
+				break;
+
+			case 'header_section-1':
+			case 'header_section-2':
+			case 'header_section-3':
+			case 'header_section-4':
+			case 'footer_section-1':
+			case 'footer_section-2':
+			case 'footer_section-3':
+			case 'footer_section-4':
+				$before_widget = '<aside id="%1$s" class="section_widget %2$s">' . "\n";
+				$after_widget = '</aside><!-- section_widget -->' . "\n";
 				break;
 
 			case 'before_the_entries':
@@ -305,6 +315,7 @@ class sem_panels {
 				global $closed_header_top_widgets;
 				global $closed_header_middle_widgets;
 				global $in_header_boxes_panel;
+				global $in_header_section_panel;
 
 				echo '<header id="header_wrapper" class="wrapper">' . "\n";
 
@@ -316,6 +327,7 @@ class sem_panels {
 				$closed_header_top_widgets    = false;
 				$closed_header_middle_widgets = false;
 				$in_header_boxes_panel        = false;
+				$in_header_section_panel      = false;
 
 				dynamic_sidebar( $panel_id );
 
@@ -342,6 +354,7 @@ class sem_panels {
 				global $did_bottom_widgets;
 				global $closed_footer_top_widgets;
 				global $in_footer_boxes_panel;
+				global $in_footer_section_panel;
 
 				echo '<footer id="footer_wrapper" class="wrapper">' . "\n";
 
@@ -350,6 +363,7 @@ class sem_panels {
 				$did_bottom_widgets        = false;
 				$closed_footer_top_widgets = false;
 				$in_footer_boxes_panel     = false;
+				$in_footer_section_panel     = false;
 
 				dynamic_sidebar( $panel_id );
 
@@ -363,59 +377,72 @@ class sem_panels {
 				echo '</footer><!-- footer_wrapper -->' . "\n";
 
 				break;
+
 			case 'the_header_boxes':
-			case 'the_header_boxes-2':
-			case 'the_header_boxes-3':
-			case 'the_header_boxes-4':
 			case 'the_footer_boxes':
-			case 'the_footer_boxes-2':
-			case 'the_footer_boxes-3':
+				if ( !is_active_sidebar($panel_id) )
+				 	break;
+
+				switch ( $panel_id ) {
+				case 'the_header_boxes':
+					$id = 'header_boxes';
+					$class = 'header_widget';
+					$inner_class = 'header_boxes_content';
+					break;
+				case 'the_footer_boxes':
+					$id = 'footer_boxes';
+					$class = 'footer_widget';
+					$inner_class = 'footer_boxes_content';
+					break;
+				}
+
+				echo '<div class="spacer"></div>' . "\n"
+					. '<div id="' . $id . '" class="inline_boxes ' . $class . '">' . "\n"
+					. '<div class="' . $inner_class . '">' . "\n";
+
+				dynamic_sidebar($panel_id);
+
+				echo '<div class="spacer"></div>' . "\n"
+					. '</div><!-- ' . $inner_class . ' -->' . "\n"
+					. '</div><!-- ' . $id . ' -->' . "\n";
+
+				break;
+
+			case 'header_section-1':
+			case 'header_section-2':
+			case 'header_section-3':
+			case 'header_section-4':
+			case 'footer_section-1':
+			case 'footer_section-2':
+			case 'footer_section-3':
+			case 'footer_section-4':
 				if ( ! is_active_sidebar( $panel_id ) ) {
 					break;
 				}
 
 				switch ( $panel_id ) {
-					case 'the_header_boxes':
-						$id = 'header_boxes';
-						$class = 'header_boxes_1 header_widget';
-						$inner_class = 'header_boxes_content';
+					case 'header_section-1':
+					case 'header_section-2':
+					case 'header_section-3':
+					case 'header_section-4':
+						$id = $panel_id;
+						$class = 'header_section_group header_widget';
+						$inner_class = 'header_section_content';
 						break;
-					case 'the_header_boxes-2':
-						$id = 'header_boxes';
-						$class = 'header_boxes_2 header_widget';
-						$inner_class = 'header_boxes_content';
-						break;
-					case 'the_header_boxes-3':
-						$id = 'header_boxes';
-						$class = 'header_boxes_3 header_widget';
-						$inner_class = 'header_boxes_content';
-						break;
-					case 'the_header_boxes-4':
-						$id = 'header_boxes';
-						$class = 'header_boxes_4 header_widget';
-						$inner_class = 'header_boxes_content';
-						break;
-					case 'the_footer_boxes':
-						$id = 'footer_boxes';
-						$class = 'footer_boxes_1 footer_widget';
-						$inner_class = 'footer_boxes_content';
-						break;
-					case 'the_footer_boxes-2':
-						$id = 'footer_boxes';
-						$class = 'footer_boxes_2 footer_widget';
-						$inner_class = 'footer_boxes_content';
-						break;
-					case 'the_footer_boxes-3':
-						$id = 'footer_boxes';
-						$class = 'footer_boxes_3 footer_widget';
-						$inner_class = 'footer_boxes_content';
+					case 'footer_section-1':
+					case 'footer_section-2':
+					case 'footer_section-3':
+					case 'footer_section-4':
+						$id = $panel_id;
+						$class = 'footer_section_group footer_widget';
+						$inner_class = 'footer_section_content';
 						break;
 				}
 
 				$class .= ' ' . sem_panels::count_widgets( $panel_id );
 
 				echo '<div class="spacer"></div>' . "\n"
-					. '<div id="' . $id . '" class="inline_boxes ' . $class . '">' . "\n"
+					. '<div id="' . $id . '" class="' . $class . '">' . "\n"
 					. '<div class="' . $inner_class . '">' . "\n";
 
 				dynamic_sidebar($panel_id);

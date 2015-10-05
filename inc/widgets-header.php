@@ -613,33 +613,22 @@ class navbar extends sem_nav_menu {
 /**
  * header_boxes
  *
- * @package Semiologic Pinnacle
+ * @package Semiologic Reloaded
  **/
 
 class header_boxes extends WP_Widget {
-	/**
-	 * Header Boxes number
-	 *
-	 * We allow for 2 bars now
-	 *
-	 */
-	protected $bar_num = 1;
 	/**
 	 * Constructor.
 	 *
 	 */
 	public function __construct() {
-		$classname = 'header_boxes';
-		$classname .= ( $this->bar_num > 1 ) ? '_' . $this->bar_num : '';
-
 		$widget_name = __('Header: Boxes Bar', 'sem-pinnacle');
-		$widget_name .= ( $this->bar_num > 1 ) ? ' ' . $this->bar_num : '';
 		$widget_ops = array(
-			'classname' => $classname,
-			'description' => __('Lets you decide where the Header Boxes Bar panel goes. Must be placed in the Header Area panel.', 'sem-pinnacle'),
+			'classname' => 'header_boxes',
+			'description' => __('Lets you decide where the Header Boxes Bar panel goes. Must be placed within the Header Area panel.', 'sem-pinnacle'),
 			);
 
-		parent::__construct($classname, $widget_name, $widget_ops);
+		parent::__construct('header_boxes', $widget_name, $widget_ops);
 	} # header_boxes()
 
 
@@ -658,22 +647,76 @@ class header_boxes extends WP_Widget {
 		global $in_header_boxes_panel;
 		$in_header_boxes_panel = true;
 
-		$panel_name = 'the_header_boxes';
-		$panel_name .= ( $this->bar_num > 1 ) ? '-' . $this->bar_num : '';
-		sem_panels::display( $panel_name );
+		sem_panels::display('the_header_boxes');
 
 		$in_header_boxes_panel = false;
 	} # widget()
 } # header_boxes
 
-
 /**
- * header_boxes_2
+ * header_section
  *
  * @package Semiologic Pinnacle
  **/
 
-class header_boxes_2 extends header_boxes {
+class header_section extends WP_Widget {
+	/**
+	 * Header Section number
+	 *
+	 * We allow for 4 sections
+	 *
+	 */
+	protected $bar_num = 1;
+	/**
+	 * Constructor.
+	 *
+	 */
+	public function __construct() {
+		$classname = 'header_section';
+		$classname .= '_' . $this->bar_num;
+
+		$widget_name = __('Header: Header Section', 'sem-pinnacle');
+		$widget_name .= ' ' . $this->bar_num;
+		$widget_ops = array(
+			'classname' => $classname,
+			'description' => __('Lets you decide where the Header Section panel goes. Must be placed within the Header Area panel.', 'sem-pinnacle'),
+			);
+
+		parent::__construct($classname, $widget_name, $widget_ops);
+	} # header_section()
+
+
+	/**
+	 * widget()
+	 *
+	 * @param array $args widget args
+	 * @param array $instance widget options
+	 * @return void
+	 **/
+
+	function widget($args, $instance) {
+		if ( $args['id'] != 'the_header' )
+			return;
+
+		global $in_header_section_panel;
+		$in_header_section_panel = true;
+
+		$panel_name = 'header_section';
+		$panel_name .= '-' . $this->bar_num;
+		sem_panels::display( $panel_name );
+
+		$in_header_section_panel = false;
+	} # widget()
+} # header_section
+
+
+/**
+ * header_section_2
+ *
+ * @package Semiologic Pinnacle
+ **/
+
+class header_section_2 extends header_section {
 
 	/**
 	 * Constructor.
@@ -683,17 +726,17 @@ class header_boxes_2 extends header_boxes {
 		$this->bar_num = 2;
 
 		parent::__construct();
-	} # header_boxes_2()
-} # header_boxes_2
+	} # header_section_2()
+} # header_section_2
 
 
 /**
- * header_boxes_3
+ * header_section_3
  *
  * @package Semiologic Pinnacle
  **/
 
-class header_boxes_3 extends header_boxes {
+class header_section_3 extends header_section {
 
 	/**
 	 * Constructor.
@@ -703,16 +746,16 @@ class header_boxes_3 extends header_boxes {
 		$this->bar_num = 3;
 
 		parent::__construct();
-	} # header_boxes_3()
-} # header_boxes_3
+	} # header_section_3()
+} # header_section_3
 
 /**
- * header_boxes_4
+ * header_section_4
  *
  * @package Semiologic Pinnacle
  **/
 
-class header_boxes_4 extends header_boxes {
+class header_section_4 extends header_section {
 
 	/**
 	 * Constructor.
@@ -722,5 +765,5 @@ class header_boxes_4 extends header_boxes {
 		$this->bar_num = 4;
 
 		parent::__construct();
-	} # header_boxes_4()
-} # header_boxes_4
+	} # header_section_4()
+} # header_section_4

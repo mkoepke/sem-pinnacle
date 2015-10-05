@@ -7,7 +7,7 @@ if ( !defined('sem_theme') )
 	define('sem_theme', 'sem-pinnacle');
 
 if ( !defined('sem_theme_version') )
-	define('sem_theme_version', '2.4.4 dev');
+	define('sem_theme_version', '2.4.5 dev');
 
 if ( !defined('sem_debug') )
 	define('sem_debug', isset($_GET['debug']) );
@@ -26,7 +26,7 @@ if ( !defined('sem_css_debug') )
 if ( !defined('sem_layout_extra_wide') )
 	define('sem_layout_extra_wide', false);
 
-define('sem_last_mod', sem_css_debug ? time() : '20150728');
+define('sem_last_mod', sem_css_debug ? time() : '20151004');
 
 define('sem_path', dirname(dirname(__FILE__)));
 define('sem_url', get_template_directory_uri());

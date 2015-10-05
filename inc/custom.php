@@ -667,44 +667,62 @@ EOS;
 
   - header #header_wrapper
 
-    - #header_top_wrapper
-    - #header_top
+    - #header_top_wrapper .header_section
+      - #header_top
 
-      - #header_boxes .inline_boxes
-      - #header_boxes_2 .inline_boxes
-        - .header_boxes_content
-		  - aside .inline_box
+        - #header_boxes .inline_boxes .header_widget
+          - .header_boxes_content
+		    - aside .inline_box
 
-      - aside .header_widget
+        - #header_section-1 .header_section_group .header_widget
+        - #header_section-2 .header_section_group .header_widget
+        - #header_section-3 .header_section_group .header_widget
+        - #header_section-4 .header_section_group .header_widget
+          - .header_section_content
+		    - aside .section_widget
 
-    - #header
+        - aside .header_widget
+
+    - #header .header_section
 
       - #sitename, #tagline
 
-    - #header_middle_wrapper
-    - #header_middle
+    - #header_middle_wrapper .header_section
+      - #header_middle
 
-      - #header_boxes .inline_boxes
-      - #header_boxes_2 .inline_boxes
-        - .header_boxes_content
-		  - aside .inline_box
+        - #header_boxes .inline_boxes .header_widget
+          - .header_boxes_content
+		    - aside .inline_box
 
-      - aside .header_widget
+        - #header_section-1 .header_section_group .header_widget
+        - #header_section-2 .header_section_group .header_widget
+        - #header_section-3 .header_section_group .header_widget
+        - #header_section-4 .header_section_group .header_widget
+          - .header_section_content
+		    - aside .section_widget
 
-    - nav #navbar
+        - aside .header_widget
+
+    - nav #navbar .header_section
 
       - #navbar a
       - #navbar a:hover, #navbar .nav_active
 
-    - #header_bottom_wrapper
-    - #header_bottom
+    - #header_bottom_wrapper .header_section
+      - #header_bottom
 
-      - #header_boxes .inline_boxes
-      - #header_boxes_2 .inline_boxes
-        - .header_boxes_content
-		  - aside .inline_box
+        - #header_boxes .inline_boxes .header_widget
+          - .header_boxes_content
+		    - aside .inline_box
 
-      - aside .header_widget
+        - #header_section-1 .header_section_group .header_widget
+        - #header_section-2 .header_section_group .header_widget
+        - #header_section-3 .header_section_group .header_widget
+        - #header_section-4 .header_section_group .header_widget
+          - .header_section_content
+		    - aside .section_widget
+
+        - aside .header_widget
 
 
   - #body_wrapper
@@ -763,33 +781,43 @@ EOS;
 
   - footer #footer_wrapper
 
-    - #footer_top_wrapper
-    - #footer_top
+    - #footer_top_wrapper .footer_section
+      - #footer_top
 
-      - #footer_boxes .inline_boxes
-      - #footer_boxes_2 .inline_boxes
-      - #footer_boxes_3 .inline_boxes
-        - .footer_boxes_content
-		  - aside .inline_box
+        - #footer_boxes .inline_boxes .footer_widget
+         - .footer_boxes_content
+		    - aside .inline_box
 
-      - aside .footer_widget
+        - #footer_section-1 .footer_section_group .footer_widget
+        - #footer_section-2 .footer_section_group .footer_widget
+        - #footer_section-3 .footer_section_group .footer_widget
+        - #footer_section-4 .footer_section_group .footer_widget
+          - .footer_section_content
+		    - aside .section_widget
 
-    - #footer
+        - aside .footer_widget
+
+    - #footer .footer_section
 
       - #footer span
       - #footer a
       - #footer a:hover, #footer .nav_active
 
-    - #footer_bottom_wrapper
-    - #footer_bottom
+    - #footer_bottom_wrapper .footer_section
+      - #footer_bottom
 
-      - #footer_boxes .inline_boxes
-      - #footer_boxes_2 .inline_boxes
-      - #footer_boxes_3 .inline_boxes
-        - .footer_boxes_content
-		  - aside .inline_box
+        - #footer_boxes .inline_boxes .footer_widget
+         - .footer_boxes_content
+		   - aside .inline_box
 
-      - aside .footer_widget
+        - #footer_section-1 .footer_section_group .footer_widget
+        - #footer_section-2 .footer_section_group .footer_widget
+        - #footer_section-3 .footer_section_group .footer_widget
+        - #footer_section-4 .footer_section_group .footer_widget
+          - .footer_section_content
+		    - aside .section_widget
+
+        - aside .footer_widget
 
 - html, #credits
 </pre>

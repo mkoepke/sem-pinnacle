@@ -757,6 +757,7 @@ EOS;
 		global $closed_header_top_widgets;
 		global $closed_header_middle_widgets;
 		global $in_header_boxes_panel;
+		global $in_header_section_panel;
 
 		global $wp_registered_widgets;
 		$widget_id = $params[0]['widget_id'];
@@ -805,7 +806,7 @@ EOS;
 			$type = $wp_registered_widgets[$widget_id]['callback'];
 		}
 
-		if ( !$in_header_boxes_panel ) {
+		if ( !$in_header_boxes_panel && !$in_header_section_panel ) {
 
 			switch ( $type ) {
 			case 'header':
@@ -907,9 +908,10 @@ EOS;
 		}
 
 		global $in_footer_boxes_panel;
+		global $in_footer_section_panel;
 		global $closed_footer_top_widgets;
 
-		if ( !$in_footer_boxes_panel ) {
+		if ( !$in_footer_boxes_panel && !$in_footer_section_panel ) {
 
 			switch ( $type ) {
 			case 'footer':

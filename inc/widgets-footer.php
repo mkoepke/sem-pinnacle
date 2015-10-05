@@ -213,36 +213,24 @@ class footer extends sem_nav_menu {
 } # footer
 
 /**
- * footer_section
+ * footer_boxes
  *
- * @package Semiologic Pinnacle
+ * @package Semiologic Reloaded
  **/
 
-class footer_section extends WP_Widget {
-	/**
-	 * Footer Boxes number
-	 *
-	 * We allow for 4 sections
-	 *
-	 */
-	protected $bar_num = 1;
-
+class footer_boxes extends WP_Widget {
 	/**
 	 * Constructor.
 	 *
 	 */
 	public function __construct() {
-		$classname = 'footer_boxes';
-		$classname .= ( $this->bar_num > 1 ) ? '_' . $this->bar_num : '';
-
 		$widget_name = __('Footer: Boxes Bar', 'sem-pinnacle');
-		$widget_name .= ( $this->bar_num > 1 ) ? ' ' . $this->bar_num : '';
 		$widget_ops = array(
-			'classname' => $classname,
-			'description' => __('Lets you decide where the Footer Boxes Bar panel goes. It must be placed in the Footer Area panel.', 'sem-pinnacle'),
+			'classname' => 'footer_boxes',
+			'description' => __('Lets you decide where the Footer Boxes Bar panel goes. Must be placed within the Footer Area panel.', 'sem-pinnacle'),
 			);
 
-		parent::__construct($classname, $widget_name, $widget_ops);
+		parent::__construct('footer_boxes', $widget_name, $widget_ops);
 	} # footer_boxes()
 
 
@@ -261,22 +249,77 @@ class footer_section extends WP_Widget {
 		global $in_footer_boxes_panel;
 		$in_footer_boxes_panel = true;
 
-		$panel_name = 'the_footer_boxes';
-		$panel_name .= ( $this->bar_num > 1 ) ? '-' . $this->bar_num : '';
-		sem_panels::display( $panel_name );
+		sem_panels::display('the_footer_boxes');
 
 		$in_footer_boxes_panel = false;
 	} # widget()
 } # footer_boxes
 
-
 /**
- * footer_boxes_2
+ * footer_section
  *
  * @package Semiologic Pinnacle
  **/
 
-class footer_boxes_2 extends footer_boxes {
+class footer_section extends WP_Widget {
+	/**
+	 * Footer Section number
+	 *
+	 * We allow for 4 sections
+	 *
+	 */
+	protected $bar_num = 1;
+
+	/**
+	 * Constructor.
+	 *
+	 */
+	public function __construct() {
+		$classname = 'footer_section';
+		$classname .=  '_' . $this->bar_num;
+
+		$widget_name = __('Footer: Footer Section', 'sem-pinnacle');
+		$widget_name .= ' ' . $this->bar_num;
+		$widget_ops = array(
+			'classname' => $classname,
+			'description' => __('Lets you decide where the Footer Section panel goes. It must be placed within the Footer Area panel.', 'sem-pinnacle'),
+			);
+
+		parent::__construct($classname, $widget_name, $widget_ops);
+	} # footer_section()
+
+
+	/**
+	 * widget()
+	 *
+	 * @param array $args widget args
+	 * @param array $instance widget options
+	 * @return void
+	 **/
+
+	function widget($args, $instance) {
+		if ( $args['id'] != 'the_footer' )
+			return;
+
+		global $in_footer_section_panel;
+		$in_footer_section_panel = true;
+
+		$panel_name = 'footer_section';
+		$panel_name .= '-' . $this->bar_num;
+		sem_panels::display( $panel_name );
+
+		$in_footer_section_panel = false;
+	} # widget()
+} # footer_section
+
+
+/**
+ * footer_section_2
+ *
+ * @package Semiologic Pinnacle
+ **/
+
+class footer_section_2 extends footer_section {
 
 	/**
 	 * Constructor.
@@ -286,16 +329,16 @@ class footer_boxes_2 extends footer_boxes {
 		$this->bar_num = 2;
 
 		parent::__construct();
-	} # footer_boxes_2()
-} # footer_boxes_2
+	} # footer_section_2()
+} # footer_section_2
 
 /**
- * footer_boxes_3
+ * footer_section_3
  *
  * @package Semiologic Pinnacle
  **/
 
-class footer_boxes_3 extends footer_boxes {
+class footer_section_3 extends footer_section {
 
 	/**
 	 * Constructor.
@@ -305,5 +348,24 @@ class footer_boxes_3 extends footer_boxes {
 		$this->bar_num = 3;
 
 		parent::__construct();
-	} # footer_boxes_3()
-} # footer_boxes_3
+	} # footer_section_3()
+} # footer_section_3
+
+/**
+ * footer_section_4
+ *
+ * @package Semiologic Pinnacle
+ **/
+
+class footer_section_4 extends footer_section {
+
+	/**
+	 * Constructor.
+	 *
+	 */
+	public function __construct() {
+		$this->bar_num = 4;
+
+		parent::__construct();
+	} # footer_section_4()
+} # footer_section_4
