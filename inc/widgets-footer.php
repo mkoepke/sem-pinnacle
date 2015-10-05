@@ -2,7 +2,7 @@
 /**
  * footer
  *
- * @package Semiologic Reloaded
+ * @package Semiologic Pinnacle
  **/
 
 if ( !class_exists('sem_nav_menu') )
@@ -213,16 +213,16 @@ class footer extends sem_nav_menu {
 } # footer
 
 /**
- * footer_boxes
+ * footer_section
  *
- * @package Semiologic Reloaded
+ * @package Semiologic Pinnacle
  **/
 
-class footer_boxes extends WP_Widget {
+class footer_section extends WP_Widget {
 	/**
 	 * Footer Boxes number
 	 *
-	 * We allow for 3 bars now
+	 * We allow for 4 sections
 	 *
 	 */
 	protected $bar_num = 1;
@@ -273,7 +273,7 @@ class footer_boxes extends WP_Widget {
 /**
  * footer_boxes_2
  *
- * @package Semiologic Reloaded
+ * @package Semiologic Pinnacle
  **/
 
 class footer_boxes_2 extends footer_boxes {
@@ -292,7 +292,7 @@ class footer_boxes_2 extends footer_boxes {
 /**
  * footer_boxes_3
  *
- * @package Semiologic Reloaded
+ * @package Semiologic Pinnacle
  **/
 
 class footer_boxes_3 extends footer_boxes {

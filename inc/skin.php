@@ -2,7 +2,7 @@
 /**
  * sem_skin
  *
- * @package Semiologic Reloaded
+ * @package Semiologic Pinnacle
  **/
 
 

@@ -2,7 +2,7 @@
 /**
  * sem_font
  *
- * @package Semiologic Reloaded
+ * @package Semiologic Pinnacle
  **/
 
 class sem_font {

@@ -2,7 +2,7 @@
 /**
  * sem_nav_menu
  *
- * @package Semiologic Reloaded
+ * @package Semiologic Pinnacle
  **/
 
 class sem_nav_menu extends WP_Widget {

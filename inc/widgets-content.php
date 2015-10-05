@@ -2,7 +2,7 @@
 /**
  * blog_header
  *
- * @package Semiologic Reloaded
+ * @package Semiologic Pinnacle
  **/
 
 class blog_header extends WP_Widget {
@@ -191,7 +191,7 @@ class blog_header extends WP_Widget {
 /**
  * blog_footer
  *
- * @package Semiologic Reloaded
+ * @package Semiologic Pinnacle
  **/
 
 class blog_footer extends WP_Widget {
@@ -493,7 +493,7 @@ class blog_footer extends WP_Widget {
 /**
  * breadcrumbs
  *
- * @package Semiologic Reloaded
+ * @package Semiologic Pinnacle
  **/
 
 class sem_breadcrumbs extends WP_Widget {

@@ -2,7 +2,7 @@
 /**
  * sem_update
  *
- * @package Semiologic Reloaded
+ * @package Semiologic Pinnacle
  **/
 
 class sem_update {

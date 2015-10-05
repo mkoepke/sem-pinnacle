@@ -2,7 +2,7 @@
 /**
  * entry_header
  *
- * @package Semiologic Reloaded
+ * @package Semiologic Pinnacle
  **/
 
 class entry_header extends WP_Widget {
@@ -247,7 +247,7 @@ class entry_header extends WP_Widget {
 /**
  * entry_content
  *
- * @package Semiologic Reloaded
+ * @package Semiologic Pinnacle
  **/
 
 class entry_content extends WP_Widget {
@@ -512,7 +512,7 @@ class entry_content extends WP_Widget {
 /**
  * entry_footer
  *
- * @package Semiologic Reloaded
+ * @package Semiologic Pinnacle
  **/
 
 class entry_footer extends WP_Widget {
@@ -796,7 +796,7 @@ class entry_footer extends WP_Widget {
 /**
  * entry_comments
  *
- * @package Semiologic Reloaded
+ * @package Semiologic Pinnacle
  **/
 
 class entry_comments extends WP_Widget {
@@ -974,7 +974,7 @@ class entry_comments extends WP_Widget {
 /**
  * entry_navigation
  *
- * @package Semiologic Reloaded
+ * @package Semiologic Pinnacle
  **/
 
 class entry_navigation extends WP_Widget {

@@ -2,7 +2,7 @@
 /**
  * sem_panels
  *
- * @package Semiologic Reloaded
+ * @package Semiologic Pinnacle
  **/
 
 class sem_panels {

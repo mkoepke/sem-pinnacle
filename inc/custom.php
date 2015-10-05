@@ -2,7 +2,7 @@
 /**
  * sem_custom
  *
- * @package Semiologic Reloaded
+ * @package Semiologic Pinnacle
  **/
 
 class sem_custom {

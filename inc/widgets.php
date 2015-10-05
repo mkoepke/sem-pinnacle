@@ -2,7 +2,7 @@
 /**
  * sem_widgets
  *
- * @package Semiologic Reloaded
+ * @package Semiologic Pinnacle
  **/
 
 class sem_widgets {

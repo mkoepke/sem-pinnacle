@@ -2,7 +2,7 @@
 /**
  * header
  *
- * @package Semiologic Reloaded
+ * @package Semiologic Pinnacle
  **/
 
 if ( !class_exists('sem_nav_menu') )
@@ -613,7 +613,7 @@ class navbar extends sem_nav_menu {
 /**
  * header_boxes
  *
- * @package Semiologic Reloaded
+ * @package Semiologic Pinnacle
  **/
 
 class header_boxes extends WP_Widget {
@@ -670,7 +670,7 @@ class header_boxes extends WP_Widget {
 /**
  * header_boxes_2
  *
- * @package Semiologic Reloaded
+ * @package Semiologic Pinnacle
  **/
 
 class header_boxes_2 extends header_boxes {
@@ -690,7 +690,7 @@ class header_boxes_2 extends header_boxes {
 /**
  * header_boxes_3
  *
- * @package Semiologic Reloaded
+ * @package Semiologic Pinnacle
  **/
 
 class header_boxes_3 extends header_boxes {
@@ -709,7 +709,7 @@ class header_boxes_3 extends header_boxes {
 /**
  * header_boxes_4
  *
- * @package Semiologic Reloaded
+ * @package Semiologic Pinnacle
  **/
 
 class header_boxes_4 extends header_boxes {
