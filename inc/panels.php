@@ -55,11 +55,11 @@ class sem_panels {
 
 		$top_panels = array(
 			'the_header' => __('Header Area', 'sem-pinnacle'),
-			'the_header_boxes' => __('Header Boxes Bar', 'sem-pinnacle'),
 			'header_section-1' => __('Header Section 1', 'sem-pinnacle'),
 			'header_section-2' => __('Header Section 2', 'sem-pinnacle'),
 			'header_section-3' => __('Header Section 3', 'sem-pinnacle'),
 			'header_section-4' => __('Header Section 4', 'sem-pinnacle'),
+			'the_header_boxes' => __('Header Boxes Bar', 'sem-pinnacle'),
 			'top_body_sidebar' => __('Top Body Sidebar', 'sem-pinnacle'),
 			'before_the_entries' => __('Before the Entries', 'sem-pinnacle'),
 			'the_entry' => __('Each Entry', 'sem-pinnacle'),
@@ -78,11 +78,11 @@ class sem_panels {
 		$bottom_panels = array(
 			'bottom_body_sidebar' => __('Bottom Body Sidebar', 'sem-pinnacle'),
 			'the_footer' => __('Footer Area', 'sem-pinnacle'),
-			'the_footer_boxes' => __('Footer Boxes Bar', 'sem-pinnacle'),
 			'footer_section-1' => __('Footer Section 1', 'sem-pinnacle'),
 			'footer_section-2' => __('Footer Section 2', 'sem-pinnacle'),
 			'footer_section-3' => __('Footer Section 3', 'sem-pinnacle'),
 			'footer_section-4' => __('Footer Section 4', 'sem-pinnacle'),
+			'the_footer_boxes' => __('Footer Boxes Bar', 'sem-pinnacle'),
 			'the_404' => __('Not Found Error (404)', 'sem-pinnacle'),
 		);
 
