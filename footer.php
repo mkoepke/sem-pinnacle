@@ -25,7 +25,7 @@
 	
 	echo '</div><!-- body_middle -->' . "\n";
 	
-	echo '<div id="body_bottom" class="body_section"><div class="hidden"></div></div>' . "\n";
+	echo '<div id="body_bottom" class="body_container"><div class="hidden"></div></div>' . "\n";
 
 	echo '</div><!-- body_wrapper -->' . "\n";
 	
@@ -48,7 +48,7 @@ do_action('wp_footer');
 
 echo '</div><!-- wrapper_middle -->' . "\n";
 
-echo '<div id="wrapper_bottom" class="wrapper_section"><div class="hidden"></div></div>' . "\n";
+echo '<div id="wrapper_bottom" class="wrapper_container"><div class="hidden"></div></div>' . "\n";
 
 echo '</div><!-- wrapper -->' . "\n";
 

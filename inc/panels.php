@@ -426,7 +426,7 @@ class sem_panels {
 					case 'header_section-3':
 					case 'header_section-4':
 						$id = $panel_id;
-						$class = 'header_section_group header_widget';
+						$class = 'header_section header_widget';
 						$inner_class = 'header_section_content';
 						break;
 					case 'footer_section-1':
@@ -434,7 +434,7 @@ class sem_panels {
 					case 'footer_section-3':
 					case 'footer_section-4':
 						$id = $panel_id;
-						$class = 'footer_section_group footer_widget';
+						$class = 'footer_section footer_widget';
 						$inner_class = 'footer_section_content';
 						break;
 				}
@@ -476,7 +476,7 @@ class sem_panels {
 			$widget_count = count( $sidebars_widgets_count[ $sidebar_id ] );
 			$widget_classes = 'widget-count-' . count( $sidebars_widgets_count[ $sidebar_id ] );
 			if ( $widget_count % 4 == 0 || $widget_count > 6 ) :
-				// Four widgets er row if there are exactly four or more than six
+				// Four widgets per row if there are exactly four or more than six
 				$widget_classes .= ' per-row-4';
 			elseif ( $widget_count >= 3 ) :
 				// Three widgets per row if there's three or more widgets
@@ -484,6 +484,9 @@ class sem_panels {
 			elseif ( 2 == $widget_count ) :
 				// Otherwise show two widgets per row
 				$widget_classes .= ' per-row-2';
+			elseif ( 1 == $widget_count ) :
+				// Otherwise show one widgets per row
+				$widget_classes .= ' per-row-1';
 			endif;
 
 			return $widget_classes;

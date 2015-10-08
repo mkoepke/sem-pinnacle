@@ -40,7 +40,8 @@ class footer extends sem_nav_menu {
 	 **/
 
 	function widget($args, $instance) {
-		if ( $args['id'] != 'the_footer' && $args['id'] !='the_footer_boxes' )
+		if ( ! in_array( $args['id'], array( 'the_footer', 'the_footer_boxes', 'footer_section-1',
+			'footer_section-2', 'footer_section-3', 'footer_section-4') ) )
 			return;
 
 		$instance = wp_parse_args($instance, footer::defaults());
@@ -56,7 +57,7 @@ class footer extends sem_nav_menu {
 				$footer_class .= ' float_sep_nav';
 		}
 
-		echo '<div id="footer" class="footer_section ' . $footer_class . '" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">' . "\n";
+		echo '<div id="footer" class="footer_container' . $footer_class . '" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">' . "\n";
 
 		echo '<nav id="footer_nav" class="footer_nav inline_menu menu" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">';
 

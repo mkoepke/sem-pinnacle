@@ -19,7 +19,7 @@ echo '<main id="main" class="main" role="main" itemprop="mainContentOfPage">' . 
 
 echo '<div class="main_content entry">' . "\n";
 
-echo '<div id="your_id" class="body_section">' . "\n";
+echo '<div id="your_id" class="body_container">' . "\n";
 
 echo '</div><!-- your_id -->' . "\n";
 

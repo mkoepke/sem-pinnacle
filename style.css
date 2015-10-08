@@ -2,7 +2,7 @@
 Theme Name: Semiologic Pinnacle
 Theme URI: http://www.semiologic.com/software/sem-pinnacle/
 Description: The latest Semiologic Theme building on the widget and panel-centric approach of Semiologic Reloaded.   The Pinnacle theme is HTML5, CSS3, and responsive meant to look the same across all devices.
-Version: 2.4.5 dev
+Version: 2.5
 Author: Mike Koepke
 Author URI: http://www.semiologic.com
 Text Domain: sem-pinnacle
@@ -58,12 +58,12 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 #body_wrapper:after,
 #footer_wrapper:before,
 #footer_wrapper:after,
-.header_section:before,
-.header_section:after,
-.body_section:before,
-.body_section:after,
-.footer_section:before,
-.footer_section:after {
+.header_container:before,
+.header_container:after,
+.body_container:before,
+.body_container:after,
+.footer_container:before,
+.footer_container:after {
 	content: '';
 	display: table;
 }
@@ -75,9 +75,9 @@ article,
 #header_wrapper:after,
 #body_wrapper:after,
 #footer_wrapper:after,
-.header_section:after,
-.body_section:after,
-.footer_section:after {
+.header_container:after,
+.body_container:after,
+.footer_container:after {
 	clear: both;
 }
 
@@ -465,9 +465,9 @@ Structure and Layout
 #wrapper,
 #credits,
 .wrapper,
-.header_section,
-.body_section,
-.footer_section,
+.header_container,
+.body_container,
+.footer_container,
 .post_list {
 	margin: 0 auto;
 }
@@ -641,21 +641,21 @@ Inline Boxes
 Header and Footer Section Panels
 --------------------------------------------------------- */
 
-.header_section_group,
-.footer_section_group {
+.header_section,
+.footer_section {
 	overflow: hidden;
 }
 
 .section_widget {
 	float: left;
-	width: 100%;
 }
 
-/* Only 1
-.header_section.widget-count-1 .section_widget,
-.footer_section.widget-count-1 .section_widget {
-} */
-/* Two per row
+/* Only 1 */
+.header_section.per-row-1 .section_widget,
+.footer_section.per-row-1 .section_widget {
+	width: 100%;
+}
+/* Two per row */
 .header_section.per-row-2 .section_widget,
 .footer_section.per-row-2 .section_widget {
     width: 50%;
@@ -666,8 +666,8 @@ Header and Footer Section Panels
 }
 .header_section.per-row-2 .section_widget:nth-of-type(2n),
 .footer_section.per-row-2 .section_widget:nth-of-type(2n) {
-}*/
-/* Three per row
+}
+/* Three per row */
 .header_section.per-row-3 .section_widget,
 .footer_section.per-row-3 .section_widget {
     width: 33.33333%;
@@ -678,8 +678,8 @@ Header and Footer Section Panels
 }
 .header_section.per-row-3 .section_widget:nth-of-type(3n),
 .footer_section.per-row-3 .section_widget:nth-of-type(3n) {
-} */
-/* Four per row
+}
+/* Four per row */
 .header_section.per-row-4 .section_widget,
 .footer_section.per-row-4 .section_widget {
     width: 25%;
@@ -690,7 +690,7 @@ Header and Footer Section Panels
 }
 .header_section.per-row-4 .section_widget:nth-of-type(4n),
 .footer_section.per-row-4 .section_widget:nth-of-type(4n) {
-} */
+}
 
 
 /*
@@ -701,7 +701,7 @@ Content Panels
 	float: left;
 	width: 100%;
 }
-.flexible-widget-area.widget-count-1 .widget {
+.flexible-widget-area.per-row-1 .widget {
 }
 /* Two per row */
 .flexible-widget-area.per-row-2 .widget {

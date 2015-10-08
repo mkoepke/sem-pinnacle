@@ -93,6 +93,16 @@ Media Queries
 		width: 100%;
 	}
 
+	.header_section.per-row-2 .section_widget,
+	.footer_section.per-row-2 .section_widget,
+	.header_section.per-row-3 .section_widget,
+	.footer_section.per-row-3 .section_widget,
+	.footer_section.per-row-4 .section_widget,
+	.header_section.per-row-4 .section_widget {
+		float: none;
+	    width: 100%;
+	}
+
 	.flexible-widget-area.per-row-2 .widget,
 	.flexible-widget-area.per-row-3 .widget,
 	.flexible-widget-area.per-row-4 .widget {

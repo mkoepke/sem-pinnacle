@@ -32,8 +32,8 @@ remove_action('wp_footer', array('sem_template', 'display_credits'), 5);
 <body class="<?php echo implode(' ', get_body_class(array('skin', 'custom'))); ?>">
 
 <div id="wrapper">
-<div id="wrapper_top" class="wrapper_section"><div class="hidden"></div></div>
-<div id="wrapper_middle" class="wrapper_section">
+<div id="wrapper_top" class="wrapper_container"><div class="hidden"></div></div>
+<div id="wrapper_middle" class="wrapper_container">
 <?php
 # show header
 header::letter();
@@ -80,7 +80,7 @@ echo '</main><!-- main -->' . "\n";
 */
 ?>
 </div>
-<div id="wrapper_bottom" class="wrapper_section"><div class="hidden"></div></div>
+<div id="wrapper_bottom" class="wrapper_container"><div class="hidden"></div></div>
 </div><!-- wrapper -->
 <?php
 

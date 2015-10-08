@@ -45,7 +45,7 @@ class header extends WP_Widget {
 
 		$header = header::get();
 
-		echo '<div id="header" class="header_section'
+		echo '<div id="header" class="header_container'
 				. ( $invert_header
 					? ' invert_header'
 					: ''
@@ -412,7 +412,8 @@ class navbar extends sem_nav_menu {
 	 **/
 
 	function widget($args, $instance) {
-		if ( $args['id'] != 'the_header' && $args['id'] !='the_header_boxes' )
+		if ( ! in_array( $args['id'], array( 'the_header', 'the_header_boxes', 'header_section-1',
+			'header_section-2', 'header_section-3', 'header_section-4') ) )
 			return;
 
 		$instance = wp_parse_args($instance, navbar::defaults());
@@ -425,7 +426,7 @@ class navbar extends sem_nav_menu {
 		if ( $sep )
 			$navbar_class .= ' sep_nav';
 
-		echo '<nav id="navbar" class="header_section navbar' . $navbar_class . '">' . "\n";
+		echo '<nav id="navbar" class="header_container navbar' . $navbar_class . '">' . "\n";
 
 		echo '<div id="header-menu-icon">' . $resp_menubar_text . '<span class="fa fa-bars"></span></div>';
 		echo '<div id="header_nav" class="header_nav inline_menu menu" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">';

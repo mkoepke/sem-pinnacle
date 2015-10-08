@@ -52,9 +52,9 @@ echo '<div id="site_container">' . "\n";
 # wrapper
 echo '<div id="wrapper" class="wrapper hfeed">' . "\n";
 
-echo '<div id="wrapper_top" class="wrapper_section"><div class="hidden"></div></div>' . "\n";
+echo '<div id="wrapper_top" class="wrapper_container"><div class="hidden"></div></div>' . "\n";
 
-echo '<div id="wrapper_middle" class="wrapper_section">' . "\n";
+echo '<div id="wrapper_middle" class="wrapper_container">' . "\n";
 
 	
 	# header
@@ -70,9 +70,9 @@ echo '<div id="wrapper_middle" class="wrapper_section">' . "\n";
 	
 	echo '<div id="body_wrapper" class="wrapper">' . "\n";
 
-	echo '<div id="body_top" class="body_section"><div class="hidden"></div></div>' . "\n";
+	echo '<div id="body_top" class="body_container"><div class="hidden"></div></div>' . "\n";
 
-	echo '<div id="body_middle" class="body_section">' . "\n";
+	echo '<div id="body_middle" class="body_container">' . "\n";
 
 	echo '<div id="top_body_sidebar" class="sidebar" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">' . "\n";
 

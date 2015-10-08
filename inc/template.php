@@ -766,7 +766,7 @@ EOS;
 			if ( is_a($wp_registered_widgets[$widget_id]['callback'][0], 'WP_Widget') ) {
 				if ( !$did_header && !$did_navbar ) {
 					if ( !$did_top_widgets ) {
-						echo '<div id="header_top_wrapper" class="header_section"><div id="header_top">' . "\n";
+						echo '<div id="header_top_wrapper" class="header_container"><div id="header_top">' . "\n";
 						$did_top_widgets = true;
 					}
 				}
@@ -781,11 +781,11 @@ EOS;
 							}
 
 							if ( $did_header && $did_navbar ) {
-								echo '<div id="header_bottom_wrapper" class="header_section"><div id="header_bottom">' . "\n";
+								echo '<div id="header_bottom_wrapper" class="header_container"><div id="header_bottom">' . "\n";
 								$did_bottom_widgets = true;
 							}
 							else {
-								echo '<div id="header_middle_wrapper" class="header_section"><div id="header_middle">' . "\n";
+								echo '<div id="header_middle_wrapper" class="header_container"><div id="header_middle">' . "\n";
 							}
 							$did_middle_widgets = true;
 						}
@@ -836,7 +836,7 @@ EOS;
 			default:
 				if ( !$did_header && !$did_navbar ) {
 					if ( !$did_top_widgets ) {
-						echo '<div id="header_top_wrapper" class="header_section"><div id="header_top">' . "\n";
+						echo '<div id="header_top_wrapper" class="header_container"><div id="header_top">' . "\n";
 						$did_top_widgets = true;
 					}
 				} elseif ( $did_header && $did_navbar ) {
@@ -845,7 +845,7 @@ EOS;
 							echo '</div></div>' . "\n";
 							$closed_header_top_widgets = true;
 						}
-						echo '<div id="header_bottom_wrapper" class="header_section"><div id="header_bottom">' . "\n";
+						echo '<div id="header_bottom_wrapper" class="header_container"><div id="header_bottom">' . "\n";
 						$did_bottom_widgets = true;
 					}
 				} else {
@@ -854,7 +854,7 @@ EOS;
 							echo '</div></div>' . "\n";
 							$closed_header_top_widgets = true;
 						}
-						echo '<div id="header_middle_wrapper" class="header_section"><div id="header_middle">' . "\n";
+						echo '<div id="header_middle_wrapper" class="header_container"><div id="header_middle">' . "\n";
 						$did_middle_widgets = true;
 					}
 				}
@@ -888,7 +888,7 @@ EOS;
 			if ( is_a($wp_registered_widgets[$widget_id]['callback'][0], 'WP_Widget') ) {
 				if ( !$did_footer ) {
 					if ( !$did_top_widgets ) {
-						echo '<div id="footer_top_wrapper" class="footer_section"><div id="footer_top">' . "\n";
+						echo '<div id="footer_top_wrapper" class="footer_container"><div id="footer_top">' . "\n";
 						$did_top_widgets = true;
 					}
 				}
@@ -924,7 +924,7 @@ EOS;
 			default:
 				if ( !$did_footer ) {
 					if ( !$did_top_widgets ) {
-						echo '<div id="footer_top_wrapper" class="footer_section"><div id="footer_top">' . "\n";
+						echo '<div id="footer_top_wrapper" class="footer_container"><div id="footer_top">' . "\n";
 						$did_top_widgets = true;
 					}
 				} else {
@@ -933,7 +933,7 @@ EOS;
 							echo '</div></div>' . "\n";
 							$closed_footer_top_widgets = true;
 						}
-						echo '<div id="footer_bottom_wrapper" class="footer_section"><div id="footer_bottom">' . "\n";
+						echo '<div id="footer_bottom_wrapper" class="footer_container"><div id="footer_bottom">' . "\n";
 						$did_bottom_widgets = true;
 					}
 				}
