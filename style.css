@@ -2,7 +2,7 @@
 Theme Name: Semiologic Pinnacle
 Theme URI: http://www.semiologic.com/software/sem-pinnacle/
 Description: The latest Semiologic Theme building on the widget and panel-centric approach of Semiologic Reloaded.   The Pinnacle theme is HTML5, CSS3, and responsive meant to look the same across all devices.
-Version: 2.5
+Version: 2.6 dev
 Author: Mike Koepke
 Author URI: http://www.semiologic.com
 Text Domain: sem-pinnacle
@@ -182,8 +182,8 @@ figure {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-size:100%;
-	font-weight: 700;
+	font-size: 100%;
+	font-weight: 400;
 	line-height: 1.3;
 }
 
@@ -635,6 +635,7 @@ Inline Boxes
 .mmm .inline_box h2 {
 	margin: 0.5em 0;
 	line-height: 1;
+	font-size: 1.25em;
 }
 
 /*
@@ -692,6 +693,11 @@ Header and Footer Section Panels
 .footer_section.per-row-4 .section_widget:nth-of-type(4n) {
 }
 
+.section_widget h2 {
+	margin: 0.5em 0;
+	line-height: 1;
+	font-size: 1.25em;
+}
 
 /*
 Content Panels
@@ -1157,6 +1163,11 @@ Site Navigation
 }
 
 #header_nav {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+    width: 100%;
+	z-index: 500;
 	-webkit-transition: all 0.3s ease;
 	-moz-transition: all 0.3s ease;
 	-ms-transition: all 0.3s ease;
@@ -1167,8 +1178,8 @@ Site Navigation
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	width:100%;
-	z-index:50;
+	width: 100%;
+	z-index: 50;
 	position: relative;
 	clear: both;
 }
@@ -1631,7 +1642,7 @@ Widget Controls
 /* WP Calendar */
 
 .widget_calendar caption {
-	font-size: 1.0625em;
+	font-size: 1.125em;
 	line-height: 1.231;
     font-family: inherit;
 }

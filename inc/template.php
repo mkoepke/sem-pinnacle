@@ -212,7 +212,7 @@ class sem_template {
 			$sem_helper = 'sem-helper-wd';
 
 		$sem_helper = $sem_helper . ( ! WP_DEBUG ? '.min' : '' );
-		wp_enqueue_script( 'sem-helper', sem_url . '/js/' . $sem_helper . '.js', array('jquery'), '1.0.1', false );
+		wp_enqueue_script( 'sem-helper', sem_url . '/js/' . $sem_helper . '.js', array('jquery'), '1.0.1', true );
 
 		if ( is_admin() ) {
 			if( !isset($_GET['page']) || ( isset($_GET['page']) && strstr($_GET['page'], 'widgetkit' ) === false ) ) {
